@@ -1,32 +1,443 @@
-<!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DIONTADO PRODUCTION — Production Audiovisuelle & Photographie au Sénégal</title>
-    <meta name="description" content="Maison de production audiovisuelle au Sénégal : photographie événementielle, réalisation vidéo, clips musicaux, films institutionnels et montage." />
-    <meta property="og:title" content="DIONTADO PRODUCTION — Production Audiovisuelle & Photographie au Sénégal" />
-    <meta property="og:description" content="Nous donnons vie à vos histoires. Production audiovisuelle, photographie, clips musicaux et films institutionnels au Sénégal." />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="DIONTADO PRODUCTION" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="DIONTADO PRODUCTION — Production Audiovisuelle & Photographie au Sénégal" />
-    <meta name="twitter:description" content="Nous donnons vie à vos histoires. Production audiovisuelle, photographie, clips musicaux et films institutionnels au Sénégal." />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "DIONTADO PRODUCTION",
-        "description": "Maison de production audiovisuelle au Sénégal : photographie, réalisation vidéo, montage vidéo, clips musicaux, films institutionnels et couverture d'événements.",
-        "email": "diontadoproduction@gmail.com",
-        "areaServed": "SN",
-        "currenciesAccepted": "XOF",
-        "slogan": "Nous donnons vie à vos histoires."
-      }
-    </script>
-  </head>
-  <body data-page="index.html">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+/**
+ * ============================================================================
+ * FICHIER DE CONFIGURATION CENTRALISÉE — DIONTADO PRODUCTION
+ * ============================================================================
+ * Modifiez facilement vos coordonnées, vos images, vos vidéos et votre
+ * configuration Wave Business directement dans ce fichier, ou utilisez le
+ * bouton « Gérer mes médias & contacts » dans le pied de page du site.
+ */
+
+export interface SiteConfig {
+  companyName: string;
+  slogan: string;
+  market: string;
+  currency: string;
+  email: string;
+  /**
+   * Numéro WhatsApp au format international sans le '+' ni espaces (ex: "221770000000").
+   * Tant que la valeur reste "NUMERO_WHATSAPP_A_REMPLACER", le site affiche un avertissement
+   * clair indiquant comment configurer votre numéro réel.
+   */
+  whatsappNumber: string;
+  waveBusiness: {
+    /**
+     * Passez `enabled` à `true` uniquement lorsque vous disposez d'un lien officiel
+     * Wave Business ou d'une intégration serveur vérifiée.
+     */
+    enabled: boolean;
+    paymentLink: string;
+  };
+  images: {
+    heroCover: string;
+    directorPortrait: string;
+    eventSample: string;
+    musicVideoSample: string;
+    corporateVideoSample: string;
+  };
+  directorBio: {
+    title: string;
+    subtitle: string;
+    paragraphs: string[];
+  };
+}
+
+export const DEFAULT_SITE_CONFIG: SiteConfig = {
+  companyName: 'DIONTADO PRODUCTION',
+  slogan: 'Nous donnons vie à vos histoires.',
+  market: 'Sénégal',
+  currency: 'FCFA (XOF)',
+  email: 'diontadoproduction@gmail.com',
+  whatsappNumber: 'NUMERO_WHATSAPP_A_REMPLACER',
+  waveBusiness: {
+    enabled: false,
+    paymentLink: '',
+  },
+  images: {
+    heroCover: 'assets/images/couverture.jpg',
+    directorPortrait: 'assets/images/portrait.jpg',
+    eventSample: 'assets/images/evenementiel.jpg',
+    musicVideoSample: 'assets/images/clip-musical.jpg',
+    corporateVideoSample: 'assets/images/film-institutionnel.jpg',
+  },
+  directorBio: {
+    title: 'Direction Artistique & Réalisation',
+    subtitle: 'Fondateur & Réalisateur — DIONTADO PRODUCTION',
+    paragraphs: [
+      "Passionné par l'image, la lumière et le récit visuel, le fondateur de DIONTADO PRODUCTION accompagne chaque projet avec un regard cinématographique exigeant et une écoute attentive des attentes de chaque client.",
+      "De la conception du storyboard jusqu'à l'étalonnage final, chaque prise de vue est pensée pour traduire fidèlement l'émotion d'un événement, l'identité d'un artiste ou le message stratégique d'une institution au Sénégal."
+    ],
+  },
+};
+
+export interface ServiceItem {
+  id: string;
+  number: string;
+  title: string;
+  category: string;
+  shortDescription: string;
+  fullDescription: string;
+  deliverables: string[];
+}
+
+export const SERVICES_LIST: ServiceItem[] = [
+  {
+    id: 'photo-evenementielle',
+    number: '01',
+    title: 'Photographie événementielle',
+    category: 'Photographie',
+    shortDescription: 'Captation sur le vif et mise en valeur de vos cérémonies, galas, séminaires et rencontres.',
+    fullDescription: 'Couverture photographique complète de vos événements privés, culturels ou professionnels. Nous saisissons les temps forts, les discours, les ambiances et les invités avec une colorimétrie soignée.',
+    deliverables: ['Reportage haute définition', 'Sélection retouchée et étalonnée', 'Galerie numérique privée'],
+  },
+  {
+    id: 'photo-mariage',
+    number: '02',
+    title: 'Photographie de mariage',
+    category: 'Photographie',
+    shortDescription: 'Récit visuel élégant et intemporel des préparatifs jusqu’à la réception.',
+    fullDescription: 'Accompagnement discret et artistique tout au long de votre union. Nous immortalisations les regards, les tenues traditionnelles et modernes, les détails et les émotions partagées avec vos proches.',
+    deliverables: ['Séance couple & portraits', 'Couverture cérémonie & réception', 'Photos haute résolution prêtes à imprimer'],
+  },
+  {
+    id: 'photo-soutenance',
+    number: '03',
+    title: 'Photographie de soutenance',
+    category: 'Photographie',
+    shortDescription: 'Immortalisez votre réussite académique et universitaire avec des clichés solennels.',
+    fullDescription: 'Présence dédiée lors de votre présentation devant le jury, la délibération, la remise de diplôme et les photos officielles avec votre famille, vos professeurs et vos invités.',
+    deliverables: ['Prises de vue durant la présentation', 'Portraits officiels du lauréat', 'Photos de groupe avec la famille et le jury'],
+  },
+  {
+    id: 'portraits-pro',
+    number: '04',
+    title: 'Portraits et photographie professionnelle',
+    category: 'Photographie',
+    shortDescription: 'Portraits corporate, artistiques et éditoriaux en studio ou en extérieur.',
+    fullDescription: 'Séances de portrait dirigées pour dirigeants, entrepreneurs, artistes, mannequins et équipes. Maîtrise de l’éclairage pour refléter votre personnalité et renforcer votre image de marque.',
+    deliverables: ['Direction de pose personnalisée', 'Retouche beauté et colorimétrique', 'Formats optimisés presse, web et réseaux'],
+  },
+  {
+    id: 'clips-musicaux',
+    number: '05',
+    title: 'Clips musicaux',
+    category: 'Production Vidéo',
+    shortDescription: 'Conception visuelle, réalisation et esthétique cinéma pour artistes et labels.',
+    fullDescription: 'De l’écriture du synopsis au montage rythmé et à l’étalonnage créatif, nous produisons des clips musicaux en studio ou en décor naturel qui marquent l’identité visuelle de votre titre.',
+    deliverables: ['Direction artistique & découpage', 'Tournage caméra cinéma & éclairage', 'Montage, effets visuels & étalonnage'],
+  },
+  {
+    id: 'films-institutionnels',
+    number: '06',
+    title: 'Films institutionnels',
+    category: 'Corporate & Institutions',
+    shortDescription: 'Valorisez le savoir-faire, la vision et les projets de votre organisation.',
+    fullDescription: 'Production de films d’entreprise, vidéos de présentation et communications officielles destinées aux entreprises, ONG, ministères et institutions opérant au Sénégal.',
+    deliverables: ['Préparation éditoriale & interviews', 'Tournage multi-caméras & prise de son pro', 'Habillage graphique aux couleurs de votre marque'],
+  },
+  {
+    id: 'reportages-documentaires',
+    number: '07',
+    title: 'Reportages et documentaires',
+    category: 'Récit & Terrain',
+    shortDescription: 'Narration authentique sur le terrain pour raconter des initiatives et des histoires humaines.',
+    fullDescription: 'Réalisation de reportages de terrain et de films documentaires mettant en lumière des projets de développement, des enjeux culturels, des parcours inspirants ou des actions associatives.',
+    deliverables: ['Recherche narrative & entretiens', 'Captation terrain agile et respectueuse', 'Montage documentaire & mixage sonore'],
+  },
+  {
+    id: 'realisation-production',
+    number: '08',
+    title: 'Réalisation et production audiovisuelle',
+    category: 'Production Globale',
+    shortDescription: 'Gestion intégrale de votre projet audiovisuel, de la pré-production à la livraison.',
+    fullDescription: 'Accompagnement complet incluant le repérage des lieux, la planification technique, la direction d’équipe sur le plateau et la supervision artistique jusqu’aux masters finaux.',
+    deliverables: ['Planification & découpage technique', 'Équipe de tournage & matériel cinéma', 'Masters multi-supports (TV, Web, Événement)'],
+  },
+  {
+    id: 'montage-etalonnage',
+    number: '09',
+    title: 'Montage vidéo et étalonnage',
+    category: 'Post-Production',
+    shortDescription: 'Rythme narratif, habillage sonore et signature colorimétrique cinématographique.',
+    fullDescription: 'Confiez-nous vos rushs pour un montage dynamique, une synchronisation audio soignée et un étalonnage colorimétrique professionnel donnant une véritable texture cinéma à vos images.',
+    deliverables: ['Dérushage & montage narratif', 'Étalonnage colorimétrique (Color Grading)', 'Design sonore & export haute qualité'],
+  },
+  {
+    id: 'couverture-entreprises',
+    number: '10',
+    title: 'Couverture photo et vidéo pour entreprises et associations',
+    category: 'Corporate & Associations',
+    shortDescription: 'Dispositif hybride photo + vidéo pour vos forums, lancements et bilans annuels.',
+    fullDescription: 'Une équipe coordonnée assurant simultanément le reportage photographique et la réalisation d’un film récapitulatif (aftermovie, capsules interviews) lors de vos événements professionnels.',
+    deliverables: ['Reportage photo complet de l’événement', 'Film récapitulatif & interviews clés', 'Livraison rapide pour votre communication'],
+  },
+];
+
+export interface PricingTier {
+  id: string;
+  title: string;
+  priceLabel: string;
+  isStartingPrice: boolean;
+  subtitle: string;
+  description: string;
+  features: string[];
+  servicePreset: string;
+}
+
+export const PRICING_TIERS: PricingTier[] = [
+  {
+    id: 'tarif-evenementiel',
+    title: 'Photo et vidéo événementielle',
+    priceLabel: '150 000 FCFA',
+    isStartingPrice: true,
+    subtitle: 'Tarif de départ',
+    description: 'Couverture combinée photographie et vidéo pour vos cérémonies, réceptions, rencontres professionnelles ou événements privés.',
+    features: [
+      'Captation photo des moments clés et portraits',
+      'Captation vidéo et montage récapitulatif',
+      'Traitement colorimétrique professionnel',
+      'Remise des fichiers en haute définition',
+    ],
+    servicePreset: 'Photographie événementielle',
+  },
+  {
+    id: 'tarif-soutenance',
+    title: 'Photographie de soutenance',
+    priceLabel: '80 000 FCFA',
+    isStartingPrice: true,
+    subtitle: 'Tarif de départ',
+    description: 'Couverture photographique dédiée pour immortaliser votre soutenance universitaire ou académique et célébrer votre diplôme.',
+    features: [
+      'Photos durant le passage devant le jury',
+      'Portraits officiels avec toge ou tenue de cérémonie',
+      'Photos de groupe avec la famille et les invités',
+      'Sélection de clichés retouchés en haute résolution',
+    ],
+    servicePreset: 'Photographie de soutenance',
+  },
+  {
+    id: 'tarif-clip-studio',
+    title: 'Clip musical simple en studio',
+    priceLabel: '80 000 FCFA',
+    isStartingPrice: true,
+    subtitle: 'Tarif de départ',
+    description: 'Réalisation d’un clip musical épuré et esthétique tourné en configuration studio pour mettre en valeur votre performance.',
+    features: [
+      'Tournage en studio avec éclairage travaillé',
+      'Direction de performance face caméra',
+      'Montage rythmé sur votre bande-son',
+      'Étalonnage cinématographique et export 4K / Full HD',
+    ],
+    servicePreset: 'Clips musicaux',
+  },
+  {
+    id: 'tarif-sur-devis',
+    title: 'Autres prestations',
+    priceLabel: 'Sur devis',
+    isStartingPrice: false,
+    subtitle: 'Offre personnalisée',
+    description: 'Films institutionnels, mariages complets, documentaires, grands clips multi-décors ou couvertures corporate sur plusieurs jours.',
+    features: [
+      'Étude personnalisée de votre cahier des charges',
+      'Dimensionnement de l’équipe et du matériel sur mesure',
+      'Déplacements partout au Sénégal',
+      'Devis détaillé adapté à vos objectifs',
+    ],
+    servicePreset: 'Films institutionnels',
+  },
+];
+
+export type GalleryCategory =
+  | 'Tous'
+  | 'Événementiel'
+  | 'Mariage'
+  | 'Portrait'
+  | 'Culture'
+  | 'Publicité'
+  | 'Projets institutionnels';
+
+export const GALLERY_CATEGORIES: GalleryCategory[] = [
+  'Tous',
+  'Événementiel',
+  'Mariage',
+  'Portrait',
+  'Culture',
+  'Publicité',
+  'Projets institutionnels',
+];
+
+export interface GalleryPhotoSlot {
+  id: string;
+  title: string;
+  category: Exclude<GalleryCategory, 'Tous'>;
+  imagePath: string;
+  fileHint: string;
+  aspectClass: string;
+  description: string;
+  isDemoPlaceholder: boolean;
+}
+
+export const INITIAL_GALLERY_SLOTS: GalleryPhotoSlot[] = [
+  {
+    id: 'slot-evenementiel-1',
+    title: 'Emplacement Photo — Gala & Événementiel',
+    category: 'Événementiel',
+    imagePath: '/src/assets/images/gallery_event_ceremony_1791658656467.jpg',
+    fileHint: 'assets/images/evenementiel-01.jpg',
+    aspectClass: 'aspect-[4/3]',
+    description: 'Visuel de démonstration (emplacement prévu pour vos photographies de galas, conférences et cérémonies).',
+    isDemoPlaceholder: true,
+  },
+  {
+    id: 'slot-mariage-1',
+    title: 'Emplacement Photo — Cérémonie de Mariage',
+    category: 'Mariage',
+    imagePath: '/src/assets/images/hero_cinema_production_1791658631962.jpg',
+    fileHint: 'assets/images/mariage-01.jpg',
+    aspectClass: 'aspect-[4/3]',
+    description: 'Visuel de démonstration (emplacement prévu pour vos photographies de mariages traditionnels et civils).',
+    isDemoPlaceholder: true,
+  },
+  {
+    id: 'slot-portrait-1',
+    title: 'Emplacement Photo — Portrait Studio & Éditorial',
+    category: 'Portrait',
+    imagePath: '/src/assets/images/director_portrait_1791658643842.jpg',
+    fileHint: 'assets/images/portrait-01.jpg',
+    aspectClass: 'aspect-[3/4]',
+    description: 'Visuel de démonstration (emplacement prévu pour vos portraits professionnels, artistiques et corporate).',
+    isDemoPlaceholder: true,
+  },
+  {
+    id: 'slot-culture-1',
+    title: 'Emplacement Photo — Arts, Musique & Culture',
+    category: 'Culture',
+    imagePath: '/src/assets/images/video_music_clip_thumb_1791658668441.jpg',
+    fileHint: 'assets/images/culture-01.jpg',
+    aspectClass: 'aspect-[4/3]',
+    description: 'Visuel de démonstration (emplacement prévu pour vos festivals, spectacles vivants et patrimoines culturels).',
+    isDemoPlaceholder: true,
+  },
+  {
+    id: 'slot-publicite-1',
+    title: 'Emplacement Photo — Campagne & Publicité',
+    category: 'Publicité',
+    imagePath: '/src/assets/images/hero_cinema_production_1791658631962.jpg',
+    fileHint: 'assets/images/publicite-01.jpg',
+    aspectClass: 'aspect-[4/3]',
+    description: 'Visuel de démonstration (emplacement prévu pour vos visuels publicitaires, produits et campagnes de marque).',
+    isDemoPlaceholder: true,
+  },
+  {
+    id: 'slot-institutionnel-1',
+    title: 'Emplacement Photo — Projet Institutionnel',
+    category: 'Projets institutionnels',
+    imagePath: '/src/assets/images/video_corporate_film_thumb_1791658679101.jpg',
+    fileHint: 'assets/images/institutionnel-01.jpg',
+    aspectClass: 'aspect-[4/3]',
+    description: 'Visuel de démonstration (emplacement prévu pour vos reportages d’entreprises, ONG et institutions).',
+    isDemoPlaceholder: true,
+  },
+];
+
+export type VideoCategory =
+  | 'Tous'
+  | 'Clips & Courts métrages'
+  | 'Films institutionnels'
+  | 'Reportages';
+
+export const VIDEO_CATEGORIES: VideoCategory[] = [
+  'Tous',
+  'Clips & Courts métrages',
+  'Films institutionnels',
+  'Reportages',
+];
+
+export interface VideoSlot {
+  id: string;
+  title: string;
+  category: Exclude<VideoCategory, 'Tous'>;
+  thumbnailPath: string;
+  /**
+   * Lien YouTube (ex: "https://www.youtube.com/watch?v=..." ou ID YouTube)
+   * ou chemin vers un fichier vidéo local (ex: "assets/videos/clip-01.mp4").
+   * Laissez vide tant que vous n'avez pas inséré votre vidéo réelle.
+   */
+  youtubeUrlOrFile: string;
+  fileHint: string;
+  durationHint: string;
+  description: string;
+  isDemoPlaceholder: boolean;
+}
+
+export const INITIAL_VIDEO_SLOTS: VideoSlot[] = [
+  {
+    id: 'video-clip-1',
+    title: 'Emplacement Vidéo — Clip Musical Studio / Extérieur',
+    category: 'Clips & Courts métrages',
+    thumbnailPath: '/src/assets/images/video_music_clip_thumb_1791658668441.jpg',
+    youtubeUrlOrFile: '',
+    fileHint: 'assets/videos/clip-musical-01.mp4 ou lien YouTube',
+    durationHint: 'Format 4K · Étalonnage Cinéma',
+    description: 'Emplacement réservé pour intégrer votre clip musical ou court métrage (lien YouTube ou fichier MP4).',
+    isDemoPlaceholder: true,
+  },
+  {
+    id: 'video-court-metrage-2',
+    title: 'Emplacement Vidéo — Court Métrage & Fiction',
+    category: 'Clips & Courts métrages',
+    thumbnailPath: '/src/assets/images/hero_cinema_production_1791658631962.jpg',
+    youtubeUrlOrFile: '',
+    fileHint: 'assets/videos/court-metrage-01.mp4 ou lien YouTube',
+    durationHint: 'Narration visuelle · Son cinéma',
+    description: 'Emplacement réservé pour vos courts métrages, fictions et créations originales.',
+    isDemoPlaceholder: true,
+  },
+  {
+    id: 'video-institutionnel-1',
+    title: 'Emplacement Vidéo — Film Institutionnel & Corporate',
+    category: 'Films institutionnels',
+    thumbnailPath: '/src/assets/images/video_corporate_film_thumb_1791658679101.jpg',
+    youtubeUrlOrFile: '',
+    fileHint: 'assets/videos/film-institutionnel-01.mp4 ou lien YouTube',
+    durationHint: 'Interview & B-Roll · Full HD / 4K',
+    description: 'Emplacement réservé pour vos films d’entreprise, présentations d’organisations et communications institutionnelles.',
+    isDemoPlaceholder: true,
+  },
+  {
+    id: 'video-reportage-1',
+    title: 'Emplacement Vidéo — Reportage & Documentaire Terrain',
+    category: 'Reportages',
+    thumbnailPath: '/src/assets/images/gallery_event_ceremony_1791658656467.jpg',
+    youtubeUrlOrFile: '',
+    fileHint: 'assets/videos/reportage-01.mp4 ou lien YouTube',
+    durationHint: 'Documentaire · Immersion terrain',
+    description: 'Emplacement réservé pour vos reportages culturels, événementiels et documentaires au Sénégal.',
+    isDemoPlaceholder: true,
+  },
+];
+
+/**
+ * Utilitaire pour extraire l'identifiant d'intégration YouTube (embed)
+ * à partir de n'importe quel lien YouTube standard ou court.
+ */
+export function getYoutubeEmbedUrl(url: string): string | null {
+  if (!url || !url.trim()) return null;
+  const trimmed = url.trim();
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|shorts\/)([^#&?]*).*/;
+  const match = trimmed.match(regExp);
+  if (match && match[2].length === 11) {
+    return `https://www.youtube.com/embed/${match[2]}?autoplay=1&rel=0`;
+  }
+  return null;
+}
+
+/**
+ * Vérifie si le numéro WhatsApp a été configuré avec un vrai numéro de téléphone.
+ */
+export function isWhatsappConfigured(whatsappNumber: string): boolean {
+  const cleaned = whatsappNumber.replace(/[^0-9]/g, '');
+  return (
+    whatsappNumber !== 'NUMERO_WHATSAPP_A_REMPLACER' &&
+    cleaned.length >= 8
+  );
+}
