@@ -1,0 +1,6 @@
+{
+  "name": "DIONTADO PRODUCTION — Production Audiovisuelle & Photographie au Sénégal",
+  "description": "Maison de production audiovisuelle au Sénégal. Photographie professionnelle, réalisation vidéo, clips musicaux, films institutionnels et couverture d'événements.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
