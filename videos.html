@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio vidéo | DIONTADO PRODUCTION</title>
+<meta name="description" content="Clips musicaux, films institutionnels et reportages réalisés par DIONTADO PRODUCTION.">
+<meta property="og:title" content="Portfolio vidéo | DIONTADO PRODUCTION">
+<meta property="og:description" content="Clips musicaux, films institutionnels et reportages réalisés par DIONTADO PRODUCTION.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#070605">
+<link rel="icon" href="assets/icons/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;1,400&amp;family=Jost:wght@300;400&amp;display=swap" rel="stylesheet">
+<style>
+/* Design du site : copie de assets/css/style.css (voir README) */
+:root{--bg:#070605;--bg2:#100d08;--ink:#f2ead8;--mute:#a79c84;--g1:#f4dc92;--g2:#c8a24a;--g3:#7d612a;--line:rgba(200,162,74,.3);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 1rem/1.65 Jost,system-ui,sans-serif}
+img{max-width:100%;display:block}
+a{color:var(--g1)}
+h1,h2,h3{font-family:"Bodoni Moda",Georgia,serif;font-weight:400;line-height:1.1;margin:0 0 .6em}
+h1{font-size:clamp(2.4rem,8vw,5.5rem);color:var(--g1)}
+h2{font-size:clamp(1.8rem,4.5vw,2.9rem)}
+h3{font-size:1.35rem;color:var(--g1)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.narrow{max-width:860px}
+section.s{padding:76px 0 8px}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:10px;top:10px;background:var(--g2);color:#150f03;padding:8px 14px;z-index:99}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--g1);outline-offset:3px}
+header.site{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(7,6,5,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.brand img{display:block;height:40px;width:auto}
+footer .brand img{height:150px;margin-bottom:10px}
+.brand{font:600 1.02rem "Bodoni Moda",Georgia,serif;letter-spacing:.16em;color:var(--g2);text-decoration:none;margin:0}
+#menu{display:flex;flex-wrap:wrap;gap:2px}
+#menu a{color:var(--mute);text-decoration:none;padding:8px 11px;font-size:.93rem}
+#menu a:hover,#menu a[aria-current]{color:var(--g1)}
+#menu a[aria-current]{border-bottom:1px solid var(--g2)}
+.burger{display:none;background:none;border:1px solid var(--g3);color:var(--g1);padding:8px 16px;font:inherit;cursor:pointer}
+.btn{display:inline-block;padding:12px 26px;border:1px solid var(--g2);color:var(--g1);background:none;text-decoration:none;font:400 .98rem Jost,sans-serif;cursor:pointer}
+.btn:hover{background:var(--g1);border-color:var(--g1);color:#150f03}
+.btn.solid{background:var(--g2);color:#150f03}
+.btn.off{opacity:.5;cursor:not-allowed}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero{min-height:86vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:60px 20px;background:linear-gradient(rgba(7,6,5,.5),rgba(7,6,5,.92)),url(assets/images/cover.jpg) center 30%/cover no-repeat,radial-gradient(70% 55% at 50% 45%,rgba(200,162,74,.26),#070605 75%)}
+.hero-in{max-width:900px}
+.hero .btns{justify-content:center}
+.slogan{font:italic 400 clamp(1.2rem,3vw,1.8rem) "Bodoni Moda",Georgia,serif;color:var(--g2);margin:.4rem 0 1.4rem}
+.lead{max-width:62ch;color:var(--mute);font-size:1.08rem}
+.hero .lead,.cta .lead{margin-left:auto;margin-right:auto}
+.cta{text-align:center;padding:50px 0 80px}.cta .btns{justify-content:center}
+.pagehead{padding:70px 0 10px;border-bottom:1px solid var(--line);background:radial-gradient(60% 120% at 50% 0,rgba(200,162,74,.14),transparent 70%)}
+.pagehead h1{font-size:clamp(2.2rem,6vw,4rem)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:26px}
+.card{display:flex;flex-direction:column;gap:10px;padding:26px;border:1px solid var(--line);background:var(--bg2)}
+.card p{margin:0;color:var(--mute)}
+.card h3{margin:0}
+.card .btn{margin-top:auto;align-self:flex-start}
+.price{font:400 2rem "Bodoni Moda",Georgia,serif;color:var(--g1)!important}
+.note{border-left:2px solid var(--g2);padding:6px 16px;color:var(--mute);margin:18px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.two.top{align-items:start}
+.portrait{margin:0;aspect-ratio:3/4;border:1px solid var(--line);overflow:hidden}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.filters button{background:none;border:1px solid var(--g3);color:var(--mute);padding:8px 18px;font:inherit;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--g2);border-color:var(--g2);color:#150f03}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:26px}
+.item{position:relative;aspect-ratio:4/3;padding:0;border:1px solid var(--line);background:var(--bg2);overflow:hidden;cursor:pointer;color:inherit;text-align:left}
+.item:hover{border-color:var(--g2)}
+.item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.item:hover img{transform:scale(1.05)}
+.item[hidden]{display:none}
+[data-gallery] .item{aspect-ratio:3/4}
+.item img{object-position:center 25%}
+
+.ph{width:100%;height:100%;min-height:120px;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--mute);font-size:.9rem;background:linear-gradient(150deg,#2a200c,#0d0a05 60%,#3b2d10)}
+.cap{position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;background:linear-gradient(transparent,rgba(7,6,5,.92));font:italic 400 1.1rem "Bodoni Moda",Georgia,serif}
+.play{position:absolute;top:50%;left:50%;width:62px;height:62px;margin:-31px 0 0 -31px;border:1.5px solid var(--g1);border-radius:50%;background:rgba(7,6,5,.55)}
+.play::after{content:"";position:absolute;left:25px;top:19px;border-left:17px solid var(--g1);border-top:11px solid transparent;border-bottom:11px solid transparent}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form.one{grid-template-columns:1fr}
+.form .full{grid-column:1/-1}
+label{display:grid;gap:6px;font-size:.92rem;color:var(--mute)}
+input,select,textarea{width:100%;background:var(--bg2);border:1px solid var(--g3);color:var(--ink);padding:12px;font:inherit;border-radius:2px}
+.err{color:#ff9b8a;font-size:.85rem;min-height:1.1em}
+.result{margin-top:26px;padding:22px;border:1px solid var(--g2);background:var(--bg2)}
+.result pre{white-space:pre-wrap;font:inherit;background:#000;border:1px solid var(--line);padding:14px;margin:14px 0}
+.wave{margin-top:20px;padding:22px;border:1px dashed var(--g3)}
+.wave p{margin:.3rem 0;color:var(--mute)}
+footer.site{margin-top:90px;padding:46px 0 24px;border-top:1px solid var(--line);background:var(--bg2)}
+.fgrid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:30px}
+footer nav{display:flex;flex-direction:column;gap:4px}
+footer nav a{color:var(--mute);text-decoration:none}
+footer nav a:hover{color:var(--g1)}
+footer p{margin:.3rem 0;color:var(--mute)}
+.copy{text-align:center;margin-top:30px!important;font-size:.85rem}
+.lb{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;background:rgba(4,3,2,.97)}
+.lb[hidden]{display:none}
+.lb-body{width:min(960px,100%);max-height:76vh;display:flex;justify-content:center}
+.lb-body img{max-height:76vh;object-fit:contain;border:1px solid var(--g3)}
+.lb-body .ph{aspect-ratio:16/9;max-width:700px}
+.ratio{position:relative;width:100%;aspect-ratio:16/9}
+.ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.lb-cap{margin:0;font:italic 400 1.3rem "Bodoni Moda",Georgia,serif}
+@media(max-width:900px){
+.burger{display:block}
+#menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:10px 20px 18px;background:#070605;border-bottom:1px solid var(--line)}
+#menu.open{display:flex}
+.two{grid-template-columns:1fr;gap:28px}
+.form{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.item img{transition:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="site">
+<a class="brand" href="index.html" aria-label="DIONTADO PRODUCTION, accueil"><img src="assets/images/logos/logo-entete.png" alt="DIONTADO PRODUCTION" width="135" height="40"></a>
+<button class="burger" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+<nav id="menu" aria-label="Navigation principale"><a href="index.html">Accueil</a><a href="apropos.html">À propos</a><a href="services.html">Services</a><a href="tarifs.html">Tarifs</a><a href="reservation.html">Réservation</a><a href="realisations.html">Réalisations</a><a href="videos.html" aria-current="page">Vidéos</a><a href="contact.html">Contact</a></nav>
+</header>
+<main id="main">
+<section class="pagehead"><div class="wrap"><h1>Portfolio vidéo</h1><p class="lead">Clips musicaux, films institutionnels et reportages.</p></div></section><section class="s"><div class="wrap">
+<div class="filters" data-filters="videos" aria-label="Catégories"></div>
+<div class="gal" id="videos" data-videos></div>
+<p class="note">Pour ajouter une vidéo, collez son lien YouTube dans assets/js/config.js (voir le README).</p></div></section>
+</main>
+<footer class="site"><div class="wrap fgrid">
+<div><p class="brand"><img src="assets/images/logos/logo-pied.png" alt="DIONTADO PRODUCTION" width="112" height="150" loading="lazy"></p><p>Nous donnons vie à vos histoires.</p><p><a href="mailto:diontadoproduction@gmail.com">diontadoproduction@gmail.com</a></p></div>
+<nav aria-label="Pied de page"><a href="index.html">Accueil</a><a href="apropos.html">À propos</a><a href="services.html">Services</a><a href="tarifs.html">Tarifs</a><a href="reservation.html">Réservation</a><a href="realisations.html">Réalisations</a><a href="videos.html">Vidéos</a><a href="contact.html">Contact</a></nav>
+</div><p class="copy">© 2026 DIONTADO PRODUCTION. Tous droits réservés.</p></footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
