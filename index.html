@@ -362,10 +362,121 @@
     }
 
     /* ==========================================================================
+       BIOGRAPHIE (Fondateur Amadou Sy)
+       ========================================================================== */
+    .bio-section {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      padding-block: 96px;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .bio-grid {
+      margin-top: 48px;
+      display: grid;
+      gap: 44px;
+      align-items: start;
+    }
+
+    @media (min-width: 960px) {
+      .bio-grid {
+        grid-template-columns: 0.85fr 1.15fr;
+      }
+    }
+
+    .bio-portrait-card {
+      background: var(--bg-dark-elevated);
+      border: 1px solid var(--border-dark);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .bio-portrait-frame {
+      aspect-ratio: 4 / 5;
+      width: 100%;
+      overflow: hidden;
+      background: #191817;
+    }
+
+    .bio-portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .bio-portrait-caption {
+      padding: 24px 28px;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .bio-name {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .bio-role {
+      margin-top: 4px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .bio-quote {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-dark);
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--beige);
+    }
+
+    .bio-story {
+      display: grid;
+      gap: 16px;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: rgba(245, 243, 238, 0.82);
+    }
+
+    .bio-approach-box {
+      margin-top: 32px;
+      padding: 30px;
+      border-radius: 14px;
+      border: 1px solid var(--border-dark);
+      background: var(--bg-dark-elevated);
+    }
+
+    .bio-approach-text {
+      margin-top: 16px;
+      display: grid;
+      gap: 12px;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      color: rgba(245, 243, 238, 0.78);
+    }
+
+    .bio-philosophy {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-dark);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    /* ==========================================================================
        À PROPOS (Fond sombre harmonisé avec le reste du site)
        ========================================================================== */
     .about-section {
-      background-color: var(--bg-dark);
+      background-color: var(--bg-dark-elevated);
       color: var(--text-light);
       padding-block: 96px;
       border-top: 1px solid var(--border-dark);
@@ -401,7 +512,7 @@
     }
 
     .about-identity-card {
-      background: var(--bg-dark-elevated);
+      background: var(--bg-dark);
       border: 1px solid var(--border-dark);
       border-radius: 14px;
       padding: 36px;
@@ -829,7 +940,7 @@
        CONTACT
        ========================================================================== */
     .contact-section {
-      background-color: var(--bg-dark-elevated);
+      background-color: var(--bg-dark);
       padding-block: 96px;
       border-top: 1px solid var(--border-dark);
     }
@@ -847,7 +958,7 @@
     }
 
     .contact-card {
-      background: var(--bg-dark);
+      background: var(--bg-dark-elevated);
       border: 1px solid var(--border-dark);
       border-radius: 14px;
       padding: 36px;
@@ -911,7 +1022,7 @@
     }
 
     .contact-form-card {
-      background: var(--bg-dark);
+      background: var(--bg-dark-elevated);
       border: 1px solid var(--border-dark);
       border-radius: 14px;
       padding: 36px;
@@ -1181,6 +1292,7 @@
         <a href="#realisations">Réalisations</a>
         <a href="#videos">Vidéos</a>
         <a href="#services">Services</a>
+        <a href="#biographie">Biographie</a>
         <a href="#apropos">À propos</a>
       </nav>
 
@@ -1204,6 +1316,7 @@
     <a href="#realisations">Réalisations</a>
     <a href="#videos">Vidéos</a>
     <a href="#services">Services</a>
+    <a href="#biographie">Biographie</a>
     <a href="#apropos">À propos</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -1381,6 +1494,86 @@
               </ul>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ BIOGRAPHIE ============================ -->
+    <section class="bio-section" id="biographie">
+      <div class="container">
+        <div class="about-header reveal">
+          <div>
+            <p class="kicker">Biographie · Fondateur</p>
+            <h2 class="section-title" style="color: #ffffff; margin-top: 8px;">
+              DIONTADO PHOTOGRAPHY
+            </h2>
+            <p style="font-family: var(--font-display); font-size: 1.55rem; font-style: italic; color: var(--gold-light); margin-top: 6px;">
+              L’art de raconter des histoires.
+            </p>
+          </div>
+          <p style="font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted-dark);">
+            Amadou Sy · Depuis juin 2022
+          </p>
+        </div>
+
+        <div class="bio-grid">
+          <div class="bio-portrait-card reveal">
+            <div class="bio-portrait-frame">
+              <img
+                src="./amadou-sy.jpg"
+                alt="Amadou Sy — Fondateur de DIONTADO PHOTOGRAPHY"
+                loading="lazy"
+                data-asset="amadou-sy.jpg"
+                onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='./1C1A6618_copie_af7a2459.jpg';}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='/assets/aistudio/1C1A6618_copie_af7a2459.jpg';}"
+              />
+            </div>
+            <div class="bio-portrait-caption">
+              <p class="bio-name">Amadou Sy</p>
+              <p class="bio-role">Fondateur · Photographe &amp; Réalisateur</p>
+              <p class="bio-quote">« Des photos qui racontent votre histoire. »</p>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <div class="bio-story">
+              <p>
+                Créée en juin 2022 par <strong style="color: #ffffff;">Amadou Sy</strong>, Diontado est une marque sénégalaise spécialisée dans la photographie et la production audiovisuelle.
+              </p>
+              <p>
+                Née d’une passion pour l’image et la créativité, Diontado a pour mission de capturer les émotions, immortaliser les moments importants et donner vie aux idées à travers des créations visuelles authentiques et soignées.
+              </p>
+              <p>
+                De la photographie de portrait aux mariages, en passant par les événements, les shootings artistiques et la réalisation vidéo, Diontado accompagne particuliers, professionnels et entreprises dans leurs projets visuels.
+              </p>
+              <p>
+                Basée à Dakar, au Sénégal, Diontado construit progressivement son identité autour de la créativité, de la qualité et du sens du détail.
+              </p>
+              <p style="color: var(--beige); font-weight: 500;">
+                Notre ambition est de faire de chaque image une histoire, de chaque projet une expérience et de chaque création une signature.
+              </p>
+            </div>
+
+            <div class="bio-approach-box">
+              <p class="kicker">Notre approche</p>
+              <div class="bio-approach-text">
+                <p>
+                  Chez Diontado Photography, nous croyons que chaque image a une histoire à raconter. Notre approche repose sur l’écoute, la créativité et l’attention portée aux détails.
+                </p>
+                <p>
+                  Nous prenons le temps de comprendre chaque projet, chaque personnalité et chaque vision afin de proposer des créations visuelles qui reflètent véritablement l’identité de nos clients.
+                </p>
+                <p>
+                  De la conception à la réalisation, nous privilégions un travail soigné, une direction artistique cohérente et une approche humaine.
+                </p>
+                <p>
+                  Notre objectif n’est pas simplement de prendre des photos ou de réaliser des vidéos, mais de créer des images qui transmettent des émotions, racontent des histoires et laissent une empreinte dans le temps.
+                </p>
+              </div>
+              <p class="bio-philosophy">
+                Notre philosophie : écouter, imaginer, créer et raconter
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1633,6 +1826,7 @@
         <a href="#realisations">Réalisations</a>
         <a href="#videos">Vidéos</a>
         <a href="#services">Services</a>
+        <a href="#biographie">Biographie</a>
         <a href="#apropos">À propos</a>
         <a href="https://www.instagram.com/diontado_photography" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="mailto:diontadoevens.0@gmail.com">Email</a>
