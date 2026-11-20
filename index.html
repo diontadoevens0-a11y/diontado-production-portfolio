@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DIONTADO PRODUCTION — Réalisation Vidéo &amp; Photographie Professionnelle</title>
-  <meta name="description" content="DIONTADO PRODUCTION — Maison de production audiovisuelle à Yeumbeul, Dakar , Sénégal. Réalisation vidéo cinématographique et photographie professionnelle : Culture, Mariage, Portrait et Publicité." />
+  <meta name="description" content="DIONTADO PRODUCTION — Maison de production audiovisuelle à Yeumbeul, Sénégal. Réalisation vidéo cinématographique et photographie professionnelle : Culture, Mariage, Portrait et Publicité." />
   <meta name="keywords" content="DIONTADO PRODUCTION, photographie professionnelle, réalisation vidéo, Yeumbeul, Sénégal, Dakar, mariage, portrait, culture, publicité" />
   <meta property="og:title" content="DIONTADO PRODUCTION — Nous donnons vie à vos images." />
   <meta property="og:description" content="Maison de production audiovisuelle et studio photographique à Yeumbeul, Sénégal." />
@@ -362,12 +362,13 @@
     }
 
     /* ==========================================================================
-       À PROPOS (Section claire & éditoriale pour contraster avec les logos noirs)
+       À PROPOS (Fond sombre harmonisé avec le reste du site)
        ========================================================================== */
     .about-section {
-      background-color: var(--bg-light);
-      color: var(--text-dark);
+      background-color: var(--bg-dark);
+      color: var(--text-light);
       padding-block: 96px;
+      border-top: 1px solid var(--border-dark);
     }
 
     .about-header {
@@ -377,7 +378,7 @@
       justify-content: space-between;
       gap: 24px;
       padding-bottom: 42px;
-      border-bottom: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-dark);
     }
 
     .about-logo-horizontal {
@@ -400,8 +401,8 @@
     }
 
     .about-identity-card {
-      background: var(--bg-light-card);
-      border: 1px solid var(--border-light);
+      background: var(--bg-dark-elevated);
+      border: 1px solid var(--border-dark);
       border-radius: 14px;
       padding: 36px;
       display: flex;
@@ -421,7 +422,7 @@
       align-items: center;
       gap: 14px;
       padding-top: 18px;
-      border-top: 1px solid var(--border-light);
+      border-top: 1px solid var(--border-dark);
       width: 100%;
     }
 
@@ -439,7 +440,7 @@
 
     .pillar-item {
       padding-bottom: 26px;
-      border-bottom: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-dark);
     }
 
     .pillar-item:last-child {
@@ -450,7 +451,7 @@
     .pillar-index {
       font-size: 0.78rem;
       font-weight: 600;
-      color: #8b6734;
+      color: var(--gold);
       letter-spacing: 0.08em;
     }
 
@@ -459,13 +460,13 @@
       font-size: 1.75rem;
       font-weight: 600;
       margin-top: 4px;
-      color: var(--text-dark);
+      color: #ffffff;
     }
 
     .pillar-text {
       margin-top: 8px;
       font-size: 0.96rem;
-      color: var(--text-muted-light);
+      color: var(--text-muted-dark);
       max-width: 62ch;
     }
 
@@ -991,9 +992,9 @@
       border-bottom: 1px solid var(--border-dark);
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 900px) {
       .footer-meta-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(5, minmax(0, 1fr));
       }
     }
 
@@ -1164,15 +1165,15 @@
   <!-- ============================ HEADER ============================ -->
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
-      <a href="#accueil" class="brand-link" aria-label="DIONTADO PRODUCTION — Accueil">
+      <a href="#accueil" class="brand-link" aria-label="Accueil">
         <img
           src="./logo-entete.png"
-          alt="DIONTADO PRODUCTION"
+          alt="Logo"
           class="brand-logo"
           data-asset="logo-entete.png"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
         />
-        <span class="brand-fallback" style="display:none;">DIONTADO PRODUCTION</span>
+        <span class="brand-fallback" style="display:none; align-items:center; justify-content:center; width:36px; height:36px; border:1px solid rgba(200,164,107,0.4); border-radius:6px; font-size:0.9rem; color:#dfbe89;">DP</span>
       </a>
 
       <nav class="nav-links" aria-label="Navigation principale">
@@ -1224,16 +1225,12 @@
         <div class="hero-grid">
           <img
             src="./logo-horizontal-blanc.png"
-            alt="DIONTADO PRODUCTION"
+            alt="Logo"
             class="hero-logo-mark"
             data-asset="logo-horizontal-blanc.png"
             onerror="this.style.display='none';"
           />
-          <p class="kicker">Yeumbeul, Dakar, Sénégal · Production Audiovisuelle</p>
-          <h1 class="hero-title">Nous donnons vie à vos images.</h1>
-          <p class="hero-subtitle">
-            DIONTADO PRODUCTION est une maison de production audiovisuelle dédiée à la réalisation vidéo cinématographique et à la photographie professionnelle : culture, mariage, portrait et publicité.
-          </p>
+          <h1 class="hero-title" style="margin-top:0;">Nous donnons vie à vos images.</h1>
           <div class="hero-cta-row">
             <a href="#realisations" class="btn-primary">Découvrir nos réalisations</a>
             <a href="#contact" class="btn-outline">Nous contacter</a>
@@ -1251,7 +1248,7 @@
             <h2 class="section-title" style="margin-top: 8px;">Galerie photographique</h2>
           </div>
           <p class="section-lead">
-            Explorez nos séries classées par univers et cliquez sur chaque photographie pour l’admirer en grand format.
+            Chaque image raconte une histoire.
           </p>
         </div>
 
@@ -1259,9 +1256,9 @@
           <div class="filter-tabs" role="tablist" aria-label="Catégories de la galerie">
             <button type="button" class="filter-btn is-active" data-filter="Toutes" role="tab" aria-selected="true">Toutes</button>
             <button type="button" class="filter-btn" data-filter="Culture" role="tab" aria-selected="false">Culture</button>
-            <button type="button" class="filter-btn" data-filter="Mariage" role="tab" aria-selected="false">Mariage</button>
+            <button type="button" class="filter-btn" data-filter="Prewedding" role="tab" aria-selected="false">Prewedding</button>
             <button type="button" class="filter-btn" data-filter="Portrait" role="tab" aria-selected="false">Portrait</button>
-            <button type="button" class="filter-btn" data-filter="Publicité" role="tab" aria-selected="false">Publicité</button>
+            <button type="button" class="filter-btn" data-filter="Studio" role="tab" aria-selected="false">Studio</button>
           </div>
           <span class="gallery-count" id="galleryCount">19 photographies</span>
         </div>
@@ -1279,7 +1276,7 @@
             <h2 class="section-title" style="margin-top: 8px;">Vidéos &amp; Films</h2>
           </div>
           <p class="section-lead">
-            Découvrez nos réalisations vidéo et intégrez directement vos liens YouTube pour les diffuser en haute définition.
+            Nos créations vidéo en mouvement.
           </p>
         </div>
 
@@ -1331,7 +1328,7 @@
             <h2 class="section-title" style="margin-top: 8px;">Deux savoir-faire d’excellence</h2>
           </div>
           <p class="section-lead">
-            Une offre claire et maîtrisée, entièrement consacrée à la création d’images fixes et animées à haute valeur artistique.
+            L’image fixe et animée, avec douceur et précision.
           </p>
         </div>
 
@@ -1349,13 +1346,13 @@
               <span class="service-num">SERVICE 01</span>
               <h3 class="service-title">Photographie professionnelle</h3>
               <p class="service-desc">
-                Séances studio, reportages culturels, mariages d’exception, portraits éditoriaux et visuels publicitaires conçus avec une direction artistique soignée et une retouche fidèle aux matières et aux carnations.
+                Portraits, studio, prewedding et reportages culturels captés avec justesse et lumière naturelle.
               </p>
               <ul class="service-list">
-                <li>· Culture &amp; Événements</li>
-                <li>· Mariage</li>
+                <li>· Culture</li>
+                <li>· Prewedding</li>
                 <li>· Portrait</li>
-                <li>· Publicité &amp; Marques</li>
+                <li>· Studio</li>
               </ul>
             </div>
           </article>
@@ -1373,12 +1370,12 @@
               <span class="service-num">SERVICE 02</span>
               <h3 class="service-title">Production et réalisation vidéo</h3>
               <p class="service-desc">
-                Conception, réalisation, cadrage et montage de films publicitaires, clips, documentaires culturels, vidéos corporate et films de mariage au rendu cinématographique.
+                Réalisation, cadrage et montage de films, clips et récits visuels au rendu cinéma.
               </p>
               <ul class="service-list">
-                <li>· Réalisation &amp; Scénarisation</li>
-                <li>· Films publicitaires</li>
-                <li>· Reportages &amp; Clips</li>
+                <li>· Réalisation</li>
+                <li>· Clips &amp; Films</li>
+                <li>· Reportages</li>
                 <li>· Étalonnage cinéma</li>
               </ul>
             </div>
@@ -1392,16 +1389,16 @@
       <div class="container">
         <div class="about-header reveal">
           <div>
-            <p class="kicker kicker--dark">À propos</p>
-            <h2 class="section-title" style="color: var(--text-dark); margin-top: 8px;">
+            <p class="kicker">À propos</p>
+            <h2 class="section-title" style="color: #ffffff; margin-top: 8px;">
               Une maison d’image et de cinéma
             </h2>
           </div>
           <img
-            src="./logo-horizontal-noir.png"
+            src="./logo-horizontal-blanc.png"
             alt="DIONTADO PRODUCTION"
             class="about-logo-horizontal"
-            data-asset="logo-horizontal-noir.png"
+            data-asset="logo-horizontal-blanc.png"
             onerror="this.style.display='none';"
           />
         </div>
@@ -1409,14 +1406,14 @@
         <div class="about-grid">
           <div class="about-identity-card reveal">
             <img
-              src="./logo-vertical-noir.png"
+              src="./logo-vertical-blanc.png"
               alt="Logo vertical DIONTADO PRODUCTION"
               class="about-vertical-logo"
-              data-asset="logo-vertical-noir.png"
+              data-asset="logo-vertical-blanc.png"
               onerror="this.style.display='none';"
             />
-            <p style="font-size: 0.96rem; color: var(--text-muted-light);">
-              Basée à Yeumbeul au Sénégal, <strong>DIONTADO PRODUCTION</strong> réunit réalisation vidéo et photographie d’auteur pour accompagner les créateurs, les marques, les événements culturels et les histoires humaines avec une esthétique exigeante.
+            <p style="font-size: 0.96rem; color: var(--text-muted-dark);">
+              Création vidéo et photographie d’auteur à la sensibilité douce, sincère et cinématographique.
             </p>
             <div class="about-seal-row">
               <img
@@ -1427,11 +1424,11 @@
                 onerror="this.style.display='none';"
               />
               <div>
-                <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-dark);">
+                <p style="font-size: 0.85rem; font-weight: 600; color: #ffffff;">
                   DIONTADO PRODUCTION
                 </p>
-                <p style="font-size: 0.78rem; color: var(--text-muted-light);">
-                  Direction artistique · Yeumbeul, Sénégal
+                <p style="font-size: 0.78rem; color: var(--text-muted-dark);">
+                  Photographie &amp; Cinéma
                 </p>
               </div>
             </div>
@@ -1440,23 +1437,23 @@
           <div class="about-pillars reveal">
             <div class="pillar-item">
               <span class="pillar-index">01 · NOTRE VISION</span>
-              <h3 class="pillar-title">Élever chaque récit au rang d’œuvre visuelle</h3>
+              <h3 class="pillar-title">Sublimer chaque instant</h3>
               <p class="pillar-text">
-                Nous croyons qu’une image forte dépasse la simple captation. Notre vision associe l’ancrage culturel sénégalais aux standards techniques des grands studios internationaux.
+                Des images vraies, élégantes et intemporelles.
               </p>
             </div>
             <div class="pillar-item">
-              <span class="pillar-index">02 · NOTRE PASSION POUR L’IMAGE</span>
-              <h3 class="pillar-title">La maîtrise de la lumière, du cadre et du mouvement</h3>
+              <span class="pillar-index">02 · NOTRE PASSION</span>
+              <h3 class="pillar-title">La lumière et l’émotion</h3>
               <p class="pillar-text">
-                Qu’il s’agisse d’un regard saisi en studio, d’une scène culturelle vibrante ou d’une séquence filmée au ralenti, chaque détail est pensé pour susciter une émotion durable.
+                Chaque cadre cherche le naturel, la douceur et la sincérité du regard.
               </p>
             </div>
             <div class="pillar-item">
-              <span class="pillar-index">03 · NOTRE APPROCHE PROFESSIONNELLE</span>
-              <h3 class="pillar-title">Un accompagnement complet, du tournage au rendu final</h3>
+              <span class="pillar-index">03 · NOTRE APPROCHE</span>
+              <h3 class="pillar-title">Simple, soignée et professionnelle</h3>
               <p class="pillar-text">
-                Préparation artistique, tournage haute définition, prise de vue calibrée, étalonnage cinéma et livraison optimisée : nous garantissons rigueur, ponctualité et cohérence visuelle.
+                De la prise de vue au rendu final, chaque détail compte.
               </p>
             </div>
           </div>
@@ -1473,7 +1470,7 @@
             <h2 class="section-title" style="margin-top: 8px;">Parlons de votre projet</h2>
           </div>
           <p class="section-lead">
-            Un tournage, une séance portrait, un reportage culturel, un mariage ou une campagne de marque ? Écrivez-nous directement.
+            Un projet photo ou vidéo ? Écrivez-nous directement.
           </p>
         </div>
 
@@ -1507,13 +1504,18 @@
                   </a>
                 </li>
                 <li>
+                  <span class="contact-label">Téléphone</span>
+                  <a href="tel:+221764812391" class="contact-value">
+                    +221 76 481 23 91
+                  </a>
+                </li>
+                <li>
                   <span class="contact-label">Localisation</span>
-                  <span class="contact-value">Yeumbeul,Dakar, Sénégal</span>
+                  <span class="contact-value">Yeumbeul, Dakar, Sénégal</span>
                 </li>
               </ul>
             </div>
 
-            <!-- MODIFIER LE NUMÉRO WHATSAPP CI-DESSOUS (ex: https://wa.me/221770000000) -->
             <a
               id="whatsappLink"
               href="https://wa.me/221764812391?text=Bonjour%20DIONTADO%20PRODUCTION%2C%20je%20souhaite%20discuter%20d%27un%20projet."
@@ -1543,9 +1545,9 @@
                 <select class="field-select" id="contactService">
                   <option value="Photographie professionnelle">Photographie professionnelle</option>
                   <option value="Production et réalisation vidéo">Production et réalisation vidéo</option>
-                  <option value="Mariage">Reportage Mariage</option>
+                  <option value="Prewedding">Séance Prewedding</option>
+                  <option value="Portrait & Studio">Portrait &amp; Studio</option>
                   <option value="Culture">Reportage Culture</option>
-                  <option value="Publicité">Campagne Publicitaire</option>
                 </select>
               </div>
 
@@ -1556,7 +1558,7 @@
                   id="contactMessage"
                   rows="5"
                   required
-                  placeholder="Décrivez votre projet, le lieu et la date souhaitée..."
+                  placeholder="Décrivez votre projet..."
                 ></textarea>
               </div>
 
@@ -1584,7 +1586,13 @@
         </div>
         <div>
           <p class="footer-meta-label">Localisation</p>
-          <p class="footer-meta-value">Yeumbeul,Dakar, Sénégal</p>
+          <p class="footer-meta-value">Yeumbeul, Dakar, Sénégal</p>
+        </div>
+        <div>
+          <p class="footer-meta-label">Téléphone</p>
+          <a href="tel:+221764812391" class="footer-meta-value" style="display:inline-block;">
+            +221 76 481 23 91
+          </a>
         </div>
         <div>
           <p class="footer-meta-label">Instagram</p>
@@ -1600,7 +1608,7 @@
         </div>
         <div>
           <p class="footer-meta-label">Collections</p>
-          <p class="footer-meta-value">Culture · Mariage · Portrait · Pub</p>
+          <p class="footer-meta-value">Culture · Prewedding · Portrait · Studio</p>
         </div>
       </div>
 
@@ -1616,7 +1624,7 @@
       </a>
 
       <p class="footer-meta">
-        &copy; <span id="currentYear"></span> DIONTADO PRODUCTION — Yeumbeul,Dakar, Sénégal. Tous droits réservés.
+        &copy; <span id="currentYear"></span> DIONTADO PRODUCTION — Yeumbeul, Dakar, Sénégal.
       </p>
 
       <div class="footer-links">
@@ -1668,19 +1676,19 @@
           id: 'VDhh9Q0c_MI',
           category: 'Production Vidéo',
           title: 'Showreel Officiel — DIONTADO PRODUCTION',
-          desc: 'Sélection de réalisations cinématographiques, clips, campagnes et documentaires.'
+          desc: 'Sélection de réalisations cinématographiques, clips et documentaires.'
         },
         {
           id: 'OJrbnH9zgLE',
           category: 'Culture',
           title: 'Reportage Culturel — Sénégal',
-          desc: 'Immersion audiovisuelle au cœur des expressions artistiques et culturelles.'
+          desc: 'Immersion audiovisuelle au cœur des expressions artistiques.'
         },
         {
           id: 'tSglYbBoufg',
-          category: 'Publicité',
-          title: 'Film Publicitaire & Direction Artistique',
-          desc: 'Production de contenu visuel sur mesure pour marques et créateurs.'
+          category: 'Studio',
+          title: 'Direction Artistique & Film',
+          desc: 'Création visuelle sur mesure pour artistes, marques et créateurs.'
         }
       ];
 
@@ -1692,19 +1700,19 @@
         { file: 'culture-04.jpg', category: 'Culture', title: 'Culture — Série 04' },
         { file: 'culture-05.jpg', category: 'Culture', title: 'Culture — Série 05' },
         { file: 'culture-06.jpg', category: 'Culture', title: 'Culture — Série 06' },
-        { file: 'mariage-01.jpg', category: 'Mariage', title: 'Mariage — Série 01' },
+        { file: 'mariage-01.jpg', category: 'Prewedding', title: 'Prewedding — Série 01' },
         { file: 'portrait-01.jpg', category: 'Portrait', title: 'Portrait — Série 01' },
         { file: 'portrait-02.jpg', category: 'Portrait', title: 'Portrait — Série 02' },
         { file: 'portrait-03.jpg', category: 'Portrait', title: 'Portrait — Série 03' },
         { file: 'portrait-04.jpg', category: 'Portrait', title: 'Portrait — Série 04' },
         { file: 'portrait-05.jpg', category: 'Portrait', title: 'Portrait — Série 05' },
         { file: 'portrait-06.jpg', category: 'Portrait', title: 'Portrait — Série 06' },
-        { file: 'publicite-01.jpg', category: 'Publicité', title: 'Publicité — Série 01' },
-        { file: 'publicite-02.jpg', category: 'Publicité', title: 'Publicité — Série 02' },
-        { file: 'publicite-03.jpg', category: 'Publicité', title: 'Publicité — Série 03' },
-        { file: 'publicite-04.jpg', category: 'Publicité', title: 'Publicité — Série 04' },
-        { file: 'publicite-05.jpg', category: 'Publicité', title: 'Publicité — Série 05' },
-        { file: 'publicite-06.jpg', category: 'Publicité', title: 'Publicité — Série 06' }
+        { file: 'publicite-01.jpg', category: 'Studio', title: 'Studio — Série 01' },
+        { file: 'publicite-02.jpg', category: 'Studio', title: 'Studio — Série 02' },
+        { file: 'publicite-03.jpg', category: 'Studio', title: 'Studio — Série 03' },
+        { file: 'publicite-04.jpg', category: 'Studio', title: 'Studio — Série 04' },
+        { file: 'publicite-05.jpg', category: 'Studio', title: 'Studio — Série 05' },
+        { file: 'publicite-06.jpg', category: 'Studio', title: 'Studio — Série 06' }
       ];
 
       function assetUrl(fileName) {
