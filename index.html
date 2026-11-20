@@ -18,6 +18,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
+    /* ==========================================================================
+       DIONTADO PRODUCTION — Feuille de style principale
+       Palette : Noir profond (#070708), Blanc cassé (#F6F4EF), Or & Beige (#C8A46B)
+       ========================================================================== */
     :root {
       --bg-dark: #070708;
       --bg-dark-elevated: #111114;
@@ -109,6 +113,9 @@
       text-wrap: balance;
     }
 
+    /* ==========================================================================
+       HEADER (Navigation fixe 3 zones)
+       ========================================================================== */
     .site-header {
       position: fixed;
       inset-block-start: 0;
@@ -268,6 +275,9 @@
       }
     }
 
+    /* ==========================================================================
+       HERO / ACCUEIL
+       ========================================================================== */
     .hero {
       position: relative;
       min-height: 100svh;
@@ -379,6 +389,9 @@
       color: var(--beige);
     }
 
+    /* ==========================================================================
+       À PROPOS (Section claire & éditoriale pour contraster avec les logos noirs)
+       ========================================================================== */
     .about-section {
       background-color: var(--bg-light);
       color: var(--text-dark);
@@ -484,6 +497,9 @@
       max-width: 62ch;
     }
 
+    /* ==========================================================================
+       NOS SERVICES (2 services uniquement, grand format)
+       ========================================================================== */
     .services-section {
       background-color: var(--bg-dark);
       padding-block: 96px;
@@ -581,6 +597,9 @@
       color: var(--beige);
     }
 
+    /* ==========================================================================
+       NOS RÉALISATIONS (Galerie interactive filtrable + Lightbox)
+       ========================================================================== */
     .gallery-section {
       background-color: var(--bg-dark-elevated);
       padding-block: 96px;
@@ -707,6 +726,9 @@
       margin-top: 2px;
     }
 
+    /* ==========================================================================
+       VIDÉOS (Productions audiovisuelles YouTube)
+       ========================================================================== */
     .videos-section {
       background-color: var(--bg-dark);
       padding-block: 96px;
@@ -830,6 +852,9 @@
       font-size: 0.84rem;
     }
 
+    /* ==========================================================================
+       CONTACT
+       ========================================================================== */
     .contact-section {
       background-color: var(--bg-dark-elevated);
       padding-block: 96px;
@@ -976,6 +1001,9 @@
       display: block;
     }
 
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
     .site-footer {
       background-color: var(--bg-dark);
       border-top: 1px solid var(--border-dark);
@@ -1013,6 +1041,9 @@
       color: var(--gold-light);
     }
 
+    /* ==========================================================================
+       LIGHTBOX PLEIN ÉCRAN
+       ========================================================================== */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -1108,6 +1139,9 @@
     .lightbox-prev { left: 18px; }
     .lightbox-next { right: 18px; }
 
+    /* ==========================================================================
+       ANIMATIONS AU DÉFILEMENT
+       ========================================================================== */
     .reveal {
       opacity: 0;
       transform: translateY(20px);
@@ -1125,9 +1159,10 @@
       .hero-media img { transform: none; transition: none; }
     }
   </style>
-</head>
+<script src="/_aistudio-iframe.js?v=29045eb3"></script></head>
 <body>
 
+  <!-- ============================ HEADER ============================ -->
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <a href="#accueil" class="brand-link" aria-label="DIONTADO PRODUCTION — Accueil">
@@ -1173,6 +1208,7 @@
     <a href="#contact">Contact</a>
   </nav>
 
+  <!-- ============================ ACCUEIL ============================ -->
   <main>
     <section class="hero" id="accueil">
       <div class="hero-media">
@@ -1227,6 +1263,7 @@
       </div>
     </section>
 
+    <!-- ============================ À PROPOS ============================ -->
     <section class="about-section" id="apropos">
       <div class="container">
         <div class="about-header reveal">
@@ -1303,6 +1340,7 @@
       </div>
     </section>
 
+    <!-- ============================ NOS SERVICES ============================ -->
     <section class="services-section" id="services">
       <div class="container">
         <div class="section-head reveal">
@@ -1367,6 +1405,7 @@
       </div>
     </section>
 
+    <!-- ============================ NOS RÉALISATIONS ============================ -->
     <section class="gallery-section" id="realisations">
       <div class="container">
         <div class="section-head reveal">
@@ -1394,6 +1433,7 @@
       </div>
     </section>
 
+    <!-- ============================ VIDÉOS ============================ -->
     <section class="videos-section" id="videos">
       <div class="container">
         <div class="section-head reveal">
@@ -1445,6 +1485,7 @@
       </div>
     </section>
 
+    <!-- ============================ CONTACT ============================ -->
     <section class="contact-section" id="contact">
       <div class="container">
         <div class="section-head reveal">
@@ -1554,6 +1595,7 @@
     </section>
   </main>
 
+  <!-- ============================ FOOTER ============================ -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <a href="#accueil" aria-label="Retour en haut">
@@ -1580,6 +1622,7 @@
     </div>
   </footer>
 
+  <!-- ============================ LIGHTBOX ============================ -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Aperçu plein écran">
     <div class="lightbox-bar">
       <div>
@@ -1596,11 +1639,21 @@
     </div>
   </div>
 
+  <!-- ============================ JAVASCRIPT ============================ -->
   <script>
     (function () {
+      /* --------------------------------------------------------------------
+         1. CONFIGURATION FACILE (Chemin des images & lien WhatsApp)
+         --------------------------------------------------------------------
+         - Par défaut './' fonctionne directement lorsque index.html est placé
+           dans le même dossier GitHub que vos images et logos.
+         - Si vos images sont dans un sous-dossier (ex: 'images/'), remplacez
+           MEDIA_BASE par './images/' ou par votre URL raw.githubusercontent.com.
+         -------------------------------------------------------------------- */
       var MEDIA_BASE = './';
       var WHATSAPP_URL = 'https://wa.me/221000000000?text=Bonjour%20DIONTADO%20PRODUCTION%2C%20je%20souhaite%20discuter%20d%27un%20projet.';
 
+      /* Ajoutez ici vos véritables identifiants YouTube (ex: 'dQw4w9WgXcQ') */
       var YOUTUBE_VIDEOS = [
         {
           id: '',
@@ -1622,6 +1675,7 @@
         }
       ];
 
+      /* Liste exacte de vos photographies sur GitHub */
       var GALLERY_PHOTOS = [
         { file: 'culture-01.jpg', category: 'Culture', title: 'Culture — Série 01' },
         { file: 'culture-02.jpg', category: 'Culture', title: 'Culture — Série 02' },
@@ -1649,6 +1703,7 @@
         return MEDIA_BASE.replace(/\/+$/, '') + '/' + encoded;
       }
 
+      /* Appliquer MEDIA_BASE aux assets statiques + WhatsApp */
       document.querySelectorAll('[data-asset]').forEach(function (el) {
         var fileName = el.getAttribute('data-asset');
         if (fileName) {
@@ -1662,6 +1717,7 @@
       var yearEl = document.getElementById('currentYear');
       if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
+      /* Effet header au défilement + Hero ready */
       var header = document.getElementById('siteHeader');
       var hero = document.getElementById('accueil');
       if (hero) {
@@ -1676,6 +1732,7 @@
         }
       }, { passive: true });
 
+      /* Menu mobile */
       var mobileBtn = document.getElementById('mobileMenuBtn');
       var mobileDrawer = document.getElementById('mobileDrawer');
       if (mobileBtn && mobileDrawer) {
@@ -1691,6 +1748,7 @@
         });
       }
 
+      /* Animations au défilement */
       var reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
         var observer = new IntersectionObserver(function (entries) {
@@ -1706,6 +1764,7 @@
         reveals.forEach(function (el) { el.classList.add('is-visible'); });
       }
 
+      /* Galerie filtrable + Lightbox */
       var galleryGrid = document.getElementById('galleryGrid');
       var galleryCount = document.getElementById('galleryCount');
       var filterButtons = document.querySelectorAll('.filter-btn');
@@ -1833,6 +1892,7 @@
 
       renderGallery();
 
+      /* Lecteur Vidéo YouTube */
       var videoStage = document.getElementById('videoStage');
       var videoPlaylist = document.getElementById('videoPlaylist');
       var youtubeInput = document.getElementById('youtubeInput');
@@ -1895,6 +1955,7 @@
         });
       }
 
+      /* Formulaire de contact (ouvre un brouillon mailto + message de confirmation) */
       var contactForm = document.getElementById('contactForm');
       var formFeedback = document.getElementById('formFeedback');
       if (contactForm) {
