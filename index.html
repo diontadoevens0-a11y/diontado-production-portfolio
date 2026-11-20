@@ -9,7 +9,7 @@
   <meta property="og:title" content="DIONTADO PRODUCTION — Nous donnons vie à vos images." />
   <meta property="og:description" content="Maison de production audiovisuelle et studio photographique à Yeumbeul, Sénégal." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="./couverture.jpg" />
+  <meta property="og:image" content="./cover.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" href="./logo-ic%C3%B4ne-fond-brun.png" />
 
@@ -501,7 +501,7 @@
        NOS SERVICES (2 services uniquement, grand format)
        ========================================================================== */
     .services-section {
-      background-color: var(--bg-dark);
+      background-color: var(--bg-dark-elevated);
       padding-block: 96px;
       border-top: 1px solid var(--border-dark);
     }
@@ -533,7 +533,7 @@
     }
 
     .service-card {
-      background: var(--bg-dark-elevated);
+      background: var(--bg-dark);
       border: 1px solid var(--border-dark);
       border-radius: 14px;
       overflow: hidden;
@@ -1178,10 +1178,10 @@
 
       <nav class="nav-links" aria-label="Navigation principale">
         <a href="#accueil">Accueil</a>
-        <a href="#apropos">À propos</a>
-        <a href="#services">Services</a>
         <a href="#realisations">Réalisations</a>
         <a href="#videos">Vidéos</a>
+        <a href="#services">Services</a>
+        <a href="#apropos">À propos</a>
       </nav>
 
       <div class="header-actions">
@@ -1201,10 +1201,10 @@
 
   <nav class="mobile-drawer" id="mobileDrawer" aria-label="Navigation mobile">
     <a href="#accueil">Accueil</a>
-    <a href="#apropos">À propos</a>
-    <a href="#services">Services</a>
     <a href="#realisations">Réalisations</a>
     <a href="#videos">Vidéos</a>
+    <a href="#services">Services</a>
+    <a href="#apropos">À propos</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -1213,9 +1213,10 @@
     <section class="hero" id="accueil">
       <div class="hero-media">
         <img
-          src="./couverture.jpg"
+          src="./cover.jpg"
           alt="Couverture DIONTADO PRODUCTION"
-          data-asset="couverture.jpg"
+          data-asset="cover.jpg"
+          onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src=this.src.replace('cover.jpg','couverture.jpg');}"
         />
       </div>
       <div class="hero-scrim" aria-hidden="true"></div>
@@ -1259,148 +1260,6 @@
               <p class="hero-meta-value">Culture · Mariage · Portrait · Pub</p>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================ À PROPOS ============================ -->
-    <section class="about-section" id="apropos">
-      <div class="container">
-        <div class="about-header reveal">
-          <div>
-            <p class="kicker kicker--dark">À propos</p>
-            <h2 class="section-title" style="color: var(--text-dark); margin-top: 8px;">
-              Une maison d’image et de cinéma
-            </h2>
-          </div>
-          <img
-            src="./logo-horizontal-noir.png"
-            alt="DIONTADO PRODUCTION"
-            class="about-logo-horizontal"
-            data-asset="logo-horizontal-noir.png"
-            onerror="this.style.display='none';"
-          />
-        </div>
-
-        <div class="about-grid">
-          <div class="about-identity-card reveal">
-            <img
-              src="./logo-vertical-noir.png"
-              alt="Logo vertical DIONTADO PRODUCTION"
-              class="about-vertical-logo"
-              data-asset="logo-vertical-noir.png"
-              onerror="this.style.display='none';"
-            />
-            <p style="font-size: 0.96rem; color: var(--text-muted-light);">
-              Basée à Yeumbeul au Sénégal, <strong>DIONTADO PRODUCTION</strong> réunit réalisation vidéo et photographie d’auteur pour accompagner les créateurs, les marques, les événements culturels et les histoires humaines avec une esthétique exigeante.
-            </p>
-            <div class="about-seal-row">
-              <img
-                src="./logo-ic%C3%B4ne-fond-brun.png"
-                alt="Emblème DIONTADO PRODUCTION"
-                class="about-seal"
-                data-asset="logo-icône-fond-brun.png"
-                onerror="this.style.display='none';"
-              />
-              <div>
-                <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-dark);">
-                  DIONTADO PRODUCTION
-                </p>
-                <p style="font-size: 0.78rem; color: var(--text-muted-light);">
-                  Direction artistique · Yeumbeul, Sénégal
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="about-pillars reveal">
-            <div class="pillar-item">
-              <span class="pillar-index">01 · NOTRE VISION</span>
-              <h3 class="pillar-title">Élever chaque récit au rang d’œuvre visuelle</h3>
-              <p class="pillar-text">
-                Nous croyons qu’une image forte dépasse la simple captation. Notre vision associe l’ancrage culturel sénégalais aux standards techniques des grands studios internationaux.
-              </p>
-            </div>
-            <div class="pillar-item">
-              <span class="pillar-index">02 · NOTRE PASSION POUR L’IMAGE</span>
-              <h3 class="pillar-title">La maîtrise de la lumière, du cadre et du mouvement</h3>
-              <p class="pillar-text">
-                Qu’il s’agisse d’un regard saisi en studio, d’une scène culturelle vibrante ou d’une séquence filmée au ralenti, chaque détail est pensé pour susciter une émotion durable.
-              </p>
-            </div>
-            <div class="pillar-item">
-              <span class="pillar-index">03 · NOTRE APPROCHE PROFESSIONNELLE</span>
-              <h3 class="pillar-title">Un accompagnement complet, du tournage au rendu final</h3>
-              <p class="pillar-text">
-                Préparation artistique, tournage haute définition, prise de vue calibrée, étalonnage cinéma et livraison optimisée : nous garantissons rigueur, ponctualité et cohérence visuelle.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================ NOS SERVICES ============================ -->
-    <section class="services-section" id="services">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <p class="kicker">Nos services</p>
-            <h2 class="section-title" style="margin-top: 8px;">Deux savoir-faire d’excellence</h2>
-          </div>
-          <p class="section-lead">
-            Une offre claire et maîtrisée, entièrement consacrée à la création d’images fixes et animées à haute valeur artistique.
-          </p>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card reveal">
-            <div class="service-image-wrap">
-              <img
-                src="./portrait-02.jpg"
-                alt="Photographie professionnelle — DIONTADO PRODUCTION"
-                loading="lazy"
-                data-asset="portrait-02.jpg"
-              />
-            </div>
-            <div class="service-body">
-              <span class="service-num">SERVICE 01</span>
-              <h3 class="service-title">Photographie professionnelle</h3>
-              <p class="service-desc">
-                Séances studio, reportages culturels, mariages d’exception, portraits éditoriaux et visuels publicitaires conçus avec une direction artistique soignée et une retouche fidèle aux matières et aux carnations.
-              </p>
-              <ul class="service-list">
-                <li>· Culture &amp; Événements</li>
-                <li>· Mariage</li>
-                <li>· Portrait</li>
-                <li>· Publicité &amp; Marques</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="service-card reveal">
-            <div class="service-image-wrap">
-              <img
-                src="./publicite-01.jpg"
-                alt="Production et réalisation vidéo — DIONTADO PRODUCTION"
-                loading="lazy"
-                data-asset="publicite-01.jpg"
-              />
-            </div>
-            <div class="service-body">
-              <span class="service-num">SERVICE 02</span>
-              <h3 class="service-title">Production et réalisation vidéo</h3>
-              <p class="service-desc">
-                Conception, réalisation, cadrage et montage de films publicitaires, clips, documentaires culturels, vidéos corporate et films de mariage au rendu cinématographique.
-              </p>
-              <ul class="service-list">
-                <li>· Réalisation &amp; Scénarisation</li>
-                <li>· Films publicitaires</li>
-                <li>· Reportages &amp; Clips</li>
-                <li>· Étalonnage cinéma</li>
-              </ul>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -1479,6 +1338,148 @@
                   Lire
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ NOS SERVICES ============================ -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker">Nos services</p>
+            <h2 class="section-title" style="margin-top: 8px;">Deux savoir-faire d’excellence</h2>
+          </div>
+          <p class="section-lead">
+            Une offre claire et maîtrisée, entièrement consacrée à la création d’images fixes et animées à haute valeur artistique.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-image-wrap">
+              <img
+                src="./portrait-02.jpg"
+                alt="Photographie professionnelle — DIONTADO PRODUCTION"
+                loading="lazy"
+                data-asset="portrait-02.jpg"
+              />
+            </div>
+            <div class="service-body">
+              <span class="service-num">SERVICE 01</span>
+              <h3 class="service-title">Photographie professionnelle</h3>
+              <p class="service-desc">
+                Séances studio, reportages culturels, mariages d’exception, portraits éditoriaux et visuels publicitaires conçus avec une direction artistique soignée et une retouche fidèle aux matières et aux carnations.
+              </p>
+              <ul class="service-list">
+                <li>· Culture &amp; Événements</li>
+                <li>· Mariage</li>
+                <li>· Portrait</li>
+                <li>· Publicité &amp; Marques</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-image-wrap">
+              <img
+                src="./publicite-01.jpg"
+                alt="Production et réalisation vidéo — DIONTADO PRODUCTION"
+                loading="lazy"
+                data-asset="publicite-01.jpg"
+              />
+            </div>
+            <div class="service-body">
+              <span class="service-num">SERVICE 02</span>
+              <h3 class="service-title">Production et réalisation vidéo</h3>
+              <p class="service-desc">
+                Conception, réalisation, cadrage et montage de films publicitaires, clips, documentaires culturels, vidéos corporate et films de mariage au rendu cinématographique.
+              </p>
+              <ul class="service-list">
+                <li>· Réalisation &amp; Scénarisation</li>
+                <li>· Films publicitaires</li>
+                <li>· Reportages &amp; Clips</li>
+                <li>· Étalonnage cinéma</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ À PROPOS ============================ -->
+    <section class="about-section" id="apropos">
+      <div class="container">
+        <div class="about-header reveal">
+          <div>
+            <p class="kicker kicker--dark">À propos</p>
+            <h2 class="section-title" style="color: var(--text-dark); margin-top: 8px;">
+              Une maison d’image et de cinéma
+            </h2>
+          </div>
+          <img
+            src="./logo-horizontal-noir.png"
+            alt="DIONTADO PRODUCTION"
+            class="about-logo-horizontal"
+            data-asset="logo-horizontal-noir.png"
+            onerror="this.style.display='none';"
+          />
+        </div>
+
+        <div class="about-grid">
+          <div class="about-identity-card reveal">
+            <img
+              src="./logo-vertical-noir.png"
+              alt="Logo vertical DIONTADO PRODUCTION"
+              class="about-vertical-logo"
+              data-asset="logo-vertical-noir.png"
+              onerror="this.style.display='none';"
+            />
+            <p style="font-size: 0.96rem; color: var(--text-muted-light);">
+              Basée à Yeumbeul au Sénégal, <strong>DIONTADO PRODUCTION</strong> réunit réalisation vidéo et photographie d’auteur pour accompagner les créateurs, les marques, les événements culturels et les histoires humaines avec une esthétique exigeante.
+            </p>
+            <div class="about-seal-row">
+              <img
+                src="./logo-ic%C3%B4ne-fond-brun.png"
+                alt="Emblème DIONTADO PRODUCTION"
+                class="about-seal"
+                data-asset="logo-icône-fond-brun.png"
+                onerror="this.style.display='none';"
+              />
+              <div>
+                <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-dark);">
+                  DIONTADO PRODUCTION
+                </p>
+                <p style="font-size: 0.78rem; color: var(--text-muted-light);">
+                  Direction artistique · Yeumbeul, Sénégal
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-pillars reveal">
+            <div class="pillar-item">
+              <span class="pillar-index">01 · NOTRE VISION</span>
+              <h3 class="pillar-title">Élever chaque récit au rang d’œuvre visuelle</h3>
+              <p class="pillar-text">
+                Nous croyons qu’une image forte dépasse la simple captation. Notre vision associe l’ancrage culturel sénégalais aux standards techniques des grands studios internationaux.
+              </p>
+            </div>
+            <div class="pillar-item">
+              <span class="pillar-index">02 · NOTRE PASSION POUR L’IMAGE</span>
+              <h3 class="pillar-title">La maîtrise de la lumière, du cadre et du mouvement</h3>
+              <p class="pillar-text">
+                Qu’il s’agisse d’un regard saisi en studio, d’une scène culturelle vibrante ou d’une séquence filmée au ralenti, chaque détail est pensé pour susciter une émotion durable.
+              </p>
+            </div>
+            <div class="pillar-item">
+              <span class="pillar-index">03 · NOTRE APPROCHE PROFESSIONNELLE</span>
+              <h3 class="pillar-title">Un accompagnement complet, du tournage au rendu final</h3>
+              <p class="pillar-text">
+                Préparation artistique, tournage haute définition, prise de vue calibrée, étalonnage cinéma et livraison optimisée : nous garantissons rigueur, ponctualité et cohérence visuelle.
+              </p>
             </div>
           </div>
         </div>
@@ -1613,9 +1614,10 @@
       </p>
 
       <div class="footer-links">
-        <a href="#apropos">À propos</a>
-        <a href="#services">Services</a>
         <a href="#realisations">Réalisations</a>
+        <a href="#videos">Vidéos</a>
+        <a href="#services">Services</a>
+        <a href="#apropos">À propos</a>
         <a href="https://www.instagram.com/diontado_photography" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="mailto:diontadoevens.0@gmail.com">Email</a>
       </div>
