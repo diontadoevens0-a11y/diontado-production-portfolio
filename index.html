@@ -326,15 +326,7 @@
     }
 
     .hero-grid {
-      display: grid;
-      gap: 36px;
-      align-items: end;
-    }
-
-    @media (min-width: 960px) {
-      .hero-grid {
-        grid-template-columns: 1.3fr 0.7fr;
-      }
+      max-width: 720px;
     }
 
     .hero-logo-mark {
@@ -367,26 +359,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-    }
-
-    .hero-meta-panel {
-      border-top: 1px solid rgba(255, 255, 255, 0.18);
-      padding-top: 20px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .hero-meta-label {
-      font-size: 0.75rem;
-      color: var(--text-muted-dark);
-    }
-
-    .hero-meta-value {
-      margin-top: 4px;
-      font-size: 0.92rem;
-      font-weight: 500;
-      color: var(--beige);
     }
 
     /* ==========================================================================
@@ -1007,7 +979,34 @@
     .site-footer {
       background-color: var(--bg-dark);
       border-top: 1px solid var(--border-dark);
-      padding-block: 42px;
+      padding-block: 48px;
+    }
+
+    .footer-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      padding-bottom: 32px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    @media (min-width: 768px) {
+      .footer-meta-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    .footer-meta-label {
+      font-size: 0.75rem;
+      color: var(--text-muted-dark);
+    }
+
+    .footer-meta-value {
+      margin-top: 4px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--beige);
     }
 
     .footer-inner {
@@ -1223,42 +1222,21 @@
 
       <div class="container hero-content">
         <div class="hero-grid">
-          <div>
-            <img
-              src="./logo-horizontal-blanc.png"
-              alt="DIONTADO PRODUCTION"
-              class="hero-logo-mark"
-              data-asset="logo-horizontal-blanc.png"
-              onerror="this.style.display='none';"
-            />
-            <p class="kicker">Yeumbeul, Sénégal · Production Audiovisuelle</p>
-            <h1 class="hero-title">Nous donnons vie à vos images.</h1>
-            <p class="hero-subtitle">
-              DIONTADO PRODUCTION est une maison de production audiovisuelle dédiée à la réalisation vidéo cinématographique et à la photographie professionnelle : culture, mariage, portrait et publicité.
-            </p>
-            <div class="hero-cta-row">
-              <a href="#realisations" class="btn-primary">Découvrir nos réalisations</a>
-              <a href="#contact" class="btn-outline">Nous contacter</a>
-            </div>
-          </div>
-
-          <div class="hero-meta-panel">
-            <div>
-              <p class="hero-meta-label">Activités principales</p>
-              <p class="hero-meta-value">Vidéo &amp; Photographie</p>
-            </div>
-            <div>
-              <p class="hero-meta-label">Studio basé à</p>
-              <p class="hero-meta-value">Yeumbeul, Sénégal</p>
-            </div>
-            <div>
-              <p class="hero-meta-label">Instagram</p>
-              <p class="hero-meta-value">@diontado_photography</p>
-            </div>
-            <div>
-              <p class="hero-meta-label">Collections</p>
-              <p class="hero-meta-value">Culture · Mariage · Portrait · Pub</p>
-            </div>
+          <img
+            src="./logo-horizontal-blanc.png"
+            alt="DIONTADO PRODUCTION"
+            class="hero-logo-mark"
+            data-asset="logo-horizontal-blanc.png"
+            onerror="this.style.display='none';"
+          />
+          <p class="kicker">Yeumbeul, Sénégal · Production Audiovisuelle</p>
+          <h1 class="hero-title">Nous donnons vie à vos images.</h1>
+          <p class="hero-subtitle">
+            DIONTADO PRODUCTION est une maison de production audiovisuelle dédiée à la réalisation vidéo cinématographique et à la photographie professionnelle : culture, mariage, portrait et publicité.
+          </p>
+          <div class="hero-cta-row">
+            <a href="#realisations" class="btn-primary">Découvrir nos réalisations</a>
+            <a href="#contact" class="btn-outline">Nous contacter</a>
           </div>
         </div>
       </div>
@@ -1598,7 +1576,35 @@
 
   <!-- ============================ FOOTER ============================ -->
   <footer class="site-footer">
-    <div class="container footer-inner">
+    <div class="container">
+      <div class="footer-meta-grid">
+        <div>
+          <p class="footer-meta-label">Activités principales</p>
+          <p class="footer-meta-value">Vidéo &amp; Photographie</p>
+        </div>
+        <div>
+          <p class="footer-meta-label">Localisation</p>
+          <p class="footer-meta-value">Yeumbeul, Sénégal</p>
+        </div>
+        <div>
+          <p class="footer-meta-label">Instagram</p>
+          <a
+            href="https://www.instagram.com/diontado_photography"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-meta-value"
+            style="display:inline-block;"
+          >
+            @diontado_photography
+          </a>
+        </div>
+        <div>
+          <p class="footer-meta-label">Collections</p>
+          <p class="footer-meta-value">Culture · Mariage · Portrait · Pub</p>
+        </div>
+      </div>
+
+      <div class="footer-inner">
       <a href="#accueil" aria-label="Retour en haut">
         <img
           src="./logo-pied.png"
@@ -1620,6 +1626,7 @@
         <a href="#apropos">À propos</a>
         <a href="https://www.instagram.com/diontado_photography" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="mailto:diontadoevens.0@gmail.com">Email</a>
+      </div>
       </div>
     </div>
   </footer>
