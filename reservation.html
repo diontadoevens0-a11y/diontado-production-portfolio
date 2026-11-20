@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réservation | DIONTADO PRODUCTION</title>
+<meta name="description" content="Réservez une prestation photo ou vidéo avec DIONTADO PRODUCTION : formulaire et message récapitulatif WhatsApp.">
+<meta property="og:title" content="Réservation | DIONTADO PRODUCTION">
+<meta property="og:description" content="Réservez une prestation photo ou vidéo avec DIONTADO PRODUCTION : formulaire et message récapitulatif WhatsApp.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#070605">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;1,400&amp;family=Jost:wght@300;400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="site">
+<a class="brand" href="index.html">DIONTADO PRODUCTION</a>
+<button class="burger" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+<nav id="menu" aria-label="Navigation principale"><a href="index.html">Accueil</a><a href="apropos.html">À propos</a><a href="services.html">Services</a><a href="tarifs.html">Tarifs</a><a href="reservation.html" aria-current="page">Réservation</a><a href="realisations.html">Réalisations</a><a href="videos.html">Vidéos</a><a href="contact.html">Contact</a></nav>
+</header>
+<main id="main">
+<section class="pagehead"><div class="wrap"><h1>Réservation</h1><p class="lead">Remplissez le formulaire : un message récapitulatif est préparé pour être envoyé via WhatsApp ou par e-mail.</p></div></section>
+<section class="s"><div class="wrap narrow">
+<form id="resa" class="form" novalidate>
+<label>Nom complet *<input name="nom" data-label="Nom complet" required autocomplete="name"><span class="err" aria-live="polite"></span></label>
+<label>Numéro WhatsApp *<input name="whatsapp" data-label="WhatsApp" type="tel" required autocomplete="tel" placeholder="+221 …"><span class="err" aria-live="polite"></span></label>
+<label>Adresse e-mail<input name="email" data-label="E-mail" type="email" autocomplete="email"><span class="err" aria-live="polite"></span></label>
+<label>Type de prestation *<select name="type" data-label="Prestation" required><option value="">Choisir…</option><option>Photographie événementielle</option><option>Photographie de mariage</option><option>Photographie de soutenance</option><option>Portraits et photographie professionnelle</option><option>Clips musicaux</option><option>Films institutionnels</option><option>Reportages et documentaires</option><option>Réalisation et production audiovisuelle</option><option>Montage vidéo et étalonnage</option><option>Couverture photo et vidéo pour entreprises et associations</option><option>Photo et vidéo événementielle</option><option>Clip musical simple en studio</option><option>Autre prestation (sur devis)</option></select><span class="err" aria-live="polite"></span></label>
+<label>Date de l’événement ou du tournage<input name="date" data-label="Date" type="date"><span class="err"></span></label>
+<label>Lieu<input name="lieu" data-label="Lieu"><span class="err"></span></label>
+<label>Budget estimé<input name="budget" data-label="Budget estimé" placeholder="ex. 150 000 FCFA"><span class="err"></span></label>
+<label class="full">Description du projet *<textarea name="description" data-label="Description" rows="5" required></textarea><span class="err" aria-live="polite"></span></label>
+<div class="full"><button class="btn solid" type="submit">Envoyer ma demande</button></div>
+</form>
+<div id="result" class="result" aria-live="polite" hidden></div>
+</div></section>
+<section class="s"><div class="wrap"><div class="wave" data-wave><h3>Paiement en ligne (Wave Business)</h3><p class="wave-msg"></p></div></div></section>
+</main>
+<footer class="site"><div class="wrap fgrid">
+<div><p class="brand">DIONTADO PRODUCTION</p><p>Nous donnons vie à vos histoires.</p><p><a href="mailto:diontadoproduction@gmail.com">diontadoproduction@gmail.com</a></p></div>
+<nav aria-label="Pied de page"><a href="index.html">Accueil</a><a href="apropos.html">À propos</a><a href="services.html">Services</a><a href="tarifs.html">Tarifs</a><a href="reservation.html">Réservation</a><a href="realisations.html">Réalisations</a><a href="videos.html">Vidéos</a><a href="contact.html">Contact</a></nav>
+</div><p class="copy">© 2026 DIONTADO PRODUCTION. Tous droits réservés.</p></footer>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
