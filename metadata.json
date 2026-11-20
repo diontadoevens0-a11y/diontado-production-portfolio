@@ -1,0 +1,6 @@
+{
+  "name": "Lumen Archive — Galerie GitHub Interactive",
+  "description": "Galerie interactive professionnelle synchronisée automatiquement avec vos dépôts d'images GitHub.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

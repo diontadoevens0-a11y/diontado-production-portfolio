@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#18181b"/>
+      <stop offset="55%" stop-color="#27272a"/>
+      <stop offset="100%" stop-color="#09090b"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4f4f5" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#d4d4d8" stop-opacity="0.18"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#27272a"/>
+      <stop offset="100%" stop-color="#111113"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <polygon points="0,640 1600,560 1600,900 0,900" fill="url(#floor)"/>
+  <polygon points="240,0 780,0 1320,900 560,900" fill="url(#beam)"/>
+  <rect x="180" y="140" width="380" height="520" fill="#141417" stroke="#3f3f46" stroke-width="2"/>
+  <rect x="220" y="180" width="300" height="440" fill="#1f1f23"/>
+  <circle cx="1140" cy="330" r="170" fill="none" stroke="#e4e4e7" stroke-opacity="0.28" stroke-width="1.5"/>
+  <circle cx="1140" cy="330" r="110" fill="#e4e4e7" fill-opacity="0.08"/>
+  <line x1="0" y1="640" x2="1600" y2="560" stroke="#52525b" stroke-width="1.5"/>
+  <rect x="920" y="510" width="240" height="170" fill="#0f0f12" stroke="#52525b" stroke-width="1"/>
+  <polygon points="920,680 1160,680 1320,810 1010,810" fill="#09090b" opacity="0.7"/>
+</svg>
