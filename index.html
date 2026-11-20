@@ -472,6 +472,105 @@
       color: var(--gold-light);
     }
 
+    .bio-bts-block {
+      margin-top: 56px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .bts-toolbar {
+      margin-top: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .bts-grid {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    @media (min-width: 640px) {
+      .bts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .bts-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    .bts-card {
+      background: var(--bg-dark-elevated);
+      border: 1px solid var(--border-dark);
+      border-radius: 12px;
+      overflow: hidden;
+      text-align: left;
+      transition: border-color 0.2s ease;
+    }
+
+    .bts-card:hover {
+      border-color: rgba(200, 164, 107, 0.5);
+    }
+
+    .bts-media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      width: 100%;
+      overflow: hidden;
+      background: #0b0b0d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bts-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s var(--ease-out);
+    }
+
+    .bts-card:hover .bts-media img {
+      transform: scale(1.03);
+    }
+
+    .bts-fallback {
+      display: none;
+      padding: 18px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted-dark);
+    }
+
+    .bts-body {
+      padding: 16px 18px;
+    }
+
+    .bts-cat {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .bts-title {
+      margin-top: 4px;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
     /* ==========================================================================
        À PROPOS (Fond sombre harmonisé avec le reste du site)
        ========================================================================== */
@@ -1575,6 +1674,32 @@
             </div>
           </div>
         </div>
+
+        <!-- BTS — Coulisses & Coéquipiers (sous Notre approche) -->
+        <div class="bio-bts-block reveal">
+          <div class="section-head" style="margin-bottom: 0;">
+            <div>
+              <p class="kicker">Coulisses &amp; Coéquipiers (BTS)</p>
+              <h3 class="section-title" style="color: #ffffff; margin-top: 8px; font-size: clamp(1.75rem, 3vw, 2.5rem);">
+                Sur le terrain &amp; au editing
+              </h3>
+            </div>
+            <p class="section-lead">
+              Nos anciens et nouveaux coéquipiers en action sur le terrain et en post-production.
+            </p>
+          </div>
+
+          <div class="bts-toolbar">
+            <div class="filter-tabs" role="tablist" aria-label="Filtrer les photos BTS">
+              <button type="button" class="filter-btn bts-filter-btn is-active" data-bts-filter="Tous" role="tab" aria-selected="true">Tous</button>
+              <button type="button" class="filter-btn bts-filter-btn" data-bts-filter="Sur le terrain" role="tab" aria-selected="false">Sur le terrain</button>
+              <button type="button" class="filter-btn bts-filter-btn" data-bts-filter="Editing" role="tab" aria-selected="false">Editing</button>
+            </div>
+            <span class="gallery-count" id="btsCount">12 photos BTS</span>
+          </div>
+
+          <div class="bts-grid" id="btsGrid"></div>
+        </div>
       </div>
     </section>
 
@@ -1911,6 +2036,22 @@
         { file: 'publicite-06.jpg', category: 'Extérieur', title: 'Extérieur — Série 01' }
       ];
 
+      /* Photos BTS / Coulisses (noms de fichiers conservés tels quels) */
+      var BTS_PHOTOS = [
+        { file: '1.jpg', localFile: 'assets/aistudio/1_e77d17a4.jpg', category: 'Sur le terrain', title: 'Shooting sur la côte rocheuse' },
+        { file: '2.JPG', localFile: 'assets/aistudio/2_f3530072.JPG', category: 'Sur le terrain', title: 'Plateau studio & éclairage d’équipe' },
+        { file: '3.jpg', localFile: 'assets/aistudio/3_51f1cc8f.jpg', category: 'Sur le terrain', title: 'Tournage vidéo en intérieur' },
+        { file: '4.JPG', localFile: 'assets/aistudio/4_285c84fb.JPG', category: 'Editing', title: 'Post-production & direction artistique' },
+        { file: '5.jpg', localFile: 'assets/aistudio/5_0479c35b.jpg', category: 'Sur le terrain', title: 'Shooting produit & réflecteur' },
+        { file: '6.jpg', localFile: 'assets/aistudio/6_26900419.jpg', category: 'Sur le terrain', title: 'Tournage clip & mise en lumière' },
+        { file: '7.JPG', localFile: 'assets/aistudio/7_6d59849c.JPG', category: 'Sur le terrain', title: 'Cadreur 4K sur le terrain' },
+        { file: '8.JPG', localFile: 'assets/aistudio/8_b3eee15a.JPG', category: 'Sur le terrain', title: 'Tournage sport — Teranga Training' },
+        { file: '9.HEIC', localFile: 'assets/aistudio/9_9955958d.jpg', category: 'Editing', title: 'Tethering & retouche en direct' },
+        { file: '10.JPG', localFile: 'assets/aistudio/10_1df3e28e.JPG', category: 'Sur le terrain', title: 'Équipe drone & caméra — Littoral' },
+        { file: '11.HEIC', localFile: 'assets/aistudio/11_27ca1e48.jpg', category: 'Sur le terrain', title: 'Tournage sur falaise côtière' },
+        { file: '12.HEIC', localFile: 'assets/aistudio/12_ee2a8b90.jpg', category: 'Sur le terrain', title: 'Prise de vue en extérieur' }
+      ];
+
       function assetUrl(fileName) {
         var encoded = fileName.split('/').map(encodeURIComponent).join('/');
         return MEDIA_BASE.replace(/\/+$/, '') + '/' + encoded;
@@ -1980,9 +2121,17 @@
       /* Galerie filtrable + Lightbox */
       var galleryGrid = document.getElementById('galleryGrid');
       var galleryCount = document.getElementById('galleryCount');
-      var filterButtons = document.querySelectorAll('.filter-btn');
+      var filterButtons = document.querySelectorAll('.filter-btn:not(.bts-filter-btn)');
       var activeCategory = 'Toutes';
       var filteredPhotos = GALLERY_PHOTOS.slice();
+
+      var btsGrid = document.getElementById('btsGrid');
+      var btsCount = document.getElementById('btsCount');
+      var btsFilterButtons = document.querySelectorAll('.bts-filter-btn');
+      var activeBtsCategory = 'Tous';
+      var filteredBts = BTS_PHOTOS.slice();
+
+      var lightboxList = filteredPhotos;
       var lightboxIndex = 0;
 
       var lightbox = document.getElementById('lightbox');
@@ -2027,7 +2176,7 @@
           btn.appendChild(img);
           btn.appendChild(overlay);
           btn.addEventListener('click', function () {
-            openLightbox(index);
+            openLightbox(index, filteredPhotos);
           });
 
           item.appendChild(btn);
@@ -2035,18 +2184,93 @@
         });
       }
 
-      function updateLightbox() {
-        var photo = filteredPhotos[lightboxIndex];
-        if (!photo || !lightboxImg || !lightboxTitle || !lightboxCounter) return;
-        lightboxImg.src = assetUrl(photo.file);
-        lightboxImg.alt = photo.title + ' — DIONTADO PRODUCTION';
-        lightboxTitle.textContent = photo.title + ' (' + photo.category + ')';
-        lightboxCounter.textContent = (lightboxIndex + 1) + ' / ' + filteredPhotos.length;
+      function renderBts() {
+        if (!btsGrid) return;
+        filteredBts = activeBtsCategory === 'Tous'
+          ? BTS_PHOTOS.slice()
+          : BTS_PHOTOS.filter(function (p) { return p.category === activeBtsCategory; });
+
+        if (btsCount) {
+          btsCount.textContent = filteredBts.length + (filteredBts.length > 1 ? ' photos BTS' : ' photo BTS');
+        }
+
+        btsGrid.innerHTML = '';
+        filteredBts.forEach(function (photo, index) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'bts-card';
+          btn.setAttribute('aria-label', 'Agrandir ' + photo.title);
+
+          var media = document.createElement('div');
+          media.className = 'bts-media';
+
+          var img = document.createElement('img');
+          img.src = assetUrl(photo.file);
+          img.alt = photo.title + ' — DIONTADO PRODUCTION';
+          img.loading = 'lazy';
+
+          var fallback = document.createElement('div');
+          fallback.className = 'bts-fallback';
+          fallback.innerHTML =
+            '<div style="color: var(--gold); margin-bottom: 6px; font-weight: 600;">BTS</div>' +
+            '<div style="font-family: monospace; word-break: break-all;">' + photo.file + '</div>';
+
+          img.addEventListener('error', function () {
+            if (!img.dataset.fb && photo.localFile) {
+              img.dataset.fb = '1';
+              img.src = './' + photo.localFile;
+            } else if (img.dataset.fb === '1' && photo.localFile) {
+              img.dataset.fb = '2';
+              img.src = '/' + photo.localFile;
+            } else {
+              img.style.display = 'none';
+              fallback.style.display = 'block';
+            }
+          });
+
+          var body = document.createElement('div');
+          body.className = 'bts-body';
+          body.innerHTML =
+            '<div class="bts-cat">' + photo.category + '</div>' +
+            '<div class="bts-title">' + photo.title + '</div>';
+
+          media.appendChild(img);
+          media.appendChild(fallback);
+          btn.appendChild(media);
+          btn.appendChild(body);
+          btn.addEventListener('click', function () {
+            if (img.style.display !== 'none') {
+              openLightbox(index, filteredBts, img.currentSrc || img.src);
+            }
+          });
+
+          btsGrid.appendChild(btn);
+        });
       }
 
-      function openLightbox(index) {
+      function updateLightbox(resolvedOverride) {
+        var photo = lightboxList[lightboxIndex];
+        if (!photo || !lightboxImg || !lightboxTitle || !lightboxCounter) return;
+        lightboxImg.dataset.fb = '';
+        lightboxImg.onerror = function () {
+          if (!lightboxImg.dataset.fb && photo.localFile) {
+            lightboxImg.dataset.fb = '1';
+            lightboxImg.src = './' + photo.localFile;
+          } else if (lightboxImg.dataset.fb === '1' && photo.localFile) {
+            lightboxImg.dataset.fb = '2';
+            lightboxImg.src = '/' + photo.localFile;
+          }
+        };
+        lightboxImg.src = resolvedOverride || assetUrl(photo.file);
+        lightboxImg.alt = photo.title + ' — DIONTADO PRODUCTION';
+        lightboxTitle.textContent = photo.title + ' (' + photo.category + ')';
+        lightboxCounter.textContent = (lightboxIndex + 1) + ' / ' + lightboxList.length;
+      }
+
+      function openLightbox(index, list, resolvedOverride) {
+        lightboxList = list || filteredPhotos;
         lightboxIndex = index;
-        updateLightbox();
+        updateLightbox(resolvedOverride);
         if (lightbox) {
           lightbox.classList.add('is-open');
           document.body.style.overflow = 'hidden';
@@ -2072,16 +2296,28 @@
         });
       });
 
+      btsFilterButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          activeBtsCategory = btn.getAttribute('data-bts-filter') || 'Tous';
+          btsFilterButtons.forEach(function (b) {
+            var isSel = b === btn;
+            b.classList.toggle('is-active', isSel);
+            b.setAttribute('aria-selected', isSel ? 'true' : 'false');
+          });
+          renderBts();
+        });
+      });
+
       if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
       if (lightboxPrev) {
         lightboxPrev.addEventListener('click', function () {
-          lightboxIndex = (lightboxIndex - 1 + filteredPhotos.length) % filteredPhotos.length;
+          lightboxIndex = (lightboxIndex - 1 + lightboxList.length) % lightboxList.length;
           updateLightbox();
         });
       }
       if (lightboxNext) {
         lightboxNext.addEventListener('click', function () {
-          lightboxIndex = (lightboxIndex + 1) % filteredPhotos.length;
+          lightboxIndex = (lightboxIndex + 1) % lightboxList.length;
           updateLightbox();
         });
       }
@@ -2094,16 +2330,17 @@
         if (!lightbox || !lightbox.classList.contains('is-open')) return;
         if (e.key === 'Escape') closeLightbox();
         if (e.key === 'ArrowLeft') {
-          lightboxIndex = (lightboxIndex - 1 + filteredPhotos.length) % filteredPhotos.length;
+          lightboxIndex = (lightboxIndex - 1 + lightboxList.length) % lightboxList.length;
           updateLightbox();
         }
         if (e.key === 'ArrowRight') {
-          lightboxIndex = (lightboxIndex + 1) % filteredPhotos.length;
+          lightboxIndex = (lightboxIndex + 1) % lightboxList.length;
           updateLightbox();
         }
       });
 
       renderGallery();
+      renderBts();
 
       /* Lecteur Vidéo YouTube */
       var videoStage = document.getElementById('videoStage');
