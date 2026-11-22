@@ -10,7 +10,6 @@
   var PHOTO_CATEGORIES = data.PHOTO_CATEGORIES || [];
   var VIDEO_ITEMS = data.VIDEO_ITEMS || [];
   var GALLERY_PHOTOS = data.GALLERY_PHOTOS || [];
-  var HERO_FEATURED_FILES = data.HERO_FEATURED_FILES || [];
 
   /* ------------------------------------------------------------------------
      1. REDIRECTION DES ANCIENS LIENS EN HASH (#/tarifs, #/<slug>, etc.)
@@ -165,109 +164,7 @@
   });
 
   /* ------------------------------------------------------------------------
-     6. DIAPORAMA COUVERTURE CINÉMATOGRAPHIQUE (PAGE ACCUEIL)
-     ------------------------------------------------------------------------ */
-  var heroSlidesWrap = document.getElementById('heroSlides');
-  var heroControls = document.getElementById('heroControls');
-  var heroDots = document.getElementById('heroDots');
-  var heroPrevBtn = document.getElementById('heroPrev');
-  var heroNextBtn = document.getElementById('heroNext');
-  var heroIndex = 0;
-  var heroTimer = null;
-
-  function getHeroSlideNodes() {
-    return heroSlidesWrap ? Array.prototype.slice.call(heroSlidesWrap.querySelectorAll('.hero-slide')) : [];
-  }
-
-  function renderHeroDots() {
-    var slides = getHeroSlideNodes();
-    if (!heroControls || !heroDots) return;
-    if (slides.length <= 1) {
-      heroControls.classList.add('is-hidden');
-      heroDots.innerHTML = '';
-      return;
-    }
-    heroControls.classList.remove('is-hidden');
-    heroDots.innerHTML = '';
-    slides.forEach(function (_s, idx) {
-      var dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = 'hero-dot' + (idx === heroIndex ? ' is-active' : '');
-      dot.setAttribute('role', 'tab');
-      dot.setAttribute('aria-selected', idx === heroIndex ? 'true' : 'false');
-      dot.setAttribute('aria-label', 'Afficher l’image ' + (idx + 1));
-      dot.addEventListener('click', function () {
-        goToHeroSlide(idx);
-        startHeroAutoplay();
-      });
-      heroDots.appendChild(dot);
-    });
-  }
-
-  function goToHeroSlide(nextIdx) {
-    var slides = getHeroSlideNodes();
-    if (slides.length === 0) return;
-    heroIndex = ((nextIdx % slides.length) + slides.length) % slides.length;
-    slides.forEach(function (el, idx) {
-      el.classList.toggle('is-active', idx === heroIndex);
-    });
-    renderHeroDots();
-  }
-
-  function startHeroAutoplay() {
-    if (heroTimer) clearInterval(heroTimer);
-    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced || getHeroSlideNodes().length <= 1) return;
-    heroTimer = setInterval(function () {
-      goToHeroSlide(heroIndex + 1);
-    }, 5200);
-  }
-
-  if (heroSlidesWrap && HERO_FEATURED_FILES.length > 0) {
-    HERO_FEATURED_FILES.forEach(function (entry) {
-      var slideEl = document.createElement('div');
-      slideEl.className = 'hero-slide';
-      var imgEl = document.createElement('img');
-      imgEl.src = assetUrl(entry.file);
-      imgEl.alt = entry.alt;
-      imgEl.width = 1920;
-      imgEl.height = 1080;
-      imgEl.loading = 'lazy';
-      imgEl.decoding = 'async';
-      imgEl.addEventListener('error', function () {
-        if (slideEl.parentNode) {
-          slideEl.parentNode.removeChild(slideEl);
-          if (heroIndex >= getHeroSlideNodes().length) heroIndex = 0;
-          goToHeroSlide(heroIndex);
-          startHeroAutoplay();
-        }
-      });
-      imgEl.addEventListener('load', function () {
-        renderHeroDots();
-        startHeroAutoplay();
-      });
-      slideEl.appendChild(imgEl);
-      heroSlidesWrap.appendChild(slideEl);
-    });
-    renderHeroDots();
-    startHeroAutoplay();
-  }
-
-  if (heroPrevBtn) {
-    heroPrevBtn.addEventListener('click', function () {
-      goToHeroSlide(heroIndex - 1);
-      startHeroAutoplay();
-    });
-  }
-  if (heroNextBtn) {
-    heroNextBtn.addEventListener('click', function () {
-      goToHeroSlide(heroIndex + 1);
-      startHeroAutoplay();
-    });
-  }
-
-  /* ------------------------------------------------------------------------
-     7. HEADER SCROLL, BARRE DE PROGRESSION & PARALLAXE LÉGÈRE
+     6. COUVERTURE STATIQUE (SANS ANIMATION) & HEADER SCROLL
      ------------------------------------------------------------------------ */
   var header = document.getElementById('siteHeader');
   var scrollProgressFill = document.getElementById('scrollProgressFill');
@@ -282,13 +179,6 @@
       var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       var ratio = maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0;
       scrollProgressFill.style.transform = 'scaleX(' + ratio.toFixed(4) + ')';
-    }
-    if (heroSlidesWrap) {
-      var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (!reduced) {
-        var offset = Math.min(110, window.scrollY * 0.16);
-        heroSlidesWrap.style.transform = 'translate3d(0, ' + offset.toFixed(1) + 'px, 0)';
-      }
     }
   }
 

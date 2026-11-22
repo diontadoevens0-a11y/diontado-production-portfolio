@@ -1,5 +1,6 @@
 /* ==========================================================================
-   DIONTADO PRODUCTION — LOGIQUE DE RÉSERVATION, CALCUL 70/30, WAVE & WHATSAPP
+   DIONTADO PRODUCTION — LOGIQUE DE RÉSERVATION, CALCUL 70/30, CONTRAT
+   OBLIGATOIRE, TRAÇABILITÉ & TRANSMISSION WHATSAPP
    ========================================================================== */
 (function () {
   var cfg = window.DIONTADO_CONFIG || {};
@@ -9,6 +10,8 @@
   var contactForm = document.getElementById('contactForm');
   if (!contactForm) return;
 
+  var CONTRACT_VERSION = 'CONTRAT-DP-2026.1';
+  var BOOKING_STORAGE_KEY = 'diontado_booking_records_v1';
   var WHATSAPP_NUMBER = cfg.WHATSAPP_NUMBER || '221764812391';
   var WAVE_PAYMENT_URL = cfg.WAVE_PAYMENT_URL || 'https://pay.wave.com/m/M_sn_IFRIA2vMxg-6/c/sn/';
   var CONTACT_EMAIL = (cfg.EMAIL_USER || 'diontadoproduction') + '@' + (cfg.EMAIL_DOMAIN || 'gmail.com');
@@ -38,19 +41,37 @@
     return formatted + '\u00A0' + (currency || 'FCFA');
   }
 
+  function formatFrenchDateTime(iso) {
+    try {
+      return new Intl.DateTimeFormat('fr-FR', {
+        dateStyle: 'long',
+        timeStyle: 'medium'
+      }).format(new Date(iso));
+    } catch (_err) {
+      return iso;
+    }
+  }
+
   var serviceSelect = document.getElementById('contactService');
   var formulaSelect = document.getElementById('contactFormula');
   var nameInput = document.getElementById('contactName');
   var phoneInput = document.getElementById('contactPhone');
+  var emailInput = document.getElementById('contactEmail');
   var dateInput = document.getElementById('contactDate');
   var timeInput = document.getElementById('contactTime');
   var locationInput = document.getElementById('contactLocation');
   var messageInput = document.getElementById('contactMessage');
   var locationLabel = document.getElementById('contactLocationLabel');
+
+  var bookingCalcGrid = document.getElementById('bookingCalcGrid');
   var calcTotalLabelTitle = document.getElementById('calcTotalLabelTitle');
   var calcTotalDisplay = document.getElementById('calcTotalDisplay');
+  var calcDepositCol = document.getElementById('calcDepositCol');
   var calcDepositDisplay = document.getElementById('calcDepositDisplay');
+  var calcRemainingCol = document.getElementById('calcRemainingCol');
   var calcRemainingDisplay = document.getElementById('calcRemainingDisplay');
+  var calcStudioCol = document.getElementById('calcStudioCol');
+
   var step3Heading = document.getElementById('step3Heading');
   var studioExceptionBox = document.getElementById('studioExceptionBox');
   var studioExceptionText = document.getElementById('studioExceptionText');
@@ -59,8 +80,39 @@
   var wavePayBtn = document.getElementById('wavePayBtn');
   var copyAmountBtn = document.getElementById('copyAmountBtn');
   var surDevisBox = document.getElementById('surDevisBox');
+
+  // Éléments Contrat & Traçabilité
+  var openContractBtn = document.getElementById('openContractBtn');
+  var imagePubCheckbox = document.getElementById('imagePubCheckbox');
+  var contractAcceptCheckbox = document.getElementById('contractAcceptCheckbox');
+  var contractTraceDisplay = document.getElementById('contractTraceDisplay');
+  var contractHintDisplay = document.getElementById('contractHintDisplay');
+  var submitFormBtn = document.getElementById('submitFormBtn');
   var sendEmailBtn = document.getElementById('sendEmailBtn');
   var formFeedback = document.getElementById('formFeedback');
+
+  var contractModal = document.getElementById('contractModal');
+  var closeContractBtn = document.getElementById('closeContractBtn');
+  var cancelContractBtn = document.getElementById('cancelContractBtn');
+  var acceptContractBtn = document.getElementById('acceptContractBtn');
+  var modalImagePubCheckbox = document.getElementById('modalImagePubCheckbox');
+  var modalContractAcceptCheckbox = document.getElementById('modalContractAcceptCheckbox');
+
+  var contractClientName = document.getElementById('contractClientName');
+  var contractClientPhone = document.getElementById('contractClientPhone');
+  var contractClientEmail = document.getElementById('contractClientEmail');
+  var contractPrestation = document.getElementById('contractPrestation');
+  var contractDateTime = document.getElementById('contractDateTime');
+  var contractLocation = document.getElementById('contractLocation');
+  var contractTotalPrice = document.getElementById('contractTotalPrice');
+  var contractDepositRow = document.getElementById('contractDepositRow');
+  var contractDepositPrice = document.getElementById('contractDepositPrice');
+  var contractRemainingRow = document.getElementById('contractRemainingRow');
+  var contractRemainingPrice = document.getElementById('contractRemainingPrice');
+  var contractStudioPaymentRow = document.getElementById('contractStudioPaymentRow');
+
+  var contractAcceptedAtIso = null;
+  var lastFocusedBeforeModal = null;
 
   function getTodayDateString() {
     var now = new Date();
@@ -80,7 +132,11 @@
     return digits.length >= 8 && digits.length <= 15;
   }
 
-  var VALIDATED_FIELDS = [nameInput, phoneInput, dateInput, timeInput, locationInput, messageInput];
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  var VALIDATED_FIELDS = [nameInput, phoneInput, emailInput, dateInput, timeInput, locationInput, messageInput];
   function clearInvalidFields() {
     VALIDATED_FIELDS.forEach(function (el) {
       if (el) el.removeAttribute('aria-invalid');
@@ -95,7 +151,7 @@
     }
   });
 
-  /* Preuve de paiement (capture d'écran, max 5 Mo, JPG/PNG/WEBP uniquement) */
+  // Aperçu local facultatif (aucun fichier envoyé automatiquement)
   var ALLOWED_PROOF_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
   var MAX_PROOF_BYTES = 5 * 1024 * 1024;
   var paymentProofInput = document.getElementById('paymentProofInput');
@@ -133,7 +189,7 @@
       }
       if (file.size > MAX_PROOF_BYTES) {
         paymentProofInput.value = '';
-        showFeedbackError('Fichier trop volumineux : la capture de paiement ne doit pas dépasser 5 Mo.', [paymentProofInput]);
+        showFeedbackError('Fichier trop volumineux : l’image ne doit pas dépasser 5 Mo.', [paymentProofInput]);
         return;
       }
       paymentProofInput.removeAttribute('aria-invalid');
@@ -185,10 +241,8 @@
         requiresDeposit: false,
         depositAmountNumeric: 0,
         totalLabel: studioTotalLabel,
-        depositLabel: '0\u00A0FCFA (Aucun acompte)',
-        remainingLabel: hasFixedPrice
-          ? studioTotalLabel + ' — à régler au studio'
-          : "Paiement intégral à l'arrivée au studio"
+        depositLabel: '',
+        remainingLabel: "Paiement intégral à l'arrivée au studio"
       };
     }
 
@@ -198,13 +252,14 @@
       var totalLabel = formatTarifAmount(totalAmount, formula.currency);
       var depositLabel = formatTarifAmount(depositAmount, formula.currency);
       var remainingLabel = formatTarifAmount(remainingAmount, formula.currency);
+
       return {
         isStudio: false,
         requiresDeposit: true,
         depositAmountNumeric: depositAmount,
         totalLabel: totalLabel,
         depositLabel: depositLabel,
-        remainingLabel: remainingLabel + ' (le jour J)'
+        remainingLabel: remainingLabel + ' (30 % — le jour de la prestation)'
       };
     }
 
@@ -213,8 +268,8 @@
       requiresDeposit: false,
       depositAmountNumeric: 0,
       totalLabel: 'Sur devis',
-      depositLabel: '70 % après devis',
-      remainingLabel: '30 % le jour J'
+      depositLabel: '70 % après validation du devis',
+      remainingLabel: '30 % le jour de la prestation'
     };
   }
 
@@ -228,8 +283,18 @@
         : 'Prix total';
     }
     if (calcTotalDisplay) calcTotalDisplay.textContent = pricing.totalLabel;
-    if (calcDepositDisplay) calcDepositDisplay.textContent = pricing.depositLabel;
-    if (calcRemainingDisplay) calcRemainingDisplay.textContent = pricing.remainingLabel;
+
+    if (bookingCalcGrid) {
+      bookingCalcGrid.classList.toggle('is-studio-grid', pricing.isStudio);
+    }
+    if (calcDepositCol) calcDepositCol.classList.toggle('is-hidden', pricing.isStudio);
+    if (calcRemainingCol) calcRemainingCol.classList.toggle('is-hidden', pricing.isStudio);
+    if (calcStudioCol) calcStudioCol.classList.toggle('is-hidden', !pricing.isStudio);
+
+    if (!pricing.isStudio) {
+      if (calcDepositDisplay) calcDepositDisplay.textContent = pricing.depositLabel;
+      if (calcRemainingDisplay) calcRemainingDisplay.textContent = pricing.remainingLabel;
+    }
 
     if (locationLabel) {
       locationLabel.textContent = pricing.isStudio ? 'Lieu (Studio)' : 'Lieu *';
@@ -237,34 +302,170 @@
     if (locationInput) {
       locationInput.required = !pricing.isStudio;
       locationInput.placeholder = pricing.isStudio
-        ? 'Studio DIONTADO (Yeumbeul)'
+        ? 'Studio Yeumbeul, Dakar'
         : 'Dakar, Saly, Saint-Louis...';
     }
 
     if (step3Heading) {
       step3Heading.textContent = pricing.isStudio
-        ? 'Paiement au studio & envoi'
+        ? 'Paiement au studio'
         : pricing.requiresDeposit
-          ? 'Acompte Wave & envoi WhatsApp'
-          : 'Validation sur WhatsApp';
+          ? 'Acompte Wave (70 %)'
+          : 'Modalités de devis';
     }
 
     if (studioExceptionBox) {
       studioExceptionBox.classList.toggle('is-hidden', !pricing.isStudio);
       if (studioExceptionText && pricing.isStudio) {
         studioExceptionText.textContent =
-          'Vous réglez l’intégralité (' + pricing.totalLabel + ') directement à votre arrivée au studio.';
+          'Vous réglez ' + pricing.totalLabel + ' directement lors de votre séance au Studio Yeumbeul, Dakar.';
       }
     }
 
     if (wavePaymentBox) {
       wavePaymentBox.classList.toggle('is-hidden', !pricing.requiresDeposit);
     }
-    if (waveDepositTitle) waveDepositTitle.textContent = pricing.depositLabel;
-    if (wavePayBtn) wavePayBtn.textContent = 'Payer ' + pricing.depositLabel + ' sur Wave →';
+    if (waveDepositTitle && !pricing.isStudio) waveDepositTitle.textContent = pricing.depositLabel;
+    if (wavePayBtn && !pricing.isStudio) wavePayBtn.textContent = 'Payer ' + pricing.depositLabel + ' sur Wave →';
     if (surDevisBox) {
       surDevisBox.classList.toggle('is-hidden', pricing.isStudio || pricing.requiresDeposit);
     }
+  }
+
+  function syncContractPreviewFields() {
+    var group = getCurrentGroup();
+    var formula = getCurrentFormula();
+    var pricing = computePricing(formula);
+
+    var nameVal = sanitizeInput(nameInput ? nameInput.value : '', false);
+    var phoneVal = sanitizeInput(phoneInput ? phoneInput.value : '', false);
+    var emailVal = sanitizeInput(emailInput ? emailInput.value : '', false);
+    var dateVal = sanitizeInput(dateInput ? dateInput.value : '', false);
+    var timeVal = sanitizeInput(timeInput ? timeInput.value : '', false);
+    var locVal = sanitizeInput(locationInput ? locationInput.value : '', false) ||
+      (pricing.isStudio ? 'Studio Yeumbeul, Dakar — Sénégal' : 'À préciser dans le formulaire');
+
+    if (contractClientName) contractClientName.textContent = nameVal || 'À compléter dans le formulaire';
+    if (contractClientPhone) contractClientPhone.textContent = phoneVal || 'À compléter dans le formulaire';
+    if (contractClientEmail) contractClientEmail.textContent = emailVal || 'À compléter dans le formulaire';
+
+    if (contractPrestation) {
+      contractPrestation.textContent =
+        group.prestation + ' — ' + formula.label + (formula.photoCountLabel ? ' (' + formula.photoCountLabel + ')' : '');
+    }
+    if (contractDateTime) {
+      contractDateTime.textContent = (dateVal || 'Date à préciser') + ' à ' + (timeVal || 'heure à préciser');
+    }
+    if (contractLocation) contractLocation.textContent = locVal;
+    if (contractTotalPrice) contractTotalPrice.textContent = pricing.totalLabel;
+
+    if (contractDepositRow) contractDepositRow.classList.toggle('is-hidden', pricing.isStudio);
+    if (contractRemainingRow) contractRemainingRow.classList.toggle('is-hidden', pricing.isStudio);
+    if (contractStudioPaymentRow) contractStudioPaymentRow.classList.toggle('is-hidden', !pricing.isStudio);
+
+    if (!pricing.isStudio) {
+      if (contractDepositPrice) contractDepositPrice.textContent = pricing.depositLabel;
+      if (contractRemainingPrice) contractRemainingPrice.textContent = pricing.remainingLabel;
+    }
+  }
+
+  function setContractAccepted(checked) {
+    contractAcceptedAtIso = checked ? new Date().toISOString() : null;
+    if (contractAcceptCheckbox) contractAcceptCheckbox.checked = checked;
+    if (modalContractAcceptCheckbox) modalContractAcceptCheckbox.checked = checked;
+
+    if (submitFormBtn) {
+      submitFormBtn.disabled = !checked;
+      submitFormBtn.setAttribute('aria-disabled', checked ? 'false' : 'true');
+    }
+    if (sendEmailBtn) {
+      sendEmailBtn.disabled = !checked;
+      sendEmailBtn.setAttribute('aria-disabled', checked ? 'false' : 'true');
+    }
+
+    if (contractTraceDisplay && contractHintDisplay) {
+      if (checked && contractAcceptedAtIso) {
+        contractTraceDisplay.textContent =
+          'Acceptation enregistrée · Version ' + CONTRACT_VERSION + ' · Le ' + formatFrenchDateTime(contractAcceptedAtIso);
+        contractTraceDisplay.classList.remove('is-hidden');
+        contractHintDisplay.classList.add('is-hidden');
+      } else {
+        contractTraceDisplay.textContent = '';
+        contractTraceDisplay.classList.add('is-hidden');
+        contractHintDisplay.classList.remove('is-hidden');
+      }
+    }
+
+    if (formFeedback && formFeedback.classList.contains('is-error')) {
+      formFeedback.classList.remove('is-visible', 'is-error');
+    }
+  }
+
+  function openContractModal() {
+    if (!contractModal) return;
+    lastFocusedBeforeModal = document.activeElement;
+    syncContractPreviewFields();
+    if (modalImagePubCheckbox && imagePubCheckbox) {
+      modalImagePubCheckbox.checked = imagePubCheckbox.checked;
+    }
+    if (modalContractAcceptCheckbox && contractAcceptCheckbox) {
+      modalContractAcceptCheckbox.checked = contractAcceptCheckbox.checked;
+    }
+    contractModal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    if (closeContractBtn) closeContractBtn.focus();
+  }
+
+  function closeContractModal() {
+    if (!contractModal) return;
+    contractModal.classList.remove('is-open');
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+    if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === 'function') {
+      lastFocusedBeforeModal.focus();
+    }
+    lastFocusedBeforeModal = null;
+  }
+
+  if (openContractBtn) openContractBtn.addEventListener('click', openContractModal);
+  if (closeContractBtn) closeContractBtn.addEventListener('click', closeContractModal);
+  if (cancelContractBtn) cancelContractBtn.addEventListener('click', closeContractModal);
+  if (acceptContractBtn) {
+    acceptContractBtn.addEventListener('click', function () {
+      setContractAccepted(true);
+      closeContractModal();
+    });
+  }
+  if (contractModal) {
+    contractModal.addEventListener('click', function (e) {
+      if (e.target === contractModal) closeContractModal();
+    });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && contractModal && contractModal.classList.contains('is-open')) {
+      e.preventDefault();
+      closeContractModal();
+    }
+  });
+
+  if (contractAcceptCheckbox) {
+    contractAcceptCheckbox.addEventListener('change', function () {
+      setContractAccepted(Boolean(contractAcceptCheckbox.checked));
+    });
+  }
+  if (modalContractAcceptCheckbox) {
+    modalContractAcceptCheckbox.addEventListener('change', function () {
+      setContractAccepted(Boolean(modalContractAcceptCheckbox.checked));
+    });
+  }
+  if (imagePubCheckbox && modalImagePubCheckbox) {
+    imagePubCheckbox.addEventListener('change', function () {
+      modalImagePubCheckbox.checked = imagePubCheckbox.checked;
+    });
+    modalImagePubCheckbox.addEventListener('change', function () {
+      imagePubCheckbox.checked = modalImagePubCheckbox.checked;
+    });
   }
 
   if (copyAmountBtn) {
@@ -367,31 +568,78 @@
     formFeedback.textContent = msg;
   }
 
+  function persistLocalBookingRecord(payload) {
+    var referenceId = 'DP-' + Date.now().toString(36).toUpperCase();
+    try {
+      var raw = localStorage.getItem(BOOKING_STORAGE_KEY);
+      var parsed = raw ? JSON.parse(raw) : [];
+      var list = Array.isArray(parsed) ? parsed : [];
+      list.unshift({
+        referenceId: referenceId,
+        createdAtIso: new Date().toISOString(),
+        contractVersion: CONTRACT_VERSION,
+        contractAccepted: true,
+        contractAcceptedAtIso: payload.acceptedIso,
+        imagePublicationAuthorized: payload.imagePubAuthorized,
+        client: {
+          name: payload.name,
+          phone: payload.phone,
+          email: payload.email
+        },
+        booking: {
+          prestation: payload.service,
+          formulaId: payload.formula.id,
+          formulaLabel: payload.formula.label,
+          eventDate: payload.eventDate,
+          eventTime: payload.eventTime,
+          location: payload.resolvedLocation,
+          notes: payload.message,
+          totalLabel: payload.pricing.totalLabel,
+          paymentMode: payload.pricing.isStudio ? 'studio_full_on_arrival' : 'deposit_70_balance_30',
+          depositLabel: payload.pricing.isStudio ? null : payload.pricing.depositLabel,
+          remainingLabel: payload.pricing.isStudio ? null : payload.pricing.remainingLabel
+        },
+        summary: payload.summary
+      });
+      localStorage.setItem(BOOKING_STORAGE_KEY, JSON.stringify(list.slice(0, 20)));
+    } catch (_err) {
+      // Ignore storage quota errors
+    }
+    return referenceId;
+  }
+
   function readFormValues() {
     clearInvalidFields();
     var name = sanitizeInput(nameInput ? nameInput.value : '', false);
     var phone = sanitizeInput(phoneInput ? phoneInput.value : '', false);
+    var email = sanitizeInput(emailInput ? emailInput.value : '', false);
     var service = sanitizeInput(serviceSelect ? serviceSelect.value : '', false);
     var formula = getCurrentFormula();
     var pricing = computePricing(formula);
     var eventDate = dateInput ? sanitizeInput(dateInput.value, false) : '';
     var eventTime = timeInput ? sanitizeInput(timeInput.value, false) : '';
     var rawLocation = locationInput ? sanitizeInput(locationInput.value, false) : '';
-    var resolvedLocation = rawLocation || (pricing.isStudio ? 'Studio DIONTADO — Yeumbeul, Dakar' : '');
+    var resolvedLocation = rawLocation || (pricing.isStudio ? 'Studio Yeumbeul, Dakar — Sénégal' : '');
     var message = sanitizeInput(messageInput ? messageInput.value : '', true);
 
     var missing = [];
     if (!name) missing.push(nameInput);
     if (!phone) missing.push(phoneInput);
+    if (!email) missing.push(emailInput);
     if (!eventDate) missing.push(dateInput);
     if (!eventTime) missing.push(timeInput);
     if (missing.length > 0) {
-      showFeedbackError('Merci de remplir votre nom, votre numéro WhatsApp, la date et l’heure souhaitées.', missing);
+      showFeedbackError('Merci de remplir votre nom et prénom, votre numéro WhatsApp, votre email, la date et l’heure souhaitées.', missing);
       return null;
     }
 
     if (!isValidPhone(phone)) {
       showFeedbackError('Numéro WhatsApp invalide : saisissez 8 à 15 chiffres (chiffres, espaces et + autorisés, ex. +221 77 000 00 00).', [phoneInput]);
+      return null;
+    }
+
+    if (!isValidEmail(email)) {
+      showFeedbackError('Adresse email invalide : veuillez saisir un email valide (ex. nom@exemple.com).', [emailInput]);
       return null;
     }
 
@@ -406,12 +654,21 @@
       return null;
     }
 
+    if (!contractAcceptCheckbox || !contractAcceptCheckbox.checked || !contractAcceptedAtIso) {
+      showFeedbackError('Veuillez lire et accepter les conditions du contrat de prestation de DIONTADO PRODUCTION avant de continuer.', [contractAcceptCheckbox]);
+      return null;
+    }
+
+    var imagePubAuthorized = Boolean(imagePubCheckbox && imagePubCheckbox.checked);
+    var acceptedDateLabel = formatFrenchDateTime(contractAcceptedAtIso);
+
     var lines = [
       'Bonjour DIONTADO PRODUCTION,',
       'Voici ma demande de réservation :',
       '',
-      '• Nom complet : ' + name,
+      '• Nom et prénom : ' + name,
       '• Téléphone : ' + phone,
+      '• Email : ' + email,
       '• Prestation choisie : ' + service,
       '• Formule choisie : ' + formula.label
     ];
@@ -421,33 +678,48 @@
     }
 
     lines.push(
-      '• Prix total : ' + pricing.totalLabel,
-      '• Acompte demandé : ' + pricing.depositLabel,
-      '• Montant restant : ' + pricing.remainingLabel,
       '• Date souhaitée : ' + eventDate,
       '• Heure souhaitée : ' + eventTime,
-      '• Lieu de la prestation : ' + resolvedLocation,
-      '• Informations complémentaires : ' + (message || 'Aucune')
+      '• Lieu : ' + resolvedLocation,
+      '• Prix total convenu : ' + pricing.totalLabel
     );
 
     if (pricing.isStudio) {
-      lines.push('', "Réservation demandée — Paiement intégral à l'arrivée au studio.");
-    } else if (pricing.requiresDeposit) {
-      lines.push('', '• Lien de paiement Wave utilisé : ' + WAVE_PAYMENT_URL);
-      if (selectedProofFile) {
-        lines.push("• Preuve de paiement : Capture d'écran prête (" + sanitizeInput(selectedProofFile.name, false) + ') — envoyée dans cette conversation WhatsApp.');
-      } else {
-        lines.push('• Preuve de paiement : Capture à joindre ou à vérifier sur WhatsApp.');
+      lines.push("• Modalité de paiement : Paiement intégral à l'arrivée au studio");
+    } else {
+      lines.push(
+        '• Acompte (70 %) versé ou à verser : ' + pricing.depositLabel,
+        '• Solde restant (30 %) : ' + pricing.remainingLabel
+      );
+      if (pricing.requiresDeposit) {
+        lines.push('• Lien Wave officiel : ' + WAVE_PAYMENT_URL);
+        lines.push('• Preuve de paiement : Aucun fichier envoyé automatiquement par le site — si vous avez réglé par Wave, merci de joindre manuellement votre capture dans cette discussion WhatsApp.');
       }
     }
 
-    lines.push('', 'En attente de votre vérification et confirmation sur WhatsApp.');
+    lines.push(
+      '• Informations complémentaires : ' + (message || 'Aucune'),
+      '',
+      '• Contrat de prestation (' + CONTRACT_VERSION + ') : Lu et accepté par le client le ' + acceptedDateLabel,
+      '• Autorisation de publication des images (facultatif) : ' + (imagePubAuthorized ? 'Accordée par le client' : 'Non accordée (choix non coché)'),
+      '',
+      'Demande en attente de vérification de la disponibilité et du paiement par DIONTADO PRODUCTION (ne vaut pas confirmation définitive).'
+    );
 
     return {
       name: name,
+      phone: phone,
+      email: email,
       service: service,
       formula: formula,
       pricing: pricing,
+      eventDate: eventDate,
+      eventTime: eventTime,
+      resolvedLocation: resolvedLocation,
+      message: message,
+      acceptedIso: contractAcceptedAtIso,
+      acceptedDateLabel: acceptedDateLabel,
+      imagePubAuthorized: imagePubAuthorized,
       summary: lines.join('\n')
     };
   }
@@ -462,11 +734,14 @@
     a.remove();
   }
 
+  setContractAccepted(Boolean(contractAcceptCheckbox && contractAcceptCheckbox.checked));
+
   contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var dataValues = readFormValues();
     if (!dataValues) return;
 
+    var referenceId = persistLocalBookingRecord(dataValues);
     var waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(dataValues.summary);
     triggerExternalWhatsApp(waUrl);
 
@@ -474,46 +749,24 @@
       formFeedback.setAttribute('role', 'status');
       formFeedback.setAttribute('aria-live', 'polite');
       formFeedback.className = 'form-feedback is-visible';
-      var hasProof = Boolean(selectedProofFile && dataValues.pricing.requiresDeposit);
-      var canShare =
-        hasProof &&
-        typeof navigator.canShare === 'function' &&
-        (function () {
-          try { return navigator.canShare({ files: [selectedProofFile] }); } catch (_err) { return false; }
-        })();
+      var hasProofPreview = Boolean(selectedProofFile && dataValues.pricing.requiresDeposit);
 
       var html =
-        '<p class="feedback-kicker">Récapitulatif prêt — envoyez-le sur WhatsApp pour confirmer</p>' +
-        '<p class="feedback-lead">Merci d\'avoir choisi DIONTADO PRODUCTION. Votre récapitulatif est prêt dans WhatsApp : appuyez sur Envoyer dans la conversation afin que notre équipe vérifie la disponibilité de la date, de l\'heure et confirme votre prestation.</p>';
+        '<p class="feedback-kicker">Demande préparée (' + escapeHTML(referenceId) + ') · Contrat ' + CONTRACT_VERSION + '</p>' +
+        '<p class="feedback-lead">Votre demande et l’acceptation du contrat (enregistrée le ' + escapeHTML(dataValues.acceptedDateLabel) + ') ont été préparées pour WhatsApp. La réservation ne sera définitive qu’après vérification de la disponibilité et du paiement par DIONTADO PRODUCTION.</p>';
 
-      if (hasProof) {
+      if (hasProofPreview) {
         html +=
           '<div class="feedback-proof-box">' +
-            '<strong>Action finale pour votre preuve de paiement :</strong> joignez votre capture d’écran (<code>' + escapeHTML(selectedProofFile.name) + '</code>) directement dans la conversation WhatsApp qui vient de s’ouvrir.' +
+            '<strong>Rappel :</strong> aucun fichier n’est envoyé automatiquement par le site. Pensez à joindre manuellement votre capture d’écran (<code>' + escapeHTML(selectedProofFile.name) + '</code>) dans la conversation WhatsApp.' +
           '</div>';
       }
 
       html += '<div class="feedback-actions">' +
-        '<a href="' + escapeHTML(waUrl) + '" target="_blank" rel="noopener noreferrer" class="btn-whatsapp btn-feedback-wa">Ouvrir WhatsApp (+221 76 481 23 91)</a>';
-
-      if (canShare) {
-        html += '<button type="button" id="shareProofBtn" class="btn-primary btn-feedback-action">Envoyer message + capture (Mobile)</button>';
-      }
-
-      html += '<button type="button" id="copySummaryBtn" class="btn-outline btn-feedback-action">Copier le récapitulatif</button></div>';
+        '<a href="' + escapeHTML(waUrl) + '" target="_blank" rel="noopener noreferrer" class="btn-whatsapp btn-feedback-wa">Ouvrir WhatsApp (+221 76 481 23 91)</a>' +
+        '<button type="button" id="copySummaryBtn" class="btn-outline btn-feedback-action">Copier le récapitulatif</button></div>';
 
       formFeedback.innerHTML = html;
-
-      var shareBtn = document.getElementById('shareProofBtn');
-      if (shareBtn && selectedProofFile) {
-        shareBtn.addEventListener('click', function () {
-          navigator.share({
-            title: 'Réservation DIONTADO PRODUCTION',
-            text: dataValues.summary,
-            files: [selectedProofFile]
-          }).catch(function () {});
-        });
-      }
 
       var copyBtn = document.getElementById('copySummaryBtn');
       if (copyBtn && navigator.clipboard && navigator.clipboard.writeText) {
@@ -530,7 +783,8 @@
     sendEmailBtn.addEventListener('click', function () {
       var dataValues = readFormValues();
       if (!dataValues) return;
-      var subject = encodeURIComponent('[DIONTADO PRODUCTION] Réservation : ' + dataValues.service + ' (' + dataValues.formula.label + ') — ' + dataValues.name);
+      persistLocalBookingRecord(dataValues);
+      var subject = encodeURIComponent('[DIONTADO PRODUCTION] Demande de réservation : ' + dataValues.service + ' (' + dataValues.formula.label + ') — ' + dataValues.name);
       var body = encodeURIComponent(dataValues.summary);
       window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + body;
       if (formFeedback) {
@@ -538,7 +792,7 @@
         formFeedback.setAttribute('aria-live', 'polite');
         formFeedback.className = 'form-feedback is-visible';
         formFeedback.textContent = '';
-        formFeedback.appendChild(document.createTextNode('Votre récapitulatif complet a été préparé dans votre application email vers '));
+        formFeedback.appendChild(document.createTextNode('Votre récapitulatif complet (avec version du contrat ' + CONTRACT_VERSION + ') a été préparé dans votre application email vers '));
         var emailStrong = document.createElement('strong');
         emailStrong.textContent = CONTACT_EMAIL;
         formFeedback.appendChild(emailStrong);
