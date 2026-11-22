@@ -6,11 +6,11 @@
   <title>DIONTADO PRODUCTION — Production Audiovisuelle &amp; Photographie | Sénégal</title>
   <meta
     name="description"
-    content="DIONTADO PRODUCTION — Maison de production audiovisuelle et studio photographique au Sénégal. Mariage, portrait, culture, reportage et film sur mesure."
+    content="DIONTADO PRODUCTION — Maison de production audiovisuelle et studio photographique au Sénégal. Photographie professionnelle, réalisation vidéo et cinéma."
   />
   <meta
     name="keywords"
-    content="DIONTADO PRODUCTION, Amadou Sy, production audiovisuelle Sénégal, réalisation vidéo Dakar, photographe professionnel Yeumbeul, mariage, portrait, culture, studio"
+    content="DIONTADO PRODUCTION, Amadou Sy, production audiovisuelle Sénégal, réalisation vidéo Dakar, photographe professionnel Yeumbeul, prewedding, mariage, portrait, mode, culture, studio"
   />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="fr_FR" />
@@ -18,7 +18,7 @@
   <meta property="og:title" content="DIONTADO PRODUCTION — L’image raconte. Le cinéma fait ressentir." />
   <meta
     property="og:description"
-    content="Photographie professionnelle et réalisation vidéo cinématographique au Sénégal. Découvrez nos réalisations et réservez votre prestation."
+    content="Nous donnons vie à vos histoires à travers la photographie et la réalisation vidéo. Sénégal &amp; international."
   />
   <meta
     property="og:image"
@@ -49,7 +49,7 @@
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "name": "DIONTADO PRODUCTION",
-      "description": "Maison de production audiovisuelle, réalisation vidéo et photographie professionnelle au Sénégal.",
+      "description": "Maison de production audiovisuelle, réalisation vidéo et photographie professionnelle au Sénégal et à l'international.",
       "url": "https://diontadoevens0-a11y.github.io/diontado-production-portfolio/index.html",
       "telephone": "+221764812391",
       "email": "diontadoevens.0@gmail.com",
@@ -71,19 +71,22 @@
 
   <style>
     /* ==========================================================================
-       DIONTADO PRODUCTION — Identité Cinématographique
-       Noir profond (#070708), Ivoire (#F5F3EE), Or discret (#C8A46B)
+       DIONTADO PRODUCTION — GRANDE REFONTE CINÉMATOGRAPHIQUE
+       Palette : Noir charbon (#09090B), Gris cinéma (#14141A), Blanc cassé (#F5F2EB),
+                 Doré champagne (#D4AF6A), Bronze chaud (#9E6E3B)
        ========================================================================== */
     :root {
-      --bg-dark: #070708;
-      --bg-dark-elevated: #111114;
-      --bg-dark-card: #16161a;
-      --text-light: #f5f3ee;
+      --bg-charcoal: #09090b;
+      --bg-slate: #121217;
+      --bg-card: #16161d;
+      --text-ivory: #f5f2eb;
       --text-muted: #a6a199;
-      --gold: #c8a46b;
-      --gold-light: #dfbe89;
+      --gold: #d4af6a;
+      --gold-bright: #e7ca91;
+      --bronze: #9e6e3b;
+      --bronze-deep: #7c4a2d;
       --beige: #e6dccb;
-      --border-dark: rgba(255, 255, 255, 0.11);
+      --border-hairline: rgba(255, 255, 255, 0.11);
       --whatsapp: #1f7a4c;
       --whatsapp-hover: #258d58;
       --font-display: "Cormorant Garamond", Georgia, serif;
@@ -101,8 +104,8 @@
 
     html {
       scroll-behavior: smooth;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
+      background-color: var(--bg-charcoal);
+      color: var(--text-ivory);
       font-family: var(--font-sans);
       -webkit-font-smoothing: antialiased;
     }
@@ -110,8 +113,8 @@
     body {
       overflow-x: hidden;
       line-height: 1.6;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
+      background-color: var(--bg-charcoal);
+      color: var(--text-ivory);
     }
 
     img, video {
@@ -145,16 +148,16 @@
     }
 
     .kicker {
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 600;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold);
     }
 
     .mono-meta {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--gold);
@@ -162,9 +165,9 @@
 
     .section-title {
       font-family: var(--font-display);
-      font-size: clamp(2.2rem, 4vw, 3.35rem);
+      font-size: clamp(2.2rem, 4.2vw, 3.4rem);
       font-weight: 600;
-      line-height: 1.06;
+      line-height: 1.05;
       letter-spacing: -0.015em;
       color: #ffffff;
       text-wrap: balance;
@@ -176,8 +179,8 @@
       align-items: flex-end;
       justify-content: space-between;
       gap: 20px;
-      padding-bottom: 36px;
-      border-bottom: 1px solid var(--border-dark);
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border-hairline);
     }
 
     .section-lead {
@@ -191,20 +194,21 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      height: 44px;
-      padding-inline: 22px;
+      height: 46px;
+      padding-inline: 24px;
       border-radius: 6px;
       background-color: var(--gold);
       color: #0b0a09;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       white-space: nowrap;
       transition: background-color 0.18s ease, transform 0.18s var(--ease-out);
     }
 
     .btn-primary:hover {
-      background-color: var(--gold-light);
+      background-color: var(--gold-bright);
       transform: translateY(-1px);
     }
 
@@ -213,22 +217,24 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      height: 44px;
-      padding-inline: 22px;
+      height: 46px;
+      padding-inline: 24px;
       border-radius: 6px;
-      border: 1px solid rgba(245, 243, 238, 0.34);
-      background-color: rgba(7, 7, 8, 0.45);
-      color: var(--text-light);
-      font-size: 0.85rem;
-      font-weight: 500;
+      border: 1px solid rgba(245, 242, 235, 0.35);
+      background-color: rgba(9, 9, 11, 0.5);
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       white-space: nowrap;
       transition: border-color 0.18s ease, color 0.18s ease, background-color 0.18s ease;
     }
 
     .btn-outline:hover {
       border-color: var(--gold);
-      color: var(--gold-light);
-      background-color: rgba(200, 164, 107, 0.1);
+      color: var(--gold-bright);
+      background-color: rgba(212, 175, 106, 0.1);
     }
 
     .btn-ghost-gold {
@@ -236,12 +242,12 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      height: 40px;
-      padding-inline: 16px;
+      height: 44px;
+      padding-inline: 20px;
       border-radius: 6px;
-      border: 1px solid rgba(200, 164, 107, 0.55);
-      color: var(--gold-light);
-      font-size: 0.78rem;
+      border: 1px solid rgba(212, 175, 106, 0.55);
+      color: var(--gold-bright);
+      font-size: 0.8rem;
       font-weight: 600;
       white-space: nowrap;
       transition: background-color 0.18s ease, color 0.18s ease;
@@ -253,26 +259,64 @@
     }
 
     /* ==========================================================================
-       HEADER & BARRE DE PROGRESSION
+       CARTE 3D PERSPECTIVE & ANIMATIONS CINÉMA
+       ========================================================================== */
+    .perspective-stage {
+      perspective: 1100px;
+    }
+
+    .tilt-3d {
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.28s var(--ease-out), border-color 0.22s ease;
+      will-change: transform;
+    }
+
+    .tilt-sheen {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.28s ease;
+      z-index: 4;
+    }
+
+    @keyframes kenBurnsSlow {
+      0% { transform: scale(1) translate3d(0, 0, 0); }
+      100% { transform: scale(1.06) translate3d(0, -1%, 0); }
+    }
+
+    @keyframes pageFadeIn {
+      from { opacity: 0; transform: translate3d(0, 14px, 0); }
+      to { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+
+    .page-enter {
+      animation: pageFadeIn 0.5s var(--ease-out) forwards;
+    }
+
+    /* ==========================================================================
+       HEADER DISCRET & BARRE DE PROGRESSION
        ========================================================================== */
     .site-header {
       position: fixed;
       inset-block-start: 0;
       inset-inline: 0;
       z-index: 50;
-      height: 70px;
+      height: 68px;
       display: flex;
       align-items: center;
       border-bottom: 1px solid rgba(255, 255, 255, 0.09);
-      background: rgba(7, 7, 8, 0.72);
+      background: rgba(9, 9, 11, 0.72);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       transition: background-color 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
     }
 
     .site-header.is-scrolled {
-      background: rgba(7, 7, 8, 0.94);
-      border-bottom-color: rgba(200, 164, 107, 0.22);
+      background: rgba(9, 9, 11, 0.94);
+      border-bottom-color: rgba(212, 175, 106, 0.24);
     }
 
     .scroll-progress-track {
@@ -288,7 +332,7 @@
     .scroll-progress-fill {
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+      background: linear-gradient(90deg, var(--bronze), var(--gold-bright), var(--gold));
       transform-origin: left center;
       transform: scaleX(0);
       will-change: transform;
@@ -332,13 +376,19 @@
     .nav-links a {
       font-size: 0.875rem;
       font-weight: 500;
-      color: rgba(245, 243, 238, 0.78);
+      color: rgba(245, 242, 235, 0.78);
       white-space: nowrap;
       transition: color 0.18s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--gold-light);
+    .nav-links a:hover,
+    .nav-links a.is-active {
+      color: var(--gold-bright);
+    }
+
+    .nav-links a.is-active {
+      text-decoration: underline;
+      text-underline-offset: 8px;
     }
 
     .header-actions {
@@ -351,7 +401,7 @@
     .header-cta {
       height: 38px;
       padding-inline: 16px;
-      font-size: 0.78rem;
+      font-size: 0.74rem;
     }
 
     .mobile-toggle {
@@ -361,17 +411,17 @@
       width: 40px;
       height: 40px;
       border-radius: 6px;
-      border: 1px solid var(--border-dark);
-      color: var(--text-light);
+      border: 1px solid var(--border-hairline);
+      color: var(--text-ivory);
       font-size: 1.1rem;
     }
 
     .mobile-drawer {
       display: none;
       position: fixed;
-      inset: 70px 0 0 0;
+      inset: 68px 0 0 0;
       z-index: 49;
-      background: rgba(7, 7, 8, 0.98);
+      background: rgba(9, 9, 11, 0.98);
       padding: 28px 24px;
       flex-direction: column;
       overflow-y: auto;
@@ -386,56 +436,54 @@
       font-size: 1.75rem;
       font-weight: 500;
       padding-block: 14px;
-      border-bottom: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-hairline);
       color: #ffffff;
     }
 
     .mobile-drawer a:hover {
-      color: var(--gold-light);
+      color: var(--gold-bright);
     }
 
     @media (min-width: 900px) {
-      .nav-links {
-        display: flex;
-      }
-      .mobile-toggle,
-      .mobile-drawer {
-        display: none !important;
-      }
+      .nav-links { display: flex; }
+      .mobile-toggle, .mobile-drawer { display: none !important; }
     }
 
     /* ==========================================================================
-       1. ACCUEIL (HERO + ACTIVITÉS PRINCIPALES)
+       1. COUVERTURE CINÉMATOGRAPHIQUE
        ========================================================================== */
     .hero {
       position: relative;
-      min-height: 92svh;
+      min-height: 94svh;
       display: flex;
       align-items: flex-end;
-      padding-block: 120px 64px;
+      padding-block: 124px 68px;
       overflow: hidden;
-      background-color: var(--bg-dark);
-      border-bottom: 1px solid var(--border-dark);
+      background-color: var(--bg-charcoal);
+      border-bottom: 1px solid var(--border-hairline);
     }
 
     .hero-media {
       position: absolute;
       inset: 0;
       z-index: 0;
+      will-change: transform;
     }
 
     .hero-slide {
       position: absolute;
       inset: 0;
       opacity: 0;
-      transform: scale(1.03);
-      transition: opacity 1s var(--ease-out), transform 6s ease-out;
+      transition: opacity 1s var(--ease-out);
       pointer-events: none;
     }
 
     .hero-slide.is-active {
       opacity: 1;
-      transform: scale(1);
+    }
+
+    .hero-slide.is-active img {
+      animation: kenBurnsSlow 14s ease-out forwards;
     }
 
     .hero-slide img {
@@ -449,12 +497,9 @@
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(
-        180deg,
-        rgba(7, 7, 8, 0.56) 0%,
-        rgba(7, 7, 8, 0.52) 45%,
-        rgba(7, 7, 8, 0.96) 100%
-      );
+      background:
+        radial-gradient(ellipse at top right, rgba(212, 175, 106, 0.16), transparent 55%),
+        linear-gradient(180deg, rgba(9, 9, 11, 0.52) 0%, rgba(9, 9, 11, 0.54) 44%, rgba(9, 9, 11, 0.96) 100%);
     }
 
     .hero-content {
@@ -478,22 +523,29 @@
     }
 
     .hero-grid {
-      max-width: 740px;
+      max-width: 760px;
+    }
+
+    .hero-logo-mark {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 22px;
     }
 
     .hero-kicker {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--gold-light);
+      color: var(--gold-bright);
     }
 
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(2.9rem, 6vw, 4.9rem);
+      font-size: clamp(2.9rem, 6.2vw, 5.1rem);
       font-weight: 600;
-      line-height: 1.03;
+      line-height: 1.02;
       letter-spacing: -0.02em;
       color: #ffffff;
       max-width: 15ch;
@@ -503,10 +555,10 @@
 
     .hero-subtitle {
       margin-top: 18px;
-      max-width: 54ch;
-      font-size: 0.98rem;
+      max-width: 52ch;
+      font-size: 1rem;
       line-height: 1.65;
-      color: rgba(245, 243, 238, 0.86);
+      color: rgba(245, 242, 235, 0.88);
     }
 
     .hero-cta-row {
@@ -524,17 +576,15 @@
     }
 
     @media (min-width: 900px) {
-      .hero-controls {
-        align-self: flex-end;
-      }
+      .hero-controls { align-self: flex-end; }
     }
 
     .hero-arrow {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       border: 1px solid rgba(255, 255, 255, 0.25);
-      background: rgba(7, 7, 8, 0.5);
+      background: rgba(9, 9, 11, 0.55);
       color: #ffffff;
       display: inline-flex;
       align-items: center;
@@ -545,7 +595,7 @@
 
     .hero-arrow:hover {
       border-color: var(--gold);
-      color: var(--gold-light);
+      color: var(--gold-bright);
     }
 
     .hero-dots {
@@ -563,229 +613,470 @@
     }
 
     .hero-dot.is-active {
-      width: 26px;
+      width: 28px;
       background: var(--gold);
     }
 
-    .activities-strip {
-      background-color: #0b0b0d;
-      border-bottom: 1px solid var(--border-dark);
+    /* ==========================================================================
+       2. PRÉSENTATION DE DIONTADO PRODUCTION
+       ========================================================================== */
+    .presentation-section {
+      background: linear-gradient(180deg, #0e0e13 0%, #09090b 100%);
+      padding-block: 76px;
+      border-bottom: 1px solid var(--border-hairline);
     }
 
-    .activities-grid {
+    .presentation-grid {
       display: grid;
+      gap: 36px;
+      align-items: center;
+    }
+
+    @media (min-width: 960px) {
+      .presentation-grid {
+        grid-template-columns: 1.35fr 1fr;
+      }
+    }
+
+    .presentation-cards {
+      display: grid;
+      gap: 16px;
       grid-template-columns: 1fr;
     }
 
-    @media (min-width: 768px) {
-      .activities-grid {
+    @media (min-width: 600px) {
+      .presentation-cards {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    .activity-card {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 20px;
-      padding-block: 28px;
-      border-bottom: 1px solid var(--border-dark);
-      transition: color 0.2s ease;
-    }
-
-    .activity-card:last-child {
-      border-bottom: none;
-    }
-
-    @media (min-width: 768px) {
-      .activity-card {
-        border-bottom: none;
-      }
-      .activity-card:first-child {
-        padding-right: 36px;
-        border-right: 1px solid var(--border-dark);
-      }
-      .activity-card:last-child {
-        padding-left: 36px;
-      }
-    }
-
-    .activity-title {
-      font-family: var(--font-display);
-      font-size: 1.85rem;
-      font-weight: 600;
-      color: #ffffff;
-      margin-top: 4px;
-      transition: color 0.2s ease;
-    }
-
-    .activity-card:hover .activity-title {
-      color: var(--gold-light);
-    }
-
-    .activity-desc {
-      margin-top: 6px;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-
-    .activity-badge {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid var(--border-dark);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--gold-light);
+    .discipline-card {
+      display: block;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-slate);
       transition: border-color 0.2s ease;
     }
 
-    .activity-card:hover .activity-badge {
-      border-color: var(--gold);
+    .discipline-card:hover {
+      border-color: rgba(212, 175, 106, 0.65);
     }
 
-    /* ==========================================================================
-       2. À PROPOS & BIOGRAPHIE (Amadou Sy + Piliers + BTS)
-       ========================================================================== */
-    .about-section {
-      background-color: var(--bg-dark);
-      padding-block: 88px;
-    }
-
-    .about-grid {
-      margin-top: 44px;
-      display: grid;
-      gap: 40px;
-      align-items: start;
-    }
-
-    @media (min-width: 960px) {
-      .about-grid {
-        grid-template-columns: 0.86fr 1.14fr;
-      }
-    }
-
-    .portrait-card {
-      background: var(--bg-dark-elevated);
-      border: 1px solid var(--border-dark);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .portrait-frame {
-      aspect-ratio: 4 / 5;
-      width: 100%;
-      overflow: hidden;
-      background: #191817;
-    }
-
-    .portrait-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-    }
-
-    .portrait-caption {
-      padding: 24px 26px;
-      border-top: 1px solid var(--border-dark);
-    }
-
-    .portrait-name {
+    .discipline-title {
+      margin-top: 12px;
       font-family: var(--font-display);
-      font-size: 1.7rem;
+      font-size: 1.55rem;
       font-weight: 600;
       color: #ffffff;
     }
 
-    .portrait-role {
-      margin-top: 4px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .portrait-quote {
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border-dark);
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-style: italic;
-      color: var(--beige);
-    }
-
-    .about-story {
-      display: grid;
-      gap: 14px;
-      font-size: 0.96rem;
-      line-height: 1.72;
-      color: rgba(245, 243, 238, 0.84);
-    }
-
-    .pillars-row {
-      margin-top: 28px;
-      padding-block: 24px;
-      border-top: 1px solid var(--border-dark);
-      border-bottom: 1px solid var(--border-dark);
-      display: grid;
-      gap: 22px;
-    }
-
-    @media (min-width: 640px) {
-      .pillars-row {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    .pillar-title {
-      margin-top: 4px;
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 600;
-      color: #ffffff;
-    }
-
-    .pillar-text {
+    .discipline-desc {
       margin-top: 6px;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       line-height: 1.55;
       color: var(--text-muted);
     }
 
-    .approach-box {
-      margin-top: 28px;
-      padding: 26px;
-      border-radius: 12px;
-      border: 1px solid var(--border-dark);
-      background: var(--bg-dark-elevated);
+    /* ==========================================================================
+       3. PORTFOLIO PHOTOGRAPHIQUE — CARTES 3D CATÉGORIES INTERACTIVES
+       ========================================================================== */
+    .portfolio-cats-section {
+      background-color: var(--bg-charcoal);
+      padding-block: 88px;
+      border-bottom: 1px solid var(--border-hairline);
     }
 
-    .approach-philosophy {
-      margin-top: 16px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border-dark);
-      font-size: 0.74rem;
-      font-weight: 600;
+    .categories-grid {
+      margin-top: 44px;
+      display: grid;
+      gap: 22px;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 640px) {
+      .categories-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .categories-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+      }
+      .cat-card {
+        grid-column: span 3;
+      }
+      .cat-card.is-wide {
+        grid-column: span 6;
+      }
+    }
+
+    .cat-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      width: 100%;
+      height: 376px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: var(--bg-slate);
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .cat-card:hover {
+      border-color: rgba(212, 175, 106, 0.65);
+    }
+
+    .cat-card-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .cat-card-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.65s var(--ease-out);
+    }
+
+    .cat-card:hover .cat-card-bg img {
+      transform: scale(1.05);
+    }
+
+    .cat-card-empty {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gold-light);
     }
 
-    .bts-block {
-      margin-top: 64px;
-      padding-top: 48px;
-      border-top: 1px solid var(--border-dark);
+    .cat-card-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, transparent 22%, rgba(9, 9, 11, 0.68) 62%, #09090b 100%);
     }
 
-    .bts-toolbar {
-      margin-top: 22px;
+    .cat-card-body {
+      position: relative;
+      z-index: 2;
+      padding: 24px;
+    }
+
+    .cat-card-count {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gold-bright);
+    }
+
+    .cat-card-title {
+      margin-top: 6px;
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 600;
+      line-height: 1.05;
+      color: #ffffff;
+    }
+
+    .cat-card:hover .cat-card-title {
+      color: var(--gold-bright);
+    }
+
+    .cat-card-sub {
+      margin-top: 6px;
+      font-size: 0.78rem;
+      color: rgba(245, 242, 235, 0.78);
+    }
+
+    .cat-card-link {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    /* ==========================================================================
+       PAGE CATÉGORIE DÉDIÉE (#/realisations/<slug>)
+       ========================================================================== */
+    .category-topbar {
+      border-bottom: 1px solid var(--border-hairline);
+      background: #0e0e13;
+      padding-block: 14px;
+    }
+
+    .category-topbar-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.05);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-ivory);
+      transition: border-color 0.18s ease, color 0.18s ease;
+    }
+
+    .btn-back:hover {
+      border-color: var(--gold);
+      color: var(--gold-bright);
+    }
+
+    .category-hero {
+      position: relative;
+      min-height: 52svh;
+      display: flex;
+      align-items: flex-end;
+      padding-block: 72px 54px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .category-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .category-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: kenBurnsSlow 14s ease-out forwards;
+    }
+
+    .category-hero-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(9, 9, 11, 0.5) 0%, rgba(9, 9, 11, 0.72) 55%, #09090b 100%);
+    }
+
+    .category-gallery-wrap {
+      padding-block: 64px 88px;
+    }
+
+    .gallery-grid {
+      columns: 1;
+      column-gap: 22px;
+    }
+
+    @media (min-width: 640px) {
+      .gallery-grid { columns: 2; }
+    }
+
+    @media (min-width: 1024px) {
+      .gallery-grid { columns: 3; }
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 22px;
+    }
+
+    .gallery-card {
+      position: relative;
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid var(--border-hairline);
+      background: #0b0b0d;
+      text-align: left;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.55s var(--ease-out);
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 18px;
+      background: linear-gradient(180deg, transparent 42%, rgba(9, 9, 11, 0.9) 100%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .gallery-card:hover .gallery-overlay,
+    .gallery-card:focus-visible .gallery-overlay {
+      opacity: 1;
+    }
+
+    .category-empty-panel {
+      border-radius: 16px;
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-slate);
+      padding: 56px 28px;
+      text-align: center;
+    }
+
+    .other-cats-grid {
+      margin-top: 24px;
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 640px) {
+      .other-cats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 1024px) {
+      .other-cats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .other-cat-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-slate);
+      text-align: left;
+      transition: border-color 0.18s ease;
+    }
+
+    .other-cat-btn:hover {
+      border-color: rgba(212, 175, 106, 0.65);
+    }
+
+    /* ==========================================================================
+       4. PORTFOLIO VIDÉO (GRANDE ZONE SHOWREEL + CATÉGORIES + LECTURE DIRECTE)
+       ========================================================================== */
+    .videos-section {
+      background: linear-gradient(180deg, #111116 0%, #09090b 100%);
+      padding-block: 88px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .showreel-shell {
+      margin-top: 38px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #000000;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+    }
+
+    .video-stage {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      background: #000000;
+      overflow: hidden;
+    }
+
+    .video-stage iframe,
+    .video-stage video {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      object-fit: cover;
+    }
+
+    .showreel-cover {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .showreel-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .showreel-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(9, 9, 11, 0.36) 0%, rgba(9, 9, 11, 0.5) 45%, #09090b 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .showreel-play-btn {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--gold-bright);
+      color: #0b0a09;
+      font-size: 1.55rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 4px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
+      transition: transform 0.25s var(--ease-out), background-color 0.2s ease;
+    }
+
+    .showreel-play-btn:hover {
+      transform: scale(1.08);
+      background: var(--gold-bright);
+    }
+
+    .video-stage-bar {
+      display: none;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px 24px;
+      border-top: 1px solid var(--border-hairline);
+      background: var(--bg-slate);
+    }
+
+    .video-stage-bar.is-visible {
+      display: flex;
+    }
+
+    .video-toolbar {
+      margin-top: 38px;
       padding-bottom: 18px;
-      border-bottom: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-hairline);
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -793,97 +1084,403 @@
       gap: 16px;
     }
 
-    .bts-grid {
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-slate);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      white-space: nowrap;
+      transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+    }
+
+    .filter-btn:hover {
+      color: #ffffff;
+      border-color: rgba(212, 175, 106, 0.6);
+    }
+
+    .filter-btn.is-active {
+      background-color: var(--gold);
+      border-color: var(--gold);
+      color: #0b0a09;
+      font-weight: 600;
+    }
+
+    .video-cards-grid {
       margin-top: 28px;
       display: grid;
+      gap: 22px;
       grid-template-columns: 1fr;
-      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .video-cards-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .video-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-slate);
+      overflow: hidden;
+      text-align: left;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .video-card:hover {
+      border-color: rgba(212, 175, 106, 0.65);
+    }
+
+    .video-card.is-playing {
+      border-color: var(--gold);
+      background: rgba(212, 175, 106, 0.1);
+    }
+
+    .video-card-media {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      overflow: hidden;
+      background: #000000;
+    }
+
+    .video-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s var(--ease-out);
+    }
+
+    .video-card:hover .video-card-media img {
+      transform: scale(1.05);
+    }
+
+    .video-card-play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(9, 9, 11, 0.35);
+    }
+
+    .video-card-play span {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #0b0a09;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 3px;
+      transition: transform 0.2s ease;
+    }
+
+    .video-card:hover .video-card-play span {
+      transform: scale(1.08);
+    }
+
+    .video-card-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .video-card-title {
+      margin-top: 6px;
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #ffffff;
+    }
+
+    .video-card:hover .video-card-title {
+      color: var(--gold-bright);
+    }
+
+    .video-card-desc {
+      margin-top: 8px;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+
+    .video-whatsapp-banner {
+      margin-top: 34px;
+      padding: 22px 26px;
+      border-radius: 14px;
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-slate);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    /* ==========================================================================
+       5. À PROPOS — MISE EN PAGE MAGAZINE ADOBE INDESIGN
+       ========================================================================== */
+    .about-section {
+      background-color: var(--bg-charcoal);
+      padding-block: 58px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .magazine-masthead {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-block: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+    }
+
+    .magazine-upper {
+      margin-top: 32px;
+      display: grid;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .magazine-portrait-col {
+      width: 100%;
+      max-width: 235px;
+      margin-inline: auto;
+    }
+
+    .magazine-portrait-card {
+      background: #111116;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .magazine-portrait-frame {
+      aspect-ratio: 3 / 4;
+      width: 100%;
+      overflow: hidden;
+      background: #181615;
+    }
+
+    .magazine-portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .magazine-portrait-caption {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .magazine-rule {
+      margin-top: 18px;
+      width: 64px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .magazine-cols {
+      margin-top: 24px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .magazine-lower {
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      display: grid;
+      gap: 24px;
+    }
+
+    .magazine-signature-bar {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-hairline);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
     }
 
     @media (min-width: 640px) {
-      .bts-grid {
+      .magazine-cols {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 32px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .magazine-lower {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0;
+      }
+      .magazine-lower-col {
+        padding-inline: 26px;
+        border-left: 1px solid var(--border-hairline);
+      }
+      .magazine-lower-col:first-child {
+        padding-left: 0;
+        border-left: none;
+      }
+      .magazine-lower-col:last-child {
+        padding-right: 0;
+      }
+    }
+
+    @media (min-width: 960px) {
+      .about-section {
+        padding-block: 68px;
+      }
+      .magazine-upper {
+        grid-template-columns: 240px minmax(0, 1fr);
+        gap: 44px;
+      }
+      .magazine-portrait-col {
+        max-width: 240px;
+        margin-inline: 0;
+      }
+      .magazine-editorial-col {
+        border-left: 1px solid var(--border-hairline);
+        padding-left: 42px;
+      }
+    }
+
+    /* ==========================================================================
+       PAGE DÉDIÉE TARIFS (#/tarifs)
+       ========================================================================== */
+    .tarifs-hero {
+      position: relative;
+      padding-block: 68px 56px;
+      border-bottom: 1px solid var(--border-hairline);
+      background: radial-gradient(ellipse at top right, rgba(212, 175, 106, 0.13), transparent 58%),
+                  linear-gradient(180deg, #131319 0%, #09090b 100%);
+    }
+
+    .tarifs-section {
+      padding-block: 64px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .tarifs-grid-photo,
+    .tarifs-grid-video {
+      margin-top: 34px;
+      display: grid;
+      gap: 22px;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 640px) {
+      .tarifs-grid-photo,
+      .tarifs-grid-video {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
     @media (min-width: 1024px) {
-      .bts-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+      .tarifs-grid-photo {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .tarifs-grid-video {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
+      .tarifs-grid-video .tarif-card {
+        grid-column: span 2;
+      }
+      .tarifs-grid-video .tarif-card.is-wide {
+        grid-column: span 3;
       }
     }
 
-    .bts-card {
-      background: var(--bg-dark-elevated);
-      border: 1px solid var(--border-dark);
-      border-radius: 12px;
-      overflow: hidden;
-      text-align: left;
+    .tarif-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: var(--bg-slate);
+      padding: 28px;
       transition: border-color 0.2s ease;
     }
 
-    .bts-card:hover {
-      border-color: rgba(200, 164, 107, 0.55);
+    .tarif-card:hover {
+      border-color: rgba(212, 175, 106, 0.65);
     }
 
-    .bts-media {
-      aspect-ratio: 4 / 3;
-      width: 100%;
-      overflow: hidden;
-      background: #0b0b0d;
+    .tarif-card-top {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 12px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-hairline);
     }
 
-    .bts-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s var(--ease-out);
+    .tarif-price-box {
+      margin-top: 16px;
+      padding-block: 10px;
+      border-top: 1px solid rgba(212, 175, 106, 0.3);
+      border-bottom: 1px solid rgba(212, 175, 106, 0.3);
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      padding-right: 16px;
     }
 
-    .bts-card:hover .bts-media img {
-      transform: scale(1.03);
-    }
-
-    .bts-fallback {
-      display: none;
-      padding: 18px;
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .bts-body {
-      padding: 14px 16px;
-    }
-
-    .bts-cat {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .bts-title {
-      margin-top: 4px;
+    .tarif-price-value {
       font-family: var(--font-display);
-      font-size: 1.15rem;
+      font-size: 1.6rem;
       font-weight: 600;
-      color: #ffffff;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      color: var(--gold-bright);
+    }
+
+    .tarifs-whatsapp-banner {
+      margin-block: 56px;
+      padding: 34px;
+      border-radius: 16px;
+      border: 1px solid rgba(212, 175, 106, 0.35);
+      background: linear-gradient(90deg, #15141a 0%, #121217 50%, #171411 100%);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
     }
 
     /* ==========================================================================
-       3. SERVICES & TARIFS
+       6. SERVICES (2 ACTIVITÉS PRINCIPALES)
        ========================================================================== */
     .services-section {
-      background-color: var(--bg-dark-elevated);
+      background: linear-gradient(180deg, #111116 0%, #09090b 100%);
       padding-block: 88px;
-      border-top: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-hairline);
     }
 
     .services-grid {
@@ -899,12 +1496,13 @@
     }
 
     .service-card {
-      background: var(--bg-dark);
-      border: 1px solid var(--border-dark);
-      border-radius: 14px;
+      background: var(--bg-charcoal);
+      border: 1px solid var(--border-hairline);
+      border-radius: 16px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      height: 100%;
     }
 
     .service-image-wrap {
@@ -936,18 +1534,20 @@
     .service-title {
       margin-top: 6px;
       font-family: var(--font-display);
-      font-size: 1.95rem;
+      font-size: 2rem;
       font-weight: 600;
       color: #ffffff;
     }
 
     .service-bullets {
-      margin-top: 14px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-hairline);
       list-style: none;
       display: grid;
       gap: 8px;
-      font-size: 0.9rem;
-      color: rgba(245, 243, 238, 0.85);
+      font-size: 0.88rem;
+      color: rgba(245, 242, 235, 0.86);
     }
 
     .service-bullets li::before {
@@ -959,409 +1559,15 @@
 
     .service-footer {
       padding-top: 18px;
-      border-top: 1px solid var(--border-dark);
-    }
-
-    .pricing-block {
-      margin-top: 56px;
-      padding-top: 48px;
-      border-top: 1px solid var(--border-dark);
-    }
-
-    .pricing-grid {
-      margin-top: 32px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    @media (min-width: 640px) {
-      .pricing-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .pricing-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-    }
-
-    .pricing-card {
-      background: var(--bg-dark);
-      border: 1px solid var(--border-dark);
-      border-radius: 12px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .pricing-cat {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .pricing-name {
-      margin-top: 8px;
-      font-family: var(--font-display);
-      font-size: 1.55rem;
-      font-weight: 600;
-      line-height: 1.15;
-      color: #ffffff;
-    }
-
-    .pricing-price {
-      margin-top: 12px;
-      font-family: var(--font-mono);
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--gold-light);
-    }
-
-    .pricing-summary {
-      margin-top: 8px;
-      font-size: 0.8rem;
-      line-height: 1.55;
-      color: var(--text-muted);
-    }
-
-    .pricing-list {
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border-dark);
-      list-style: none;
-      display: grid;
-      gap: 6px;
-      font-size: 0.8rem;
-      color: rgba(245, 243, 238, 0.82);
-    }
-
-    .pricing-list li::before {
-      content: "· ";
-      color: var(--gold);
-      font-weight: 700;
-    }
-
-    .btn-package {
-      width: 100%;
-      height: 40px;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.04);
-      color: #ffffff;
-      font-size: 0.78rem;
-      font-weight: 600;
-      transition: border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
-    }
-
-    .btn-package:hover {
-      border-color: var(--gold);
-      background: var(--gold);
-      color: #0b0a09;
+      border-top: 1px solid var(--border-hairline);
     }
 
     /* ==========================================================================
-       4. RÉALISATIONS PHOTO (Galerie filtrable + Lightbox)
-       ========================================================================== */
-    .gallery-section {
-      background-color: var(--bg-dark);
-      padding-block: 88px;
-      border-top: 1px solid var(--border-dark);
-    }
-
-    .gallery-toolbar {
-      margin-top: 28px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 32px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--border-dark);
-    }
-
-    .filter-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .filter-btn {
-      padding: 8px 16px;
-      border-radius: 6px;
-      border: 1px solid var(--border-dark);
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      white-space: nowrap;
-      transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
-    }
-
-    .filter-btn:hover {
-      color: var(--text-light);
-      border-color: rgba(200, 164, 107, 0.45);
-    }
-
-    .filter-btn.is-active {
-      background-color: var(--gold);
-      border-color: var(--gold);
-      color: #0b0a09;
-      font-weight: 600;
-    }
-
-    .gallery-count {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      font-variant-numeric: tabular-nums;
-    }
-
-    .gallery-grid {
-      columns: 1;
-      column-gap: 22px;
-    }
-
-    @media (min-width: 640px) {
-      .gallery-grid {
-        columns: 2;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .gallery-grid {
-        columns: 3;
-      }
-    }
-
-    .gallery-item {
-      break-inside: avoid;
-      margin-bottom: 22px;
-    }
-
-    .gallery-card {
-      position: relative;
-      display: block;
-      width: 100%;
-      overflow: hidden;
-      border-radius: 10px;
-      border: 1px solid var(--border-dark);
-      background: #0b0b0d;
-      text-align: left;
-    }
-
-    .gallery-card img {
-      width: 100%;
-      height: auto;
-      transition: transform 0.55s var(--ease-out);
-    }
-
-    .gallery-card:hover img {
-      transform: scale(1.03);
-    }
-
-    .gallery-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 18px;
-      background: linear-gradient(180deg, transparent 42%, rgba(7, 7, 8, 0.9) 100%);
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-
-    .gallery-card:hover .gallery-overlay,
-    .gallery-card:focus-visible .gallery-overlay {
-      opacity: 1;
-    }
-
-    .gallery-overlay-cat {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--gold);
-    }
-
-    .gallery-overlay-title {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #ffffff;
-      margin-top: 2px;
-    }
-
-    /* ==========================================================================
-       5. RÉALISATIONS VIDÉO (Lecteur intégré YouTube & MP4 + Miniatures)
-       ========================================================================== */
-    .videos-section {
-      background-color: var(--bg-dark-elevated);
-      padding-block: 88px;
-      border-top: 1px solid var(--border-dark);
-    }
-
-    .videos-layout {
-      margin-top: 38px;
-      display: grid;
-      gap: 30px;
-      align-items: start;
-    }
-
-    @media (min-width: 960px) {
-      .videos-layout {
-        grid-template-columns: 1.45fr 0.85fr;
-      }
-    }
-
-    .video-stage {
-      position: relative;
-      aspect-ratio: 16 / 9;
-      width: 100%;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--border-dark);
-      background: #070708;
-    }
-
-    .video-stage iframe,
-    .video-stage video {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      object-fit: cover;
-    }
-
-    .video-active-meta {
-      margin-top: 16px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--border-dark);
-    }
-
-    .video-active-title {
-      margin-top: 4px;
-      font-family: var(--font-display);
-      font-size: 1.65rem;
-      font-weight: 600;
-      color: #ffffff;
-    }
-
-    .video-active-desc {
-      margin-top: 6px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .video-playlist {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .video-thumb-card {
-      width: 100%;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border-dark);
-      background: var(--bg-dark);
-      text-align: left;
-      transition: border-color 0.2s ease, background-color 0.2s ease;
-    }
-
-    .video-thumb-card:hover {
-      border-color: rgba(255, 255, 255, 0.28);
-    }
-
-    .video-thumb-card.is-active {
-      border-color: var(--gold);
-      background: rgba(200, 164, 107, 0.1);
-    }
-
-    .video-thumb-media {
-      position: relative;
-      width: 116px;
-      aspect-ratio: 16 / 9;
-      border-radius: 8px;
-      overflow: hidden;
-      flex-shrink: 0;
-      background: #16161a;
-    }
-
-    .video-thumb-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .video-thumb-play {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(7, 7, 8, 0.35);
-    }
-
-    .video-thumb-play span {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--gold);
-      color: #0b0a09;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.72rem;
-    }
-
-    .video-thumb-info {
-      min-width: 0;
-      flex: 1;
-    }
-
-    .video-thumb-cat {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .video-thumb-title {
-      margin-top: 2px;
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 600;
-      line-height: 1.2;
-      color: #ffffff;
-    }
-
-    .video-thumb-desc {
-      margin-top: 4px;
-      font-size: 0.76rem;
-      line-height: 1.45;
-      color: var(--text-muted);
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    /* ==========================================================================
-       6. CONTACT & RÉSERVATION
+       7. CONTACT & RÉSERVATION
        ========================================================================== */
     .contact-section {
-      background-color: var(--bg-dark);
+      background-color: var(--bg-charcoal);
       padding-block: 88px;
-      border-top: 1px solid var(--border-dark);
     }
 
     .contact-grid {
@@ -1378,8 +1584,8 @@
     }
 
     .contact-card {
-      background: var(--bg-dark-elevated);
-      border: 1px solid var(--border-dark);
+      background: var(--bg-slate);
+      border: 1px solid var(--border-hairline);
       border-radius: 14px;
       padding: 32px;
       display: flex;
@@ -1389,7 +1595,7 @@
     }
 
     .contact-logo {
-      height: 86px;
+      height: 84px;
       width: auto;
       object-fit: contain;
     }
@@ -1399,7 +1605,7 @@
       list-style: none;
       display: grid;
       gap: 18px;
-      border-top: 1px solid var(--border-dark);
+      border-top: 1px solid var(--border-hairline);
       padding-top: 22px;
     }
 
@@ -1417,11 +1623,11 @@
       margin-top: 3px;
       font-size: 0.96rem;
       font-weight: 500;
-      color: var(--text-light);
+      color: var(--text-ivory);
     }
 
     .contact-value:hover {
-      color: var(--gold-light);
+      color: var(--gold-bright);
     }
 
     .btn-whatsapp {
@@ -1429,13 +1635,14 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      width: 100%;
       height: 46px;
+      padding-inline: 22px;
       border-radius: 8px;
       background-color: var(--whatsapp);
       color: #ffffff;
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-weight: 600;
+      white-space: nowrap;
       transition: background-color 0.18s ease;
     }
 
@@ -1444,8 +1651,8 @@
     }
 
     .contact-form-card {
-      background: var(--bg-dark-elevated);
-      border: 1px solid var(--border-dark);
+      background: var(--bg-slate);
+      border: 1px solid var(--border-hairline);
       border-radius: 14px;
       padding: 32px;
     }
@@ -1453,7 +1660,7 @@
     .form-head {
       padding-bottom: 16px;
       margin-bottom: 22px;
-      border-bottom: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-hairline);
     }
 
     .form-grid {
@@ -1487,9 +1694,9 @@
     .field-textarea {
       width: 100%;
       border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: var(--bg-dark);
-      color: var(--text-light);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: var(--bg-charcoal);
+      color: #ffffff;
       font-family: inherit;
       font-size: 0.88rem;
       padding: 11px 13px;
@@ -1509,25 +1716,6 @@
       gap: 12px;
     }
 
-    .btn-submit-wa {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      height: 44px;
-      padding-inline: 20px;
-      border-radius: 6px;
-      background-color: var(--whatsapp);
-      color: #ffffff;
-      font-size: 0.85rem;
-      font-weight: 600;
-      transition: background-color 0.18s ease;
-    }
-
-    .btn-submit-wa:hover {
-      background-color: var(--whatsapp-hover);
-    }
-
     .form-note {
       font-size: 0.72rem;
       line-height: 1.55;
@@ -1537,8 +1725,8 @@
     .form-feedback {
       padding: 14px 16px;
       border-radius: 8px;
-      border: 1px solid rgba(200, 164, 107, 0.45);
-      background: rgba(200, 164, 107, 0.1);
+      border: 1px solid rgba(212, 175, 106, 0.45);
+      background: rgba(212, 175, 106, 0.1);
       color: var(--beige);
       font-size: 0.82rem;
       display: none;
@@ -1549,12 +1737,12 @@
     }
 
     /* ==========================================================================
-       FOOTER & BOUTON WHATSAPP FLOTTANT
+       8. PIED DE PAGE & BOUTON WHATSAPP FLOTTANT
        ========================================================================== */
     .site-footer {
-      background-color: var(--bg-dark);
-      border-top: 1px solid var(--border-dark);
-      padding-block: 42px;
+      background-color: #070709;
+      border-top: 1px solid var(--border-hairline);
+      padding-block: 44px;
     }
 
     .footer-inner {
@@ -1562,7 +1750,7 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 24px;
     }
 
     .footer-logo {
@@ -1571,21 +1759,26 @@
       object-fit: contain;
     }
 
-    .footer-meta {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
     .footer-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 22px;
       font-size: 0.8rem;
-      color: var(--text-muted);
+      color: rgba(245, 242, 235, 0.8);
     }
 
     .footer-links a:hover {
-      color: var(--gold-light);
+      color: var(--gold-bright);
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-right { align-items: flex-end; }
     }
 
     .floating-whatsapp {
@@ -1621,7 +1814,7 @@
       z-index: 100;
       display: none;
       flex-direction: column;
-      background: rgba(5, 5, 6, 0.96);
+      background: rgba(5, 5, 7, 0.96);
       backdrop-filter: blur(8px);
     }
 
@@ -1635,7 +1828,7 @@
       align-items: center;
       justify-content: space-between;
       padding-inline: 24px;
-      border-bottom: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-hairline);
       flex-shrink: 0;
     }
 
@@ -1647,7 +1840,8 @@
     }
 
     .lightbox-sub {
-      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
       color: var(--gold);
       margin-left: 10px;
     }
@@ -1656,7 +1850,7 @@
       width: 42px;
       height: 42px;
       border-radius: 8px;
-      border: 1px solid var(--border-dark);
+      border: 1px solid var(--border-hairline);
       color: #ffffff;
       font-size: 1.35rem;
       display: inline-flex;
@@ -1666,7 +1860,7 @@
 
     .lightbox-close:hover {
       border-color: var(--gold);
-      color: var(--gold-light);
+      color: var(--gold-bright);
     }
 
     .lightbox-stage {
@@ -1693,8 +1887,8 @@
       width: 46px;
       height: 46px;
       border-radius: 50%;
-      border: 1px solid var(--border-dark);
-      background: rgba(17, 17, 20, 0.88);
+      border: 1px solid var(--border-hairline);
+      background: rgba(18, 18, 23, 0.9);
       color: #ffffff;
       font-size: 1.25rem;
       display: inline-flex;
@@ -1704,7 +1898,7 @@
 
     .lightbox-nav:hover {
       border-color: var(--gold);
-      color: var(--gold-light);
+      color: var(--gold-bright);
     }
 
     .lightbox-prev { left: 18px; }
@@ -1727,19 +1921,20 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
-      .hero-slide { transform: none; transition: opacity 0.2s ease; }
+      .hero-slide img, .category-hero-bg img { animation: none !important; }
+      .tilt-3d { transform: none !important; transition: none !important; }
     }
   </style>
 <script src="/_aistudio-iframe.js?v=29045eb3"></script></head>
 <body>
 
-  <!-- ============================ HEADER ============================ -->
+  <!-- ============================ HEADER DISCRET ============================ -->
   <header class="site-header" id="siteHeader">
     <div class="scroll-progress-track" aria-hidden="true">
       <div class="scroll-progress-fill" id="scrollProgressFill"></div>
     </div>
     <div class="container header-inner">
-      <a href="#accueil" class="brand-link" aria-label="DIONTADO PRODUCTION — Accueil">
+      <a href="#accueil" class="brand-link js-nav-home" data-target="accueil" aria-label="DIONTADO PRODUCTION — Accueil">
         <img
           src="./logo-entete.png"
           alt="DIONTADO PRODUCTION"
@@ -1751,15 +1946,16 @@
       </a>
 
       <nav class="nav-links" aria-label="Navigation principale">
-        <a href="#accueil">Accueil</a>
-        <a href="#apropos">À propos</a>
-        <a href="#services">Services</a>
-        <a href="#realisations">Photo</a>
-        <a href="#videos">Vidéo</a>
+        <a href="#accueil" class="js-nav-home" data-target="accueil">Accueil</a>
+        <a href="#realisations" class="js-nav-home" data-target="realisations">Réalisations</a>
+        <a href="#videos" class="js-nav-home" data-target="videos">Vidéos</a>
+        <a href="#/tarifs" class="js-nav-tarifs">Tarifs</a>
+        <a href="#apropos" class="js-nav-home" data-target="apropos">À propos</a>
+        <a href="#services" class="js-nav-home" data-target="services">Services</a>
       </nav>
 
       <div class="header-actions">
-        <a href="#contact" class="btn-primary header-cta">Réserver</a>
+        <a href="#contact" class="btn-primary header-cta js-nav-home" data-target="contact">Réserver</a>
         <button
           type="button"
           class="mobile-toggle"
@@ -1774,533 +1970,726 @@
   </header>
 
   <nav class="mobile-drawer" id="mobileDrawer" aria-label="Navigation mobile">
-    <a href="#accueil">Accueil</a>
-    <a href="#apropos">À propos</a>
-    <a href="#services">Services</a>
-    <a href="#realisations">Réalisations Photo</a>
-    <a href="#videos">Réalisations Vidéo</a>
-    <a href="#contact">Contact / Réservation</a>
+    <a href="#accueil" class="js-nav-home" data-target="accueil">Accueil</a>
+    <a href="#realisations" class="js-nav-home" data-target="realisations">Réalisations Photo</a>
+    <a href="#videos" class="js-nav-home" data-target="videos">Réalisations Vidéo</a>
+    <a href="#/tarifs" class="js-nav-tarifs">Tarifs</a>
+    <a href="#apropos" class="js-nav-home" data-target="apropos">À propos</a>
+    <a href="#services" class="js-nav-home" data-target="services">Services</a>
+    <a href="#contact" class="js-nav-home" data-target="contact">Contact / Réservation</a>
   </nav>
 
-  <main>
-    <!-- ============================ 1. ACCUEIL (HERO) ============================ -->
-    <section class="hero" id="accueil">
-      <div class="hero-media" id="heroSlides">
-        <div class="hero-slide is-active">
-          <img
-            src="./cover.jpg"
-            alt="Couverture DIONTADO PRODUCTION"
-            data-asset="cover.jpg"
-            onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src=this.src.replace('cover.jpg','couverture.jpg');}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='./couverture-preview.svg';}"
-          />
-        </div>
-      </div>
-      <div class="hero-scrim" aria-hidden="true"></div>
-
-      <div class="container hero-content">
-        <div class="hero-layout">
-          <div class="hero-grid">
-            <p class="hero-kicker">DIONTADO PRODUCTION · SÉNÉGAL</p>
-            <h1 class="hero-title">L’image raconte. Le cinéma fait ressentir.</h1>
-            <p class="hero-subtitle">
-              Maison de production audiovisuelle et studio photographique. Nous accompagnons particuliers, artistes, marques et institutions dans la création d’images intemporelles.
-            </p>
-            <div class="hero-cta-row">
-              <a href="#realisations" class="btn-primary">Découvrir nos réalisations</a>
-              <a href="#contact" class="btn-outline">Réserver une prestation</a>
-            </div>
-          </div>
-
-          <div class="hero-controls" id="heroControls" style="display:none;">
-            <button type="button" class="hero-arrow" id="heroPrev" aria-label="Image précédente">&#10094;</button>
-            <div class="hero-dots" id="heroDots" role="tablist" aria-label="Diaporama d’accueil"></div>
-            <button type="button" class="hero-arrow" id="heroNext" aria-label="Image suivante">&#10095;</button>
+  <!-- ============================ VUE ACCUEIL PRINCIPALE ============================ -->
+  <div id="homeView" style="padding-top: 68px;">
+    <main>
+      <!-- 1. COUVERTURE CINÉMATOGRAPHIQUE -->
+      <section class="hero" id="accueil">
+        <div class="hero-media" id="heroSlides">
+          <div class="hero-slide is-active">
+            <img
+              src="./cover.jpg"
+              alt="Couverture DIONTADO PRODUCTION"
+              data-asset="cover.jpg"
+              onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src=this.src.replace('cover.jpg','couverture.jpg');}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='./couverture-preview.svg';}"
+            />
           </div>
         </div>
-      </div>
-    </section>
+        <div class="hero-scrim" aria-hidden="true"></div>
 
-    <!-- Bandeau des 2 activités principales -->
-    <section class="activities-strip" aria-label="Activités principales">
-      <div class="container activities-grid">
-        <a href="#realisations" class="activity-card">
-          <div>
-            <p class="mono-meta">01 · Activité principale</p>
-            <h2 class="activity-title">Photographie Professionnelle</h2>
-            <p class="activity-desc">
-              Mariage, cérémonie, portrait, mode, culture et shooting studio sur mesure.
-            </p>
-          </div>
-          <span class="activity-badge" aria-hidden="true">&#9673;</span>
-        </a>
-
-        <a href="#videos" class="activity-card">
-          <div>
-            <p class="mono-meta">02 · Activité principale</p>
-            <h2 class="activity-title">Réalisation &amp; Production Vidéo</h2>
-            <p class="activity-desc">
-              Films de mariage, reportages culturels, événements et films institutionnels.
-            </p>
-          </div>
-          <span class="activity-badge" aria-hidden="true">&#9654;</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- ============================ 2. À PROPOS & BIOGRAPHIE ============================ -->
-    <section class="about-section" id="apropos">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <p class="kicker">À propos · Maison de production</p>
-            <h2 class="section-title" style="margin-top: 8px;">DIONTADO PRODUCTION</h2>
-            <p style="font-family: var(--font-display); font-size: 1.5rem; font-style: italic; color: var(--gold-light); margin-top: 6px;">
-              L’art de raconter des histoires par l’image et le cinéma.
-            </p>
-          </div>
-          <p class="mono-meta" style="color: var(--text-muted);">
-            Fondée par Amadou Sy · Juin 2022 · Sénégal
-          </p>
-        </div>
-
-        <div class="about-grid">
-          <div class="portrait-card reveal">
-            <div class="portrait-frame">
+        <div class="container hero-content">
+          <div class="hero-layout">
+            <div class="hero-grid page-enter">
               <img
-                src="./amadou-sy.jpg"
-                alt="Amadou Sy — Fondateur de DIONTADO PRODUCTION"
-                loading="lazy"
-                data-asset="amadou-sy.jpg"
-                onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='./1C1A6618_copie_af7a2459.jpg';}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='/assets/aistudio/1C1A6618_copie_af7a2459.jpg';}"
-              />
-            </div>
-            <div class="portrait-caption">
-              <p class="portrait-name">Amadou Sy</p>
-              <p class="portrait-role">Fondateur · Réalisateur &amp; Photographe</p>
-              <p class="portrait-quote">« L’image raconte. Le cinéma fait ressentir. »</p>
-            </div>
-          </div>
-
-          <div class="reveal">
-            <div class="about-story">
-              <p>
-                Créée en juin 2022 au Sénégal par <strong style="color: #ffffff;">Amadou Sy</strong>, <strong style="color: #ffffff;">DIONTADO PRODUCTION</strong> est une maison dédiée à la photographie professionnelle et à la production audiovisuelle.
-              </p>
-              <p>
-                Née d’une exigence artistique et d’une passion profonde pour le récit visuel, la maison accompagne particuliers, couples, artistes, marques et institutions avec une signature sobre, humaine et cinématographique.
-              </p>
-              <p>
-                Basée à Dakar (Yeumbeul), <strong style="color: #ffffff;">DIONTADO PRODUCTION</strong> intervient partout au Sénégal et à l’international pour transformer chaque projet en une œuvre durable et mémorable.
-              </p>
-            </div>
-
-            <div class="pillars-row">
-              <div>
-                <p class="mono-meta">01 · Vision</p>
-                <h3 class="pillar-title">Écoute &amp; Précision</h3>
-                <p class="pillar-text">Comprendre chaque personnalité et chaque projet avant de cadrer.</p>
-              </div>
-              <div>
-                <p class="mono-meta">02 · Exigence</p>
-                <h3 class="pillar-title">Esthétique Cinéma</h3>
-                <p class="pillar-text">Maîtrise de la lumière, du mouvement et de l’étalonnage sur mesure.</p>
-              </div>
-              <div>
-                <p class="mono-meta">03 · Empreinte</p>
-                <h3 class="pillar-title">Récits Durables</h3>
-                <p class="pillar-text">Des images sincères qui traversent le temps sans perdre leur force.</p>
-              </div>
-            </div>
-
-            <div class="approach-box">
-              <p class="kicker">Notre approche</p>
-              <p style="margin-top: 12px; font-size: 0.92rem; line-height: 1.65; color: rgba(245, 243, 238, 0.8);">
-                De la conception à la post-production, nous privilégions un accompagnement rigoureux, une direction artistique cohérente et une présence humaine rassurante sur le terrain.
-              </p>
-              <p class="approach-philosophy">
-                Notre philosophie : écouter · imaginer · créer · raconter
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Coulisses & Coéquipiers (BTS) -->
-        <div class="bts-block reveal">
-          <div class="section-head" style="border-bottom: none; padding-bottom: 0;">
-            <div>
-              <p class="kicker">Coulisses &amp; Coéquipiers (BTS)</p>
-              <h3 class="section-title" style="margin-top: 8px; font-size: clamp(1.8rem, 3vw, 2.5rem);">
-                Sur le terrain &amp; au editing
-              </h3>
-            </div>
-            <p class="section-lead">
-              Nos anciens et nouveaux coéquipiers en action sur le terrain et en post-production.
-            </p>
-          </div>
-
-          <div class="bts-toolbar">
-            <div class="filter-tabs" role="tablist" aria-label="Filtrer les photos BTS">
-              <button type="button" class="filter-btn bts-filter-btn is-active" data-bts-filter="Tous" role="tab" aria-selected="true">Tous</button>
-              <button type="button" class="filter-btn bts-filter-btn" data-bts-filter="Sur le terrain" role="tab" aria-selected="false">Sur le terrain</button>
-              <button type="button" class="filter-btn bts-filter-btn" data-bts-filter="Editing" role="tab" aria-selected="false">Editing</button>
-            </div>
-            <span class="gallery-count" id="btsCount">12 photos BTS</span>
-          </div>
-
-          <div class="bts-grid" id="btsGrid"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================ 3. SERVICES & TARIFS ============================ -->
-    <section class="services-section" id="services">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <p class="kicker">Nos services &amp; offres</p>
-            <h2 class="section-title" style="margin-top: 8px;">Photographie &amp; Réalisation Vidéo</h2>
-          </div>
-          <p class="section-lead">
-            Des prestations sur mesure conçues pour répondre aux exigences des particuliers, créateurs et entreprises.
-          </p>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card reveal">
-            <div class="service-image-wrap">
-              <img
-                src="./portrait-02.jpg"
-                alt="Photographie professionnelle — DIONTADO PRODUCTION"
-                loading="lazy"
-                data-asset="portrait-02.jpg"
-              />
-            </div>
-            <div class="service-body">
-              <div>
-                <p class="mono-meta">01 · PHOTOGRAPHIE PROFESSIONNELLE</p>
-                <h3 class="service-title">Capturer l’émotion avec justesse</h3>
-                <ul class="service-bullets">
-                  <li>Mariage &amp; Prewedding</li>
-                  <li>Cérémonie &amp; Réception</li>
-                  <li>Événement professionnel &amp; culturel</li>
-                  <li>Portrait artistique &amp; studio</li>
-                  <li>Shooting professionnel pour marques</li>
-                </ul>
-              </div>
-              <div class="service-footer">
-                <button
-                  type="button"
-                  class="btn-primary js-book-prestation"
-                  data-prestation="Photographie professionnelle"
-                >
-                  Réserver maintenant &rarr;
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <article class="service-card reveal">
-            <div class="service-image-wrap">
-              <img
-                src="./publicite-01.jpg"
-                alt="Réalisation vidéo — DIONTADO PRODUCTION"
-                loading="lazy"
-                data-asset="publicite-01.jpg"
-              />
-            </div>
-            <div class="service-body">
-              <div>
-                <p class="mono-meta">02 · RÉALISATION VIDÉO</p>
-                <h3 class="service-title">Mettre vos projets en mouvement</h3>
-                <ul class="service-bullets">
-                  <li>Film de mariage cinématographique</li>
-                  <li>Vidéo événementielle &amp; Aftermovie</li>
-                  <li>Film institutionnel &amp; présentation d’entreprise</li>
-                  <li>Reportage culturel &amp; documentaire</li>
-                  <li>Production audiovisuelle complète</li>
-                </ul>
-              </div>
-              <div class="service-footer">
-                <button
-                  type="button"
-                  class="btn-primary js-book-prestation"
-                  data-prestation="Réalisation vidéo"
-                >
-                  Réserver maintenant &rarr;
-                </button>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Grille tarifaire facilement modifiable -->
-        <div class="pricing-block reveal">
-          <div class="section-head" style="border-bottom: none; padding-bottom: 0;">
-            <div>
-              <p class="kicker">Formules &amp; Tarification</p>
-              <h3 class="section-title" style="margin-top: 8px; font-size: clamp(1.85rem, 3vw, 2.5rem);">
-                Une proposition adaptée à chaque projet
-              </h3>
-            </div>
-            <p class="section-lead">
-              Chaque production ayant ses propres besoins (durée, équipe, lieu, livrables), nos tarifs sont établis sur devis transparent après échange.
-            </p>
-          </div>
-
-          <div class="pricing-grid" id="pricingGrid"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================ 4. RÉALISATIONS PHOTO ============================ -->
-    <section class="gallery-section" id="realisations">
-      <div class="container">
-        <div class="section-head reveal" style="border-bottom: none; padding-bottom: 0;">
-          <div>
-            <p class="kicker">Réalisations Photo</p>
-            <h2 class="section-title" style="margin-top: 8px;">Portfolio photographique</h2>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px;">
-            <p class="section-lead" style="max-width: 36ch;">
-              Cliquez sur n’importe quelle photographie pour l’afficher en haute résolution.
-            </p>
-            <button
-              type="button"
-              class="btn-ghost-gold js-book-prestation"
-              data-prestation="Photographie professionnelle"
-            >
-              Réserver un shooting
-            </button>
-          </div>
-        </div>
-
-        <div class="gallery-toolbar reveal">
-          <div class="filter-tabs" id="photoFilterTabs" role="tablist" aria-label="Catégories de la galerie"></div>
-          <span class="gallery-count" id="galleryCount">0 photographie</span>
-        </div>
-
-        <div class="gallery-grid" id="galleryGrid"></div>
-      </div>
-    </section>
-
-    <!-- ============================ 5. RÉALISATIONS VIDÉO ============================ -->
-    <section class="videos-section" id="videos">
-      <div class="container">
-        <div class="section-head reveal" style="border-bottom: none; padding-bottom: 0;">
-          <div>
-            <p class="kicker">Réalisations Vidéo</p>
-            <h2 class="section-title" style="margin-top: 8px;">Films, Showreels &amp; Reportages</h2>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px;">
-            <p class="section-lead" style="max-width: 38ch;">
-              Sélectionnez un film ci-contre pour lancer immédiatement la lecture dans le lecteur cinéma.
-            </p>
-            <button
-              type="button"
-              class="btn-ghost-gold js-book-prestation"
-              data-prestation="Réalisation vidéo"
-            >
-              Commander un film
-            </button>
-          </div>
-        </div>
-
-        <div class="videos-layout reveal">
-          <div>
-            <div class="video-stage" id="videoStage"></div>
-            <div class="video-active-meta">
-              <p class="kicker" id="videoActiveCategory">Production Audiovisuelle</p>
-              <h3 class="video-active-title" id="videoActiveTitle">Showreel Officiel — DIONTADO PRODUCTION</h3>
-              <p class="video-active-desc" id="videoActiveDesc"></p>
-            </div>
-          </div>
-
-          <div class="video-playlist" id="videoPlaylist"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================ 6. CONTACT / RÉSERVATION ============================ -->
-    <section class="contact-section" id="contact">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <p class="kicker">Contact &amp; Réservation</p>
-            <h2 class="section-title" style="margin-top: 8px;">Parlons de votre projet</h2>
-          </div>
-          <p class="section-lead">
-            Demandez un devis personnalisé ou réservez une date directement via WhatsApp ou email.
-          </p>
-        </div>
-
-        <div class="contact-grid">
-          <div class="contact-card reveal">
-            <div>
-              <img
-                src="./logo-vertical-blanc-contact.png"
+                src="./logo-horizontal-blanc.png"
                 alt="DIONTADO PRODUCTION"
-                class="contact-logo"
-                data-asset="logo-vertical-blanc-contact.png"
+                class="hero-logo-mark"
+                data-asset="logo-horizontal-blanc.png"
                 onerror="this.style.display='none';"
               />
-
-              <ul class="contact-details">
-                <li>
-                  <span class="contact-label">Téléphone &amp; WhatsApp</span>
-                  <a href="tel:+221764812391" class="contact-value" style="font-family: var(--font-mono);">
-                    +221 76 481 23 91
-                  </a>
-                </li>
-                <li>
-                  <span class="contact-label">Adresse email</span>
-                  <a href="mailto:diontadoevens.0@gmail.com" class="contact-value">
-                    diontadoevens.0@gmail.com
-                  </a>
-                </li>
-                <li>
-                  <span class="contact-label">Réseaux sociaux</span>
-                  <div style="margin-top: 4px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
-                    <a
-                      href="https://www.instagram.com/diontado_photography"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="contact-value"
-                      style="margin-top: 0;"
-                    >
-                      Instagram (@diontado_photography)
-                    </a>
-                    <span aria-hidden="true" style="color: #555;">·</span>
-                    <a
-                      href="https://www.youtube.com/watch?v=VDhh9Q0c_MI"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="contact-value"
-                      style="margin-top: 0;"
-                    >
-                      YouTube
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  <span class="contact-label">Localisation</span>
-                  <span class="contact-value">Yeumbeul, Dakar, Sénégal — Interventions nationales &amp; internationales</span>
-                </li>
-              </ul>
+              <p class="hero-kicker">DIONTADO PRODUCTION · SÉNÉGAL &amp; INTERNATIONAL</p>
+              <h1 class="hero-title">L’image raconte. Le cinéma fait ressentir.</h1>
+              <p class="hero-subtitle">
+                Nous donnons vie à vos histoires à travers la photographie et la réalisation vidéo.
+              </p>
+              <div class="hero-cta-row">
+                <a href="#realisations" class="btn-primary js-nav-home" data-target="realisations">
+                  DÉCOUVRIR NOS RÉALISATIONS
+                </a>
+                <a href="#contact" class="btn-outline js-nav-home" data-target="contact">
+                  RÉSERVER UNE PRESTATION
+                </a>
+              </div>
             </div>
 
+            <div class="hero-controls" id="heroControls" style="display:none;">
+              <button type="button" class="hero-arrow" id="heroPrev" aria-label="Image précédente">&#10094;</button>
+              <div class="hero-dots" id="heroDots" role="tablist" aria-label="Diaporama d’accueil"></div>
+              <button type="button" class="hero-arrow" id="heroNext" aria-label="Image suivante">&#10095;</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. PRÉSENTATION DE DIONTADO PRODUCTION -->
+      <section class="presentation-section" id="presentation">
+        <div class="container presentation-grid">
+          <div class="reveal">
+            <p class="kicker">Maison de Production Audiovisuelle</p>
+            <h2 class="section-title" style="margin-top: 10px; font-size: clamp(1.9rem, 3.4vw, 2.85rem);">
+              DIONTADO PRODUCTION façonne des récits visuels à la hauteur de vos instants.
+            </h2>
+            <p style="margin-top: 16px; max-width: 58ch; font-size: 0.96rem; color: rgba(245,242,235,0.8);">
+              Entre précision photographique et direction cinématographique, nous créons des œuvres authentiques pour les particuliers, artistes, marques et institutions au Sénégal et à l’international.
+            </p>
+          </div>
+
+          <div class="presentation-cards reveal">
+            <a href="#realisations" class="discipline-card js-nav-home" data-target="realisations">
+              <p class="mono-meta">01 · Photographie</p>
+              <h3 class="discipline-title">Photographie</h3>
+              <p class="discipline-desc">
+                Portraits, mariages, culture, mode, studio et séances sur mesure.
+              </p>
+            </a>
+
+            <a href="#videos" class="discipline-card js-nav-home" data-target="videos">
+              <p class="mono-meta">02 · Cinéma</p>
+              <h3 class="discipline-title">Réalisation Vidéo</h3>
+              <p class="discipline-desc">
+                Films institutionnels, clips, reportages et production cinéma.
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. PORTFOLIO PHOTOGRAPHIQUE — CARTES 3D CATÉGORIES INTERACTIVES -->
+      <section class="portfolio-cats-section" id="realisations">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <p class="kicker">PORTFOLIO PHOTOGRAPHIQUE</p>
+              <h2 class="section-title" style="margin-top: 8px;">&laquo;&nbsp;Univers &amp; Collections&nbsp;&raquo;</h2>
+            </div>
+            <p class="section-lead" style="max-width: 54ch; color: rgba(245,242,235,0.82);">
+              La photographie est pour nous un univers de création sensible et de narration visuelle : chaque lumière, chaque regard et chaque silence compose un récit durable. Choisissez une collection pour ouvrir sa galerie complète en plein écran.
+            </p>
+          </div>
+
+          <div class="perspective-stage categories-grid" id="categoryCardsGrid"></div>
+        </div>
+      </section>
+
+      <!-- 4. PORTFOLIO VIDÉO (SHOWREEL + CATÉGORIES + LECTURE DIRECTE + WHATSAPP) -->
+      <section class="videos-section" id="videos">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <p class="kicker">Réalisations Vidéo &amp; Showreel</p>
+              <h2 class="section-title" style="margin-top: 8px;">Films &amp; Productions Cinéma</h2>
+            </div>
+            <p class="section-lead">
+              Lancez le Showreel ou parcourez nos films par catégorie directement dans le lecteur cinéma intégré.
+            </p>
+          </div>
+
+          <!-- Grande zone Showreel & Lecteur cinéma -->
+          <div class="showreel-shell reveal" id="videoStageShell">
+            <div class="video-stage" id="videoStage"></div>
+            <div class="video-stage-bar" id="videoStageBar">
+              <div>
+                <p class="kicker" id="videoStageCat">Films institutionnels</p>
+                <h3 style="font-family: var(--font-display); font-size: 1.55rem; color: #ffffff;" id="videoStageTitle"></h3>
+              </div>
+              <p style="max-width: 48ch; font-size: 0.8rem; color: var(--text-muted);" id="videoStageDesc"></p>
+            </div>
+          </div>
+
+          <!-- Catégories vidéo -->
+          <div class="video-toolbar reveal">
+            <div class="filter-tabs" id="videoFilterTabs" role="tablist" aria-label="Catégories vidéo"></div>
+            <span class="mono-meta" style="color: var(--text-muted);" id="videoCount">3 films</span>
+          </div>
+
+          <!-- Galerie vidéo avec miniatures 3D -->
+          <div class="perspective-stage video-cards-grid" id="videoGalleryGrid"></div>
+
+          <!-- Contact WhatsApp sous la galerie vidéo -->
+          <div class="video-whatsapp-banner reveal">
+            <div>
+              <p style="font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; color: #ffffff;">
+                Un projet de film, clip ou reportage ?
+              </p>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">
+                Échangez directement avec notre équipe de réalisation sur WhatsApp.
+              </p>
+            </div>
             <a
-              id="whatsappLink"
-              href="https://wa.me/221764812391?text=Bonjour%20DIONTADO%20PRODUCTION%2C%20je%20souhaite%20r%C3%A9server%20une%20prestation."
+              href="https://wa.me/221764812391?text=Bonjour%20DIONTADO%20PRODUCTION%2C%20je%20souhaite%20discuter%20d%27un%20projet%20vid%C3%A9o."
               target="_blank"
               rel="noopener noreferrer"
               class="btn-whatsapp"
             >
-              Discuter sur WhatsApp
+              Contacter sur WhatsApp
             </a>
           </div>
+        </div>
+      </section>
 
-          <div class="contact-form-card reveal">
-            <div class="form-head">
-              <h3 style="font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; color: #ffffff;">
-                Demande de devis &amp; réservation
+      <!-- 5. À PROPOS — MISE EN PAGE MAGAZINE INDESIGN -->
+      <section class="about-section" id="apropos">
+        <div class="container">
+          <div class="magazine-masthead reveal">
+            <span style="color: var(--gold);">ÉDITO &amp; PORTRAIT · À PROPOS</span>
+            <span>DIONTADO PRODUCTION · DAKAR, SÉNÉGAL · JUIN 2022</span>
+          </div>
+
+          <div class="magazine-upper">
+            <!-- PARTIE GAUCHE : Portrait réduit & élégant d'Amadou Sy -->
+            <div class="magazine-portrait-col reveal">
+              <div class="tilt-3d magazine-portrait-card" data-tilt="4">
+                <div class="tilt-sheen"></div>
+                <div class="magazine-portrait-frame">
+                  <img
+                    src="./amadou-sy.jpg"
+                    alt="Amadou Sy — Fondateur & Directeur Créatif de DIONTADO PRODUCTION"
+                    loading="lazy"
+                    data-asset="amadou-sy.jpg"
+                    onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='./1C1A6618_copie_af7a2459.jpg';}else if(this.dataset.fb==='1'){this.dataset.fb='2';this.src='/assets/aistudio/1C1A6618_copie_af7a2459.jpg';}"
+                  />
+                </div>
+                <div class="magazine-portrait-caption">
+                  <p style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: #ffffff;">Amadou Sy</p>
+                  <p style="margin-top: 2px; font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold);">
+                    Fondateur &amp; Directeur Créatif
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- PARTIE DROITE : Présentation, biographie et vision artistique -->
+            <div class="magazine-editorial-col reveal">
+              <p class="mono-meta" style="font-size: 0.68rem;">La Maison de Production</p>
+              <h2 class="section-title" style="margin-top: 8px; font-size: clamp(1.9rem, 3.4vw, 2.95rem); line-height: 1.06;">
+                L’art de raconter des histoires par la lumière et le cinéma.
+              </h2>
+              <div class="magazine-rule" aria-hidden="true"></div>
+
+              <div class="magazine-cols">
+                <div>
+                  <h3 style="font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--gold-bright);">
+                    Biographie &amp; Genèse
+                  </h3>
+                  <p style="margin-top: 10px; font-size: 0.9rem; line-height: 1.72; color: rgba(245,242,235,0.82);">
+                    Créée en juin 2022 à Dakar par <strong style="color: #ffffff;">Amadou Sy</strong>, <strong style="color: #ffffff;">DIONTADO PRODUCTION</strong> est née d’une passion exigeante pour l’image et la narration audiovisuelle. Basée au Sénégal, la maison accompagne particuliers, artistes et entreprises dans leurs créations visuelles.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 style="font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--gold-bright);">
+                    Vision Artistique
+                  </h3>
+                  <p style="margin-top: 10px; font-size: 0.9rem; line-height: 1.72; color: rgba(245,242,235,0.82);">
+                    Notre regard unit rigueur technique et sensibilité humaine. Avant de cadrer, nous prenons le temps de comprendre chaque personnalité et chaque projet afin de sculpter des œuvres fidèles, soignées et intemporelles.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PARTIE INFÉRIEURE : Domaines d'expertise, philosophie de création & ambitions -->
+          <div class="magazine-lower reveal">
+            <div class="magazine-lower-col">
+              <p class="mono-meta" style="font-size: 0.68rem;">01 · Domaines d’expertise</p>
+              <h3 style="margin-top: 6px; font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; color: #ffffff;">
+                Photographie &amp; Cinéma
               </h3>
-              <p style="margin-top: 4px; font-size: 0.78rem; color: var(--text-muted);">
-                Remplissez les détails ci-dessous pour préparer et transmettre votre demande immédiatement.
+              <p style="margin-top: 8px; font-size: 0.84rem; line-height: 1.65; color: var(--text-muted);">
+                Portraits, mariages, prewedding, culture, mode, soutenances, studio et films institutionnels ou événementiels menés de la conception au montage final.
               </p>
             </div>
 
-            <form id="contactForm" class="form-grid">
-              <div class="form-row-2">
-                <div>
-                  <label class="field-label" for="contactName">Nom complet *</label>
-                  <input class="field-input" id="contactName" type="text" required placeholder="Ex : Moussa Diop" />
-                </div>
-                <div>
-                  <label class="field-label" for="contactPhone">Numéro de téléphone *</label>
-                  <input class="field-input" id="contactPhone" type="tel" required placeholder="+221 77 000 00 00" />
-                </div>
-              </div>
-
-              <div class="form-row-3">
-                <div>
-                  <label class="field-label" for="contactService">Type de prestation</label>
-                  <select class="field-select" id="contactService">
-                    <option value="Photographie professionnelle">Photographie professionnelle</option>
-                    <option value="Photographie — Portrait & Studio">Photographie — Portrait &amp; Studio</option>
-                    <option value="Mariage & Cérémonie (Photo / Vidéo)">Mariage &amp; Cérémonie (Photo / Vidéo)</option>
-                    <option value="Événementiel (Photo & Vidéo)">Événementiel (Photo &amp; Vidéo)</option>
-                    <option value="Réalisation vidéo">Réalisation vidéo</option>
-                    <option value="Film Institutionnel & Production Audiovisuelle">Film Institutionnel &amp; Production Audiovisuelle</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label class="field-label" for="contactDate">Date de l’événement</label>
-                  <input class="field-input" id="contactDate" type="date" />
-                </div>
-
-                <div>
-                  <label class="field-label" for="contactLocation">Lieu</label>
-                  <input class="field-input" id="contactLocation" type="text" placeholder="Dakar, Saly, Saint-Louis..." />
-                </div>
-              </div>
-
-              <div>
-                <label class="field-label" for="contactMessage">Description du projet *</label>
-                <textarea
-                  class="field-textarea"
-                  id="contactMessage"
-                  rows="4"
-                  required
-                  placeholder="Précisez vos attentes, horaires, nombre de personnes ou livrables souhaités..."
-                ></textarea>
-              </div>
-
-              <div class="form-actions">
-                <button type="submit" class="btn-submit-wa">Envoyer via WhatsApp</button>
-                <button type="button" class="btn-ghost-gold" id="sendEmailBtn" style="height: 44px; padding-inline: 20px; font-size: 0.85rem;">
-                  Préparer par Email
-                </button>
-              </div>
-
-              <p class="form-note">
-                Transmission directe sans intermédiaire : WhatsApp ouvre votre message pré-rempli vers le <strong style="color: #e6dccb;">+221 76 481 23 91</strong> et l’option Email prépare un brouillon dans votre messagerie vers <strong style="color: #e6dccb;">diontadoevens.0@gmail.com</strong>.
+            <div class="magazine-lower-col">
+              <p class="mono-meta" style="font-size: 0.68rem;">02 · Philosophie de création</p>
+              <h3 style="margin-top: 6px; font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; color: #ffffff;">
+                Écouter, imaginer, créer, raconter
+              </h3>
+              <p style="margin-top: 8px; font-size: 0.84rem; line-height: 1.65; color: var(--text-muted);">
+                Une direction artistique cohérente et une attention constante portée aux émotions réelles, à la lumière juste et au sens du détail.
               </p>
+            </div>
 
-              <div class="form-feedback" id="formFeedback" role="status"></div>
-            </form>
+            <div class="magazine-lower-col">
+              <p class="mono-meta" style="font-size: 0.68rem;">03 · Ambitions</p>
+              <h3 style="margin-top: 6px; font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; color: #ffffff;">
+                Une signature durable
+              </h3>
+              <p style="margin-top: 8px; font-size: 0.84rem; line-height: 1.65; color: var(--text-muted);">
+                Faire de chaque image une histoire, de chaque projet une expérience singulière et affirmer DIONTADO PRODUCTION au Sénégal comme à l’international.
+              </p>
+            </div>
+          </div>
+
+          <div class="magazine-signature-bar reveal">
+            <p style="font-family: var(--font-display); font-size: 1.05rem; font-style: italic; color: rgba(231,202,145,0.9);">
+              « L’image raconte. Le cinéma fait ressentir. »
+            </p>
+            <p style="font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold);">
+              AMADOU SY — FONDATEUR &amp; DIRECTEUR CRÉATIF.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. SERVICES (2 ACTIVITÉS PRINCIPALES UNIQUEMENT) -->
+      <section class="services-section" id="services">
+        <div class="container">
+          <div class="section-head reveal" style="border-bottom: none; padding-bottom: 0;">
+            <div>
+              <p class="kicker">Nos Services</p>
+              <h2 class="section-title" style="margin-top: 8px;">Deux expertises complémentaires</h2>
+            </div>
+            <p class="section-lead">
+              Des productions visuelles complètes pensées sur devis selon vos objectifs et l’ampleur de votre projet.
+            </p>
+          </div>
+
+          <div class="perspective-stage services-grid">
+            <div class="tilt-3d service-card reveal" data-tilt="4">
+              <div class="tilt-sheen"></div>
+              <div class="service-image-wrap">
+                <img
+                  src="./portrait-02.jpg"
+                  alt="Photographie professionnelle — DIONTADO PRODUCTION"
+                  loading="lazy"
+                  data-asset="portrait-02.jpg"
+                />
+              </div>
+              <div class="service-body">
+                <div>
+                  <p class="mono-meta">01 · PHOTOGRAPHIE PROFESSIONNELLE</p>
+                  <h3 class="service-title">Capturer l’émotion et l’esthétique</h3>
+                  <p style="margin-top: 10px; font-size: 0.88rem; color: var(--text-muted);">
+                    De la séance intime à la campagne de marque, nous composons des images durables en studio comme en extérieur.
+                  </p>
+                  <ul class="service-bullets">
+                    <li>Prewedding, Mariage &amp; Cérémonies</li>
+                    <li>Portrait éditorial, Mode &amp; Beauté</li>
+                    <li>Reportage culturel &amp; Événementiel</li>
+                    <li>Shooting studio haute précision &amp; retouche</li>
+                  </ul>
+                </div>
+                <div class="service-footer">
+                  <button
+                    type="button"
+                    class="btn-primary js-book-prestation"
+                    data-prestation="Photographie professionnelle"
+                  >
+                    Demander un devis &rarr;
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="tilt-3d service-card reveal" data-tilt="4">
+              <div class="tilt-sheen"></div>
+              <div class="service-image-wrap">
+                <img
+                  src="./publicite-01.jpg"
+                  alt="Réalisation vidéo — DIONTADO PRODUCTION"
+                  loading="lazy"
+                  data-asset="publicite-01.jpg"
+                />
+              </div>
+              <div class="service-body">
+                <div>
+                  <p class="mono-meta">02 · RÉALISATION VIDÉO</p>
+                  <h3 class="service-title">Mettre vos histoires en mouvement</h3>
+                  <p style="margin-top: 10px; font-size: 0.88rem; color: var(--text-muted);">
+                    Écriture, captation 4K, prise de son et montage cinéma pour donner une portée mémorable à vos projets.
+                  </p>
+                  <ul class="service-bullets">
+                    <li>Films institutionnels &amp; présentation de marque</li>
+                    <li>Films de mariage cinématographiques</li>
+                    <li>Aftermovies événementiels &amp; clips artistiques</li>
+                    <li>Reportages documentaires &amp; étalonnage cinéma</li>
+                  </ul>
+                </div>
+                <div class="service-footer">
+                  <button
+                    type="button"
+                    class="btn-primary js-book-prestation"
+                    data-prestation="Réalisation vidéo"
+                  >
+                    Demander un devis &rarr;
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. CONTACT & RÉSERVATION -->
+      <section class="contact-section" id="contact">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <p class="kicker">CONTACT &amp; RÉSERVATION</p>
+              <h2 class="section-title" style="margin-top: 8px;">Parlons de votre projet.</h2>
+            </div>
+            <p class="section-lead">
+              Particuliers, artistes, mariés et entreprises : décrivez votre besoin et réservez votre date.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-card reveal">
+              <div>
+                <img
+                  src="./logo-vertical-blanc-contact.png"
+                  alt="DIONTADO PRODUCTION"
+                  class="contact-logo"
+                  data-asset="logo-vertical-blanc-contact.png"
+                  onerror="this.style.display='none';"
+                />
+
+                <ul class="contact-details">
+                  <li>
+                    <span class="contact-label">Téléphone &amp; WhatsApp</span>
+                    <a href="tel:+221764812391" class="contact-value" style="font-family: var(--font-mono);">
+                      +221 76 481 23 91
+                    </a>
+                  </li>
+                  <li>
+                    <span class="contact-label">Email professionnel</span>
+                    <a href="mailto:diontadoevens.0@gmail.com" class="contact-value">
+                      diontadoevens.0@gmail.com
+                    </a>
+                  </li>
+                  <li>
+                    <span class="contact-label">Instagram &amp; Chaîne Vidéo</span>
+                    <div style="margin-top: 4px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+                      <a
+                        href="https://www.instagram.com/diontado_photography"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-value"
+                        style="margin-top: 0;"
+                      >
+                        @diontado_photography
+                      </a>
+                      <span aria-hidden="true" style="color: #555;">·</span>
+                      <a
+                        href="https://www.youtube.com/watch?v=VDhh9Q0c_MI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-value"
+                        style="margin-top: 0;"
+                      >
+                        YouTube
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="contact-label">Localisation</span>
+                    <span class="contact-value">Yeumbeul, Dakar, Sénégal · Interventions nationales &amp; internationales</span>
+                  </li>
+                </ul>
+              </div>
+
+              <a
+                id="whatsappLink"
+                href="https://wa.me/221764812391?text=Bonjour%20DIONTADO%20PRODUCTION%2C%20je%20souhaite%20r%C3%A9server%20une%20prestation."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-whatsapp"
+                style="width: 100%;"
+              >
+                Discuter sur WhatsApp
+              </a>
+            </div>
+
+            <div class="contact-form-card reveal">
+              <div class="form-head">
+                <h3 style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 600; color: #ffffff;">
+                  Formulaire de demande de devis
+                </h3>
+                <p style="margin-top: 4px; font-size: 0.78rem; color: var(--text-muted);">
+                  Renseignez votre prestation et la date souhaitée pour recevoir une proposition adaptée.
+                </p>
+              </div>
+
+              <form id="contactForm" class="form-grid">
+                <div class="form-row-2">
+                  <div>
+                    <label class="field-label" for="contactName">Nom complet *</label>
+                    <input class="field-input" id="contactName" type="text" required placeholder="Ex : Moussa Diop" />
+                  </div>
+                  <div>
+                    <label class="field-label" for="contactPhone">Téléphone *</label>
+                    <input class="field-input" id="contactPhone" type="tel" required placeholder="+221 77 000 00 00" />
+                  </div>
+                </div>
+
+                <div class="form-row-3">
+                  <div>
+                    <label class="field-label" for="contactService">Type de prestation</label>
+                    <select class="field-select" id="contactService">
+                      <option value="Photographie professionnelle">Photographie professionnelle</option>
+                      <option value="Réalisation vidéo">Réalisation vidéo</option>
+                      <option value="Prewedding & Séance Couple">Prewedding &amp; Séance Couple</option>
+                      <option value="Mariage & Cérémonie (Photo / Vidéo)">Mariage &amp; Cérémonie (Photo / Vidéo)</option>
+                      <option value="Photographie — Portrait & Studio">Photographie — Portrait &amp; Studio</option>
+                      <option value="Shooting Mode, Beauté & Marque">Shooting Mode, Beauté &amp; Marque</option>
+                      <option value="Reportage Culturel & Documentaire">Reportage Culturel &amp; Documentaire</option>
+                      <option value="Événementiel (Photo & Vidéo)">Événementiel (Photo &amp; Vidéo)</option>
+                      <option value="Soutenance & Remise de diplôme">Soutenance &amp; Remise de diplôme</option>
+                      <option value="Film Institutionnel & Production Audiovisuelle">Film Institutionnel &amp; Production Audiovisuelle</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label class="field-label" for="contactDate">Date souhaitée</label>
+                    <input class="field-input" id="contactDate" type="date" />
+                  </div>
+
+                  <div>
+                    <label class="field-label" for="contactLocation">Lieu</label>
+                    <input class="field-input" id="contactLocation" type="text" placeholder="Dakar, Saly, Saint-Louis..." />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="field-label" for="contactMessage">Description du projet *</label>
+                  <textarea
+                    class="field-textarea"
+                    id="contactMessage"
+                    rows="4"
+                    required
+                    placeholder="Précisez vos attentes, horaires, nombre de personnes ou livrables souhaités..."
+                  ></textarea>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn-primary" id="submitFormBtn">
+                    ENVOYER MA DEMANDE
+                  </button>
+                  <button type="button" class="btn-ghost-gold" id="sendEmailBtn" style="height: 46px;">
+                    Envoyer par Email
+                  </button>
+                </div>
+
+                <p class="form-note" id="formNote">
+                  Transmission directe sans intermédiaire : « ENVOYER MA DEMANDE » ouvre votre demande pré-remplie dans WhatsApp (+221 76 481 23 91) ou prépare un email vers diontadoevens.0@gmail.com.
+                </p>
+
+                <div class="form-feedback" id="formFeedback" role="status"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ============================ VUE PAGE CATÉGORIE DÉDIÉE ============================ -->
+  <div id="categoryView" style="display: none; padding-top: 68px;" class="page-enter">
+    <div class="category-topbar">
+      <div class="container category-topbar-inner">
+        <button type="button" class="btn-back" id="categoryBackBtn">
+          &larr; Retour aux collections
+        </button>
+        <p class="mono-meta" style="color: var(--text-muted);" id="categoryTopMeta"></p>
+        <button type="button" class="btn-primary" style="height: 40px; padding-inline: 18px;" id="categoryTopReserveBtn">
+          Réserver une prestation
+        </button>
+      </div>
+    </div>
+
+    <section class="category-hero" id="categoryHero">
+      <div class="category-hero-bg" id="categoryHeroBg"></div>
+      <div class="category-hero-scrim" aria-hidden="true"></div>
+      <div class="container" style="position: relative; z-index: 2;">
+        <p class="kicker" id="categoryHeroSubtitle">Collection Photographique</p>
+        <h1 class="section-title" style="margin-top: 10px; font-size: clamp(2.8rem, 6vw, 4.8rem);" id="categoryHeroTitle">
+          PREWEDDING
+        </h1>
+        <p style="margin-top: 14px; max-width: 56ch; font-size: 0.98rem; color: rgba(245,242,235,0.86);" id="categoryHeroDesc"></p>
+        <div style="margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px;">
+          <button type="button" class="btn-primary" id="categoryHeroBookBtn">Réserver cette catégorie</button>
+          <button type="button" class="btn-outline" id="categoryHeroLightboxBtn" style="display: none;">
+            Ouvrir le diaporama plein écran
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="category-gallery-wrap">
+      <div class="container">
+        <div id="categoryGalleryHeader" style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 14px; padding-bottom: 18px; margin-bottom: 30px; border-bottom: 1px solid var(--border-hairline);">
+          <h2 style="font-family: var(--font-display); font-size: 2rem; font-weight: 600; color: #ffffff;" id="categorySeriesHeading">
+            Série complète
+          </h2>
+          <span class="mono-meta" style="color: var(--text-muted);" id="categoryPhotoCount"></span>
+        </div>
+
+        <div class="gallery-grid" id="categoryGalleryGrid"></div>
+        <div id="categoryEmptyState" style="display: none;"></div>
+
+        <div style="margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--border-hairline);">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;">
+            <p class="kicker">Explorer d’autres univers</p>
+            <button type="button" class="btn-back" id="categoryBottomBackBtn">
+              &larr; Toutes les collections
+            </button>
+          </div>
+          <div class="other-cats-grid" id="otherCategoriesGrid"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============================ VUE PAGE TARIFS DÉDIÉE ============================ -->
+  <div id="tarifsView" style="display: none; padding-top: 68px;" class="page-enter">
+    <div class="category-topbar">
+      <div class="container category-topbar-inner">
+        <button type="button" class="btn-back" id="tarifsBackBtn">
+          &larr; Retour à l’accueil
+        </button>
+        <p class="mono-meta" style="color: var(--text-muted);">
+          DIONTADO PRODUCTION · Grille des Prestations
+        </p>
+        <a
+          href="https://wa.me/221764812391?text=Bonjour%20DIONTADO%20PRODUCTION%2C%20je%20souhaite%20obtenir%20un%20devis%20personnalis%C3%A9."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-whatsapp"
+          style="height: 40px; padding-inline: 16px;"
+        >
+          Devis WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <section class="tarifs-hero">
+      <div class="container">
+        <p class="kicker">TARIFS &amp; PRESTATIONS</p>
+        <h1 class="section-title" style="margin-top: 10px; max-width: 18ch; font-size: clamp(2.4rem, 5vw, 4.1rem);">
+          Des productions pensées sur mesure, à la hauteur de votre projet.
+        </h1>
+        <p style="margin-top: 16px; max-width: 58ch; font-size: 0.96rem; line-height: 1.7; color: rgba(245,242,235,0.84);">
+          Chaque séance photo ou production audiovisuelle mobilise une équipe, un dispositif technique et un temps de post-production adaptés à vos besoins. Nos prestations sont établies sur devis clair et personnalisé.
+        </p>
+        <div style="margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px;">
+          <a href="#tarifsPhotoSection" class="btn-ghost-gold js-tarif-jump" data-jump="tarifsPhotoSection">Photographie (6)</a>
+          <a href="#tarifsVideoSection" class="btn-outline js-tarif-jump" data-jump="tarifsVideoSection" style="height: 44px;">Réalisation Vidéo (5)</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="tarifs-section" id="tarifsPhotoSection">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="mono-meta">01 · Pôle Image Fixe</p>
+            <h2 class="section-title" style="margin-top: 6px;">PHOTOGRAPHIE</h2>
+          </div>
+          <p class="section-lead">
+            Séances en studio, reportages sur le terrain et couverture complète d’événements privés ou professionnels.
+          </p>
+        </div>
+
+        <div class="perspective-stage tarifs-grid-photo" id="tarifsPhotoGrid"></div>
+      </div>
+    </section>
+
+    <section class="tarifs-section" id="tarifsVideoSection" style="background-color: #0c0c10;">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="mono-meta">02 · Pôle Cinéma &amp; Audiovisuel</p>
+            <h2 class="section-title" style="margin-top: 6px;">RÉALISATION VIDÉO</h2>
+          </div>
+          <p class="section-lead">
+            De la conception narrative au tournage 4K, prise de son, montage rythmé et étalonnage cinéma.
+          </p>
+        </div>
+
+        <div class="perspective-stage tarifs-grid-video" id="tarifsVideoGrid"></div>
+      </div>
+    </section>
+
+    <section style="padding-bottom: 40px;">
+      <div class="container">
+        <div class="tarifs-whatsapp-banner">
+          <div>
+            <p class="mono-meta">Devis personnalisé sous 24h</p>
+            <h2 style="margin-top: 6px; font-family: var(--font-display); font-size: clamp(1.7rem, 3vw, 2.3rem); color: #ffffff;">
+              Besoin d’une estimation précise pour votre date ?
+            </h2>
+            <p style="margin-top: 6px; max-width: 56ch; font-size: 0.88rem; color: rgba(245,242,235,0.8);">
+              Décrivez votre lieu, la durée et vos attentes sur WhatsApp pour recevoir une proposition claire et adaptée.
+            </p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <a
+              href="https://wa.me/221764812391?text=Bonjour%20DIONTADO%20PRODUCTION%2C%20je%20souhaite%20obtenir%20un%20devis%20personnalis%C3%A9."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-whatsapp"
+            >
+              Demander un devis sur WhatsApp
+            </a>
+            <button type="button" class="btn-outline js-book-prestation" data-prestation="Photographie professionnelle">
+              Formulaire de réservation
+            </button>
           </div>
         </div>
       </div>
     </section>
-  </main>
+  </div>
 
-  <!-- ============================ FOOTER ============================ -->
+  <!-- ============================ 8. PIED DE PAGE ============================ -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
-        <a href="#accueil" aria-label="Retour en haut">
-          <img
-            src="./logo-pied.png"
-            alt="DIONTADO PRODUCTION"
-            class="footer-logo"
-            data-asset="logo-pied.png"
-            onerror="this.style.display='none';"
-          />
-        </a>
+        <div>
+          <a href="#accueil" class="js-nav-home" data-target="accueil" aria-label="DIONTADO PRODUCTION — Accueil">
+            <img
+              src="./logo-pied.png"
+              alt="DIONTADO PRODUCTION"
+              class="footer-logo"
+              data-asset="logo-pied.png"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"
+            />
+            <span style="display:none; font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; letter-spacing: 0.08em; color: #ffffff;">
+              DIONTADO PRODUCTION
+            </span>
+          </a>
+          <p style="margin-top: 6px; font-size: 0.78rem; color: var(--gold);">
+            Photographie | Réalisation vidéo
+          </p>
+        </div>
 
-        <p class="footer-meta">
-          &copy; <span id="currentYear"></span> DIONTADO PRODUCTION — Yeumbeul, Dakar, Sénégal.
-        </p>
+        <nav class="footer-links" aria-label="Pied de page">
+          <a href="#accueil" class="js-nav-home" data-target="accueil">Accueil</a>
+          <a href="#realisations" class="js-nav-home" data-target="realisations">Réalisations</a>
+          <a href="#/tarifs" class="js-nav-tarifs">Tarifs</a>
+          <a href="#apropos" class="js-nav-home" data-target="apropos">À propos</a>
+          <a href="#services" class="js-nav-home" data-target="services">Services</a>
+          <a href="#contact" class="js-nav-home" data-target="contact">Contact</a>
+        </nav>
 
-        <div class="footer-links">
-          <a href="#accueil">Accueil</a>
-          <a href="#apropos">À propos</a>
-          <a href="#services">Services</a>
-          <a href="#realisations">Photo</a>
-          <a href="#videos">Vidéo</a>
-          <a href="#contact">Contact</a>
-          <a href="https://www.instagram.com/diontado_photography" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <div class="footer-right">
+          <div style="display: flex; gap: 16px; font-size: 0.78rem; color: var(--text-muted);">
+            <a href="https://www.instagram.com/diontado_photography" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.youtube.com/watch?v=VDhh9Q0c_MI" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a href="https://wa.me/221764812391" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          </div>
+          <p style="font-size: 0.78rem; color: var(--text-muted);">
+            &copy; 2026 DIONTADO PRODUCTION — Tous droits réservés.
+          </p>
         </div>
       </div>
     </div>
@@ -2317,12 +2706,12 @@
     <span>WhatsApp</span>
   </a>
 
-  <!-- ============================ LIGHTBOX ============================ -->
+  <!-- ============================ LIGHTBOX PLEIN ÉCRAN ============================ -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Aperçu plein écran">
     <div class="lightbox-bar">
       <div>
         <span class="lightbox-title" id="lightboxTitle">Photographie</span>
-        <span class="lightbox-sub" id="lightboxCounter">1 / 19</span>
+        <span class="lightbox-sub" id="lightboxCounter">1 / 1</span>
       </div>
       <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Fermer">&times;</button>
     </div>
@@ -2338,118 +2727,187 @@
   <script>
     (function () {
       /* --------------------------------------------------------------------
-         1. CONFIGURATION FACILE (Chemin des médias, Vidéos & Tarifs)
+         1. CONFIGURATION FACILE (Médias, Vidéos & Endpoint de formulaire)
          -------------------------------------------------------------------- */
       var MEDIA_BASE = './';
       var WHATSAPP_URL = 'https://wa.me/221764812391?text=Bonjour%20DIONTADO%20PRODUCTION%2C%20je%20souhaite%20r%C3%A9server%20une%20prestation.';
 
-      /* Catalogue des vidéos intégrées (YouTube OU fichiers .mp4 hébergés) */
+      /* Optionnel : collez ici votre URL Formspree (ex: 'https://formspree.io/f/xxxx')
+         pour activer l'envoi silencieux par email en plus de WhatsApp. */
+      var FORMSPREE_ENDPOINT = '';
+
+      /* Catégories vidéo officielles */
+      var VIDEO_CATEGORIES = [
+        'Toutes',
+        'Films institutionnels',
+        'Événementiel',
+        'Mariage',
+        'Clips et créations artistiques',
+        'Reportages'
+      ];
+
+      /* Tableau simple des vidéos réelles (ajoutez vos identifiants/URL YouTube ou fichiers .mp4 ici) */
       var VIDEO_ITEMS = [
         {
           id: 'vid-showreel',
           sourceType: 'youtube',
           youtubeId: 'VDhh9Q0c_MI',
-          posterUrl: 'https://i.ytimg.com/vi/VDhh9Q0c_MI/hqdefault.jpg',
-          category: 'Production Audiovisuelle',
+          posterAsset: 'cover.jpg',
+          category: 'Films institutionnels',
           title: 'Showreel Officiel — DIONTADO PRODUCTION',
-          desc: 'Sélection de réalisations cinématographiques, campagnes de marque, portraits en mouvement et reportages.'
+          desc: 'Sélection cinématographique de nos réalisations audiovisuelles, films de marque et portraits en mouvement.',
+          isShowreel: true
         },
         {
           id: 'vid-culture',
           sourceType: 'youtube',
           youtubeId: 'OJrbnH9zgLE',
           posterUrl: 'https://i.ytimg.com/vi/OJrbnH9zgLE/hqdefault.jpg',
-          category: 'Reportage Culturel',
+          category: 'Reportages',
           title: 'Reportage Culturel — Sénégal',
-          desc: 'Immersion audiovisuelle au cœur des expressions artistiques, des traditions et des visages du Sénégal.'
+          desc: 'Immersion documentaire au cœur des expressions artistiques, des traditions et des visages du Sénégal.'
         },
         {
           id: 'vid-studio',
           sourceType: 'youtube',
           youtubeId: 'tSglYbBoufg',
           posterUrl: 'https://i.ytimg.com/vi/tSglYbBoufg/hqdefault.jpg',
-          category: 'Direction Artistique',
-          title: 'Direction Artistique & Film Publicitaire',
-          desc: 'Conception visuelle, lumière cinéma et montage sur mesure pour artistes, créateurs et entreprises.'
+          category: 'Clips et créations artistiques',
+          title: 'Direction Artistique & Création Visuelle',
+          desc: 'Mise en lumière cinéma, cadre et étalonnage sur mesure pour artistes, créateurs et marques.'
         }
         /* Exemple pour ajouter une vidéo hébergée dans votre dépôt GitHub :
         ,{
-          id: 'vid-mp4-01',
+          id: 'vid-mariage-01',
           sourceType: 'mp4',
-          videoSrc: './videos/mon-film.mp4',
-          posterUrl: './cover.jpg',
-          category: 'Film de Mariage',
+          videoSrc: './videos/mariage-dakar.mp4',
+          posterAsset: 'mariage-01.jpg',
+          category: 'Mariage',
           title: 'Film de Mariage — Dakar',
-          desc: 'Extrait complet en haute définition.'
+          desc: 'Souvenir cinématographique en haute définition.'
         }
         */
       ];
 
-      /* Grille tarifaire facilement modifiable (remplacez 'Sur devis' par vos tarifs si souhaité) */
-      var PRICING_PACKAGES = [
+      /* Catégories photographiques avec pages dédiées (#/realisations/<slug>) */
+      var PHOTO_CATEGORIES = [
         {
-          category: 'Photographie professionnelle',
-          name: 'Shooting Portrait & Studio',
-          priceLabel: 'Sur devis',
-          summary: 'Séance photo dirigée en studio ou en extérieur pour artistes, entrepreneurs et particuliers.',
-          deliverables: [
-            'Direction artistique & préparation',
-            'Prise de vue studio ou lumière naturelle',
-            'Sélection & retouche colorimétrique soignée'
-          ],
-          prestationValue: 'Photographie — Portrait & Studio'
+          slug: 'prewedding',
+          title: 'PREWEDDING',
+          folderMatch: 'Prewedding',
+          subtitle: 'Complicité & Lumière Naturelle',
+          description: 'Séances de couple mises en scène dans des décors choisis au Sénégal, capturant la tendresse et l’émotion avant le grand jour.',
+          coverFile: 'mariage-01.jpg',
+          prestationValue: 'Prewedding & Séance Couple',
+          expectedPrefixHint: 'mariage-01.jpg ou prewedding-01.jpg',
+          accentGradient: 'linear-gradient(135deg, rgba(158,110,59,0.35), #161519 70%)'
         },
         {
-          category: 'Photo & Film de mariage',
-          name: 'Mariage, Prewedding & Cérémonie',
-          priceLabel: 'Sur devis',
-          summary: 'Couverture discrète et cinématographique des temps forts de votre union et de vos cérémonies.',
-          deliverables: [
-            'Séance couple / Prewedding sur mesure',
-            'Couverture complète de la cérémonie',
-            'Galerie haute définition & film souvenir'
-          ],
-          prestationValue: 'Mariage & Cérémonie (Photo / Vidéo)'
+          slug: 'mariage',
+          title: 'MARIAGE',
+          folderMatch: 'Mariage',
+          subtitle: 'Récits d’Union & Cérémonies',
+          description: 'Couverture photographique et cinématographique complète des cérémonies traditionnelles, civiles et réceptions.',
+          prestationValue: 'Mariage & Cérémonie (Photo / Vidéo)',
+          expectedPrefixHint: 'wedding-01.jpg ou ceremonie-01.jpg',
+          accentGradient: 'linear-gradient(135deg, rgba(212,175,106,0.25), #151418 70%)'
         },
         {
-          category: 'Photo & Vidéo événementielle',
-          name: 'Couverture Événementielle',
-          priceLabel: 'Sur devis',
-          summary: 'Captation réactive pour lancements, concerts, conférences, galas et événements culturels.',
-          deliverables: [
-            'Reportage photo complet des temps forts',
-            'Film récapitulatif rythmé (Aftermovie)',
-            'Livraison optimisée réseaux sociaux & presse'
-          ],
-          prestationValue: 'Événementiel (Photo & Vidéo)'
+          slug: 'portrait',
+          title: 'PORTRAIT',
+          folderMatch: 'Portrait',
+          subtitle: 'Regard, Caractère & Présence',
+          description: 'Portraits éditoriaux et artistiques réalisés avec une attention particulière portée à l’expression, aux textures et à la lumière.',
+          coverFile: 'portrait-01.jpg',
+          prestationValue: 'Photographie — Portrait & Studio',
+          expectedPrefixHint: 'portrait-01.jpg',
+          accentGradient: 'linear-gradient(135deg, rgba(124,74,45,0.35), #151316 70%)'
         },
         {
-          category: 'Production audiovisuelle',
-          name: 'Film Institutionnel & Marque',
-          priceLabel: 'Sur devis',
-          summary: 'Production audiovisuelle complète pour entreprises, ONG, marques et campagnes digitales.',
-          deliverables: [
-            'Repérage, écriture & mise en scène',
-            'Tournage cinéma 4K, son & éclairage',
-            'Montage, étalonnage & déclinaisons multi-formats'
-          ],
-          prestationValue: 'Film Institutionnel & Production Audiovisuelle'
+          slug: 'mode-beaute',
+          title: 'MODE & BEAUTÉ',
+          folderMatch: 'Mode & Beauté',
+          subtitle: 'Direction Artistique & Campagnes',
+          description: 'Séries mode, lookbooks créateurs, beauté et stylisme pensés comme de véritables éditoriaux visuels.',
+          prestationValue: 'Shooting Mode, Beauté & Marque',
+          expectedPrefixHint: 'mode-01.jpg ou beaute-01.jpg',
+          accentGradient: 'linear-gradient(135deg, rgba(196,139,87,0.28), #161317 70%)'
+        },
+        {
+          slug: 'culture',
+          title: 'CULTURE',
+          folderMatch: 'Culture',
+          subtitle: 'Patrimoine, Arts & Expressions',
+          description: 'Immersion documentaire et artistique au cœur de la richesse culturelle sénégalaise, des scènes et des traditions vivantes.',
+          coverFile: 'culture-01.jpg',
+          prestationValue: 'Reportage Culturel & Documentaire',
+          expectedPrefixHint: 'culture-01.jpg',
+          accentGradient: 'linear-gradient(135deg, rgba(184,132,70,0.34), #161414 70%)'
+        },
+        {
+          slug: 'evenementiel',
+          title: 'ÉVÉNEMENTIEL',
+          folderMatch: 'Événementiel',
+          subtitle: 'Concerts, Galas & Conférences',
+          description: 'Captation réactive et élégante de vos événements d’entreprise, festivals, lancements de produits et soirées de prestige.',
+          prestationValue: 'Événementiel (Photo & Vidéo)',
+          expectedPrefixHint: 'evenement-01.jpg',
+          accentGradient: 'linear-gradient(135deg, rgba(140,109,70,0.3), #141419 70%)'
+        },
+        {
+          slug: 'studio',
+          title: 'STUDIO',
+          folderMatch: 'Studio',
+          subtitle: 'Lumières Maîtrisées & Créations',
+          description: 'Prises de vue studio haute précision avec façonnage lumineux sur mesure pour artistes, portraits et marques.',
+          coverFile: 'publicite-01.jpg',
+          prestationValue: 'Photographie — Portrait & Studio',
+          expectedPrefixHint: 'studio-01.jpg ou publicite-01.jpg',
+          accentGradient: 'linear-gradient(135deg, rgba(165,124,73,0.3), #141418 70%)'
+        },
+        {
+          slug: 'exterieur',
+          title: 'EXTÉRIEUR',
+          folderMatch: 'Extérieur',
+          subtitle: 'Architecture, Littoral & Paysages',
+          description: 'Séances en lumière naturelle captées dans des décors ouverts, urbains ou côtiers au Sénégal.',
+          coverFile: 'publicite-06.jpg',
+          prestationValue: 'Photographie professionnelle',
+          expectedPrefixHint: 'exterieur-01.jpg',
+          accentGradient: 'linear-gradient(135deg, rgba(107,91,69,0.34), #131518 70%)'
+        },
+        {
+          slug: 'soutenance',
+          title: 'SOUTENANCE',
+          folderMatch: 'Soutenance',
+          subtitle: 'Accomplissement Académique & Fierté',
+          description: 'Immortalisation de votre soutenance de mémoire, thèse ou remise de diplôme : discours devant le jury, portraits en toge et moments d’émotion en famille.',
+          prestationValue: 'Soutenance & Remise de diplôme',
+          expectedPrefixHint: 'soutenance-01.jpg ou diplome-01.jpg',
+          accentGradient: 'linear-gradient(135deg, rgba(212,175,106,0.28), #15141a 70%)'
+        },
+        {
+          slug: 'photographie-professionnelle',
+          title: 'PHOTOGRAPHIE PROFESSIONNELLE',
+          folderMatch: 'Photographie professionnelle',
+          subtitle: 'Image de Marque, Corporate & Dirigeants',
+          description: 'Portraits corporate, reportages d’entreprise, campagnes de communication et valorisation des métiers avec une signature visuelle rigoureuse.',
+          prestationValue: 'Photographie professionnelle',
+          expectedPrefixHint: 'pro-01.jpg ou corporate-01.jpg',
+          accentGradient: 'linear-gradient(135deg, rgba(158,110,59,0.32), #14141a 70%)'
         }
       ];
 
-      /* Ordre officiel des catégories supportées dans le portfolio */
-      var CATEGORY_TAXONOMY = [
-        'Portrait',
-        'Mariage',
-        'Prewedding',
-        'Culture',
-        'Mode',
-        'Studio',
-        'Événementiel',
-        'Extérieur'
-      ];
-
-      /* Liste exacte de vos photographies sur GitHub */
+      /* Liste exacte des photographies réelles sur GitHub.
+         STRUCTURE SIMPLE POUR AJOUTER VOS PHOTOS :
+         Copiez une ligne et précisez { file: 'nom-fichier.jpg', category: 'NomExactCollection', title: 'Titre affiché' }
+         Collections disponibles :
+         'Prewedding', 'Mariage', 'Portrait', 'Mode & Beauté', 'Culture',
+         'Événementiel', 'Studio', 'Extérieur', 'Soutenance', 'Photographie professionnelle'
+         Exemples prêts à décommenter dès l'ajout de vos fichiers :
+         ,{ file: 'soutenance-01.jpg', category: 'Soutenance', title: 'Soutenance — Série 01' }
+         ,{ file: 'pro-01.jpg', category: 'Photographie professionnelle', title: 'Photographie professionnelle — Série 01' }
+      */
       var GALLERY_PHOTOS = [
         { file: 'culture-01.jpg', category: 'Culture', title: 'Culture — Série 01' },
         { file: 'culture-02.jpg', category: 'Culture', title: 'Culture — Série 02' },
@@ -2472,22 +2930,6 @@
         { file: 'publicite-06.jpg', category: 'Extérieur', title: 'Extérieur — Série 01' }
       ];
 
-      /* Photos BTS / Coulisses (noms de fichiers d'origine conservés) */
-      var BTS_PHOTOS = [
-        { file: '1.jpg', localFile: 'assets/aistudio/1_e77d17a4.jpg', category: 'Sur le terrain', title: 'Shooting sur la côte rocheuse' },
-        { file: '2.JPG', localFile: 'assets/aistudio/2_f3530072.JPG', category: 'Sur le terrain', title: 'Plateau studio & éclairage d’équipe' },
-        { file: '3.jpg', localFile: 'assets/aistudio/3_51f1cc8f.jpg', category: 'Sur le terrain', title: 'Tournage vidéo en intérieur' },
-        { file: '4.JPG', localFile: 'assets/aistudio/4_285c84fb.JPG', category: 'Editing', title: 'Post-production & direction artistique' },
-        { file: '5.jpg', localFile: 'assets/aistudio/5_0479c35b.jpg', category: 'Sur le terrain', title: 'Shooting produit & réflecteur' },
-        { file: '6.jpg', localFile: 'assets/aistudio/6_26900419.jpg', category: 'Sur le terrain', title: 'Tournage clip & mise en lumière' },
-        { file: '7.JPG', localFile: 'assets/aistudio/7_6d59849c.JPG', category: 'Sur le terrain', title: 'Cadreur 4K sur le terrain' },
-        { file: '8.JPG', localFile: 'assets/aistudio/8_b3eee15a.JPG', category: 'Sur le terrain', title: 'Tournage sport — Teranga Training' },
-        { file: '9.HEIC', localFile: 'assets/aistudio/9_9955958d.jpg', category: 'Editing', title: 'Tethering & retouche en direct' },
-        { file: '10.JPG', localFile: 'assets/aistudio/10_1df3e28e.JPG', category: 'Sur le terrain', title: 'Équipe drone & caméra — Littoral' },
-        { file: '11.HEIC', localFile: 'assets/aistudio/11_27ca1e48.jpg', category: 'Sur le terrain', title: 'Tournage sur falaise côtière' },
-        { file: '12.HEIC', localFile: 'assets/aistudio/12_ee2a8b90.jpg', category: 'Sur le terrain', title: 'Prise de vue en extérieur' }
-      ];
-
       function assetUrl(fileName) {
         var encoded = fileName.split('/').map(encodeURIComponent).join('/');
         return MEDIA_BASE.replace(/\/+$/, '') + '/' + encoded;
@@ -2503,10 +2945,467 @@
       var waBtn = document.getElementById('whatsappLink');
       if (waBtn) waBtn.setAttribute('href', WHATSAPP_URL);
 
-      var yearEl = document.getElementById('currentYear');
-      if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+      /* Effet 3D Perspective Tilt léger sur les cartes */
+      function bindTilt3D(el, maxTilt) {
+        if (!el || el.dataset.tiltBound) return;
+        el.dataset.tiltBound = '1';
+        var sheen = el.querySelector('.tilt-sheen');
+        var tiltAngle = Number(maxTilt || el.getAttribute('data-tilt') || 5);
 
-      /* Pré-sélection d'une prestation et défilement vers le formulaire */
+        function canTilt() {
+          if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+          return window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        }
+
+        el.addEventListener('mousemove', function (e) {
+          if (!canTilt()) return;
+          var rect = el.getBoundingClientRect();
+          var px = (e.clientX - rect.left) / rect.width;
+          var py = (e.clientY - rect.top) / rect.height;
+          var rx = (0.5 - py) * (tiltAngle * 2);
+          var ry = (px - 0.5) * (tiltAngle * 2);
+          el.style.transform =
+            'perspective(1100px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg) scale3d(1.015, 1.015, 1.015)';
+          if (sheen) {
+            sheen.style.opacity = '1';
+            sheen.style.background =
+              'radial-gradient(circle at ' + (px * 100).toFixed(1) + '% ' + (py * 100).toFixed(1) + '%, rgba(231, 202, 145, 0.16), transparent 58%)';
+          }
+        });
+
+        el.addEventListener('mouseleave', function () {
+          el.style.transform = 'perspective(1100px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+          if (sheen) sheen.style.opacity = '0';
+        });
+      }
+
+      document.querySelectorAll('.tilt-3d').forEach(function (node) {
+        bindTilt3D(node);
+      });
+
+      /* CATALOGUE DES TARIFS — STRUCTURE SIMPLE À MODIFIER
+         Remplacez simplement 'Sur devis' par votre tarif (ex: '150 000 FCFA') quand vous souhaitez l'afficher. */
+      var TARIFS_CATALOG = [
+        { id: 'tarif-photo-mariage', category: 'Photographie', number: '01', title: 'Mariage', priceLabel: 'Sur devis', description: 'Couverture photographique complète des cérémonies traditionnelles, civiles et réceptions, avec traitement éditorial soigné.', prestationValue: 'Mariage & Cérémonie (Photo / Vidéo)' },
+        { id: 'tarif-photo-prewedding', category: 'Photographie', number: '02', title: 'Prewedding', priceLabel: 'Sur devis', description: 'Séance couple mise en scène en lumière naturelle ou dans un décor choisi pour célébrer votre histoire avant le grand jour.', prestationValue: 'Prewedding & Séance Couple' },
+        { id: 'tarif-photo-portrait', category: 'Photographie', number: '03', title: 'Shooting portrait', priceLabel: 'Sur devis', description: 'Séance dirigée en studio ou en extérieur pour particuliers, artistes et personnalités avec façonnage lumineux sur mesure.', prestationValue: 'Photographie — Portrait & Studio' },
+        { id: 'tarif-photo-evenementiel', category: 'Photographie', number: '04', title: 'Événementiel', priceLabel: 'Sur devis', description: 'Reportage réactif et immersif pour conférences, galas, concerts, lancements de marque et réceptions privées.', prestationValue: 'Événementiel (Photo & Vidéo)' },
+        { id: 'tarif-photo-soutenance', category: 'Photographie', number: '05', title: 'Soutenance', priceLabel: 'Sur devis', description: 'Immortalisation de votre soutenance de mémoire, thèse ou remise de diplôme : passage devant le jury et portraits officiels.', prestationValue: 'Soutenance & Remise de diplôme' },
+        { id: 'tarif-photo-pro', category: 'Photographie', number: '06', title: 'Photographie professionnelle', priceLabel: 'Sur devis', description: 'Portraits corporate, reportages d’entreprise, campagnes de communication et valorisation de votre savoir-faire.', prestationValue: 'Photographie professionnelle' },
+        { id: 'tarif-video-mariage', category: 'Réalisation vidéo', number: '01', title: 'Film de mariage', priceLabel: 'Sur devis', description: 'Récit cinématographique de votre union, captation multi-angles, prise de son soignée et montage émotionnel.', prestationValue: 'Mariage & Cérémonie (Photo / Vidéo)' },
+        { id: 'tarif-video-evenementiel', category: 'Réalisation vidéo', number: '02', title: 'Vidéo événementielle', priceLabel: 'Sur devis', description: 'Aftermovie rythmé et captation des temps forts de vos festivals, galas, soirées et lancements officiels.', prestationValue: 'Événementiel (Photo & Vidéo)' },
+        { id: 'tarif-video-reportage', category: 'Réalisation vidéo', number: '03', title: 'Reportage', priceLabel: 'Sur devis', description: 'Immersion documentaire sur le terrain, entretiens et narration authentique dédiée aux cultures et récits humains.', prestationValue: 'Reportage Culturel & Documentaire' },
+        { id: 'tarif-video-institutionnel', category: 'Réalisation vidéo', number: '04', title: 'Film institutionnel', priceLabel: 'Sur devis', description: 'Film corporate de présentation pour entreprises, institutions, ONG et marques souhaitant affirmer leur image.', prestationValue: 'Film Institutionnel & Production Audiovisuelle' },
+        { id: 'tarif-video-production', category: 'Réalisation vidéo', number: '05', title: 'Production audiovisuelle', priceLabel: 'Sur devis', description: 'Accompagnement complet de l’écriture à l’étalonnage cinéma : clips artistiques, campagnes visuelles et projets sur mesure.', prestationValue: 'Réalisation vidéo' }
+      ];
+
+      /* ====================================================================
+         ROUTAGE INTERNE DES PAGES (#/tarifs & #/realisations/<slug>)
+         ==================================================================== */
+      var homeView = document.getElementById('homeView');
+      var categoryView = document.getElementById('categoryView');
+      var tarifsView = document.getElementById('tarifsView');
+      var lightboxList = [];
+      var lightboxIndex = 0;
+
+      function getSlugFromHash() {
+        var m = (window.location.hash || '').match(/^#\/realisations\/([a-z0-9-]+)$/i);
+        return m ? m[1].toLowerCase() : null;
+      }
+
+      function isTarifsHash() {
+        var h = (window.location.hash || '').toLowerCase();
+        return h === '#/tarifs' || h === '#tarifs';
+      }
+
+      function updateNavActiveState(isTarifs) {
+        document.querySelectorAll('.js-nav-tarifs').forEach(function (el) {
+          el.classList.toggle('is-active', Boolean(isTarifs));
+        });
+      }
+
+      function buildTarifCard(offer, isWideVideo) {
+        var card = document.createElement('article');
+        card.className = 'tarif-card tilt-3d' + (isWideVideo ? ' is-wide' : '');
+        card.setAttribute('data-tilt', '5');
+        card.innerHTML =
+          '<div class="tilt-sheen"></div>' +
+          '<div>' +
+            '<div class="tarif-card-top">' +
+              '<span class="mono-meta">' + offer.number + ' · ' + offer.category + '</span>' +
+              '<span style="flex:1;height:1px;background:var(--border-hairline);"></span>' +
+            '</div>' +
+            '<h3 style="margin-top:18px;font-family:var(--font-display);font-size:1.85rem;font-weight:600;color:#fff;">' + offer.title + '</h3>' +
+            '<div class="tarif-price-box">' +
+              '<span style="font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--text-muted);">Tarif</span>' +
+              '<span class="tarif-price-value">' + offer.priceLabel + '</span>' +
+            '</div>' +
+            '<p style="margin-top:16px;font-size:0.88rem;line-height:1.65;color:rgba(245,242,235,0.82);">' + offer.description + '</p>' +
+          '</div>' +
+          '<div style="margin-top:26px;padding-top:18px;border-top:1px solid var(--border-hairline);">' +
+            '<button type="button" class="btn-primary js-tarif-book" style="width:100%;">Réserver cette prestation &rarr;</button>' +
+          '</div>';
+        var bookBtn = card.querySelector('.js-tarif-book');
+        if (bookBtn) {
+          bookBtn.addEventListener('click', function () {
+            selectPrestation(offer.prestationValue);
+          });
+        }
+        bindTilt3D(card, 5);
+        return card;
+      }
+
+      function renderTarifsCatalog() {
+        var photoGrid = document.getElementById('tarifsPhotoGrid');
+        var videoGrid = document.getElementById('tarifsVideoGrid');
+        if (photoGrid && !photoGrid.dataset.rendered) {
+          photoGrid.dataset.rendered = '1';
+          TARIFS_CATALOG.filter(function (t) { return t.category === 'Photographie'; }).forEach(function (offer) {
+            photoGrid.appendChild(buildTarifCard(offer, false));
+          });
+        }
+        if (videoGrid && !videoGrid.dataset.rendered) {
+          videoGrid.dataset.rendered = '1';
+          TARIFS_CATALOG.filter(function (t) { return t.category === 'Réalisation vidéo'; }).forEach(function (offer, idx) {
+            videoGrid.appendChild(buildTarifCard(offer, idx >= 3));
+          });
+        }
+      }
+
+      function renderTarifsPage() {
+        if (!homeView || !tarifsView) return;
+        renderTarifsCatalog();
+        homeView.style.display = 'none';
+        if (categoryView) categoryView.style.display = 'none';
+        tarifsView.style.display = 'block';
+        tarifsView.classList.remove('page-enter');
+        void tarifsView.offsetWidth;
+        tarifsView.classList.add('page-enter');
+        updateNavActiveState(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        scheduleHeaderScroll();
+      }
+
+      function findCategoryBySlug(slug) {
+        for (var i = 0; i < PHOTO_CATEGORIES.length; i++) {
+          if (PHOTO_CATEGORIES[i].slug === slug) return PHOTO_CATEGORIES[i];
+        }
+        return null;
+      }
+
+      function getPhotosForCategory(catMeta) {
+        return GALLERY_PHOTOS.filter(function (p) {
+          return p.category.toLowerCase() === catMeta.folderMatch.toLowerCase();
+        });
+      }
+
+      function renderCategoryPage(catMeta) {
+        if (!homeView || !categoryView || !catMeta) return;
+        homeView.style.display = 'none';
+        if (tarifsView) tarifsView.style.display = 'none';
+        updateNavActiveState(false);
+        categoryView.style.display = 'block';
+        categoryView.classList.remove('page-enter');
+        void categoryView.offsetWidth;
+        categoryView.classList.add('page-enter');
+
+        var catPhotos = getPhotosForCategory(catMeta);
+        var topMeta = document.getElementById('categoryTopMeta');
+        var heroBg = document.getElementById('categoryHeroBg');
+        var heroSub = document.getElementById('categoryHeroSubtitle');
+        var heroTitle = document.getElementById('categoryHeroTitle');
+        var heroDesc = document.getElementById('categoryHeroDesc');
+        var heroBookBtn = document.getElementById('categoryHeroBookBtn');
+        var topReserveBtn = document.getElementById('categoryTopReserveBtn');
+        var heroLightboxBtn = document.getElementById('categoryHeroLightboxBtn');
+        var seriesHeading = document.getElementById('categorySeriesHeading');
+        var photoCountEl = document.getElementById('categoryPhotoCount');
+        var galleryGrid = document.getElementById('categoryGalleryGrid');
+        var emptyState = document.getElementById('categoryEmptyState');
+        var otherGrid = document.getElementById('otherCategoriesGrid');
+
+        if (topMeta) {
+          topMeta.textContent = 'Portfolio · ' + catMeta.title + ' · ' + catPhotos.length + (catPhotos.length > 1 ? ' photos' : ' photo');
+        }
+        if (heroSub) heroSub.textContent = 'Collection Photographique · ' + catMeta.subtitle;
+        if (heroTitle) heroTitle.textContent = catMeta.title;
+        if (heroDesc) heroDesc.textContent = catMeta.description;
+        if (seriesHeading) seriesHeading.textContent = 'Série complète — ' + catMeta.title;
+        if (photoCountEl) {
+          photoCountEl.textContent = catPhotos.length + (catPhotos.length > 1 ? ' photographies haute définition' : ' photographie haute définition');
+        }
+
+        if (heroBg) {
+          heroBg.innerHTML = '';
+          var coverFile = catPhotos[0] ? catPhotos[0].file : catMeta.coverFile;
+          if (coverFile) {
+            var img = document.createElement('img');
+            img.src = assetUrl(coverFile);
+            img.alt = catMeta.title + ' — DIONTADO PRODUCTION';
+            heroBg.appendChild(img);
+          } else {
+            heroBg.style.background = catMeta.accentGradient;
+          }
+        }
+
+        if (heroBookBtn) {
+          heroBookBtn.onclick = function () { selectPrestation(catMeta.prestationValue); };
+        }
+        if (topReserveBtn) {
+          topReserveBtn.onclick = function () { selectPrestation(catMeta.prestationValue); };
+        }
+
+        if (heroLightboxBtn) {
+          if (catPhotos.length > 0) {
+            heroLightboxBtn.style.display = 'inline-flex';
+            heroLightboxBtn.onclick = function () { openLightbox(0, catPhotos); };
+          } else {
+            heroLightboxBtn.style.display = 'none';
+          }
+        }
+
+        if (galleryGrid && emptyState) {
+          galleryGrid.innerHTML = '';
+          emptyState.innerHTML = '';
+
+          if (catPhotos.length > 0) {
+            galleryGrid.style.display = 'block';
+            emptyState.style.display = 'none';
+
+            catPhotos.forEach(function (photo, idx) {
+              var wrap = document.createElement('div');
+              wrap.className = 'gallery-item';
+
+              var btn = document.createElement('button');
+              btn.type = 'button';
+              btn.className = 'gallery-card tilt-3d';
+              btn.setAttribute('aria-label', 'Agrandir ' + photo.title);
+
+              var imgEl = document.createElement('img');
+              imgEl.src = assetUrl(photo.file);
+              imgEl.alt = photo.title + ' — DIONTADO PRODUCTION';
+              imgEl.loading = 'lazy';
+
+              var overlay = document.createElement('div');
+              overlay.className = 'gallery-overlay';
+              overlay.innerHTML =
+                '<span class="kicker" style="font-size:0.68rem;">' + photo.category + '</span>' +
+                '<span style="font-family:var(--font-display);font-size:1.3rem;font-weight:600;color:#fff;">' + photo.title + '</span>';
+
+              btn.appendChild(imgEl);
+              btn.appendChild(overlay);
+              btn.addEventListener('click', function () {
+                openLightbox(idx, catPhotos);
+              });
+
+              wrap.appendChild(btn);
+              galleryGrid.appendChild(wrap);
+              bindTilt3D(btn, 4);
+            });
+          } else {
+            galleryGrid.style.display = 'none';
+            emptyState.style.display = 'block';
+            var waMsg = encodeURIComponent('Bonjour DIONTADO PRODUCTION, je souhaite voir des réalisations ' + catMeta.title + ' et discuter d\'un projet.');
+            emptyState.innerHTML =
+              '<div class="category-empty-panel">' +
+                '<h3 style="font-family:var(--font-display);font-size:2rem;color:#fff;">Collection ' + catMeta.title + ' prête à recevoir vos photographies</h3>' +
+                '<p style="max-width:56ch;margin:12px auto 0;font-size:0.88rem;color:var(--text-muted);">' +
+                  'Aucune photographie fictive n’est affichée ici. Ajoutez vos fichiers images (ex : <span style="font-family:var(--font-mono);color:var(--gold-bright);">' + catMeta.expectedPrefixHint + '</span>) dans le tableau GALLERY_PHOTOS pour publier automatiquement cette galerie.' +
+                '</p>' +
+                '<div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">' +
+                  '<button type="button" class="btn-primary" id="emptyReserveBtn">Demander un devis ' + catMeta.title + '</button>' +
+                  '<a href="https://wa.me/221764812391?text=' + waMsg + '" target="_blank" rel="noopener noreferrer" class="btn-outline">Voir des exemples sur WhatsApp</a>' +
+                '</div>' +
+              '</div>';
+            var emptyBtn = document.getElementById('emptyReserveBtn');
+            if (emptyBtn) {
+              emptyBtn.addEventListener('click', function () {
+                selectPrestation(catMeta.prestationValue);
+              });
+            }
+          }
+        }
+
+        if (otherGrid) {
+          otherGrid.innerHTML = '';
+          PHOTO_CATEGORIES.filter(function (c) { return c.slug !== catMeta.slug; }).forEach(function (c) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'other-cat-btn';
+            b.innerHTML =
+              '<div>' +
+                '<p style="font-family:var(--font-display);font-size:1.3rem;font-weight:600;color:#fff;">' + c.title + '</p>' +
+                '<p style="font-size:0.74rem;color:var(--text-muted);">' + c.subtitle + '</p>' +
+              '</div>' +
+              '<span style="color:var(--gold);">&rarr;</span>';
+            b.addEventListener('click', function () { openCategoryRoute(c.slug); });
+            otherGrid.appendChild(b);
+          });
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function showHomeSection(sectionId) {
+        if (!homeView || !categoryView) return;
+        categoryView.style.display = 'none';
+        if (tarifsView) tarifsView.style.display = 'none';
+        updateNavActiveState(false);
+        homeView.style.display = 'block';
+        setTimeout(function () {
+          if (!sectionId || sectionId === 'accueil') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            var target = document.getElementById(sectionId);
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+          }
+          scheduleHeaderScroll();
+        }, 30);
+      }
+
+      function openCategoryRoute(slug) {
+        var clean = String(slug || '').toLowerCase();
+        if (window.location.hash !== '#/realisations/' + clean) {
+          window.history.pushState(null, '', '#/realisations/' + clean);
+        }
+        var meta = findCategoryBySlug(clean);
+        if (meta) renderCategoryPage(meta);
+      }
+
+      function openTarifsRoute() {
+        if (window.location.hash !== '#/tarifs') {
+          window.history.pushState(null, '', '#/tarifs');
+        }
+        renderTarifsPage();
+      }
+
+      function navigateHomeTo(sectionId) {
+        var cleanTarget = sectionId || 'accueil';
+        if (window.location.hash !== '#' + cleanTarget) {
+          window.history.pushState(null, '', '#' + cleanTarget);
+        }
+        showHomeSection(cleanTarget);
+      }
+
+      function syncRoute() {
+        if (isTarifsHash()) {
+          renderTarifsPage();
+          return;
+        }
+        var slug = getSlugFromHash();
+        if (slug) {
+          var meta = findCategoryBySlug(slug);
+          if (meta) {
+            renderCategoryPage(meta);
+            return;
+          }
+        }
+        var currentSection = (window.location.hash || '').replace(/^#/, '');
+        if (currentSection && currentSection.indexOf('/') === -1) {
+          showHomeSection(currentSection);
+        } else if (homeView && categoryView) {
+          categoryView.style.display = 'none';
+          if (tarifsView) tarifsView.style.display = 'none';
+          updateNavActiveState(false);
+          homeView.style.display = 'block';
+        }
+      }
+
+      window.addEventListener('hashchange', syncRoute);
+
+      document.querySelectorAll('.js-nav-tarifs').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          openTarifsRoute();
+        });
+      });
+
+      document.querySelectorAll('.js-tarif-jump').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var targetId = link.getAttribute('data-jump');
+          var el = targetId ? document.getElementById(targetId) : null;
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+      var tarifsBackBtn = document.getElementById('tarifsBackBtn');
+      if (tarifsBackBtn) {
+        tarifsBackBtn.addEventListener('click', function () {
+          navigateHomeTo('accueil');
+        });
+      }
+
+      document.querySelectorAll('.js-nav-home').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var targetId = link.getAttribute('data-target') || 'accueil';
+          navigateHomeTo(targetId);
+        });
+      });
+
+      var backBtnTop = document.getElementById('categoryBackBtn');
+      var backBtnBottom = document.getElementById('categoryBottomBackBtn');
+      if (backBtnTop) backBtnTop.addEventListener('click', function () { navigateHomeTo('realisations'); });
+      if (backBtnBottom) backBtnBottom.addEventListener('click', function () { navigateHomeTo('realisations'); });
+
+      /* Rendu des 10 cartes catégories 3D dans Portfolio Photographie */
+      var categoryCardsGrid = document.getElementById('categoryCardsGrid');
+      if (categoryCardsGrid) {
+        PHOTO_CATEGORIES.forEach(function (meta, idx) {
+          var photos = getPhotosForCategory(meta);
+          var coverFile = photos[0] ? photos[0].file : meta.coverFile;
+
+          var card = document.createElement('button');
+          card.type = 'button';
+          card.className = 'cat-card tilt-3d' + (idx >= 8 ? ' is-wide' : '');
+          card.setAttribute('data-tilt', '6');
+
+          var bg = document.createElement('div');
+          bg.className = 'cat-card-bg';
+          if (coverFile) {
+            var img = document.createElement('img');
+            img.src = assetUrl(coverFile);
+            img.alt = meta.title + ' — DIONTADO PRODUCTION';
+            img.loading = 'lazy';
+            bg.appendChild(img);
+          } else {
+            bg.style.background = meta.accentGradient;
+            bg.innerHTML = '<div class="cat-card-empty">Galerie prête pour import</div>';
+          }
+
+          var scrim = document.createElement('div');
+          scrim.className = 'cat-card-scrim';
+
+          var body = document.createElement('div');
+          body.className = 'cat-card-body';
+          var countLabel = photos.length > 0
+            ? photos.length + (photos.length > 1 ? ' photos' : ' photo')
+            : 'Collection dédiée';
+          body.innerHTML =
+            '<p class="cat-card-count">' + countLabel + '</p>' +
+            '<h3 class="cat-card-title">' + meta.title + '</h3>' +
+            '<p class="cat-card-sub">' + meta.subtitle + '</p>' +
+            '<span class="cat-card-link">Ouvrir la galerie &rarr;</span>';
+
+          var sheen = document.createElement('div');
+          sheen.className = 'tilt-sheen';
+
+          card.appendChild(bg);
+          card.appendChild(scrim);
+          card.appendChild(body);
+          card.appendChild(sheen);
+
+          card.addEventListener('click', function () {
+            openCategoryRoute(meta.slug);
+          });
+
+          categoryCardsGrid.appendChild(card);
+          bindTilt3D(card, 6);
+        });
+      }
+
+      /* Pré-sélection d'une prestation & navigation vers Contact */
       function selectPrestation(prestationName) {
         var selectEl = document.getElementById('contactService');
         if (selectEl && prestationName) {
@@ -2526,10 +3425,7 @@
             selectEl.value = prestationName;
           }
         }
-        var contactEl = document.getElementById('contact');
-        if (contactEl) {
-          contactEl.scrollIntoView({ behavior: 'smooth' });
-        }
+        navigateHomeTo('contact');
       }
 
       document.querySelectorAll('.js-book-prestation').forEach(function (btn) {
@@ -2538,40 +3434,7 @@
         });
       });
 
-      /* Rendu de la grille tarifaire */
-      var pricingGrid = document.getElementById('pricingGrid');
-      if (pricingGrid) {
-        PRICING_PACKAGES.forEach(function (offer) {
-          var card = document.createElement('div');
-          card.className = 'pricing-card';
-
-          var top = document.createElement('div');
-          var deliverablesHtml = offer.deliverables.map(function (d) {
-            return '<li>' + d + '</li>';
-          }).join('');
-
-          top.innerHTML =
-            '<p class="pricing-cat">' + offer.category + '</p>' +
-            '<h4 class="pricing-name">' + offer.name + '</h4>' +
-            '<p class="pricing-price">' + offer.priceLabel + '</p>' +
-            '<p class="pricing-summary">' + offer.summary + '</p>' +
-            '<ul class="pricing-list">' + deliverablesHtml + '</ul>';
-
-          var bookBtn = document.createElement('button');
-          bookBtn.type = 'button';
-          bookBtn.className = 'btn-package';
-          bookBtn.textContent = 'Réserver cette formule';
-          bookBtn.addEventListener('click', function () {
-            selectPrestation(offer.prestationValue);
-          });
-
-          card.appendChild(top);
-          card.appendChild(bookBtn);
-          pricingGrid.appendChild(card);
-        });
-      }
-
-      /* Diaporama Accueil (cover + meilleures réalisations) */
+      /* Diaporama Couverture Cinématographique */
       var heroSlidesWrap = document.getElementById('heroSlides');
       var heroControls = document.getElementById('heroControls');
       var heroDots = document.getElementById('heroDots');
@@ -2632,7 +3495,7 @@
         if (reduced || getHeroSlideNodes().length <= 1) return;
         heroTimer = setInterval(function () {
           goToHeroSlide(heroIndex + 1);
-        }, 4800);
+        }, 5200);
       }
 
       if (heroSlidesWrap) {
@@ -2675,7 +3538,7 @@
         });
       }
 
-      /* Effet header au défilement + Barre de progression */
+      /* Header scroll + Barre de progression + Parallaxe légère */
       var header = document.getElementById('siteHeader');
       var scrollProgressFill = document.getElementById('scrollProgressFill');
       var scrollRaf = 0;
@@ -2688,6 +3551,13 @@
           var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
           var ratio = maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0;
           scrollProgressFill.style.transform = 'scaleX(' + ratio.toFixed(4) + ')';
+        }
+        if (heroSlidesWrap && homeView && homeView.style.display !== 'none') {
+          var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (!reduced) {
+            var offset = Math.min(110, window.scrollY * 0.16);
+            heroSlidesWrap.style.transform = 'translate3d(0, ' + offset.toFixed(1) + 'px, 0)';
+          }
         }
       }
       function scheduleHeaderScroll() {
@@ -2715,7 +3585,7 @@
         });
       }
 
-      /* Animations au défilement */
+      /* Animations d'apparition au défilement */
       var reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
         var observer = new IntersectionObserver(function (entries) {
@@ -2731,22 +3601,7 @@
         reveals.forEach(function (el) { el.classList.add('is-visible'); });
       }
 
-      /* Galerie filtrable dynamique + Lightbox */
-      var galleryGrid = document.getElementById('galleryGrid');
-      var galleryCount = document.getElementById('galleryCount');
-      var photoFilterTabs = document.getElementById('photoFilterTabs');
-      var activeCategory = 'Toutes';
-      var filteredPhotos = GALLERY_PHOTOS.slice();
-
-      var btsGrid = document.getElementById('btsGrid');
-      var btsCount = document.getElementById('btsCount');
-      var btsFilterButtons = document.querySelectorAll('.bts-filter-btn');
-      var activeBtsCategory = 'Tous';
-      var filteredBts = BTS_PHOTOS.slice();
-
-      var lightboxList = filteredPhotos;
-      var lightboxIndex = 0;
-
+      /* Lightbox plein écran */
       var lightbox = document.getElementById('lightbox');
       var lightboxImg = document.getElementById('lightboxImg');
       var lightboxTitle = document.getElementById('lightboxTitle');
@@ -2755,168 +3610,19 @@
       var lightboxPrev = document.getElementById('lightboxPrev');
       var lightboxNext = document.getElementById('lightboxNext');
 
-      function buildPhotoFilterTabs() {
-        if (!photoFilterTabs) return;
-        var present = {};
-        GALLERY_PHOTOS.forEach(function (p) { present[p.category] = true; });
-        var orderedCats = ['Toutes'];
-        CATEGORY_TAXONOMY.forEach(function (cat) {
-          if (present[cat]) orderedCats.push(cat);
-        });
-        Object.keys(present).forEach(function (cat) {
-          if (orderedCats.indexOf(cat) === -1) orderedCats.push(cat);
-        });
-
-        photoFilterTabs.innerHTML = '';
-        orderedCats.forEach(function (cat) {
-          var btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'filter-btn' + (cat === activeCategory ? ' is-active' : '');
-          btn.setAttribute('role', 'tab');
-          btn.setAttribute('aria-selected', cat === activeCategory ? 'true' : 'false');
-          btn.textContent = cat;
-          btn.addEventListener('click', function () {
-            activeCategory = cat;
-            photoFilterTabs.querySelectorAll('.filter-btn').forEach(function (b) {
-              var sel = b === btn;
-              b.classList.toggle('is-active', sel);
-              b.setAttribute('aria-selected', sel ? 'true' : 'false');
-            });
-            renderGallery();
-          });
-          photoFilterTabs.appendChild(btn);
-        });
-      }
-
-      function renderGallery() {
-        if (!galleryGrid) return;
-        filteredPhotos = activeCategory === 'Toutes'
-          ? GALLERY_PHOTOS.slice()
-          : GALLERY_PHOTOS.filter(function (p) { return p.category === activeCategory; });
-
-        if (galleryCount) {
-          galleryCount.textContent = filteredPhotos.length + (filteredPhotos.length > 1 ? ' photographies' : ' photographie');
-        }
-
-        galleryGrid.innerHTML = '';
-        filteredPhotos.forEach(function (photo, index) {
-          var item = document.createElement('div');
-          item.className = 'gallery-item';
-
-          var btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'gallery-card';
-          btn.setAttribute('aria-label', 'Agrandir ' + photo.title);
-
-          var img = document.createElement('img');
-          img.src = assetUrl(photo.file);
-          img.alt = photo.title + ' — DIONTADO PRODUCTION';
-          img.loading = 'lazy';
-
-          var overlay = document.createElement('div');
-          overlay.className = 'gallery-overlay';
-          overlay.innerHTML =
-            '<span class="gallery-overlay-cat">' + photo.category + '</span>' +
-            '<span class="gallery-overlay-title">' + photo.title + '</span>';
-
-          btn.appendChild(img);
-          btn.appendChild(overlay);
-          btn.addEventListener('click', function () {
-            openLightbox(index, filteredPhotos);
-          });
-
-          item.appendChild(btn);
-          galleryGrid.appendChild(item);
-        });
-      }
-
-      function renderBts() {
-        if (!btsGrid) return;
-        filteredBts = activeBtsCategory === 'Tous'
-          ? BTS_PHOTOS.slice()
-          : BTS_PHOTOS.filter(function (p) { return p.category === activeBtsCategory; });
-
-        if (btsCount) {
-          btsCount.textContent = filteredBts.length + (filteredBts.length > 1 ? ' photos BTS' : ' photo BTS');
-        }
-
-        btsGrid.innerHTML = '';
-        filteredBts.forEach(function (photo, index) {
-          var btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'bts-card';
-          btn.setAttribute('aria-label', 'Agrandir ' + photo.title);
-
-          var media = document.createElement('div');
-          media.className = 'bts-media';
-
-          var img = document.createElement('img');
-          img.src = assetUrl(photo.file);
-          img.alt = photo.title + ' — DIONTADO PRODUCTION';
-          img.loading = 'lazy';
-
-          var fallback = document.createElement('div');
-          fallback.className = 'bts-fallback';
-          fallback.innerHTML =
-            '<div style="color: var(--gold); margin-bottom: 6px; font-weight: 600;">BTS</div>' +
-            '<div style="font-family: monospace; word-break: break-all;">' + photo.file + '</div>';
-
-          img.addEventListener('error', function () {
-            if (!img.dataset.fb && photo.localFile) {
-              img.dataset.fb = '1';
-              img.src = './' + photo.localFile;
-            } else if (img.dataset.fb === '1' && photo.localFile) {
-              img.dataset.fb = '2';
-              img.src = '/' + photo.localFile;
-            } else {
-              img.style.display = 'none';
-              fallback.style.display = 'block';
-            }
-          });
-
-          var body = document.createElement('div');
-          body.className = 'bts-body';
-          body.innerHTML =
-            '<div class="bts-cat">' + photo.category + '</div>' +
-            '<div class="bts-title">' + photo.title + '</div>';
-
-          media.appendChild(img);
-          media.appendChild(fallback);
-          btn.appendChild(media);
-          btn.appendChild(body);
-          btn.addEventListener('click', function () {
-            if (img.style.display !== 'none') {
-              openLightbox(index, filteredBts, img.currentSrc || img.src);
-            }
-          });
-
-          btsGrid.appendChild(btn);
-        });
-      }
-
-      function updateLightbox(resolvedOverride) {
+      function updateLightbox() {
         var photo = lightboxList[lightboxIndex];
         if (!photo || !lightboxImg || !lightboxTitle || !lightboxCounter) return;
-        lightboxImg.dataset.fb = '';
-        lightboxImg.onerror = function () {
-          if (!lightboxImg.dataset.fb && photo.localFile) {
-            lightboxImg.dataset.fb = '1';
-            lightboxImg.src = './' + photo.localFile;
-          } else if (lightboxImg.dataset.fb === '1' && photo.localFile) {
-            lightboxImg.dataset.fb = '2';
-            lightboxImg.src = '/' + photo.localFile;
-          }
-        };
-        lightboxImg.src = resolvedOverride || assetUrl(photo.file);
+        lightboxImg.src = assetUrl(photo.file);
         lightboxImg.alt = photo.title + ' — DIONTADO PRODUCTION';
         lightboxTitle.textContent = photo.title + ' (' + photo.category + ')';
         lightboxCounter.textContent = (lightboxIndex + 1) + ' / ' + lightboxList.length;
       }
 
-      function openLightbox(index, list, resolvedOverride) {
-        lightboxList = list || filteredPhotos;
+      function openLightbox(index, list) {
+        lightboxList = list || GALLERY_PHOTOS;
         lightboxIndex = index;
-        updateLightbox(resolvedOverride);
+        updateLightbox();
         if (lightbox) {
           lightbox.classList.add('is-open');
           document.body.style.overflow = 'hidden';
@@ -2929,18 +3635,6 @@
           document.body.style.overflow = '';
         }
       }
-
-      btsFilterButtons.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          activeBtsCategory = btn.getAttribute('data-bts-filter') || 'Tous';
-          btsFilterButtons.forEach(function (b) {
-            var isSel = b === btn;
-            b.classList.toggle('is-active', isSel);
-            b.setAttribute('aria-selected', isSel ? 'true' : 'false');
-          });
-          renderBts();
-        });
-      });
 
       if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
       if (lightboxPrev) {
@@ -2973,77 +3667,158 @@
         }
       });
 
-      buildPhotoFilterTabs();
-      renderGallery();
-      renderBts();
-
-      /* Lecteur Vidéo Intégré (YouTube + MP4 hébergés, avec miniatures) */
+      /* ====================================================================
+         PORTFOLIO VIDÉO (Showreel + Catégories + Lecteur Intégré YouTube/MP4)
+         ==================================================================== */
       var videoStage = document.getElementById('videoStage');
-      var videoPlaylist = document.getElementById('videoPlaylist');
-      var videoActiveCategory = document.getElementById('videoActiveCategory');
-      var videoActiveTitle = document.getElementById('videoActiveTitle');
-      var videoActiveDesc = document.getElementById('videoActiveDesc');
+      var videoStageBar = document.getElementById('videoStageBar');
+      var videoStageCat = document.getElementById('videoStageCat');
+      var videoStageTitle = document.getElementById('videoStageTitle');
+      var videoStageDesc = document.getElementById('videoStageDesc');
+      var videoFilterTabs = document.getElementById('videoFilterTabs');
+      var videoCountEl = document.getElementById('videoCount');
+      var videoGalleryGrid = document.getElementById('videoGalleryGrid');
 
-      function loadVideoItem(vid, autoplay) {
-        if (!videoStage || !vid) return;
-        if (videoActiveCategory) videoActiveCategory.textContent = vid.category;
-        if (videoActiveTitle) videoActiveTitle.textContent = vid.title;
-        if (videoActiveDesc) videoActiveDesc.textContent = vid.desc;
+      var activeVideoCat = 'Toutes';
+      var activeVideoItem = VIDEO_ITEMS[0];
+      var isVideoPlaying = false;
 
-        if (vid.sourceType === 'mp4' && vid.videoSrc) {
+      function resolvePosterUrl(vid) {
+        if (vid.posterAsset) return assetUrl(vid.posterAsset);
+        if (vid.posterUrl) return vid.posterUrl;
+        if (vid.youtubeId) return 'https://i.ytimg.com/vi/' + encodeURIComponent(vid.youtubeId) + '/hqdefault.jpg';
+        return assetUrl('cover.jpg');
+      }
+
+      function renderVideoStage() {
+        if (!videoStage || !activeVideoItem) return;
+        if (!isVideoPlaying) {
+          if (videoStageBar) videoStageBar.classList.remove('is-visible');
+          var badgeLabel = activeVideoItem.isShowreel ? 'SHOWREEL OFFICIEL' : activeVideoItem.category;
           videoStage.innerHTML =
-            '<video src="' + vid.videoSrc + '"' +
-            (vid.posterUrl ? ' poster="' + vid.posterUrl + '"' : '') +
-            ' controls playsinline' + (autoplay ? ' autoplay' : '') + '></video>';
-        } else if (vid.youtubeId) {
-          var params = '?rel=0' + (autoplay ? '&autoplay=1&playsinline=1' : '');
+            '<div class="showreel-cover">' +
+              '<img src="' + resolvePosterUrl(activeVideoItem) + '" alt="' + activeVideoItem.title.replace(/"/g, '&quot;') + '" />' +
+              '<div class="showreel-scrim">' +
+                '<button type="button" class="showreel-play-btn" id="showreelPlayBtn" aria-label="Lire ' + activeVideoItem.title.replace(/"/g, '&quot;') + '">&#9654;</button>' +
+                '<p class="kicker" style="margin-top:20px;color:var(--gold-bright);">' + badgeLabel + '</p>' +
+                '<h3 style="margin-top:8px;max-width:24ch;font-family:var(--font-display);font-size:clamp(1.7rem,3vw,2.6rem);font-weight:600;color:#fff;">' + activeVideoItem.title + '</h3>' +
+                '<p style="margin-top:8px;max-width:52ch;font-size:0.84rem;color:rgba(245,242,235,0.85);">' + activeVideoItem.desc + '</p>' +
+              '</div>' +
+            '</div>';
+          var playBtn = document.getElementById('showreelPlayBtn');
+          if (playBtn) {
+            playBtn.addEventListener('click', function () {
+              isVideoPlaying = true;
+              renderVideoStage();
+            });
+          }
+          return;
+        }
+
+        if (videoStageBar) videoStageBar.classList.add('is-visible');
+        if (videoStageCat) videoStageCat.textContent = activeVideoItem.category;
+        if (videoStageTitle) videoStageTitle.textContent = activeVideoItem.title;
+        if (videoStageDesc) videoStageDesc.textContent = activeVideoItem.desc;
+
+        if (activeVideoItem.sourceType === 'mp4' && activeVideoItem.videoSrc) {
           videoStage.innerHTML =
-            '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(vid.youtubeId) + params + '" ' +
-            'title="' + vid.title.replace(/"/g, '&quot;') + '" ' +
+            '<video src="' + activeVideoItem.videoSrc + '" poster="' + resolvePosterUrl(activeVideoItem) + '" controls playsinline autoplay></video>';
+        } else if (activeVideoItem.youtubeId) {
+          videoStage.innerHTML =
+            '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(activeVideoItem.youtubeId) + '?rel=0&autoplay=1&playsinline=1" ' +
+            'title="' + activeVideoItem.title.replace(/"/g, '&quot;') + '" ' +
             'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ' +
             'allowfullscreen></iframe>';
         }
       }
 
-      if (videoPlaylist && VIDEO_ITEMS.length > 0) {
-        VIDEO_ITEMS.forEach(function (vid, idx) {
-          var btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'video-thumb-card' + (idx === 0 ? ' is-active' : '');
+      function renderVideoGallery() {
+        if (!videoGalleryGrid) return;
+        var filtered = activeVideoCat === 'Toutes'
+          ? VIDEO_ITEMS
+          : VIDEO_ITEMS.filter(function (v) { return v.category === activeVideoCat; });
 
-          var thumbHtml = vid.posterUrl
-            ? '<img src="' + vid.posterUrl + '" alt="' + vid.title.replace(/"/g, '&quot;') + '" loading="lazy" />'
-            : '';
+        if (videoCountEl) {
+          videoCountEl.textContent = filtered.length + (filtered.length > 1 ? ' films' : ' film');
+        }
 
-          btn.innerHTML =
-            '<div class="video-thumb-media">' +
-              thumbHtml +
-              '<span class="video-thumb-play" aria-hidden="true"><span>&#9654;</span></span>' +
+        videoGalleryGrid.innerHTML = '';
+        if (filtered.length === 0) {
+          videoGalleryGrid.style.display = 'block';
+          videoGalleryGrid.innerHTML =
+            '<div style="border-radius:14px;border:1px solid var(--border-hairline);background:var(--bg-slate);padding:34px 24px;text-align:center;">' +
+              '<p style="font-family:var(--font-display);font-size:1.65rem;font-weight:600;color:#fff;">Emplacement prêt — ' + activeVideoCat + '</p>' +
+              '<p style="max-width:52ch;margin:8px auto 0;font-size:0.8rem;color:var(--text-muted);">' +
+                'Aucune réalisation n’a encore été ajoutée dans cette catégorie. Ajoutez vos identifiants YouTube ou fichiers MP4 dans VIDEO_ITEMS.' +
+              '</p>' +
+            '</div>';
+          return;
+        }
+
+        videoGalleryGrid.style.display = 'grid';
+        filtered.forEach(function (vid) {
+          var isCur = isVideoPlaying && activeVideoItem && activeVideoItem.id === vid.id;
+          var card = document.createElement('button');
+          card.type = 'button';
+          card.className = 'video-card tilt-3d' + (isCur ? ' is-playing' : '');
+          card.setAttribute('data-tilt', '5');
+          card.innerHTML =
+            '<div class="tilt-sheen"></div>' +
+            '<div class="video-card-media">' +
+              '<img src="' + resolvePosterUrl(vid) + '" alt="' + vid.title.replace(/"/g, '&quot;') + '" loading="lazy" />' +
+              '<span class="video-card-play" aria-hidden="true"><span>&#9654;</span></span>' +
             '</div>' +
-            '<div class="video-thumb-info">' +
-              '<div class="video-thumb-cat">' + vid.category + '</div>' +
-              '<div class="video-thumb-title">' + vid.title + '</div>' +
-              '<p class="video-thumb-desc">' + vid.desc + '</p>' +
+            '<div class="video-card-body">' +
+              '<p class="kicker" style="font-size:0.68rem;">' + vid.category + '</p>' +
+              '<h3 class="video-card-title">' + vid.title + '</h3>' +
+              '<p class="video-card-desc">' + vid.desc + '</p>' +
             '</div>';
 
-          btn.addEventListener('click', function () {
-            videoPlaylist.querySelectorAll('.video-thumb-card').forEach(function (b) {
-              b.classList.remove('is-active');
-            });
-            btn.classList.add('is-active');
-            loadVideoItem(vid, true);
+          card.addEventListener('click', function () {
+            activeVideoItem = vid;
+            isVideoPlaying = true;
+            renderVideoStage();
+            renderVideoGallery();
+            var stageEl = document.getElementById('videoStageShell');
+            if (stageEl) stageEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
           });
 
-          videoPlaylist.appendChild(btn);
+          videoGalleryGrid.appendChild(card);
+          bindTilt3D(card, 5);
         });
-
-        loadVideoItem(VIDEO_ITEMS[0], false);
       }
 
-      /* Formulaire complet de demande de devis (WhatsApp & Email) */
+      if (videoFilterTabs) {
+        VIDEO_CATEGORIES.forEach(function (cat) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'filter-btn' + (cat === activeVideoCat ? ' is-active' : '');
+          btn.setAttribute('role', 'tab');
+          btn.setAttribute('aria-selected', cat === activeVideoCat ? 'true' : 'false');
+          btn.textContent = cat;
+          btn.addEventListener('click', function () {
+            activeVideoCat = cat;
+            videoFilterTabs.querySelectorAll('.filter-btn').forEach(function (b) {
+              var sel = b === btn;
+              b.classList.toggle('is-active', sel);
+              b.setAttribute('aria-selected', sel ? 'true' : 'false');
+            });
+            renderVideoGallery();
+          });
+          videoFilterTabs.appendChild(btn);
+        });
+      }
+
+      renderVideoStage();
+      renderVideoGallery();
+
+      /* ====================================================================
+         FORMULAIRE CONTACT & RÉSERVATION (ENVOYER MA DEMANDE)
+         ==================================================================== */
       var contactForm = document.getElementById('contactForm');
       var sendEmailBtn = document.getElementById('sendEmailBtn');
       var formFeedback = document.getElementById('formFeedback');
+      var submitFormBtn = document.getElementById('submitFormBtn');
 
       function readFormValues() {
         var name = document.getElementById('contactName').value.trim();
@@ -3055,7 +3830,7 @@
 
         if (!name || !phone || !message) {
           if (formFeedback) {
-            formFeedback.textContent = 'Merci de renseigner votre nom, votre numéro de téléphone et une courte description de votre projet.';
+            formFeedback.textContent = 'Merci de renseigner votre nom complet, votre numéro de téléphone et la description de votre projet.';
             formFeedback.classList.add('is-visible');
           }
           return null;
@@ -3063,11 +3838,11 @@
 
         var summary = [
           'Bonjour DIONTADO PRODUCTION,',
-          'Je souhaite demander un devis / réserver une prestation :',
+          'Voici ma demande de prestation / devis :',
           '',
-          '• Nom : ' + name,
+          '• Nom complet : ' + name,
           '• Téléphone : ' + phone,
-          '• Prestation : ' + service,
+          '• Type de prestation : ' + service,
           '• Date souhaitée : ' + (eventDate || 'À préciser'),
           '• Lieu : ' + (location || 'À préciser'),
           '',
@@ -3077,7 +3852,11 @@
 
         return {
           name: name,
+          phone: phone,
           service: service,
+          eventDate: eventDate || 'À préciser',
+          location: location || 'À préciser',
+          message: message,
           summary: summary
         };
       }
@@ -3088,11 +3867,46 @@
           var data = readFormValues();
           if (!data) return;
 
-          var waHref = 'https://wa.me/221764812391?text=' + encodeURIComponent(data.summary);
-          window.location.assign(waHref);
+          if (FORMSPREE_ENDPOINT) {
+            if (submitFormBtn) {
+              submitFormBtn.disabled = true;
+              submitFormBtn.textContent = 'ENVOI EN COURS...';
+            }
+            fetch(FORMSPREE_ENDPOINT, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify({
+                nom: data.name,
+                telephone: data.phone,
+                prestation: data.service,
+                dateSouhaitee: data.eventDate,
+                lieu: data.location,
+                description: data.message
+              })
+            }).then(function (res) {
+              if (!res.ok) throw new Error('HTTP ' + res.status);
+              if (formFeedback) {
+                formFeedback.textContent = 'Votre demande a bien été transmise à DIONTADO PRODUCTION. Nous vous répondrons très rapidement.';
+                formFeedback.classList.add('is-visible');
+              }
+              contactForm.reset();
+            }).catch(function () {
+              if (formFeedback) {
+                formFeedback.textContent = 'Service momentanément indisponible. Utilisez « Envoyer par Email » ou contactez-nous directement sur WhatsApp.';
+                formFeedback.classList.add('is-visible');
+              }
+            }).finally(function () {
+              if (submitFormBtn) {
+                submitFormBtn.disabled = false;
+                submitFormBtn.textContent = 'ENVOYER MA DEMANDE';
+              }
+            });
+            return;
+          }
 
+          window.location.assign('https://wa.me/221764812391?text=' + encodeURIComponent(data.summary));
           if (formFeedback) {
-            formFeedback.innerHTML = 'Votre demande de devis a été préparée dans <strong>WhatsApp</strong>. Il ne reste plus qu’à appuyer sur Envoyer dans la conversation.';
+            formFeedback.innerHTML = 'Votre demande pré-remplie a été ouverte dans <strong>WhatsApp (+221 76 481 23 91)</strong> pour envoi direct.';
             formFeedback.classList.add('is-visible');
           }
         });
@@ -3102,17 +3916,17 @@
         sendEmailBtn.addEventListener('click', function () {
           var data = readFormValues();
           if (!data) return;
-
-          var subject = encodeURIComponent('[DIONTADO PRODUCTION] Devis : ' + data.service + ' — ' + data.name);
+          var subject = encodeURIComponent('[DIONTADO PRODUCTION] Demande : ' + data.service + ' — ' + data.name);
           var body = encodeURIComponent(data.summary);
           window.location.href = 'mailto:diontadoevens.0@gmail.com?subject=' + subject + '&body=' + body;
-
           if (formFeedback) {
-            formFeedback.innerHTML = 'Votre brouillon d’email a été préparé pour <strong>diontadoevens.0@gmail.com</strong>. Si votre application mail ne s’est pas ouverte, utilisez le bouton WhatsApp ci-dessus.';
+            formFeedback.innerHTML = 'Votre message a été préparé dans votre application email vers <strong>diontadoevens.0@gmail.com</strong>.';
             formFeedback.classList.add('is-visible');
           }
         });
       }
+
+      syncRoute();
     })();
   </script>
 </body>
