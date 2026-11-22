@@ -1461,6 +1461,83 @@
       color: var(--gold-bright);
     }
 
+    .tarif-tiers-list {
+      margin-top: 18px;
+      list-style: none;
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .tarif-tiers-list li {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      padding-block: 10px;
+      border-bottom: 1px solid var(--border-hairline);
+      font-size: 0.84rem;
+    }
+
+    .tarif-tier-price {
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold-bright);
+    }
+
+    .tarif-note-box {
+      margin-top: 14px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border-hairline);
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 0.78rem;
+      line-height: 1.55;
+      color: rgba(245, 242, 235, 0.78);
+    }
+
+    .conditions-grid {
+      margin-top: 18px;
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 640px) {
+      .conditions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 1024px) {
+      .conditions-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    .condition-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-slate);
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--text-ivory);
+    }
+
+    .condition-check {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 175, 106, 0.45);
+      background: rgba(212, 175, 106, 0.1);
+      color: var(--gold-bright);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
     .tarifs-whatsapp-banner {
       margin-block: 56px;
       padding: 34px;
@@ -2576,10 +2653,10 @@
       <div class="container">
         <p class="kicker">TARIFS &amp; PRESTATIONS</p>
         <h1 class="section-title" style="margin-top: 10px; max-width: 18ch; font-size: clamp(2.4rem, 5vw, 4.1rem);">
-          Des productions pensées sur mesure, à la hauteur de votre projet.
+          Grille tarifaire claire &amp; productions sur mesure.
         </h1>
         <p style="margin-top: 16px; max-width: 58ch; font-size: 0.96rem; line-height: 1.7; color: rgba(245,242,235,0.84);">
-          Chaque séance photo ou production audiovisuelle mobilise une équipe, un dispositif technique et un temps de post-production adaptés à vos besoins. Nos prestations sont établies sur devis clair et personnalisé.
+          Retrouvez nos forfaits officiels pour les séances studio, extérieur, domicile, les reportages numériques, les albums imprimés et la réalisation vidéo. Pour toute commande spécifique, un devis personnalisé vous est établi sous 24h.
         </p>
         <div style="margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px;">
           <a href="#tarifsPhotoSection" class="btn-ghost-gold js-tarif-jump" data-jump="tarifsPhotoSection">Photographie (6)</a>
@@ -2596,7 +2673,7 @@
             <h2 class="section-title" style="margin-top: 6px;">PHOTOGRAPHIE</h2>
           </div>
           <p class="section-lead">
-            Séances en studio, reportages sur le terrain et couverture complète d’événements privés ou professionnels.
+            Séances portrait (studio, extérieur, domicile), reportages numériques, albums photo et couverture complète d’événements.
           </p>
         </div>
 
@@ -2612,11 +2689,23 @@
             <h2 class="section-title" style="margin-top: 6px;">RÉALISATION VIDÉO</h2>
           </div>
           <p class="section-lead">
-            De la conception narrative au tournage 4K, prise de son, montage rythmé et étalonnage cinéma.
+            Films de mariage (Henné Time, Réception), baptêmes, reportages documentaires et films institutionnels — tournage et montage inclus.
           </p>
         </div>
 
         <div class="perspective-stage tarifs-grid-video" id="tarifsVideoGrid"></div>
+      </div>
+    </section>
+
+    <section style="padding-block: 44px; border-bottom: 1px solid var(--border-hairline);">
+      <div class="container">
+        <p class="mono-meta">Conditions de réservation</p>
+        <div class="conditions-grid">
+          <div class="condition-item"><span class="condition-check">&#10003;</span><span>Acompte de 70 % à la réservation</span></div>
+          <div class="condition-item"><span class="condition-check">&#10003;</span><span>Solde le jour de l’événement</span></div>
+          <div class="condition-item"><span class="condition-check">&#10003;</span><span>Tournage et montage inclus</span></div>
+          <div class="condition-item"><span class="condition-check">&#10003;</span><span>Transport selon la localisation</span></div>
+        </div>
       </div>
     </section>
 
@@ -2629,7 +2718,7 @@
               Besoin d’une estimation précise pour votre date ?
             </h2>
             <p style="margin-top: 6px; max-width: 56ch; font-size: 0.88rem; color: rgba(245,242,235,0.8);">
-              Décrivez votre lieu, la durée et vos attentes sur WhatsApp pour recevoir une proposition claire et adaptée.
+              Décrivez votre lieu, la formule souhaitée et vos attentes sur WhatsApp (+221 76 481 23 91) pour réserver rapidement votre date.
             </p>
           </div>
           <div style="display: flex; flex-wrap: wrap; gap: 12px;">
@@ -2983,20 +3072,141 @@
         bindTilt3D(node);
       });
 
-      /* CATALOGUE DES TARIFS — STRUCTURE SIMPLE À MODIFIER
-         Remplacez simplement 'Sur devis' par votre tarif (ex: '150 000 FCFA') quand vous souhaitez l'afficher. */
+      /* CATALOGUE DES TARIFS — GRILLE OFFICIELLE DIONTADO PRODUCTION
+         Modifiez simplement `priceLabel` ou les lignes de `tiers` pour ajuster vos tarifs. */
       var TARIFS_CATALOG = [
-        { id: 'tarif-photo-mariage', category: 'Photographie', number: '01', title: 'Mariage', priceLabel: 'Sur devis', description: 'Couverture photographique complète des cérémonies traditionnelles, civiles et réceptions, avec traitement éditorial soigné.', prestationValue: 'Mariage & Cérémonie (Photo / Vidéo)' },
-        { id: 'tarif-photo-prewedding', category: 'Photographie', number: '02', title: 'Prewedding', priceLabel: 'Sur devis', description: 'Séance couple mise en scène en lumière naturelle ou dans un décor choisi pour célébrer votre histoire avant le grand jour.', prestationValue: 'Prewedding & Séance Couple' },
-        { id: 'tarif-photo-portrait', category: 'Photographie', number: '03', title: 'Shooting portrait', priceLabel: 'Sur devis', description: 'Séance dirigée en studio ou en extérieur pour particuliers, artistes et personnalités avec façonnage lumineux sur mesure.', prestationValue: 'Photographie — Portrait & Studio' },
-        { id: 'tarif-photo-evenementiel', category: 'Photographie', number: '04', title: 'Événementiel', priceLabel: 'Sur devis', description: 'Reportage réactif et immersif pour conférences, galas, concerts, lancements de marque et réceptions privées.', prestationValue: 'Événementiel (Photo & Vidéo)' },
-        { id: 'tarif-photo-soutenance', category: 'Photographie', number: '05', title: 'Soutenance', priceLabel: 'Sur devis', description: 'Immortalisation de votre soutenance de mémoire, thèse ou remise de diplôme : passage devant le jury et portraits officiels.', prestationValue: 'Soutenance & Remise de diplôme' },
-        { id: 'tarif-photo-pro', category: 'Photographie', number: '06', title: 'Photographie professionnelle', priceLabel: 'Sur devis', description: 'Portraits corporate, reportages d’entreprise, campagnes de communication et valorisation de votre savoir-faire.', prestationValue: 'Photographie professionnelle' },
-        { id: 'tarif-video-mariage', category: 'Réalisation vidéo', number: '01', title: 'Film de mariage', priceLabel: 'Sur devis', description: 'Récit cinématographique de votre union, captation multi-angles, prise de son soignée et montage émotionnel.', prestationValue: 'Mariage & Cérémonie (Photo / Vidéo)' },
-        { id: 'tarif-video-evenementiel', category: 'Réalisation vidéo', number: '02', title: 'Vidéo événementielle', priceLabel: 'Sur devis', description: 'Aftermovie rythmé et captation des temps forts de vos festivals, galas, soirées et lancements officiels.', prestationValue: 'Événementiel (Photo & Vidéo)' },
-        { id: 'tarif-video-reportage', category: 'Réalisation vidéo', number: '03', title: 'Reportage', priceLabel: 'Sur devis', description: 'Immersion documentaire sur le terrain, entretiens et narration authentique dédiée aux cultures et récits humains.', prestationValue: 'Reportage Culturel & Documentaire' },
-        { id: 'tarif-video-institutionnel', category: 'Réalisation vidéo', number: '04', title: 'Film institutionnel', priceLabel: 'Sur devis', description: 'Film corporate de présentation pour entreprises, institutions, ONG et marques souhaitant affirmer leur image.', prestationValue: 'Film Institutionnel & Production Audiovisuelle' },
-        { id: 'tarif-video-production', category: 'Réalisation vidéo', number: '05', title: 'Production audiovisuelle', priceLabel: 'Sur devis', description: 'Accompagnement complet de l’écriture à l’étalonnage cinéma : clips artistiques, campagnes visuelles et projets sur mesure.', prestationValue: 'Réalisation vidéo' }
+        {
+          id: 'tarif-photo-portrait',
+          category: 'Photographie',
+          number: '01',
+          title: 'Shooting portrait',
+          priceLabel: 'Dès 6.000 CFA',
+          description: 'Séances dirigées en studio, à domicile ou en extérieur avec retouche professionnelle soignée.',
+          tiers: [
+            { label: 'Studio · 3 Photos', price: '6.000 CFA' },
+            { label: 'Studio · 6 Photos', price: '10.000 CFA' },
+            { label: 'À domicile · 5 Photos', price: '15.000 CFA' },
+            { label: 'À domicile · 10 Photos', price: '25.000 CFA' },
+            { label: 'Extérieur · 5 Photos', price: '25.000 CFA' },
+            { label: 'Extérieur · 10 Photos', price: '40.000 CFA' }
+          ],
+          prestationValue: 'Photographie — Portrait & Studio'
+        },
+        {
+          id: 'tarif-photo-evenementiel',
+          category: 'Photographie',
+          number: '02',
+          title: 'Événementiel',
+          priceLabel: 'Dès 50.000 FCFA',
+          description: 'Forfaits photos numériques haute définition pour réceptions, conférences, galas, baptêmes et événements.',
+          tiers: [
+            { label: '40 photos numériques', price: '50.000 FCFA' },
+            { label: '50 photos numériques', price: '70.000 FCFA' },
+            { label: '80 photos numériques', price: '100.000 FCFA' },
+            { label: '100 photos numériques', price: '120.000 FCFA' }
+          ],
+          prestationValue: 'Événementiel (Photo & Vidéo)'
+        },
+        {
+          id: 'tarif-photo-mariage',
+          category: 'Photographie',
+          number: '03',
+          title: 'Mariage',
+          priceLabel: 'Dès 90.000 FCFA',
+          description: 'Albums photo imprimés haut de gamme et formules combinées Album + Photos numériques.',
+          tiers: [
+            { label: 'Album de 60 photos', price: '90.000 FCFA' },
+            { label: 'Album de 80 photos', price: '120.000 FCFA' },
+            { label: 'Album de 100 photos', price: '140.000 FCFA' },
+            { label: '50 num. + Album 60 photos', price: '130.000 FCFA' },
+            { label: '80 num. + Album 80 photos', price: '190.000 FCFA' },
+            { label: '100 num. + Album 100 photos', price: '230.000 FCFA' }
+          ],
+          prestationValue: 'Mariage & Cérémonie (Photo / Vidéo)'
+        },
+        {
+          id: 'tarif-photo-prewedding',
+          category: 'Photographie',
+          number: '04',
+          title: 'Prewedding',
+          priceLabel: 'Sur devis',
+          description: 'Séance couple mise en scène en extérieur ou dans un décor choisi avant le grand jour.',
+          note: 'Séances Extérieur disponibles dès 25.000 CFA (5 photos) et 40.000 CFA (10 photos), ou pack sur mesure.',
+          prestationValue: 'Prewedding & Séance Couple'
+        },
+        {
+          id: 'tarif-photo-soutenance',
+          category: 'Photographie',
+          number: '05',
+          title: 'Soutenance',
+          priceLabel: 'Sur devis',
+          description: 'Immortalisation de votre soutenance de mémoire, thèse ou remise de diplôme : passage devant le jury et portraits officiels.',
+          note: 'Formules portrait studio (dès 6.000 CFA) ou reportage numérique complet (dès 50.000 FCFA) adaptables.',
+          prestationValue: 'Soutenance & Remise de diplôme'
+        },
+        {
+          id: 'tarif-photo-pro',
+          category: 'Photographie',
+          number: '06',
+          title: 'Photographie professionnelle',
+          priceLabel: 'Sur devis',
+          description: 'Portraits corporate, reportages d’entreprise, campagnes de communication et valorisation de votre savoir-faire.',
+          prestationValue: 'Photographie professionnelle'
+        },
+        {
+          id: 'tarif-video-mariage',
+          category: 'Réalisation vidéo',
+          number: '01',
+          title: 'Film de mariage',
+          priceLabel: 'Dès 70.000 FCFA',
+          description: 'Captation cinématographique complète des cérémonies traditionnelles, Henné Time et réception, montage inclus.',
+          tiers: [
+            { label: 'Henné Time', price: '70.000 FCFA' },
+            { label: 'Réception', price: '85.000 FCFA' },
+            { label: 'Henné Time + Réception (Mariage)', price: '130.000 FCFA' }
+          ],
+          prestationValue: 'Mariage & Cérémonie (Photo / Vidéo)'
+        },
+        {
+          id: 'tarif-video-evenementiel',
+          category: 'Réalisation vidéo',
+          number: '02',
+          title: 'Vidéo événementielle',
+          priceLabel: 'Dès 70.000 FCFA',
+          description: 'Captation et montage rythmé de vos cérémonies familiales, baptêmes, réceptions et temps forts.',
+          tiers: [
+            { label: 'Baptême', price: '70.000 FCFA' },
+            { label: 'Réception / Événement', price: '85.000 FCFA' }
+          ],
+          prestationValue: 'Événementiel (Photo & Vidéo)'
+        },
+        {
+          id: 'tarif-video-reportage',
+          category: 'Réalisation vidéo',
+          number: '03',
+          title: 'Reportage',
+          priceLabel: 'Sur devis',
+          description: 'Immersion documentaire sur le terrain, entretiens et narration authentique dédiée aux cultures et récits humains.',
+          prestationValue: 'Reportage Culturel & Documentaire'
+        },
+        {
+          id: 'tarif-video-institutionnel',
+          category: 'Réalisation vidéo',
+          number: '04',
+          title: 'Film institutionnel',
+          priceLabel: 'Sur devis',
+          description: 'Film corporate de présentation pour entreprises, institutions, ONG et marques souhaitant affirmer leur image.',
+          prestationValue: 'Film Institutionnel & Production Audiovisuelle'
+        },
+        {
+          id: 'tarif-video-production',
+          category: 'Réalisation vidéo',
+          number: '05',
+          title: 'Production audiovisuelle',
+          priceLabel: 'Sur devis',
+          description: 'Accompagnement complet de l’écriture à l’étalonnage cinéma : clips artistiques, campagnes visuelles et projets sur mesure.',
+          prestationValue: 'Réalisation vidéo'
+        }
       ];
 
       /* ====================================================================
@@ -3028,6 +3238,18 @@
         var card = document.createElement('article');
         card.className = 'tarif-card tilt-3d' + (isWideVideo ? ' is-wide' : '');
         card.setAttribute('data-tilt', '5');
+
+        var tiersHtml = '';
+        if (offer.tiers && offer.tiers.length > 0) {
+          tiersHtml = '<ul class="tarif-tiers-list">' +
+            offer.tiers.map(function (t) {
+              return '<li><span style="color:rgba(245,242,235,0.88);">' + t.label + '</span><span class="tarif-tier-price">' + t.price + '</span></li>';
+            }).join('') +
+          '</ul>';
+        }
+
+        var noteHtml = offer.note ? '<p class="tarif-note-box">' + offer.note + '</p>' : '';
+
         card.innerHTML =
           '<div class="tilt-sheen"></div>' +
           '<div>' +
@@ -3041,6 +3263,8 @@
               '<span class="tarif-price-value">' + offer.priceLabel + '</span>' +
             '</div>' +
             '<p style="margin-top:16px;font-size:0.88rem;line-height:1.65;color:rgba(245,242,235,0.82);">' + offer.description + '</p>' +
+            tiersHtml +
+            noteHtml +
           '</div>' +
           '<div style="margin-top:26px;padding-top:18px;border-top:1px solid var(--border-hairline);">' +
             '<button type="button" class="btn-primary js-tarif-book" style="width:100%;">Réserver cette prestation &rarr;</button>' +
