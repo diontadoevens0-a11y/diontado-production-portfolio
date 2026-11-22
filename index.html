@@ -1800,17 +1800,169 @@
     }
 
     .form-feedback {
-      padding: 14px 16px;
-      border-radius: 8px;
-      border: 1px solid rgba(212, 175, 106, 0.45);
+      padding: 16px 18px;
+      border-radius: 10px;
+      border: 1px solid rgba(212, 175, 106, 0.55);
       background: rgba(212, 175, 106, 0.1);
       color: var(--beige);
-      font-size: 0.82rem;
+      font-size: 0.84rem;
+      line-height: 1.55;
       display: none;
     }
 
     .form-feedback.is-visible {
       display: block;
+    }
+
+    .form-feedback.is-error {
+      border-color: rgba(245, 158, 11, 0.55);
+      background: rgba(245, 158, 11, 0.1);
+      color: #fde68a;
+    }
+
+    .booking-calc-box {
+      border-radius: 12px;
+      border: 1px solid rgba(212, 175, 106, 0.35);
+      background: var(--bg-charcoal);
+      padding: 18px 20px;
+    }
+
+    .booking-calc-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .booking-calc-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    @media (min-width: 640px) {
+      .booking-calc-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .booking-studio-box {
+      border-radius: 12px;
+      border: 1px solid rgba(212, 175, 106, 0.45);
+      background: rgba(212, 175, 106, 0.1);
+      padding: 18px 20px;
+    }
+
+    .booking-qr-box {
+      border-radius: 12px;
+      border: 1px solid rgba(212, 175, 106, 0.45);
+      background: #0d0d12;
+      padding: 20px;
+    }
+
+    .booking-qr-grid {
+      display: grid;
+      gap: 20px;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .booking-qr-grid {
+        grid-template-columns: 5fr 7fr;
+      }
+    }
+
+    .booking-qr-frame {
+      width: 100%;
+      max-width: 210px;
+      margin-inline: auto;
+      background: #ffffff;
+      border: 2px solid rgba(212, 175, 106, 0.65);
+      border-radius: 12px;
+      padding: 8px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .booking-qr-frame img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .booking-qr-missing {
+      border-radius: 10px;
+      border: 1px solid rgba(245, 158, 11, 0.5);
+      background: rgba(245, 158, 11, 0.1);
+      padding: 16px;
+      text-align: center;
+      color: #fde68a;
+      font-size: 0.76rem;
+      line-height: 1.5;
+    }
+
+    .proof-dropzone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+      padding: 13px 16px;
+      border-radius: 8px;
+      border: 1px dashed rgba(212, 175, 106, 0.55);
+      background: var(--bg-charcoal);
+      color: var(--gold-bright);
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.18s ease, border-color 0.18s ease;
+    }
+
+    .proof-dropzone:hover {
+      background: rgba(212, 175, 106, 0.1);
+      border-color: var(--gold);
+    }
+
+    .proof-preview-row {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(212, 175, 106, 0.5);
+      background: var(--bg-charcoal);
+    }
+
+    .qr-zoom-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 95;
+      background: rgba(0, 0, 0, 0.86);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .qr-zoom-modal.is-open {
+      display: flex;
+    }
+
+    .qr-zoom-card {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 16px;
+      border: 1px solid rgba(212, 175, 106, 0.6);
+      background: var(--bg-slate);
+      padding: 22px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
     }
 
     /* ==========================================================================
@@ -2412,11 +2564,11 @@
         <div class="container">
           <div class="section-head reveal">
             <div>
-              <p class="kicker">CONTACT &amp; RÉSERVATION</p>
-              <h2 class="section-title" style="margin-top: 8px;">Parlons de votre projet.</h2>
+              <p class="kicker">RÉSERVATION &amp; PAIEMENT DIRECT WHATSAPP</p>
+              <h2 class="section-title" style="margin-top: 8px;">Réservez votre prestation.</h2>
             </div>
             <p class="section-lead">
-              Particuliers, artistes, mariés et entreprises : décrivez votre besoin et réservez votre date.
+              Calcul automatique de votre formule, règlement de l’acompte par QR Code officiel DIONTADO (sauf Shooting Studio) et validation directe sur WhatsApp.
             </p>
           </div>
 
@@ -2433,7 +2585,7 @@
 
                 <ul class="contact-details">
                   <li>
-                    <span class="contact-label">Téléphone &amp; WhatsApp</span>
+                    <span class="contact-label">Téléphone &amp; WhatsApp Réservations</span>
                     <a href="tel:+221764812391" class="contact-value" style="font-family: var(--font-mono);">
                       +221 76 481 23 91
                     </a>
@@ -2469,19 +2621,30 @@
                     </div>
                   </li>
                   <li>
-                    <span class="contact-label">Localisation</span>
+                    <span class="contact-label">Studio &amp; Localisation</span>
                     <span class="contact-value">Yeumbeul, Dakar, Sénégal · Interventions nationales &amp; internationales</span>
                   </li>
                 </ul>
+
+                <div style="margin-top: 22px; padding: 16px; border-radius: 10px; border: 1px solid var(--border-hairline); background: var(--bg-charcoal);">
+                  <p style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);">
+                    Fonctionnement des réservations
+                  </p>
+                  <ul style="margin-top: 10px; list-style: none; display: grid; gap: 8px; font-size: 0.78rem; color: rgba(245,242,235,0.86); line-height: 1.5;">
+                    <li>✓ Acompte de 70 % via le QR Code DIONTADO (sauf Shooting Studio).</li>
+                    <li>✓ Shooting Studio : aucun acompte, règlement intégral au studio.</li>
+                    <li>✓ Vérification et confirmation directe sur WhatsApp.</li>
+                  </ul>
+                </div>
               </div>
 
               <a
                 id="whatsappLink"
-                href="https://wa.me/221764812391?text=Bonjour%20DIONTADO%20PRODUCTION%2C%20je%20souhaite%20r%C3%A9server%20une%20prestation."
+                href="https://wa.me/221764812391?text=Bonjour%20DIONTADO%20PRODUCTION%2C%20je%20souhaite%20discuter%20d%E2%80%99une%20r%C3%A9servation."
                 target="_blank"
                 rel="noopener noreferrer"
                 class="btn-whatsapp"
-                style="width: 100%;"
+                style="width: 100%; margin-top: 24px;"
               >
                 Discuter sur WhatsApp
               </a>
@@ -2489,11 +2652,11 @@
 
             <div class="contact-form-card reveal">
               <div class="form-head">
-                <h3 style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 600; color: #ffffff;">
-                  Formulaire de demande de devis
+                <h3 style="font-family: var(--font-display); font-size: 1.85rem; font-weight: 600; color: #ffffff;">
+                  Formulaire de réservation
                 </h3>
                 <p style="margin-top: 4px; font-size: 0.78rem; color: var(--text-muted);">
-                  Renseignez votre prestation et la date souhaitée pour recevoir une proposition adaptée.
+                  Choisissez votre prestation et votre formule : le tarif, l’acompte et le solde sont calculés automatiquement avant l’envoi sur WhatsApp.
                 </p>
               </div>
 
@@ -2504,62 +2667,159 @@
                     <input class="field-input" id="contactName" type="text" required placeholder="Ex : Moussa Diop" />
                   </div>
                   <div>
-                    <label class="field-label" for="contactPhone">Téléphone *</label>
+                    <label class="field-label" for="contactPhone">Numéro de téléphone (WhatsApp) *</label>
                     <input class="field-input" id="contactPhone" type="tel" required placeholder="+221 77 000 00 00" />
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div>
+                    <label class="field-label" for="contactService">Prestation choisie *</label>
+                    <select class="field-select" id="contactService"></select>
+                  </div>
+                  <div>
+                    <label class="field-label" for="contactFormula">Formule choisie *</label>
+                    <select class="field-select" id="contactFormula"></select>
                   </div>
                 </div>
 
                 <div class="form-row-3">
                   <div>
-                    <label class="field-label" for="contactService">Type de prestation</label>
-                    <select class="field-select" id="contactService">
-                      <option value="Photographie professionnelle">Photographie professionnelle</option>
-                      <option value="Réalisation vidéo">Réalisation vidéo</option>
-                      <option value="Prewedding & Séance Couple">Prewedding &amp; Séance Couple</option>
-                      <option value="Mariage & Cérémonie (Photo / Vidéo)">Mariage &amp; Cérémonie (Photo / Vidéo)</option>
-                      <option value="Photographie — Portrait & Studio">Photographie — Portrait &amp; Studio</option>
-                      <option value="Shooting Mode, Beauté & Marque">Shooting Mode, Beauté &amp; Marque</option>
-                      <option value="Reportage Culturel & Documentaire">Reportage Culturel &amp; Documentaire</option>
-                      <option value="Événementiel (Photo & Vidéo)">Événementiel (Photo &amp; Vidéo)</option>
-                      <option value="Soutenance & Remise de diplôme">Soutenance &amp; Remise de diplôme</option>
-                      <option value="Film Institutionnel & Production Audiovisuelle">Film Institutionnel &amp; Production Audiovisuelle</option>
-                    </select>
+                    <label class="field-label" for="contactDate">Date souhaitée *</label>
+                    <input class="field-input" id="contactDate" type="date" required />
                   </div>
-
                   <div>
-                    <label class="field-label" for="contactDate">Date souhaitée</label>
-                    <input class="field-input" id="contactDate" type="date" />
+                    <label class="field-label" for="contactTime">Heure souhaitée *</label>
+                    <input class="field-input" id="contactTime" type="time" required />
                   </div>
-
                   <div>
-                    <label class="field-label" for="contactLocation">Lieu</label>
-                    <input class="field-input" id="contactLocation" type="text" placeholder="Dakar, Saly, Saint-Louis..." />
+                    <label class="field-label" for="contactLocation" id="contactLocationLabel">Lieu de la prestation *</label>
+                    <input class="field-input" id="contactLocation" type="text" required placeholder="Dakar, Saly, Saint-Louis..." />
                   </div>
                 </div>
 
+                <!-- Calcul automatique -->
+                <div class="booking-calc-box">
+                  <div class="booking-calc-head">
+                    <span style="font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--gold);">
+                      Calcul automatique de votre formule
+                    </span>
+                    <span id="calcPhotoBadge" style="display: none; border-radius: 4px; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); padding: 3px 9px; font-family: var(--font-mono); font-size: 0.68rem; color: var(--gold-bright);"></span>
+                  </div>
+                  <div class="booking-calc-grid">
+                    <div>
+                      <span style="display: block; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Prix total</span>
+                      <strong id="calcTotalDisplay" style="display: block; margin-top: 4px; font-family: var(--font-display); font-size: 1.55rem; color: #ffffff;">—</strong>
+                    </div>
+                    <div>
+                      <span style="display: block; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Acompte demandé (70 %)</span>
+                      <strong id="calcDepositDisplay" style="display: block; margin-top: 4px; font-family: var(--font-display); font-size: 1.55rem; color: var(--gold-bright);">—</strong>
+                    </div>
+                    <div>
+                      <span style="display: block; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Montant restant</span>
+                      <span id="calcRemainingDisplay" style="display: block; margin-top: 6px; font-size: 0.84rem; font-weight: 600; color: rgba(245,242,235,0.9);">—</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Exception Shooting Studio -->
+                <div id="studioExceptionBox" class="booking-studio-box" style="display: none;">
+                  <p style="font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--gold-bright);">
+                    Exception Shooting Studio
+                  </p>
+                  <h4 style="margin-top: 4px; font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; color: #ffffff;">
+                    Aucun acompte · Aucun QR Code requis
+                  </h4>
+                  <p id="studioExceptionText" style="margin-top: 4px; font-size: 0.8rem; line-height: 1.55; color: rgba(245,242,235,0.9);">
+                    Pour les prestations Shooting Studio, aucun acompte n’est demandé à l’avance. Vous réglez l’intégralité directement à votre arrivée au studio.
+                  </p>
+                </div>
+
+                <!-- Bloc Paiement QR Code DIONTADO -->
+                <div id="qrPaymentBox" class="booking-qr-box" style="display: none;">
+                  <div class="booking-qr-grid">
+                    <div style="text-align: center;">
+                      <div class="booking-qr-frame" id="qrImageContainer">
+                        <img
+                          id="diontadoQrImg"
+                          src="/assets/aistudio/QR_DIONTADO_767b259e.jpg"
+                          alt="QR Code officiel DIONTADO PRODUCTION pour règlement de l’acompte"
+                        />
+                      </div>
+                      <div id="qrMissingNotice" class="booking-qr-missing" style="display: none;">
+                        <strong style="display: block; margin-bottom: 4px;">QR Code DIONTADO absent</strong>
+                        Fichier introuvable. Veuillez importer votre QR Code personnel DIONTADO (QR_DIONTADO_767b259e.jpg) pour afficher le code de paiement.
+                      </div>
+                      <div id="qrActionRow" style="margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
+                        <button type="button" id="qrZoomBtn" class="btn-outline" style="height: 32px; padding-inline: 12px; font-size: 0.7rem;">
+                          Agrandir
+                        </button>
+                        <a id="qrDownloadLink" href="/assets/aistudio/QR_DIONTADO_767b259e.jpg" download="QR-Code-DIONTADO-PRODUCTION.jpg" class="btn-outline" style="height: 32px; padding-inline: 12px; font-size: 0.7rem;">
+                          Enregistrer
+                        </a>
+                      </div>
+                    </div>
+
+                    <div>
+                      <p style="font-family: var(--font-mono); font-size: 0.64rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--gold);">
+                        QR Code Personnel DIONTADO PRODUCTION
+                      </p>
+                      <h4 style="margin-top: 4px; font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; color: #ffffff;">
+                        Acompte à payer : <span id="qrDepositTitle" style="color: var(--gold-bright);">—</span>
+                      </h4>
+                      <p style="margin-top: 6px; font-size: 0.78rem; line-height: 1.55; color: rgba(245,242,235,0.82);">
+                        Scannez ce QR Code avec votre téléphone (ou enregistrez-le sur mobile) pour régler l’acompte exact de 70 %, puis joignez ci-dessous la capture d’écran de votre paiement.
+                      </p>
+
+                      <div style="margin-top: 14px;">
+                        <span class="field-label" style="margin-bottom: 0;">Capture d’écran du paiement (preuve de transfert)</span>
+                        <label for="paymentProofInput" class="proof-dropzone" id="proofDropzone">
+                          <span>Joindre la capture d’écran du paiement</span>
+                          <input id="paymentProofInput" type="file" accept="image/*" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);" />
+                        </label>
+                        <div class="proof-preview-row" id="proofPreviewRow" style="display: none;">
+                          <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+                            <img id="proofThumbImg" src="" alt="Aperçu preuve de paiement" style="width: 44px; height: 44px; border-radius: 6px; object-fit: cover; border: 1px solid rgba(255,255,255,0.18);" />
+                            <div style="min-width: 0;">
+                              <p id="proofFileName" style="font-size: 0.78rem; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></p>
+                              <p style="font-family: var(--font-mono); font-size: 0.64rem; color: var(--gold-bright);">Capture prête à joindre sur WhatsApp</p>
+                            </div>
+                          </div>
+                          <button type="button" id="removeProofBtn" class="btn-outline" style="height: 30px; padding-inline: 10px; font-size: 0.7rem;">
+                            Retirer
+                          </button>
+                        </div>
+                        <p style="margin-top: 8px; font-size: 0.7rem; line-height: 1.5; color: var(--text-muted);">
+                          Note WhatsApp : un lien web WhatsApp ne peut pas joindre automatiquement un fichier image. Après validation, votre message complet s’ouvre sur WhatsApp afin d’y déposer votre capture pour vérification.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bloc Sur Devis -->
+                <div id="surDevisBox" style="display: none; border-radius: 10px; border: 1px solid var(--border-hairline); background: var(--bg-charcoal); padding: 14px 16px; font-size: 0.78rem; line-height: 1.55; color: rgba(245,242,235,0.82);">
+                  Prestation personnalisée <strong style="color: #fff;">sur devis</strong> : aucun paiement requis maintenant. Envoyez vos informations sur WhatsApp pour recevoir votre chiffrage exact (acompte de 70 % via notre QR Code DIONTADO uniquement après validation du devis).
+                </div>
+
                 <div>
-                  <label class="field-label" for="contactMessage">Description du projet *</label>
+                  <label class="field-label" for="contactMessage">Informations complémentaires</label>
                   <textarea
                     class="field-textarea"
                     id="contactMessage"
-                    rows="4"
-                    required
-                    placeholder="Précisez vos attentes, horaires, nombre de personnes ou livrables souhaités..."
+                    rows="3"
+                    placeholder="Précisez le nombre de tenues, le déroulement, le lieu exact ou toute demande particulière..."
                   ></textarea>
                 </div>
 
                 <div class="form-actions">
-                  <button type="submit" class="btn-primary" id="submitFormBtn">
-                    ENVOYER MA DEMANDE
+                  <button type="submit" class="btn-whatsapp" id="submitFormBtn" style="border-radius: 6px;">
+                    ENVOYER MA DEMANDE SUR WHATSAPP
                   </button>
                   <button type="button" class="btn-ghost-gold" id="sendEmailBtn" style="height: 46px;">
                     Envoyer par Email
                   </button>
                 </div>
-
-                <p class="form-note" id="formNote">
-                  Transmission directe sans intermédiaire : « ENVOYER MA DEMANDE » ouvre votre demande pré-remplie dans WhatsApp (+221 76 481 23 91) ou prépare un email vers diontadoevens.0@gmail.com.
-                </p>
 
                 <div class="form-feedback" id="formFeedback" role="status"></div>
               </form>
@@ -2567,6 +2827,29 @@
           </div>
         </div>
       </section>
+
+      <!-- Modale zoom QR Code DIONTADO -->
+      <div class="qr-zoom-modal" id="qrZoomModal" role="dialog" aria-modal="true" aria-label="QR Code officiel DIONTADO PRODUCTION">
+        <div class="qr-zoom-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span style="font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold);">
+              QR Code DIONTADO PRODUCTION
+            </span>
+            <button type="button" id="qrZoomCloseBtn" class="btn-outline" style="height: 30px; padding-inline: 10px; font-size: 0.72rem;">
+              Fermer
+            </button>
+          </div>
+          <div class="booking-qr-frame" style="max-width: 280px;">
+            <img id="diontadoQrZoomImg" src="/assets/aistudio/QR_DIONTADO_767b259e.jpg" alt="QR Code officiel DIONTADO PRODUCTION" />
+          </div>
+          <p style="margin-top: 14px; font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; color: #fff;">
+            Acompte à payer : <span id="qrZoomDepositLabel" style="color: var(--gold-bright);">—</span>
+          </p>
+          <a id="qrZoomDownloadLink" href="/assets/aistudio/QR_DIONTADO_767b259e.jpg" download="QR-Code-DIONTADO-PRODUCTION.jpg" class="btn-primary" style="width: 100%; margin-top: 14px;">
+            Enregistrer le QR Code
+          </a>
+        </div>
+      </div>
     </main>
   </div>
 
@@ -2950,7 +3233,7 @@
           subtitle: 'Lumières Maîtrisées & Créations',
           description: 'Prises de vue studio haute précision avec façonnage lumineux sur mesure pour artistes, portraits et marques.',
           coverFile: 'publicite-01.jpg',
-          prestationValue: 'Photographie — Portrait & Studio',
+          prestationValue: 'Shooting Studio',
           expectedPrefixHint: 'studio-01.jpg ou publicite-01.jpg',
           accentGradient: 'linear-gradient(135deg, rgba(165,124,73,0.3), #141418 70%)'
         },
@@ -3090,7 +3373,8 @@
             { label: 'Extérieur · 5 Photos', price: '25.000 CFA' },
             { label: 'Extérieur · 10 Photos', price: '40.000 CFA' }
           ],
-          prestationValue: 'Photographie — Portrait & Studio'
+          prestationValue: 'Photographie — Portrait & Studio',
+          defaultFormulaId: 'portrait-studio-3'
         },
         {
           id: 'tarif-photo-evenementiel',
@@ -3105,7 +3389,8 @@
             { label: '80 photos numériques', price: '100.000 FCFA' },
             { label: '100 photos numériques', price: '120.000 FCFA' }
           ],
-          prestationValue: 'Événementiel (Photo & Vidéo)'
+          prestationValue: 'Événementiel (Photo & Vidéo)',
+          defaultFormulaId: 'event-num-40'
         },
         {
           id: 'tarif-photo-mariage',
@@ -3122,7 +3407,8 @@
             { label: '80 num. + Album 80 photos', price: '190.000 FCFA' },
             { label: '100 num. + Album 100 photos', price: '230.000 FCFA' }
           ],
-          prestationValue: 'Mariage & Cérémonie (Photo / Vidéo)'
+          prestationValue: 'Mariage & Cérémonie (Photo / Vidéo)',
+          defaultFormulaId: 'mar-alb-60'
         },
         {
           id: 'tarif-photo-prewedding',
@@ -3132,7 +3418,8 @@
           priceLabel: 'Sur devis',
           description: 'Séance couple mise en scène en extérieur ou dans un décor choisi avant le grand jour.',
           note: 'Séances Extérieur disponibles dès 25.000 CFA (5 photos) et 40.000 CFA (10 photos), ou pack sur mesure.',
-          prestationValue: 'Prewedding & Séance Couple'
+          prestationValue: 'Prewedding & Séance Couple',
+          defaultFormulaId: 'prew-ext-5'
         },
         {
           id: 'tarif-photo-soutenance',
@@ -3142,7 +3429,8 @@
           priceLabel: 'Sur devis',
           description: 'Immortalisation de votre soutenance de mémoire, thèse ou remise de diplôme : passage devant le jury et portraits officiels.',
           note: 'Formules portrait studio (dès 6.000 CFA) ou reportage numérique complet (dès 50.000 FCFA) adaptables.',
-          prestationValue: 'Soutenance & Remise de diplôme'
+          prestationValue: 'Soutenance & Remise de diplôme',
+          defaultFormulaId: 'sout-num-40'
         },
         {
           id: 'tarif-photo-pro',
@@ -3151,7 +3439,8 @@
           title: 'Photographie professionnelle',
           priceLabel: 'Sur devis',
           description: 'Portraits corporate, reportages d’entreprise, campagnes de communication et valorisation de votre savoir-faire.',
-          prestationValue: 'Photographie professionnelle'
+          prestationValue: 'Photographie professionnelle',
+          defaultFormulaId: 'pro-custom'
         },
         {
           id: 'tarif-video-mariage',
@@ -3165,7 +3454,8 @@
             { label: 'Réception', price: '85.000 FCFA' },
             { label: 'Henné Time + Réception (Mariage)', price: '130.000 FCFA' }
           ],
-          prestationValue: 'Mariage & Cérémonie (Photo / Vidéo)'
+          prestationValue: 'Mariage & Cérémonie (Photo / Vidéo)',
+          defaultFormulaId: 'mar-vid-henne'
         },
         {
           id: 'tarif-video-evenementiel',
@@ -3178,7 +3468,8 @@
             { label: 'Baptême', price: '70.000 FCFA' },
             { label: 'Réception / Événement', price: '85.000 FCFA' }
           ],
-          prestationValue: 'Événementiel (Photo & Vidéo)'
+          prestationValue: 'Événementiel (Photo & Vidéo)',
+          defaultFormulaId: 'event-vid-bapteme'
         },
         {
           id: 'tarif-video-reportage',
@@ -3187,7 +3478,8 @@
           title: 'Reportage',
           priceLabel: 'Sur devis',
           description: 'Immersion documentaire sur le terrain, entretiens et narration authentique dédiée aux cultures et récits humains.',
-          prestationValue: 'Reportage Culturel & Documentaire'
+          prestationValue: 'Reportage Culturel & Documentaire',
+          defaultFormulaId: 'rep-custom'
         },
         {
           id: 'tarif-video-institutionnel',
@@ -3196,7 +3488,8 @@
           title: 'Film institutionnel',
           priceLabel: 'Sur devis',
           description: 'Film corporate de présentation pour entreprises, institutions, ONG et marques souhaitant affirmer leur image.',
-          prestationValue: 'Film Institutionnel & Production Audiovisuelle'
+          prestationValue: 'Film Institutionnel & Production Audiovisuelle',
+          defaultFormulaId: 'inst-custom'
         },
         {
           id: 'tarif-video-production',
@@ -3205,7 +3498,8 @@
           title: 'Production audiovisuelle',
           priceLabel: 'Sur devis',
           description: 'Accompagnement complet de l’écriture à l’étalonnage cinéma : clips artistiques, campagnes visuelles et projets sur mesure.',
-          prestationValue: 'Réalisation vidéo'
+          prestationValue: 'Réalisation vidéo',
+          defaultFormulaId: 'vid-custom'
         }
       ];
 
@@ -3272,7 +3566,7 @@
         var bookBtn = card.querySelector('.js-tarif-book');
         if (bookBtn) {
           bookBtn.addEventListener('click', function () {
-            selectPrestation(offer.prestationValue);
+            selectPrestation(offer.prestationValue, offer.defaultFormulaId);
           });
         }
         bindTilt3D(card, 5);
@@ -3629,25 +3923,10 @@
         });
       }
 
-      /* Pré-sélection d'une prestation & navigation vers Contact */
-      function selectPrestation(prestationName) {
-        var selectEl = document.getElementById('contactService');
-        if (selectEl && prestationName) {
-          var matched = false;
-          for (var i = 0; i < selectEl.options.length; i++) {
-            if (selectEl.options[i].value === prestationName) {
-              selectEl.selectedIndex = i;
-              matched = true;
-              break;
-            }
-          }
-          if (!matched) {
-            var opt = document.createElement('option');
-            opt.value = prestationName;
-            opt.textContent = prestationName;
-            selectEl.appendChild(opt);
-            selectEl.value = prestationName;
-          }
+      /* Pré-sélection d'une prestation & formule puis navigation vers Contact */
+      function selectPrestation(prestationName, formulaId) {
+        if (typeof window.__diontadoSetPrestation === 'function') {
+          window.__diontadoSetPrestation(prestationName, formulaId);
         }
         navigateHomeTo('contact');
       }
@@ -4037,52 +4316,492 @@
       renderVideoGallery();
 
       /* ====================================================================
-         FORMULAIRE CONTACT & RÉSERVATION (ENVOYER MA DEMANDE)
+         SYSTÈME DE RÉSERVATION DIONTADO (CALCULS 70/30, QR CODE DIONTADO,
+         EXCEPTION SHOOTING STUDIO, PREUVE PAIEMENT & WHATSAPP DIRECT)
          ==================================================================== */
+      var WHATSAPP_NUMBER = '221764812391';
+      var BOOKING_PRESTATIONS = [
+        {
+          prestation: 'Shooting Studio',
+          formulas: [
+            { id: 'studio-3', label: 'Shooting Studio · 3 Photos', priceAmount: 6000, currency: 'CFA', photoCountLabel: '3 photos', isStudio: true },
+            { id: 'studio-6', label: 'Shooting Studio · 6 Photos', priceAmount: 10000, currency: 'CFA', photoCountLabel: '6 photos', isStudio: true },
+            { id: 'studio-custom', label: 'Shooting Studio · Sur mesure', priceAmount: null, currency: 'CFA', photoCountLabel: 'À définir', isStudio: true }
+          ]
+        },
+        {
+          prestation: 'Photographie — Portrait & Studio',
+          formulas: [
+            { id: 'portrait-studio-3', label: 'Shooting Studio · 3 Photos', priceAmount: 6000, currency: 'CFA', photoCountLabel: '3 photos', isStudio: true },
+            { id: 'portrait-studio-6', label: 'Shooting Studio · 6 Photos', priceAmount: 10000, currency: 'CFA', photoCountLabel: '6 photos', isStudio: true },
+            { id: 'portrait-domicile-5', label: 'À domicile · 5 Photos', priceAmount: 15000, currency: 'CFA', photoCountLabel: '5 photos', isStudio: false },
+            { id: 'portrait-domicile-10', label: 'À domicile · 10 Photos', priceAmount: 25000, currency: 'CFA', photoCountLabel: '10 photos', isStudio: false },
+            { id: 'portrait-ext-5', label: 'Extérieur · 5 Photos', priceAmount: 25000, currency: 'CFA', photoCountLabel: '5 photos', isStudio: false },
+            { id: 'portrait-ext-10', label: 'Extérieur · 10 Photos', priceAmount: 40000, currency: 'CFA', photoCountLabel: '10 photos', isStudio: false }
+          ]
+        },
+        {
+          prestation: 'Événementiel (Photo & Vidéo)',
+          formulas: [
+            { id: 'event-num-40', label: 'Photos numériques · 40 photos', priceAmount: 50000, currency: 'FCFA', photoCountLabel: '40 photos numériques' },
+            { id: 'event-num-50', label: 'Photos numériques · 50 photos', priceAmount: 70000, currency: 'FCFA', photoCountLabel: '50 photos numériques' },
+            { id: 'event-num-80', label: 'Photos numériques · 80 photos', priceAmount: 100000, currency: 'FCFA', photoCountLabel: '80 photos numériques' },
+            { id: 'event-num-100', label: 'Photos numériques · 100 photos', priceAmount: 120000, currency: 'FCFA', photoCountLabel: '100 photos numériques' },
+            { id: 'event-vid-bapteme', label: 'Réalisation Vidéo · Baptême', priceAmount: 70000, currency: 'FCFA' },
+            { id: 'event-vid-reception', label: 'Réalisation Vidéo · Réception / Événement', priceAmount: 85000, currency: 'FCFA' },
+            { id: 'event-custom', label: 'Couverture Photo + Vidéo sur mesure', priceAmount: null, currency: 'FCFA' }
+          ]
+        },
+        {
+          prestation: 'Mariage & Cérémonie (Photo / Vidéo)',
+          formulas: [
+            { id: 'mar-alb-60', label: 'Album photo · 60 photos', priceAmount: 90000, currency: 'FCFA', photoCountLabel: 'Album de 60 photos' },
+            { id: 'mar-alb-80', label: 'Album photo · 80 photos', priceAmount: 120000, currency: 'FCFA', photoCountLabel: 'Album de 80 photos' },
+            { id: 'mar-alb-100', label: 'Album photo · 100 photos', priceAmount: 140000, currency: 'FCFA', photoCountLabel: 'Album de 100 photos' },
+            { id: 'mar-combo-50-60', label: 'Album + Numérique · 50 num. + Album 60 photos', priceAmount: 130000, currency: 'FCFA', photoCountLabel: '50 photos numériques + Album 60 photos' },
+            { id: 'mar-combo-80-80', label: 'Album + Numérique · 80 num. + Album 80 photos', priceAmount: 190000, currency: 'FCFA', photoCountLabel: '80 photos numériques + Album 80 photos' },
+            { id: 'mar-combo-100-100', label: 'Album + Numérique · 100 num. + Album 100 photos', priceAmount: 230000, currency: 'FCFA', photoCountLabel: '100 photos numériques + Album 100 photos' },
+            { id: 'mar-vid-henne', label: 'Réalisation Vidéo · Henné Time', priceAmount: 70000, currency: 'FCFA' },
+            { id: 'mar-vid-reception', label: 'Réalisation Vidéo · Réception', priceAmount: 85000, currency: 'FCFA' },
+            { id: 'mar-vid-complet', label: 'Réalisation Vidéo · Henné Time + Réception (Mariage)', priceAmount: 130000, currency: 'FCFA' },
+            { id: 'mar-custom', label: 'Pack Photo + Vidéo Mariage sur mesure', priceAmount: null, currency: 'FCFA' }
+          ]
+        },
+        {
+          prestation: 'Prewedding & Séance Couple',
+          formulas: [
+            { id: 'prew-ext-5', label: 'Séance Extérieur · 5 Photos', priceAmount: 25000, currency: 'CFA', photoCountLabel: '5 photos' },
+            { id: 'prew-ext-10', label: 'Séance Extérieur · 10 Photos', priceAmount: 40000, currency: 'CFA', photoCountLabel: '10 photos' },
+            { id: 'prew-custom', label: 'Pack Prewedding sur mesure', priceAmount: null, currency: 'FCFA', photoCountLabel: 'À définir' }
+          ]
+        },
+        {
+          prestation: 'Soutenance & Remise de diplôme',
+          formulas: [
+            { id: 'sout-num-40', label: 'Reportage Soutenance · 40 photos numériques', priceAmount: 50000, currency: 'FCFA', photoCountLabel: '40 photos numériques' },
+            { id: 'sout-num-50', label: 'Reportage Soutenance · 50 photos numériques', priceAmount: 70000, currency: 'FCFA', photoCountLabel: '50 photos numériques' },
+            { id: 'sout-studio-3', label: 'Portrait Studio Diplômé · 3 Photos', priceAmount: 6000, currency: 'CFA', photoCountLabel: '3 photos', isStudio: true },
+            { id: 'sout-studio-6', label: 'Portrait Studio Diplômé · 6 Photos', priceAmount: 10000, currency: 'CFA', photoCountLabel: '6 photos', isStudio: true },
+            { id: 'sout-custom', label: 'Soutenance · Formule sur mesure', priceAmount: null, currency: 'FCFA', photoCountLabel: 'À définir' }
+          ]
+        },
+        {
+          prestation: 'Photographie professionnelle',
+          formulas: [
+            { id: 'pro-custom', label: 'Reportage / Corporate sur mesure', priceAmount: null, currency: 'FCFA', photoCountLabel: 'À définir' },
+            { id: 'pro-studio-3', label: 'Portrait Corporate Studio · 3 Photos', priceAmount: 6000, currency: 'CFA', photoCountLabel: '3 photos', isStudio: true },
+            { id: 'pro-studio-6', label: 'Portrait Corporate Studio · 6 Photos', priceAmount: 10000, currency: 'CFA', photoCountLabel: '6 photos', isStudio: true }
+          ]
+        },
+        {
+          prestation: 'Shooting Mode, Beauté & Marque',
+          formulas: [
+            { id: 'mode-studio-3', label: 'Shooting Studio · 3 Photos', priceAmount: 6000, currency: 'CFA', photoCountLabel: '3 photos', isStudio: true },
+            { id: 'mode-studio-6', label: 'Shooting Studio · 6 Photos', priceAmount: 10000, currency: 'CFA', photoCountLabel: '6 photos', isStudio: true },
+            { id: 'mode-ext-5', label: 'Extérieur · 5 Photos', priceAmount: 25000, currency: 'CFA', photoCountLabel: '5 photos' },
+            { id: 'mode-ext-10', label: 'Extérieur · 10 Photos', priceAmount: 40000, currency: 'CFA', photoCountLabel: '10 photos' },
+            { id: 'mode-custom', label: 'Campagne Mode / Marque sur mesure', priceAmount: null, currency: 'FCFA', photoCountLabel: 'À définir' }
+          ]
+        },
+        {
+          prestation: 'Réalisation vidéo',
+          formulas: [
+            { id: 'vid-henne', label: 'Henné Time', priceAmount: 70000, currency: 'FCFA' },
+            { id: 'vid-bapteme', label: 'Baptême', priceAmount: 70000, currency: 'FCFA' },
+            { id: 'vid-reception', label: 'Réception / Événement', priceAmount: 85000, currency: 'FCFA' },
+            { id: 'vid-mariage', label: 'Henné Time + Réception (Mariage)', priceAmount: 130000, currency: 'FCFA' },
+            { id: 'vid-custom', label: 'Production audiovisuelle sur mesure', priceAmount: null, currency: 'FCFA' }
+          ]
+        },
+        {
+          prestation: 'Reportage Culturel & Documentaire',
+          formulas: [
+            { id: 'rep-custom', label: 'Reportage documentaire sur mesure', priceAmount: null, currency: 'FCFA' }
+          ]
+        },
+        {
+          prestation: 'Film Institutionnel & Production Audiovisuelle',
+          formulas: [
+            { id: 'inst-custom', label: 'Film institutionnel / Corporate sur mesure', priceAmount: null, currency: 'FCFA' }
+          ]
+        }
+      ];
+
+      function formatTarifAmount(amount, currency) {
+        var formatted = Math.round(amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        return formatted + ' ' + currency;
+      }
+
       var contactForm = document.getElementById('contactForm');
+      var serviceSelect = document.getElementById('contactService');
+      var formulaSelect = document.getElementById('contactFormula');
+      var locationInput = document.getElementById('contactLocation');
+      var locationLabel = document.getElementById('contactLocationLabel');
+      var calcPhotoBadge = document.getElementById('calcPhotoBadge');
+      var calcTotalDisplay = document.getElementById('calcTotalDisplay');
+      var calcDepositDisplay = document.getElementById('calcDepositDisplay');
+      var calcRemainingDisplay = document.getElementById('calcRemainingDisplay');
+      var studioExceptionBox = document.getElementById('studioExceptionBox');
+      var studioExceptionText = document.getElementById('studioExceptionText');
+      var qrPaymentBox = document.getElementById('qrPaymentBox');
+      var qrDepositTitle = document.getElementById('qrDepositTitle');
+      var surDevisBox = document.getElementById('surDevisBox');
       var sendEmailBtn = document.getElementById('sendEmailBtn');
       var formFeedback = document.getElementById('formFeedback');
-      var submitFormBtn = document.getElementById('submitFormBtn');
+
+      /* Gestion du véritable QR Code DIONTADO avec chaîne de repli et alerte si absent */
+      var diontadoQrImg = document.getElementById('diontadoQrImg');
+      var diontadoQrZoomImg = document.getElementById('diontadoQrZoomImg');
+      var qrImageContainer = document.getElementById('qrImageContainer');
+      var qrMissingNotice = document.getElementById('qrMissingNotice');
+      var qrActionRow = document.getElementById('qrActionRow');
+      var qrDownloadLink = document.getElementById('qrDownloadLink');
+      var qrZoomDownloadLink = document.getElementById('qrZoomDownloadLink');
+      var qrZoomModal = document.getElementById('qrZoomModal');
+      var qrZoomBtn = document.getElementById('qrZoomBtn');
+      var qrZoomCloseBtn = document.getElementById('qrZoomCloseBtn');
+      var qrZoomDepositLabel = document.getElementById('qrZoomDepositLabel');
+
+      var qrCandidates = [
+        '/assets/aistudio/QR_DIONTADO_767b259e.jpg',
+        './assets/aistudio/QR_DIONTADO_767b259e.jpg',
+        './QR_DIONTADO_767b259e.jpg',
+        mediaUrl('QR_DIONTADO_767b259e.jpg')
+      ];
+      var qrCandidateIndex = 0;
+
+      if (diontadoQrImg) {
+        diontadoQrImg.addEventListener('load', function () {
+          var resolvedSrc = diontadoQrImg.src;
+          if (diontadoQrZoomImg) diontadoQrZoomImg.src = resolvedSrc;
+          if (qrDownloadLink) qrDownloadLink.href = resolvedSrc;
+          if (qrZoomDownloadLink) qrZoomDownloadLink.href = resolvedSrc;
+        });
+        diontadoQrImg.addEventListener('error', function () {
+          qrCandidateIndex += 1;
+          if (qrCandidateIndex < qrCandidates.length) {
+            diontadoQrImg.src = qrCandidates[qrCandidateIndex];
+          } else {
+            if (qrImageContainer) qrImageContainer.style.display = 'none';
+            if (qrActionRow) qrActionRow.style.display = 'none';
+            if (qrMissingNotice) qrMissingNotice.style.display = 'block';
+          }
+        });
+      }
+
+      if (qrZoomBtn && qrZoomModal) {
+        qrZoomBtn.addEventListener('click', function () {
+          qrZoomModal.classList.add('is-open');
+        });
+      }
+      if (qrZoomCloseBtn && qrZoomModal) {
+        qrZoomCloseBtn.addEventListener('click', function () {
+          qrZoomModal.classList.remove('is-open');
+        });
+      }
+      if (qrZoomModal) {
+        qrZoomModal.addEventListener('click', function (e) {
+          if (e.target === qrZoomModal) {
+            qrZoomModal.classList.remove('is-open');
+          }
+        });
+      }
+
+      /* Preuve de paiement (capture d'écran) */
+      var paymentProofInput = document.getElementById('paymentProofInput');
+      var proofDropzone = document.getElementById('proofDropzone');
+      var proofPreviewRow = document.getElementById('proofPreviewRow');
+      var proofThumbImg = document.getElementById('proofThumbImg');
+      var proofFileName = document.getElementById('proofFileName');
+      var removeProofBtn = document.getElementById('removeProofBtn');
+      var selectedProofFile = null;
+      var selectedProofUrl = null;
+
+      function clearProofFile() {
+        if (selectedProofUrl) {
+          URL.revokeObjectURL(selectedProofUrl);
+          selectedProofUrl = null;
+        }
+        selectedProofFile = null;
+        if (paymentProofInput) paymentProofInput.value = '';
+        if (proofDropzone) proofDropzone.style.display = 'flex';
+        if (proofPreviewRow) proofPreviewRow.style.display = 'none';
+      }
+
+      if (paymentProofInput) {
+        paymentProofInput.addEventListener('change', function () {
+          var file = paymentProofInput.files && paymentProofInput.files[0];
+          if (!file) return;
+          if (!file.type || file.type.indexOf('image/') !== 0) {
+            showFeedbackError('Veuillez sélectionner une image (PNG, JPG, WEBP) pour votre capture d’écran de paiement.');
+            return;
+          }
+          if (selectedProofUrl) URL.revokeObjectURL(selectedProofUrl);
+          selectedProofFile = file;
+          selectedProofUrl = URL.createObjectURL(file);
+          if (proofThumbImg) proofThumbImg.src = selectedProofUrl;
+          if (proofFileName) proofFileName.textContent = file.name;
+          if (proofDropzone) proofDropzone.style.display = 'none';
+          if (proofPreviewRow) proofPreviewRow.style.display = 'flex';
+        });
+      }
+
+      if (removeProofBtn) {
+        removeProofBtn.addEventListener('click', clearProofFile);
+      }
+
+      function getCurrentGroup() {
+        var val = serviceSelect ? serviceSelect.value : BOOKING_PRESTATIONS[0].prestation;
+        for (var i = 0; i < BOOKING_PRESTATIONS.length; i++) {
+          if (BOOKING_PRESTATIONS[i].prestation === val) return BOOKING_PRESTATIONS[i];
+        }
+        return BOOKING_PRESTATIONS[0];
+      }
+
+      function getCurrentFormula() {
+        var group = getCurrentGroup();
+        var fid = formulaSelect ? formulaSelect.value : '';
+        for (var i = 0; i < group.formulas.length; i++) {
+          if (group.formulas[i].id === fid) return group.formulas[i];
+        }
+        return group.formulas[0];
+      }
+
+      function computePricing(formula) {
+        var isStudio = Boolean(formula.isStudio);
+        var hasFixedPrice = formula.priceAmount !== null && typeof formula.priceAmount === 'number';
+        var totalAmount = hasFixedPrice ? formula.priceAmount : 0;
+
+        if (isStudio) {
+          var studioTotalLabel = hasFixedPrice
+            ? formatTarifAmount(totalAmount, formula.currency)
+            : 'Sur devis (au studio)';
+          return {
+            isStudio: true,
+            requiresDeposit: false,
+            hasFixedPrice: hasFixedPrice,
+            totalLabel: studioTotalLabel,
+            depositLabel: '0 CFA (Aucun acompte)',
+            remainingLabel: hasFixedPrice
+              ? studioTotalLabel + " — Paiement intégral à l'arrivée au studio"
+              : "Paiement intégral à l'arrivée au studio"
+          };
+        }
+
+        if (hasFixedPrice) {
+          var depositAmount = Math.round(totalAmount * 0.7);
+          var remainingAmount = totalAmount - depositAmount;
+          var totalLabel = formatTarifAmount(totalAmount, formula.currency);
+          var depositLabel = formatTarifAmount(depositAmount, formula.currency);
+          var remainingLabel = formatTarifAmount(remainingAmount, formula.currency);
+          return {
+            isStudio: false,
+            requiresDeposit: true,
+            hasFixedPrice: true,
+            totalLabel: totalLabel,
+            depositLabel: depositLabel,
+            remainingLabel: remainingLabel + " (solde le jour de l'événement)"
+          };
+        }
+
+        return {
+          isStudio: false,
+          requiresDeposit: false,
+          hasFixedPrice: false,
+          totalLabel: 'Sur devis',
+          depositLabel: '70 % à définir après validation du devis',
+          remainingLabel: "30 % le jour de l'événement"
+        };
+      }
+
+      function updateBookingCalculationUI() {
+        var formula = getCurrentFormula();
+        var pricing = computePricing(formula);
+
+        if (calcPhotoBadge) {
+          if (formula.photoCountLabel) {
+            calcPhotoBadge.textContent = 'Nombre de photos : ' + formula.photoCountLabel;
+            calcPhotoBadge.style.display = 'inline-block';
+          } else {
+            calcPhotoBadge.style.display = 'none';
+          }
+        }
+        if (calcTotalDisplay) calcTotalDisplay.textContent = pricing.totalLabel;
+        if (calcDepositDisplay) calcDepositDisplay.textContent = pricing.depositLabel;
+        if (calcRemainingDisplay) calcRemainingDisplay.textContent = pricing.remainingLabel;
+
+        if (locationLabel) {
+          locationLabel.textContent = pricing.isStudio ? 'Lieu de la prestation (Studio)' : 'Lieu de la prestation *';
+        }
+        if (locationInput) {
+          locationInput.required = !pricing.isStudio;
+          locationInput.placeholder = pricing.isStudio
+            ? 'Studio DIONTADO — Yeumbeul, Dakar'
+            : 'Dakar, Saly, Saint-Louis...';
+        }
+
+        if (studioExceptionBox) {
+          studioExceptionBox.style.display = pricing.isStudio ? 'block' : 'none';
+          if (studioExceptionText && pricing.isStudio) {
+            studioExceptionText.textContent =
+              'Pour les prestations Shooting Studio, aucun acompte n’est demandé à l’avance. Vous réglez l’intégralité (' +
+              pricing.totalLabel +
+              ') directement à votre arrivée au studio.';
+          }
+        }
+
+        if (qrPaymentBox) {
+          qrPaymentBox.style.display = pricing.requiresDeposit ? 'block' : 'none';
+        }
+        if (qrDepositTitle) qrDepositTitle.textContent = pricing.depositLabel;
+        if (qrZoomDepositLabel) qrZoomDepositLabel.textContent = pricing.depositLabel;
+        if (surDevisBox) {
+          surDevisBox.style.display = !pricing.isStudio && !pricing.requiresDeposit ? 'block' : 'none';
+        }
+      }
+
+      function populateFormulaOptions(prestationName, targetFormulaId) {
+        if (!formulaSelect) return;
+        var group = BOOKING_PRESTATIONS[0];
+        for (var i = 0; i < BOOKING_PRESTATIONS.length; i++) {
+          if (BOOKING_PRESTATIONS[i].prestation === prestationName) {
+            group = BOOKING_PRESTATIONS[i];
+            break;
+          }
+        }
+        formulaSelect.innerHTML = '';
+        group.formulas.forEach(function (f) {
+          var opt = document.createElement('option');
+          opt.value = f.id;
+          var priceTxt = f.priceAmount !== null ? formatTarifAmount(f.priceAmount, f.currency) : 'Sur devis';
+          opt.textContent = f.label + ' — ' + priceTxt;
+          formulaSelect.appendChild(opt);
+        });
+        if (targetFormulaId) {
+          formulaSelect.value = targetFormulaId;
+        }
+        updateBookingCalculationUI();
+      }
+
+      if (serviceSelect) {
+        BOOKING_PRESTATIONS.forEach(function (g) {
+          var opt = document.createElement('option');
+          opt.value = g.prestation;
+          opt.textContent = g.prestation;
+          serviceSelect.appendChild(opt);
+        });
+        populateFormulaOptions(BOOKING_PRESTATIONS[0].prestation);
+
+        serviceSelect.addEventListener('change', function () {
+          populateFormulaOptions(serviceSelect.value);
+          if (formFeedback) formFeedback.classList.remove('is-visible', 'is-error');
+        });
+      }
+
+      if (formulaSelect) {
+        formulaSelect.addEventListener('change', function () {
+          updateBookingCalculationUI();
+          if (formFeedback) formFeedback.classList.remove('is-visible', 'is-error');
+        });
+      }
+
+      window.__diontadoSetPrestation = function (prestationName, formulaId) {
+        if (!serviceSelect) return;
+        var matched = false;
+        for (var i = 0; i < BOOKING_PRESTATIONS.length; i++) {
+          if (BOOKING_PRESTATIONS[i].prestation === prestationName) {
+            serviceSelect.value = prestationName;
+            populateFormulaOptions(prestationName, formulaId);
+            matched = true;
+            break;
+          }
+        }
+        if (!matched) {
+          serviceSelect.value = BOOKING_PRESTATIONS[0].prestation;
+          populateFormulaOptions(BOOKING_PRESTATIONS[0].prestation);
+        }
+      };
+
+      function showFeedbackError(msg) {
+        if (!formFeedback) return;
+        formFeedback.className = 'form-feedback is-visible is-error';
+        formFeedback.textContent = msg;
+      }
 
       function readFormValues() {
         var name = document.getElementById('contactName').value.trim();
         var phone = document.getElementById('contactPhone').value.trim();
-        var service = document.getElementById('contactService').value;
+        var service = serviceSelect ? serviceSelect.value : '';
+        var formula = getCurrentFormula();
+        var pricing = computePricing(formula);
         var eventDate = document.getElementById('contactDate').value;
-        var location = document.getElementById('contactLocation').value.trim();
+        var eventTime = document.getElementById('contactTime').value;
+        var rawLocation = locationInput ? locationInput.value.trim() : '';
+        var resolvedLocation = rawLocation || (pricing.isStudio ? 'Studio DIONTADO — Yeumbeul, Dakar' : '');
         var message = document.getElementById('contactMessage').value.trim();
 
-        if (!name || !phone || !message) {
-          if (formFeedback) {
-            formFeedback.textContent = 'Merci de renseigner votre nom complet, votre numéro de téléphone et la description de votre projet.';
-            formFeedback.classList.add('is-visible');
-          }
+        if (!name || !phone || !eventDate || !eventTime) {
+          showFeedbackError('Merci de renseigner votre nom complet, votre téléphone WhatsApp, la date et l’heure souhaitées.');
+          return null;
+        }
+        if (!pricing.isStudio && !resolvedLocation) {
+          showFeedbackError('Merci d’indiquer le lieu de la prestation (quartier, ville ou salle).');
           return null;
         }
 
-        var summary = [
+        var lines = [
           'Bonjour DIONTADO PRODUCTION,',
-          'Voici ma demande de prestation / devis :',
+          'Voici ma demande de réservation :',
           '',
           '• Nom complet : ' + name,
           '• Téléphone : ' + phone,
-          '• Type de prestation : ' + service,
-          '• Date souhaitée : ' + (eventDate || 'À préciser'),
-          '• Lieu : ' + (location || 'À préciser'),
-          '',
-          'Description du projet :',
-          message
-        ].join('\n');
+          '• Prestation choisie : ' + service,
+          '• Formule choisie : ' + formula.label
+        ];
+
+        if (formula.photoCountLabel) {
+          lines.push('• Nombre de photos : ' + formula.photoCountLabel);
+        }
+
+        lines.push(
+          '• Prix total : ' + pricing.totalLabel,
+          '• Acompte demandé : ' + pricing.depositLabel,
+          '• Montant restant : ' + pricing.remainingLabel,
+          '• Date souhaitée : ' + eventDate,
+          '• Heure souhaitée : ' + eventTime,
+          '• Lieu de la prestation : ' + resolvedLocation,
+          '• Informations complémentaires : ' + (message || 'Aucune précision supplémentaire')
+        );
+
+        if (pricing.isStudio) {
+          lines.push('', "Réservation demandée — Paiement intégral à l'arrivée au studio.");
+        } else if (pricing.requiresDeposit) {
+          if (selectedProofFile) {
+            lines.push('', "• Preuve de paiement : Capture d'écran préparée (" + selectedProofFile.name + ') — je la joins ci-dessous dans cette conversation WhatsApp.');
+          } else {
+            lines.push('', "• Preuve de paiement : Non jointe dans le formulaire (à vérifier / envoyer directement sur WhatsApp).");
+          }
+        }
+
+        lines.push('', 'En attente de votre vérification et confirmation sur WhatsApp.');
 
         return {
           name: name,
-          phone: phone,
           service: service,
-          eventDate: eventDate || 'À préciser',
-          location: location || 'À préciser',
-          message: message,
-          summary: summary
+          formula: formula,
+          pricing: pricing,
+          summary: lines.join('\n')
         };
+      }
+
+      function triggerExternalWhatsApp(url) {
+        var a = document.createElement('a');
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
       }
 
       if (contactForm) {
@@ -4091,47 +4810,60 @@
           var data = readFormValues();
           if (!data) return;
 
-          if (FORMSPREE_ENDPOINT) {
-            if (submitFormBtn) {
-              submitFormBtn.disabled = true;
-              submitFormBtn.textContent = 'ENVOI EN COURS...';
-            }
-            fetch(FORMSPREE_ENDPOINT, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-              body: JSON.stringify({
-                nom: data.name,
-                telephone: data.phone,
-                prestation: data.service,
-                dateSouhaitee: data.eventDate,
-                lieu: data.location,
-                description: data.message
-              })
-            }).then(function (res) {
-              if (!res.ok) throw new Error('HTTP ' + res.status);
-              if (formFeedback) {
-                formFeedback.textContent = 'Votre demande a bien été transmise à DIONTADO PRODUCTION. Nous vous répondrons très rapidement.';
-                formFeedback.classList.add('is-visible');
-              }
-              contactForm.reset();
-            }).catch(function () {
-              if (formFeedback) {
-                formFeedback.textContent = 'Service momentanément indisponible. Utilisez « Envoyer par Email » ou contactez-nous directement sur WhatsApp.';
-                formFeedback.classList.add('is-visible');
-              }
-            }).finally(function () {
-              if (submitFormBtn) {
-                submitFormBtn.disabled = false;
-                submitFormBtn.textContent = 'ENVOYER MA DEMANDE';
-              }
-            });
-            return;
-          }
+          var waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(data.summary);
+          triggerExternalWhatsApp(waUrl);
 
-          window.location.assign('https://wa.me/221764812391?text=' + encodeURIComponent(data.summary));
           if (formFeedback) {
-            formFeedback.innerHTML = 'Votre demande pré-remplie a été ouverte dans <strong>WhatsApp (+221 76 481 23 91)</strong> pour envoi direct.';
-            formFeedback.classList.add('is-visible');
+            formFeedback.className = 'form-feedback is-visible';
+            var hasProof = Boolean(selectedProofFile && data.pricing.requiresDeposit);
+            var canShare =
+              hasProof &&
+              typeof navigator.canShare === 'function' &&
+              (function () {
+                try { return navigator.canShare({ files: [selectedProofFile] }); } catch (_err) { return false; }
+              })();
+
+            var html =
+              '<p style="font-family:var(--font-mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--gold-bright);">Demande enregistrée · En attente de vérification WhatsApp</p>' +
+              '<p style="margin-top:6px;color:#fff;font-size:0.88rem;">Merci d\'avoir choisi DIONTADO PRODUCTION. Votre demande de réservation a bien été transmise. Nous allons vous contacter sur WhatsApp pour confirmer la disponibilité de la date, de l\'heure et les détails de votre prestation.</p>';
+
+            if (hasProof) {
+              html +=
+                '<div style="margin-top:12px;padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.16);background:rgba(9,9,11,0.8);font-size:0.78rem;">' +
+                  '<strong style="color:var(--gold-bright);">Action finale pour votre preuve de paiement :</strong> joignez votre capture d’écran (<code>' + selectedProofFile.name + '</code>) directement dans la conversation WhatsApp qui vient de s’ouvrir.' +
+                '</div>';
+            }
+
+            html += '<div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;">' +
+              '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" class="btn-whatsapp" style="height:38px;padding-inline:14px;font-size:0.75rem;border-radius:6px;">Ouvrir WhatsApp (+221 76 481 23 91)</a>';
+
+            if (canShare) {
+              html += '<button type="button" id="shareProofBtn" class="btn-primary" style="height:38px;padding-inline:14px;font-size:0.72rem;">Envoyer message + capture (Mobile)</button>';
+            }
+
+            html += '<button type="button" id="copySummaryBtn" class="btn-outline" style="height:38px;padding-inline:14px;font-size:0.72rem;">Copier le récapitulatif</button></div>';
+
+            formFeedback.innerHTML = html;
+
+            var shareBtn = document.getElementById('shareProofBtn');
+            if (shareBtn && selectedProofFile) {
+              shareBtn.addEventListener('click', function () {
+                navigator.share({
+                  title: 'Réservation DIONTADO PRODUCTION',
+                  text: data.summary,
+                  files: [selectedProofFile]
+                }).catch(function () {});
+              });
+            }
+
+            var copyBtn = document.getElementById('copySummaryBtn');
+            if (copyBtn && navigator.clipboard && navigator.clipboard.writeText) {
+              copyBtn.addEventListener('click', function () {
+                navigator.clipboard.writeText(data.summary).then(function () {
+                  copyBtn.textContent = 'Récapitulatif copié ✓';
+                }).catch(function () {});
+              });
+            }
           }
         });
       }
@@ -4140,12 +4872,12 @@
         sendEmailBtn.addEventListener('click', function () {
           var data = readFormValues();
           if (!data) return;
-          var subject = encodeURIComponent('[DIONTADO PRODUCTION] Demande : ' + data.service + ' — ' + data.name);
+          var subject = encodeURIComponent('[DIONTADO PRODUCTION] Réservation : ' + data.service + ' (' + data.formula.label + ') — ' + data.name);
           var body = encodeURIComponent(data.summary);
           window.location.href = 'mailto:diontadoevens.0@gmail.com?subject=' + subject + '&body=' + body;
           if (formFeedback) {
-            formFeedback.innerHTML = 'Votre message a été préparé dans votre application email vers <strong>diontadoevens.0@gmail.com</strong>.';
-            formFeedback.classList.add('is-visible');
+            formFeedback.className = 'form-feedback is-visible';
+            formFeedback.innerHTML = 'Votre récapitulatif complet a été préparé dans votre application email vers <strong>diontadoevens.0@gmail.com</strong>.';
           }
         });
       }
