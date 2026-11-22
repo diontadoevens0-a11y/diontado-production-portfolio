@@ -1820,32 +1820,52 @@
       color: #fde68a;
     }
 
-    .booking-calc-box {
-      border-radius: 12px;
-      border: 1px solid rgba(212, 175, 106, 0.35);
-      background: var(--bg-charcoal);
-      padding: 18px 20px;
+    .booking-step-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
     }
 
-    .booking-calc-head {
-      display: flex;
-      flex-wrap: wrap;
+    .booking-step-badge {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      padding-bottom: 12px;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: var(--gold);
+      color: #0b0a09;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .booking-step-block {
+      padding-bottom: 22px;
       border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .booking-calc-box {
+      border-radius: 10px;
+      border: 1px solid rgba(212, 175, 106, 0.35);
+      background: var(--bg-charcoal);
+      padding: 14px 16px;
     }
 
     .booking-calc-grid {
       display: grid;
-      gap: 14px;
-      margin-top: 14px;
+      gap: 12px;
     }
 
     @media (min-width: 640px) {
       .booking-calc-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .booking-calc-grid > div + div {
+        border-left: 1px solid var(--border-hairline);
+        padding-left: 16px;
       }
     }
 
@@ -1853,66 +1873,56 @@
       border-radius: 12px;
       border: 1px solid rgba(212, 175, 106, 0.45);
       background: rgba(212, 175, 106, 0.1);
-      padding: 18px 20px;
+      padding: 16px;
     }
 
-    .booking-qr-box {
+    .booking-wave-box {
       border-radius: 12px;
       border: 1px solid rgba(212, 175, 106, 0.45);
       background: #0d0d12;
-      padding: 20px;
-    }
-
-    .booking-qr-grid {
+      padding: 18px;
       display: grid;
-      gap: 20px;
+      gap: 16px;
+    }
+
+    .booking-wave-head {
+      display: flex;
+      flex-wrap: wrap;
       align-items: center;
+      justify-content: space-between;
+      gap: 14px;
     }
 
-    @media (min-width: 768px) {
-      .booking-qr-grid {
-        grid-template-columns: 5fr 7fr;
-      }
-    }
-
-    .booking-qr-frame {
-      width: 100%;
-      max-width: 210px;
-      margin-inline: auto;
-      background: #ffffff;
-      border: 2px solid rgba(212, 175, 106, 0.65);
-      border-radius: 12px;
-      padding: 8px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
-    }
-
-    .booking-qr-frame img {
-      width: 100%;
-      height: auto;
+    .btn-wave {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 44px;
+      padding-inline: 20px;
       border-radius: 8px;
-      display: block;
+      background-color: #1ba8f0;
+      color: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      transition: background-color 0.18s ease;
     }
 
-    .booking-qr-missing {
-      border-radius: 10px;
-      border: 1px solid rgba(245, 158, 11, 0.5);
-      background: rgba(245, 158, 11, 0.1);
-      padding: 16px;
-      text-align: center;
-      color: #fde68a;
-      font-size: 0.76rem;
-      line-height: 1.5;
+    .btn-wave:hover {
+      background-color: #1593d4;
     }
 
     .proof-dropzone {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       gap: 10px;
-      margin-top: 8px;
-      padding: 13px 16px;
+      padding: 12px 14px;
       border-radius: 8px;
-      border: 1px dashed rgba(212, 175, 106, 0.55);
+      border: 1px dashed rgba(212, 175, 106, 0.5);
       background: var(--bg-charcoal);
       color: var(--gold-bright);
       font-size: 0.78rem;
@@ -1927,7 +1937,6 @@
     }
 
     .proof-preview-row {
-      margin-top: 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1936,33 +1945,6 @@
       border-radius: 8px;
       border: 1px solid rgba(212, 175, 106, 0.5);
       background: var(--bg-charcoal);
-    }
-
-    .qr-zoom-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 95;
-      background: rgba(0, 0, 0, 0.86);
-      backdrop-filter: blur(6px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-    }
-
-    .qr-zoom-modal.is-open {
-      display: flex;
-    }
-
-    .qr-zoom-card {
-      width: 100%;
-      max-width: 360px;
-      border-radius: 16px;
-      border: 1px solid rgba(212, 175, 106, 0.6);
-      background: var(--bg-slate);
-      padding: 22px;
-      text-align: center;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
     }
 
     /* ==========================================================================
@@ -2564,11 +2546,11 @@
         <div class="container">
           <div class="section-head reveal">
             <div>
-              <p class="kicker">RÉSERVATION &amp; PAIEMENT DIRECT WHATSAPP</p>
-              <h2 class="section-title" style="margin-top: 8px;">Réservez votre prestation.</h2>
+              <p class="kicker">RÉSERVATION SIMPLE &amp; RAPIDE</p>
+              <h2 class="section-title" style="margin-top: 8px;">Réservez en moins d’une minute.</h2>
             </div>
             <p class="section-lead">
-              Calcul automatique de votre formule, règlement de l’acompte par QR Code officiel DIONTADO (sauf Shooting Studio) et validation directe sur WhatsApp.
+              Choisissez votre formule, payez l’acompte par lien Wave (sauf Studio) et envoyez directement sur WhatsApp.
             </p>
           </div>
 
@@ -2583,59 +2565,35 @@
                   onerror="this.style.display='none';"
                 />
 
+                <div style="margin-top: 22px; padding: 16px; border-radius: 10px; border: 1px solid var(--border-hairline); background: var(--bg-charcoal);">
+                  <p style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);">
+                    Comment réserver ?
+                  </p>
+                  <ol style="margin-top: 12px; list-style: none; display: grid; gap: 10px; font-size: 0.78rem; color: rgba(245,242,235,0.88); line-height: 1.5;">
+                    <li><strong style="color: var(--gold-bright);">1.</strong> Choisissez la prestation et la formule : le prix se calcule tout seul.</li>
+                    <li><strong style="color: var(--gold-bright);">2.</strong> Réglez l’acompte via notre <strong style="color: #fff;">lien Wave</strong> (sauf Shooting Studio : 0 CFA d’acompte).</li>
+                    <li><strong style="color: var(--gold-bright);">3.</strong> Envoyez votre demande sur WhatsApp pour confirmation.</li>
+                  </ol>
+                </div>
+
                 <ul class="contact-details">
                   <li>
-                    <span class="contact-label">Téléphone &amp; WhatsApp Réservations</span>
+                    <span class="contact-label">WhatsApp &amp; Téléphone</span>
                     <a href="tel:+221764812391" class="contact-value" style="font-family: var(--font-mono);">
                       +221 76 481 23 91
                     </a>
                   </li>
                   <li>
-                    <span class="contact-label">Email professionnel</span>
+                    <span class="contact-label">Email</span>
                     <a href="mailto:diontadoevens.0@gmail.com" class="contact-value">
                       diontadoevens.0@gmail.com
                     </a>
                   </li>
                   <li>
-                    <span class="contact-label">Instagram &amp; Chaîne Vidéo</span>
-                    <div style="margin-top: 4px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
-                      <a
-                        href="https://www.instagram.com/diontado_photography"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="contact-value"
-                        style="margin-top: 0;"
-                      >
-                        @diontado_photography
-                      </a>
-                      <span aria-hidden="true" style="color: #555;">·</span>
-                      <a
-                        href="https://www.youtube.com/watch?v=VDhh9Q0c_MI"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="contact-value"
-                        style="margin-top: 0;"
-                      >
-                        YouTube
-                      </a>
-                    </div>
-                  </li>
-                  <li>
-                    <span class="contact-label">Studio &amp; Localisation</span>
-                    <span class="contact-value">Yeumbeul, Dakar, Sénégal · Interventions nationales &amp; internationales</span>
+                    <span class="contact-label">Studio</span>
+                    <span class="contact-value">Yeumbeul, Dakar · Sénégal &amp; International</span>
                   </li>
                 </ul>
-
-                <div style="margin-top: 22px; padding: 16px; border-radius: 10px; border: 1px solid var(--border-hairline); background: var(--bg-charcoal);">
-                  <p style="font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);">
-                    Fonctionnement des réservations
-                  </p>
-                  <ul style="margin-top: 10px; list-style: none; display: grid; gap: 8px; font-size: 0.78rem; color: rgba(245,242,235,0.86); line-height: 1.5;">
-                    <li>✓ Acompte de 70 % via le QR Code DIONTADO (sauf Shooting Studio).</li>
-                    <li>✓ Shooting Studio : aucun acompte, règlement intégral au studio.</li>
-                    <li>✓ Vérification et confirmation directe sur WhatsApp.</li>
-                  </ul>
-                </div>
               </div>
 
               <a
@@ -2643,182 +2601,184 @@
                 href="https://wa.me/221764812391?text=Bonjour%20DIONTADO%20PRODUCTION%2C%20je%20souhaite%20discuter%20d%E2%80%99une%20r%C3%A9servation."
                 target="_blank"
                 rel="noopener noreferrer"
-                class="btn-whatsapp"
+                class="btn-outline"
                 style="width: 100%; margin-top: 24px;"
               >
-                Discuter sur WhatsApp
+                Question rapide sur WhatsApp
               </a>
             </div>
 
             <div class="contact-form-card reveal">
-              <div class="form-head">
-                <h3 style="font-family: var(--font-display); font-size: 1.85rem; font-weight: 600; color: #ffffff;">
-                  Formulaire de réservation
-                </h3>
-                <p style="margin-top: 4px; font-size: 0.78rem; color: var(--text-muted);">
-                  Choisissez votre prestation et votre formule : le tarif, l’acompte et le solde sont calculés automatiquement avant l’envoi sur WhatsApp.
-                </p>
-              </div>
+              <form id="contactForm" class="form-grid" style="gap: 22px;">
+                <!-- ÉTAPE 1 -->
+                <div class="booking-step-block">
+                  <div class="booking-step-head">
+                    <span class="booking-step-badge">1</span>
+                    <h3 style="font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; color: #ffffff;">
+                      Votre prestation
+                    </h3>
+                  </div>
 
-              <form id="contactForm" class="form-grid">
-                <div class="form-row-2">
-                  <div>
-                    <label class="field-label" for="contactName">Nom complet *</label>
-                    <input class="field-input" id="contactName" type="text" required placeholder="Ex : Moussa Diop" />
-                  </div>
-                  <div>
-                    <label class="field-label" for="contactPhone">Numéro de téléphone (WhatsApp) *</label>
-                    <input class="field-input" id="contactPhone" type="tel" required placeholder="+221 77 000 00 00" />
-                  </div>
-                </div>
-
-                <div class="form-row-2">
-                  <div>
-                    <label class="field-label" for="contactService">Prestation choisie *</label>
-                    <select class="field-select" id="contactService"></select>
-                  </div>
-                  <div>
-                    <label class="field-label" for="contactFormula">Formule choisie *</label>
-                    <select class="field-select" id="contactFormula"></select>
-                  </div>
-                </div>
-
-                <div class="form-row-3">
-                  <div>
-                    <label class="field-label" for="contactDate">Date souhaitée *</label>
-                    <input class="field-input" id="contactDate" type="date" required />
-                  </div>
-                  <div>
-                    <label class="field-label" for="contactTime">Heure souhaitée *</label>
-                    <input class="field-input" id="contactTime" type="time" required />
-                  </div>
-                  <div>
-                    <label class="field-label" for="contactLocation" id="contactLocationLabel">Lieu de la prestation *</label>
-                    <input class="field-input" id="contactLocation" type="text" required placeholder="Dakar, Saly, Saint-Louis..." />
-                  </div>
-                </div>
-
-                <!-- Calcul automatique -->
-                <div class="booking-calc-box">
-                  <div class="booking-calc-head">
-                    <span style="font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--gold);">
-                      Calcul automatique de votre formule
-                    </span>
-                    <span id="calcPhotoBadge" style="display: none; border-radius: 4px; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); padding: 3px 9px; font-family: var(--font-mono); font-size: 0.68rem; color: var(--gold-bright);"></span>
-                  </div>
-                  <div class="booking-calc-grid">
+                  <div class="form-row-2">
                     <div>
-                      <span style="display: block; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Prix total</span>
-                      <strong id="calcTotalDisplay" style="display: block; margin-top: 4px; font-family: var(--font-display); font-size: 1.55rem; color: #ffffff;">—</strong>
+                      <label class="field-label" for="contactService">Prestation *</label>
+                      <select class="field-select" id="contactService"></select>
                     </div>
                     <div>
-                      <span style="display: block; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Acompte demandé (70 %)</span>
-                      <strong id="calcDepositDisplay" style="display: block; margin-top: 4px; font-family: var(--font-display); font-size: 1.55rem; color: var(--gold-bright);">—</strong>
-                    </div>
-                    <div>
-                      <span style="display: block; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Montant restant</span>
-                      <span id="calcRemainingDisplay" style="display: block; margin-top: 6px; font-size: 0.84rem; font-weight: 600; color: rgba(245,242,235,0.9);">—</span>
+                      <label class="field-label" for="contactFormula">Formule *</label>
+                      <select class="field-select" id="contactFormula"></select>
                     </div>
                   </div>
-                </div>
 
-                <!-- Exception Shooting Studio -->
-                <div id="studioExceptionBox" class="booking-studio-box" style="display: none;">
-                  <p style="font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--gold-bright);">
-                    Exception Shooting Studio
-                  </p>
-                  <h4 style="margin-top: 4px; font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; color: #ffffff;">
-                    Aucun acompte · Aucun QR Code requis
-                  </h4>
-                  <p id="studioExceptionText" style="margin-top: 4px; font-size: 0.8rem; line-height: 1.55; color: rgba(245,242,235,0.9);">
-                    Pour les prestations Shooting Studio, aucun acompte n’est demandé à l’avance. Vous réglez l’intégralité directement à votre arrivée au studio.
-                  </p>
-                </div>
-
-                <!-- Bloc Paiement QR Code DIONTADO -->
-                <div id="qrPaymentBox" class="booking-qr-box" style="display: none;">
-                  <div class="booking-qr-grid">
-                    <div style="text-align: center;">
-                      <div class="booking-qr-frame" id="qrImageContainer">
-                        <img
-                          id="diontadoQrImg"
-                          src="/assets/aistudio/QR_DIONTADO_767b259e.jpg"
-                          alt="QR Code officiel DIONTADO PRODUCTION pour règlement de l’acompte"
-                        />
+                  <div class="booking-calc-box" style="margin-top: 14px;">
+                    <div class="booking-calc-grid">
+                      <div>
+                        <span id="calcTotalLabelTitle" style="display: block; font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted);">Prix total</span>
+                        <strong id="calcTotalDisplay" style="display: block; margin-top: 2px; font-family: var(--font-display); font-size: 1.5rem; color: #ffffff;">—</strong>
                       </div>
-                      <div id="qrMissingNotice" class="booking-qr-missing" style="display: none;">
-                        <strong style="display: block; margin-bottom: 4px;">QR Code DIONTADO absent</strong>
-                        Fichier introuvable. Veuillez importer votre QR Code personnel DIONTADO (QR_DIONTADO_767b259e.jpg) pour afficher le code de paiement.
+                      <div>
+                        <span style="display: block; font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted);">Acompte demandé</span>
+                        <strong id="calcDepositDisplay" style="display: block; margin-top: 2px; font-family: var(--font-display); font-size: 1.5rem; color: var(--gold-bright);">—</strong>
                       </div>
-                      <div id="qrActionRow" style="margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
-                        <button type="button" id="qrZoomBtn" class="btn-outline" style="height: 32px; padding-inline: 12px; font-size: 0.7rem;">
-                          Agrandir
-                        </button>
-                        <a id="qrDownloadLink" href="/assets/aistudio/QR_DIONTADO_767b259e.jpg" download="QR-Code-DIONTADO-PRODUCTION.jpg" class="btn-outline" style="height: 32px; padding-inline: 12px; font-size: 0.7rem;">
-                          Enregistrer
-                        </a>
+                      <div>
+                        <span style="display: block; font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted);">Reste à payer</span>
+                        <span id="calcRemainingDisplay" style="display: block; margin-top: 6px; font-size: 0.8rem; font-weight: 600; color: rgba(245,242,235,0.9);">—</span>
                       </div>
                     </div>
+                  </div>
+                </div>
 
+                <!-- ÉTAPE 2 -->
+                <div class="booking-step-block">
+                  <div class="booking-step-head">
+                    <span class="booking-step-badge">2</span>
+                    <h3 style="font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; color: #ffffff;">
+                      Vos coordonnées &amp; créneau
+                    </h3>
+                  </div>
+
+                  <div class="form-row-2">
                     <div>
-                      <p style="font-family: var(--font-mono); font-size: 0.64rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--gold);">
-                        QR Code Personnel DIONTADO PRODUCTION
-                      </p>
-                      <h4 style="margin-top: 4px; font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; color: #ffffff;">
-                        Acompte à payer : <span id="qrDepositTitle" style="color: var(--gold-bright);">—</span>
-                      </h4>
-                      <p style="margin-top: 6px; font-size: 0.78rem; line-height: 1.55; color: rgba(245,242,235,0.82);">
-                        Scannez ce QR Code avec votre téléphone (ou enregistrez-le sur mobile) pour régler l’acompte exact de 70 %, puis joignez ci-dessous la capture d’écran de votre paiement.
-                      </p>
+                      <label class="field-label" for="contactName">Nom complet *</label>
+                      <input class="field-input" id="contactName" type="text" required placeholder="Ex : Moussa Diop" />
+                    </div>
+                    <div>
+                      <label class="field-label" for="contactPhone">Numéro WhatsApp *</label>
+                      <input class="field-input" id="contactPhone" type="tel" required placeholder="+221 77 000 00 00" />
+                    </div>
+                  </div>
 
-                      <div style="margin-top: 14px;">
-                        <span class="field-label" style="margin-bottom: 0;">Capture d’écran du paiement (preuve de transfert)</span>
-                        <label for="paymentProofInput" class="proof-dropzone" id="proofDropzone">
-                          <span>Joindre la capture d’écran du paiement</span>
-                          <input id="paymentProofInput" type="file" accept="image/*" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);" />
-                        </label>
-                        <div class="proof-preview-row" id="proofPreviewRow" style="display: none;">
-                          <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
-                            <img id="proofThumbImg" src="" alt="Aperçu preuve de paiement" style="width: 44px; height: 44px; border-radius: 6px; object-fit: cover; border: 1px solid rgba(255,255,255,0.18);" />
-                            <div style="min-width: 0;">
-                              <p id="proofFileName" style="font-size: 0.78rem; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></p>
-                              <p style="font-family: var(--font-mono); font-size: 0.64rem; color: var(--gold-bright);">Capture prête à joindre sur WhatsApp</p>
-                            </div>
-                          </div>
-                          <button type="button" id="removeProofBtn" class="btn-outline" style="height: 30px; padding-inline: 10px; font-size: 0.7rem;">
-                            Retirer
-                          </button>
-                        </div>
-                        <p style="margin-top: 8px; font-size: 0.7rem; line-height: 1.5; color: var(--text-muted);">
-                          Note WhatsApp : un lien web WhatsApp ne peut pas joindre automatiquement un fichier image. Après validation, votre message complet s’ouvre sur WhatsApp afin d’y déposer votre capture pour vérification.
+                  <div class="form-row-3" style="margin-top: 14px;">
+                    <div>
+                      <label class="field-label" for="contactDate">Date souhaitée *</label>
+                      <input class="field-input" id="contactDate" type="date" required />
+                    </div>
+                    <div>
+                      <label class="field-label" for="contactTime">Heure souhaitée *</label>
+                      <input class="field-input" id="contactTime" type="time" required />
+                    </div>
+                    <div>
+                      <label class="field-label" for="contactLocation" id="contactLocationLabel">Lieu *</label>
+                      <input class="field-input" id="contactLocation" type="text" required placeholder="Dakar, Saly, Saint-Louis..." />
+                    </div>
+                  </div>
+
+                  <div style="margin-top: 14px;">
+                    <label class="field-label" for="contactMessage">
+                      Informations complémentaires <span style="color: var(--text-muted); font-weight: 400;">(facultatif)</span>
+                    </label>
+                    <textarea
+                      class="field-textarea"
+                      id="contactMessage"
+                      rows="2"
+                      placeholder="Tenues, détails sur le lieu ou précision utile..."
+                    ></textarea>
+                  </div>
+                </div>
+
+                <!-- ÉTAPE 3 -->
+                <div style="display: grid; gap: 14px;">
+                  <div class="booking-step-head" style="margin-bottom: 0;">
+                    <span class="booking-step-badge">3</span>
+                    <h3 id="step3Heading" style="font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; color: #ffffff;">
+                      Acompte Wave &amp; envoi WhatsApp
+                    </h3>
+                  </div>
+
+                  <!-- Exception Shooting Studio -->
+                  <div id="studioExceptionBox" class="booking-studio-box" style="display: none;">
+                    <p style="font-size: 0.82rem; font-weight: 600; color: #ffffff;">
+                      Exception Shooting Studio : aucun acompte demandé.
+                    </p>
+                    <p id="studioExceptionText" style="margin-top: 3px; font-size: 0.78rem; line-height: 1.5; color: rgba(245,242,235,0.9);">
+                      Vous réglez l’intégralité directement à votre arrivée au studio.
+                    </p>
+                  </div>
+
+                  <!-- Paiement par Lien Wave -->
+                  <div id="wavePaymentBox" class="booking-wave-box" style="display: none;">
+                    <div class="booking-wave-head">
+                      <div>
+                        <p style="font-family: var(--font-mono); font-size: 0.64rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--gold);">
+                          Paiement officiel Wave · DIONTADO PRODUCTION
+                        </p>
+                        <p style="margin-top: 3px; font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; color: #ffffff;">
+                          Acompte à payer : <span id="waveDepositTitle" style="color: var(--gold-bright);">—</span>
                         </p>
                       </div>
+                      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <a
+                          id="wavePayBtn"
+                          href="https://pay.wave.com/m/M_sn_IFRIA2vMxg-6/c/sn/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="btn-wave"
+                        >
+                          Payer l’acompte sur Wave &rarr;
+                        </a>
+                        <button type="button" id="copyAmountBtn" class="btn-outline" style="height: 44px; padding-inline: 12px; font-size: 0.72rem;">
+                          Copier montant
+                        </button>
+                      </div>
+                    </div>
+
+                    <div style="border-top: 1px solid var(--border-hairline); padding-top: 14px;">
+                      <label for="paymentProofInput" class="proof-dropzone" id="proofDropzone">
+                        <span>Joindre la capture d’écran du paiement Wave</span>
+                        <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted);">PNG / JPG</span>
+                        <input id="paymentProofInput" type="file" accept="image/*" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);" />
+                      </label>
+                      <div class="proof-preview-row" id="proofPreviewRow" style="display: none;">
+                        <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+                          <img id="proofThumbImg" src="" alt="Aperçu preuve de paiement" style="width: 42px; height: 42px; border-radius: 6px; object-fit: cover; border: 1px solid rgba(255,255,255,0.18);" />
+                          <div style="min-width: 0;">
+                            <p id="proofFileName" style="font-size: 0.78rem; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></p>
+                            <p style="font-family: var(--font-mono); font-size: 0.64rem; color: var(--gold-bright);">Prête à joindre dans WhatsApp</p>
+                          </div>
+                        </div>
+                        <button type="button" id="removeProofBtn" class="btn-outline" style="height: 30px; padding-inline: 10px; font-size: 0.7rem;">
+                          Retirer
+                        </button>
+                      </div>
+                      <p style="margin-top: 8px; font-size: 0.7rem; color: var(--text-muted);">
+                        Après validation, votre récapitulatif s’ouvre sur WhatsApp (+221 76 481 23 91) pour y joindre votre capture d’écran.
+                      </p>
                     </div>
                   </div>
-                </div>
 
-                <!-- Bloc Sur Devis -->
-                <div id="surDevisBox" style="display: none; border-radius: 10px; border: 1px solid var(--border-hairline); background: var(--bg-charcoal); padding: 14px 16px; font-size: 0.78rem; line-height: 1.55; color: rgba(245,242,235,0.82);">
-                  Prestation personnalisée <strong style="color: #fff;">sur devis</strong> : aucun paiement requis maintenant. Envoyez vos informations sur WhatsApp pour recevoir votre chiffrage exact (acompte de 70 % via notre QR Code DIONTADO uniquement après validation du devis).
-                </div>
+                  <!-- Sur devis -->
+                  <div id="surDevisBox" style="display: none; border-radius: 10px; border: 1px solid var(--border-hairline); background: var(--bg-charcoal); padding: 14px 16px; font-size: 0.78rem; line-height: 1.55; color: rgba(245,242,235,0.84);">
+                    Prestation <strong style="color: #fff;">sur devis</strong> : aucun paiement maintenant. Envoyez votre demande sur WhatsApp pour recevoir votre tarif personnalisé.
+                  </div>
 
-                <div>
-                  <label class="field-label" for="contactMessage">Informations complémentaires</label>
-                  <textarea
-                    class="field-textarea"
-                    id="contactMessage"
-                    rows="3"
-                    placeholder="Précisez le nombre de tenues, le déroulement, le lieu exact ou toute demande particulière..."
-                  ></textarea>
-                </div>
-
-                <div class="form-actions">
-                  <button type="submit" class="btn-whatsapp" id="submitFormBtn" style="border-radius: 6px;">
-                    ENVOYER MA DEMANDE SUR WHATSAPP
-                  </button>
-                  <button type="button" class="btn-ghost-gold" id="sendEmailBtn" style="height: 46px;">
-                    Envoyer par Email
-                  </button>
+                  <div class="form-actions">
+                    <button type="submit" class="btn-whatsapp" id="submitFormBtn" style="border-radius: 8px;">
+                      ENVOYER MA RÉSERVATION SUR WHATSAPP
+                    </button>
+                    <button type="button" class="btn-outline" id="sendEmailBtn" style="height: 46px; padding-inline: 16px;">
+                      Par Email
+                    </button>
+                  </div>
                 </div>
 
                 <div class="form-feedback" id="formFeedback" role="status"></div>
@@ -2827,29 +2787,6 @@
           </div>
         </div>
       </section>
-
-      <!-- Modale zoom QR Code DIONTADO -->
-      <div class="qr-zoom-modal" id="qrZoomModal" role="dialog" aria-modal="true" aria-label="QR Code officiel DIONTADO PRODUCTION">
-        <div class="qr-zoom-card">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-            <span style="font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold);">
-              QR Code DIONTADO PRODUCTION
-            </span>
-            <button type="button" id="qrZoomCloseBtn" class="btn-outline" style="height: 30px; padding-inline: 10px; font-size: 0.72rem;">
-              Fermer
-            </button>
-          </div>
-          <div class="booking-qr-frame" style="max-width: 280px;">
-            <img id="diontadoQrZoomImg" src="/assets/aistudio/QR_DIONTADO_767b259e.jpg" alt="QR Code officiel DIONTADO PRODUCTION" />
-          </div>
-          <p style="margin-top: 14px; font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; color: #fff;">
-            Acompte à payer : <span id="qrZoomDepositLabel" style="color: var(--gold-bright);">—</span>
-          </p>
-          <a id="qrZoomDownloadLink" href="/assets/aistudio/QR_DIONTADO_767b259e.jpg" download="QR-Code-DIONTADO-PRODUCTION.jpg" class="btn-primary" style="width: 100%; margin-top: 14px;">
-            Enregistrer le QR Code
-          </a>
-        </div>
-      </div>
     </main>
   </div>
 
@@ -4320,6 +4257,7 @@
          EXCEPTION SHOOTING STUDIO, PREUVE PAIEMENT & WHATSAPP DIRECT)
          ==================================================================== */
       var WHATSAPP_NUMBER = '221764812391';
+      var WAVE_PAYMENT_URL = 'https://pay.wave.com/m/M_sn_IFRIA2vMxg-6/c/sn/';
       var BOOKING_PRESTATIONS = [
         {
           prestation: 'Shooting Studio',
@@ -4437,75 +4375,20 @@
       var formulaSelect = document.getElementById('contactFormula');
       var locationInput = document.getElementById('contactLocation');
       var locationLabel = document.getElementById('contactLocationLabel');
-      var calcPhotoBadge = document.getElementById('calcPhotoBadge');
+      var calcTotalLabelTitle = document.getElementById('calcTotalLabelTitle');
       var calcTotalDisplay = document.getElementById('calcTotalDisplay');
       var calcDepositDisplay = document.getElementById('calcDepositDisplay');
       var calcRemainingDisplay = document.getElementById('calcRemainingDisplay');
+      var step3Heading = document.getElementById('step3Heading');
       var studioExceptionBox = document.getElementById('studioExceptionBox');
       var studioExceptionText = document.getElementById('studioExceptionText');
-      var qrPaymentBox = document.getElementById('qrPaymentBox');
-      var qrDepositTitle = document.getElementById('qrDepositTitle');
+      var wavePaymentBox = document.getElementById('wavePaymentBox');
+      var waveDepositTitle = document.getElementById('waveDepositTitle');
+      var wavePayBtn = document.getElementById('wavePayBtn');
+      var copyAmountBtn = document.getElementById('copyAmountBtn');
       var surDevisBox = document.getElementById('surDevisBox');
       var sendEmailBtn = document.getElementById('sendEmailBtn');
       var formFeedback = document.getElementById('formFeedback');
-
-      /* Gestion du véritable QR Code DIONTADO avec chaîne de repli et alerte si absent */
-      var diontadoQrImg = document.getElementById('diontadoQrImg');
-      var diontadoQrZoomImg = document.getElementById('diontadoQrZoomImg');
-      var qrImageContainer = document.getElementById('qrImageContainer');
-      var qrMissingNotice = document.getElementById('qrMissingNotice');
-      var qrActionRow = document.getElementById('qrActionRow');
-      var qrDownloadLink = document.getElementById('qrDownloadLink');
-      var qrZoomDownloadLink = document.getElementById('qrZoomDownloadLink');
-      var qrZoomModal = document.getElementById('qrZoomModal');
-      var qrZoomBtn = document.getElementById('qrZoomBtn');
-      var qrZoomCloseBtn = document.getElementById('qrZoomCloseBtn');
-      var qrZoomDepositLabel = document.getElementById('qrZoomDepositLabel');
-
-      var qrCandidates = [
-        '/assets/aistudio/QR_DIONTADO_767b259e.jpg',
-        './assets/aistudio/QR_DIONTADO_767b259e.jpg',
-        './QR_DIONTADO_767b259e.jpg',
-        mediaUrl('QR_DIONTADO_767b259e.jpg')
-      ];
-      var qrCandidateIndex = 0;
-
-      if (diontadoQrImg) {
-        diontadoQrImg.addEventListener('load', function () {
-          var resolvedSrc = diontadoQrImg.src;
-          if (diontadoQrZoomImg) diontadoQrZoomImg.src = resolvedSrc;
-          if (qrDownloadLink) qrDownloadLink.href = resolvedSrc;
-          if (qrZoomDownloadLink) qrZoomDownloadLink.href = resolvedSrc;
-        });
-        diontadoQrImg.addEventListener('error', function () {
-          qrCandidateIndex += 1;
-          if (qrCandidateIndex < qrCandidates.length) {
-            diontadoQrImg.src = qrCandidates[qrCandidateIndex];
-          } else {
-            if (qrImageContainer) qrImageContainer.style.display = 'none';
-            if (qrActionRow) qrActionRow.style.display = 'none';
-            if (qrMissingNotice) qrMissingNotice.style.display = 'block';
-          }
-        });
-      }
-
-      if (qrZoomBtn && qrZoomModal) {
-        qrZoomBtn.addEventListener('click', function () {
-          qrZoomModal.classList.add('is-open');
-        });
-      }
-      if (qrZoomCloseBtn && qrZoomModal) {
-        qrZoomCloseBtn.addEventListener('click', function () {
-          qrZoomModal.classList.remove('is-open');
-        });
-      }
-      if (qrZoomModal) {
-        qrZoomModal.addEventListener('click', function (e) {
-          if (e.target === qrZoomModal) {
-            qrZoomModal.classList.remove('is-open');
-          }
-        });
-      }
 
       /* Preuve de paiement (capture d'écran) */
       var paymentProofInput = document.getElementById('paymentProofInput');
@@ -4533,7 +4416,7 @@
           var file = paymentProofInput.files && paymentProofInput.files[0];
           if (!file) return;
           if (!file.type || file.type.indexOf('image/') !== 0) {
-            showFeedbackError('Veuillez sélectionner une image (PNG, JPG, WEBP) pour votre capture d’écran de paiement.');
+            showFeedbackError('Veuillez choisir une image (PNG, JPG ou WEBP) pour la capture du paiement.');
             return;
           }
           if (selectedProofUrl) URL.revokeObjectURL(selectedProofUrl);
@@ -4579,11 +4462,11 @@
           return {
             isStudio: true,
             requiresDeposit: false,
-            hasFixedPrice: hasFixedPrice,
+            depositAmountNumeric: 0,
             totalLabel: studioTotalLabel,
             depositLabel: '0 CFA (Aucun acompte)',
             remainingLabel: hasFixedPrice
-              ? studioTotalLabel + " — Paiement intégral à l'arrivée au studio"
+              ? studioTotalLabel + ' — à régler au studio'
               : "Paiement intégral à l'arrivée au studio"
           };
         }
@@ -4597,20 +4480,20 @@
           return {
             isStudio: false,
             requiresDeposit: true,
-            hasFixedPrice: true,
+            depositAmountNumeric: depositAmount,
             totalLabel: totalLabel,
             depositLabel: depositLabel,
-            remainingLabel: remainingLabel + " (solde le jour de l'événement)"
+            remainingLabel: remainingLabel + ' (le jour J)'
           };
         }
 
         return {
           isStudio: false,
           requiresDeposit: false,
-          hasFixedPrice: false,
+          depositAmountNumeric: 0,
           totalLabel: 'Sur devis',
-          depositLabel: '70 % à définir après validation du devis',
-          remainingLabel: "30 % le jour de l'événement"
+          depositLabel: '70 % après devis',
+          remainingLabel: '30 % le jour J'
         };
       }
 
@@ -4618,46 +4501,62 @@
         var formula = getCurrentFormula();
         var pricing = computePricing(formula);
 
-        if (calcPhotoBadge) {
-          if (formula.photoCountLabel) {
-            calcPhotoBadge.textContent = 'Nombre de photos : ' + formula.photoCountLabel;
-            calcPhotoBadge.style.display = 'inline-block';
-          } else {
-            calcPhotoBadge.style.display = 'none';
-          }
+        if (calcTotalLabelTitle) {
+          calcTotalLabelTitle.textContent = formula.photoCountLabel
+            ? 'Prix total (' + formula.photoCountLabel + ')'
+            : 'Prix total';
         }
         if (calcTotalDisplay) calcTotalDisplay.textContent = pricing.totalLabel;
         if (calcDepositDisplay) calcDepositDisplay.textContent = pricing.depositLabel;
         if (calcRemainingDisplay) calcRemainingDisplay.textContent = pricing.remainingLabel;
 
         if (locationLabel) {
-          locationLabel.textContent = pricing.isStudio ? 'Lieu de la prestation (Studio)' : 'Lieu de la prestation *';
+          locationLabel.textContent = pricing.isStudio ? 'Lieu (Studio)' : 'Lieu *';
         }
         if (locationInput) {
           locationInput.required = !pricing.isStudio;
           locationInput.placeholder = pricing.isStudio
-            ? 'Studio DIONTADO — Yeumbeul, Dakar'
+            ? 'Studio DIONTADO (Yeumbeul)'
             : 'Dakar, Saly, Saint-Louis...';
+        }
+
+        if (step3Heading) {
+          step3Heading.textContent = pricing.isStudio
+            ? 'Paiement au studio & envoi'
+            : pricing.requiresDeposit
+              ? 'Acompte Wave & envoi WhatsApp'
+              : 'Validation sur WhatsApp';
         }
 
         if (studioExceptionBox) {
           studioExceptionBox.style.display = pricing.isStudio ? 'block' : 'none';
           if (studioExceptionText && pricing.isStudio) {
             studioExceptionText.textContent =
-              'Pour les prestations Shooting Studio, aucun acompte n’est demandé à l’avance. Vous réglez l’intégralité (' +
-              pricing.totalLabel +
-              ') directement à votre arrivée au studio.';
+              'Vous réglez l’intégralité (' + pricing.totalLabel + ') directement à votre arrivée au studio.';
           }
         }
 
-        if (qrPaymentBox) {
-          qrPaymentBox.style.display = pricing.requiresDeposit ? 'block' : 'none';
+        if (wavePaymentBox) {
+          wavePaymentBox.style.display = pricing.requiresDeposit ? 'block' : 'none';
         }
-        if (qrDepositTitle) qrDepositTitle.textContent = pricing.depositLabel;
-        if (qrZoomDepositLabel) qrZoomDepositLabel.textContent = pricing.depositLabel;
+        if (waveDepositTitle) waveDepositTitle.textContent = pricing.depositLabel;
+        if (wavePayBtn) wavePayBtn.textContent = 'Payer ' + pricing.depositLabel + ' sur Wave →';
         if (surDevisBox) {
           surDevisBox.style.display = !pricing.isStudio && !pricing.requiresDeposit ? 'block' : 'none';
         }
+      }
+
+      if (copyAmountBtn) {
+        copyAmountBtn.addEventListener('click', function () {
+          var pricing = computePricing(getCurrentFormula());
+          if (!pricing.depositAmountNumeric || !navigator.clipboard || !navigator.clipboard.writeText) return;
+          navigator.clipboard.writeText(String(pricing.depositAmountNumeric)).then(function () {
+            copyAmountBtn.textContent = 'Copié ✓';
+            window.setTimeout(function () {
+              copyAmountBtn.textContent = 'Copier montant';
+            }, 1800);
+          }).catch(function () {});
+        });
       }
 
       function populateFormulaOptions(prestationName, targetFormulaId) {
@@ -4741,11 +4640,11 @@
         var message = document.getElementById('contactMessage').value.trim();
 
         if (!name || !phone || !eventDate || !eventTime) {
-          showFeedbackError('Merci de renseigner votre nom complet, votre téléphone WhatsApp, la date et l’heure souhaitées.');
+          showFeedbackError('Merci de remplir votre nom, votre numéro WhatsApp, la date et l’heure souhaitées.');
           return null;
         }
         if (!pricing.isStudio && !resolvedLocation) {
-          showFeedbackError('Merci d’indiquer le lieu de la prestation (quartier, ville ou salle).');
+          showFeedbackError('Merci d’indiquer le lieu de la prestation.');
           return null;
         }
 
@@ -4770,16 +4669,17 @@
           '• Date souhaitée : ' + eventDate,
           '• Heure souhaitée : ' + eventTime,
           '• Lieu de la prestation : ' + resolvedLocation,
-          '• Informations complémentaires : ' + (message || 'Aucune précision supplémentaire')
+          '• Informations complémentaires : ' + (message || 'Aucune')
         );
 
         if (pricing.isStudio) {
           lines.push('', "Réservation demandée — Paiement intégral à l'arrivée au studio.");
         } else if (pricing.requiresDeposit) {
+          lines.push('', '• Lien de paiement Wave utilisé : ' + WAVE_PAYMENT_URL);
           if (selectedProofFile) {
-            lines.push('', "• Preuve de paiement : Capture d'écran préparée (" + selectedProofFile.name + ') — je la joins ci-dessous dans cette conversation WhatsApp.');
+            lines.push("• Preuve de paiement : Capture d'écran prête (" + selectedProofFile.name + ') — envoyée dans cette conversation WhatsApp.');
           } else {
-            lines.push('', "• Preuve de paiement : Non jointe dans le formulaire (à vérifier / envoyer directement sur WhatsApp).");
+            lines.push('• Preuve de paiement : Capture à joindre ou à vérifier sur WhatsApp.');
           }
         }
 
