@@ -1,0 +1,477 @@
+{
+  "entities": {
+    "AdminUser": {
+      "title": "AdminUser",
+      "description": "Authorized DIONTADO PRODUCTION administrator account.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 3,
+          "maxLength": 160
+        },
+        "role": {
+          "type": "string",
+          "enum": ["admin"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["uid", "email", "role", "createdAt"]
+    },
+    "PortfolioPhoto": {
+      "title": "PortfolioPhoto",
+      "description": "Photography gallery entry stored in the DIONTADO PRODUCTION portfolio.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 600
+        },
+        "category": {
+          "type": "string",
+          "enum": ["Soutenance", "Photographie professionnelle"]
+        },
+        "albumId": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "albumTitle": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "storagePath": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "fileName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "mimeType": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "fileSize": {
+          "type": "integer"
+        },
+        "published": {
+          "type": "boolean"
+        },
+        "featured": {
+          "type": "boolean"
+        },
+        "sortOrder": {
+          "type": "integer"
+        },
+        "authorUid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "category",
+        "albumId",
+        "albumTitle",
+        "url",
+        "storagePath",
+        "fileName",
+        "mimeType",
+        "fileSize",
+        "published",
+        "featured",
+        "sortOrder",
+        "authorUid",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "PortfolioAlbum": {
+      "title": "PortfolioAlbum",
+      "description": "Sub-album organizing photographs inside Soutenance or Photographie professionnelle.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "category": {
+          "type": "string",
+          "enum": ["Soutenance", "Photographie professionnelle"]
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "published": {
+          "type": "boolean"
+        },
+        "sortOrder": {
+          "type": "integer"
+        },
+        "authorUid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "category",
+        "description",
+        "published",
+        "sortOrder",
+        "authorUid",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "PortfolioVideo": {
+      "title": "PortfolioVideo",
+      "description": "Video production entry (YouTube or uploaded MP4/WebM).",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 600
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Films institutionnels",
+            "Événementiel",
+            "Mariage",
+            "Clips et créations artistiques",
+            "Reportages"
+          ]
+        },
+        "sourceType": {
+          "type": "string",
+          "enum": ["youtube", "mp4"]
+        },
+        "youtubeId": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "videoUrl": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "posterUrl": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "storagePath": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "isShowreel": {
+          "type": "boolean"
+        },
+        "published": {
+          "type": "boolean"
+        },
+        "sortOrder": {
+          "type": "integer"
+        },
+        "authorUid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "category",
+        "sourceType",
+        "youtubeId",
+        "videoUrl",
+        "posterUrl",
+        "storagePath",
+        "isShowreel",
+        "published",
+        "sortOrder",
+        "authorUid",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "SiteCover": {
+      "title": "SiteCover",
+      "description": "Managed cover image for Home, Soutenance, Photographie professionnelle, or À propos.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "enum": ["home", "soutenance", "photographie-professionnelle", "apropos"]
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "imageUrl": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "storagePath": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "alt": {
+          "type": "string",
+          "maxLength": 250
+        },
+        "authorUid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "imageUrl",
+        "storagePath",
+        "alt",
+        "authorUid",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "SiteCategoryMeta": {
+      "title": "SiteCategoryMeta",
+      "description": "Editable title/subtitle/description for Soutenance and Photographie professionnelle.",
+      "type": "object",
+      "properties": {
+        "slug": {
+          "type": "string",
+          "enum": ["soutenance", "photographie-professionnelle"]
+        },
+        "title": {
+          "type": "string",
+          "enum": ["SOUTENANCE", "PHOTOGRAPHIE PROFESSIONNELLE"]
+        },
+        "subtitle": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 600
+        },
+        "authorUid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "slug",
+        "title",
+        "subtitle",
+        "description",
+        "authorUid",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "SiteService": {
+      "title": "SiteService",
+      "description": "Service offering displayed on the dedicated Services page.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "number": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 16
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 140
+        },
+        "tagline": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 800
+        },
+        "deliverables": {
+          "type": "array"
+        },
+        "prestationValue": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "published": {
+          "type": "boolean"
+        },
+        "sortOrder": {
+          "type": "integer"
+        },
+        "authorUid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "number",
+        "title",
+        "tagline",
+        "description",
+        "deliverables",
+        "prestationValue",
+        "published",
+        "sortOrder",
+        "authorUid",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/admins/{adminId}": {
+      "schema": { "$ref": "#/entities/AdminUser" },
+      "description": "Authorized admin accounts."
+    },
+    "/portfolio_photos/{photoId}": {
+      "schema": { "$ref": "#/entities/PortfolioPhoto" },
+      "description": "Managed portfolio photography items."
+    },
+    "/portfolio_albums/{albumId}": {
+      "schema": { "$ref": "#/entities/PortfolioAlbum" },
+      "description": "Managed portfolio sub-albums."
+    },
+    "/portfolio_videos/{videoId}": {
+      "schema": { "$ref": "#/entities/PortfolioVideo" },
+      "description": "Managed portfolio video items."
+    },
+    "/site_covers/{coverId}": {
+      "schema": { "$ref": "#/entities/SiteCover" },
+      "description": "Managed cover images for core pages."
+    },
+    "/site_categories/{categorySlug}": {
+      "schema": { "$ref": "#/entities/SiteCategoryMeta" },
+      "description": "Editable copy for Soutenance and Photographie professionnelle."
+    },
+    "/site_services/{serviceId}": {
+      "schema": { "$ref": "#/entities/SiteService" },
+      "description": "Managed services shown on /services."
+    }
+  }
+}
