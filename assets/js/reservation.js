@@ -1,803 +1,847 @@
 /* ==========================================================================
-   DIONTADO PRODUCTION — LOGIQUE DE RÉSERVATION, CALCUL 70/30, CONTRAT
-   OBLIGATOIRE, TRAÇABILITÉ & TRANSMISSION WHATSAPP
+   DIONTADO PRODUCTION — MODULE RÉSERVATION & CALENDRIER ACCESSIBLE
+   Sans paiement en ligne. Confirmation par réponse WhatsApp.
    ========================================================================== */
 (function () {
   var cfg = window.DIONTADO_CONFIG || {};
   var data = window.DIONTADO_DATA || {};
-  var utils = window.DIONTADO_UTILS || {};
-
-  var contactForm = document.getElementById('contactForm');
-  if (!contactForm) return;
-
-  var CONTRACT_VERSION = 'CONTRAT-DP-2026.1';
-  var BOOKING_STORAGE_KEY = 'diontado_booking_records_v1';
+  var BASE_PATH = cfg.BASE_PATH || '/diontado-production-portfolio';
   var WHATSAPP_NUMBER = cfg.WHATSAPP_NUMBER || '221764812391';
-  var WAVE_PAYMENT_URL = cfg.WAVE_PAYMENT_URL || 'https://pay.wave.com/m/M_sn_IFRIA2vMxg-6/c/sn/';
-  var CONTACT_EMAIL = (cfg.EMAIL_USER || 'diontadoproduction') + '@' + (cfg.EMAIL_DOMAIN || 'gmail.com');
-  var BOOKING_PRESTATIONS = data.BOOKING_PRESTATIONS || [];
+  var EMAIL_USER = cfg.EMAIL_USER || 'diontadoproduction';
+  var EMAIL_DOMAIN = cfg.EMAIL_DOMAIN || 'gmail.com';
+  var PRESTATIONS = data.BOOKING_PRESTATIONS || [];
 
-  var escapeHTML = utils.escapeHTML || function (str) {
+  var form = document.getElementById('bookingForm');
+  if (!form) return;
+
+  var serviceSelect = document.getElementById('contactService');
+  var formulaSelect = document.getElementById('contactFormula');
+  var priceSummaryRow = document.getElementById('priceSummaryRow');
+  var studioPriceBox = document.getElementById('studioPriceBox');
+  var surDevisBox = document.getElementById('surDevisBox');
+  var totalPriceVal = document.getElementById('totalPriceVal');
+
+  var dateHiddenInput = document.getElementById('contactDate');
+  var timeInput = document.getElementById('contactTime');
+  var locationInput = document.getElementById('contactLocation');
+  var locationGroup = document.getElementById('contactLocationGroup');
+  var peopleInput = document.getElementById('contactPeople');
+  var nameInput = document.getElementById('contactName');
+  var phoneInput = document.getElementById('contactPhone');
+  var emailInput = document.getElementById('contactEmail');
+  var detailsInput = document.getElementById('contactDetails');
+  var acceptConditions = document.getElementById('acceptConditions');
+
+  var summaryTextEl = document.getElementById('bookingSummaryText');
+  var summaryRefEl = document.getElementById('bookingSummaryRef');
+  var submitBtn = document.getElementById('bookingSubmitBtn');
+  var emailAltBtn = document.getElementById('bookingEmailBtn');
+  var feedbackBox = document.getElementById('bookingFeedback');
+
+  /* Éléments du calendrier accessible */
+  var calendarWrap = document.getElementById('calendarFieldWrap');
+  var calendarWidget = document.getElementById('availabilityCalendar');
+  var calendarMonthTitle = document.getElementById('calendarMonthTitle');
+  var calendarPrevBtn = document.getElementById('calendarPrevMonth');
+  var calendarNextBtn = document.getElementById('calendarNextMonth');
+  var calendarGridBody = document.getElementById('calendarGridBody');
+  var calendarSelectedBadge = document.getElementById('calendarSelectedBadge');
+  var calendarSrStatus = document.getElementById('calendarSrStatus');
+  var calendarFallbackWrap = document.getElementById('calendarFallbackWrap');
+  var calendarFallbackInput = document.getElementById('contactDateFallback');
+
+  var MONTHS_FR = [
+    'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+    'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
+  ];
+  var DAYS_FR = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+
+  var currentRefCode = generateReferenceCode();
+  var disponibilites = {
+    mis_a_jour: '',
+    dates_indisponibles: [],
+    jours_fermes_hebdo: []
+  };
+  var isFallbackMode = false;
+
+  var today = getTodayLocal();
+  var minMonthDate = new Date(today.getFullYear(), today.getMonth(), 1);
+  var maxDate = addMonthsClamped(today, 12);
+  var maxMonthDate = new Date(maxDate.getFullYear(), maxDate.getMonth(), 1);
+  var viewYear = today.getFullYear();
+  var viewMonth = today.getMonth();
+  var selectedIso = '';
+  var focusedIso = toIsoDate(today);
+
+  /* ------------------------------------------------------------------------
+     UTILITAIRES
+     ------------------------------------------------------------------------ */
+  function escapeHTML(str) {
     return String(str == null ? '' : str)
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
-  };
-
-  function sanitizeInput(str, multiline) {
-    var clean = String(str == null ? '' : str);
-    if (multiline) {
-      clean = clean.replace(/\r\n?/g, '\n').replace(/[\u0000-\u0009\u000B-\u001F\u007F]/g, '');
-    } else {
-      clean = clean.replace(/[\u0000-\u001F\u007F]/g, ' ').replace(/\s+/g, ' ');
-    }
-    return clean.trim();
   }
 
-  function formatTarifAmount(amount, currency) {
-    var formatted = Math.round(amount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\u00A0');
-    return formatted + '\u00A0' + (currency || 'FCFA');
+  function formatFcfa(amount) {
+    if (amount == null || isNaN(amount)) return 'Sur devis';
+    var digits = Math.round(Number(amount)).toString();
+    var grouped = digits.replace(/\B(?=(\d{3})+(?!\d))/g, '\u00A0');
+    return grouped + '\u00A0FCFA';
   }
 
-  function formatFrenchDateTime(iso) {
-    try {
-      return new Intl.DateTimeFormat('fr-FR', {
-        dateStyle: 'long',
-        timeStyle: 'medium'
-      }).format(new Date(iso));
-    } catch (_err) {
-      return iso;
-    }
+  function pad2(n) {
+    return n < 10 ? '0' + n : String(n);
   }
 
-  var serviceSelect = document.getElementById('contactService');
-  var formulaSelect = document.getElementById('contactFormula');
-  var nameInput = document.getElementById('contactName');
-  var phoneInput = document.getElementById('contactPhone');
-  var emailInput = document.getElementById('contactEmail');
-  var dateInput = document.getElementById('contactDate');
-  var timeInput = document.getElementById('contactTime');
-  var locationInput = document.getElementById('contactLocation');
-  var messageInput = document.getElementById('contactMessage');
-  var locationLabel = document.getElementById('contactLocationLabel');
-
-  var bookingCalcGrid = document.getElementById('bookingCalcGrid');
-  var calcTotalLabelTitle = document.getElementById('calcTotalLabelTitle');
-  var calcTotalDisplay = document.getElementById('calcTotalDisplay');
-  var calcDepositCol = document.getElementById('calcDepositCol');
-  var calcDepositDisplay = document.getElementById('calcDepositDisplay');
-  var calcRemainingCol = document.getElementById('calcRemainingCol');
-  var calcRemainingDisplay = document.getElementById('calcRemainingDisplay');
-  var calcStudioCol = document.getElementById('calcStudioCol');
-
-  var step3Heading = document.getElementById('step3Heading');
-  var studioExceptionBox = document.getElementById('studioExceptionBox');
-  var studioExceptionText = document.getElementById('studioExceptionText');
-  var wavePaymentBox = document.getElementById('wavePaymentBox');
-  var waveDepositTitle = document.getElementById('waveDepositTitle');
-  var wavePayBtn = document.getElementById('wavePayBtn');
-  var copyAmountBtn = document.getElementById('copyAmountBtn');
-  var surDevisBox = document.getElementById('surDevisBox');
-
-  // Éléments Contrat & Traçabilité
-  var openContractBtn = document.getElementById('openContractBtn');
-  var imagePubCheckbox = document.getElementById('imagePubCheckbox');
-  var contractAcceptCheckbox = document.getElementById('contractAcceptCheckbox');
-  var contractTraceDisplay = document.getElementById('contractTraceDisplay');
-  var contractHintDisplay = document.getElementById('contractHintDisplay');
-  var submitFormBtn = document.getElementById('submitFormBtn');
-  var sendEmailBtn = document.getElementById('sendEmailBtn');
-  var formFeedback = document.getElementById('formFeedback');
-
-  var contractModal = document.getElementById('contractModal');
-  var closeContractBtn = document.getElementById('closeContractBtn');
-  var cancelContractBtn = document.getElementById('cancelContractBtn');
-  var acceptContractBtn = document.getElementById('acceptContractBtn');
-  var modalImagePubCheckbox = document.getElementById('modalImagePubCheckbox');
-  var modalContractAcceptCheckbox = document.getElementById('modalContractAcceptCheckbox');
-
-  var contractClientName = document.getElementById('contractClientName');
-  var contractClientPhone = document.getElementById('contractClientPhone');
-  var contractClientEmail = document.getElementById('contractClientEmail');
-  var contractPrestation = document.getElementById('contractPrestation');
-  var contractDateTime = document.getElementById('contractDateTime');
-  var contractLocation = document.getElementById('contractLocation');
-  var contractTotalPrice = document.getElementById('contractTotalPrice');
-  var contractDepositRow = document.getElementById('contractDepositRow');
-  var contractDepositPrice = document.getElementById('contractDepositPrice');
-  var contractRemainingRow = document.getElementById('contractRemainingRow');
-  var contractRemainingPrice = document.getElementById('contractRemainingPrice');
-  var contractStudioPaymentRow = document.getElementById('contractStudioPaymentRow');
-
-  var contractAcceptedAtIso = null;
-  var lastFocusedBeforeModal = null;
-
-  function getTodayDateString() {
+  function getTodayLocal() {
     var now = new Date();
-    var y = now.getFullYear();
-    var m = now.getMonth() + 1;
-    var d = now.getDate();
-    return y + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d);
+    return new Date(now.getFullYear(), now.getMonth(), now.getDate());
   }
 
-  if (dateInput) {
-    dateInput.setAttribute('min', getTodayDateString());
+  function addMonthsClamped(baseDate, monthsToAdd) {
+    var targetYear = baseDate.getFullYear();
+    var targetMonth = baseDate.getMonth() + monthsToAdd;
+    var d = new Date(targetYear, targetMonth, 1);
+    var daysInTarget = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+    var day = Math.min(baseDate.getDate(), daysInTarget);
+    return new Date(d.getFullYear(), d.getMonth(), day);
   }
 
-  function isValidPhone(phone) {
-    if (!/^\+?[\d\s]+$/.test(phone)) return false;
-    var digits = phone.replace(/\D/g, '');
-    return digits.length >= 8 && digits.length <= 15;
+  function toIsoDate(d) {
+    return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
   }
 
-  function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  function parseIsoDate(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || '').trim());
+    if (!m) return null;
+    var y = Number(m[1]);
+    var mo = Number(m[2]) - 1;
+    var d = Number(m[3]);
+    var dt = new Date(y, mo, d);
+    if (dt.getFullYear() !== y || dt.getMonth() !== mo || dt.getDate() !== d) return null;
+    return dt;
   }
 
-  var VALIDATED_FIELDS = [nameInput, phoneInput, emailInput, dateInput, timeInput, locationInput, messageInput];
-  function clearInvalidFields() {
-    VALIDATED_FIELDS.forEach(function (el) {
-      if (el) el.removeAttribute('aria-invalid');
-    });
+  function formatFrenchDate(iso) {
+    var dt = parseIsoDate(iso);
+    if (!dt) return '';
+    return DAYS_FR[dt.getDay()] + ' ' + dt.getDate() + ' ' + MONTHS_FR[dt.getMonth()] + ' ' + dt.getFullYear();
   }
 
-  VALIDATED_FIELDS.forEach(function (el) {
-    if (el) {
-      el.addEventListener('input', function () {
-        el.removeAttribute('aria-invalid');
-      });
-    }
-  });
-
-  // Aperçu local facultatif (aucun fichier envoyé automatiquement)
-  var ALLOWED_PROOF_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
-  var MAX_PROOF_BYTES = 5 * 1024 * 1024;
-  var paymentProofInput = document.getElementById('paymentProofInput');
-  var proofDropzone = document.getElementById('proofDropzone');
-  var proofPreviewRow = document.getElementById('proofPreviewRow');
-  var proofThumbImg = document.getElementById('proofThumbImg');
-  var proofFileName = document.getElementById('proofFileName');
-  var removeProofBtn = document.getElementById('removeProofBtn');
-  var selectedProofFile = null;
-  var selectedProofUrl = null;
-
-  function clearProofFile() {
-    if (selectedProofUrl) {
-      URL.revokeObjectURL(selectedProofUrl);
-      selectedProofUrl = null;
-    }
-    selectedProofFile = null;
-    if (paymentProofInput) {
-      paymentProofInput.value = '';
-      paymentProofInput.removeAttribute('aria-invalid');
-    }
-    if (proofThumbImg) proofThumbImg.removeAttribute('src');
-    if (proofDropzone) proofDropzone.classList.remove('is-hidden');
-    if (proofPreviewRow) proofPreviewRow.classList.add('is-hidden');
-  }
-
-  if (paymentProofInput) {
-    paymentProofInput.addEventListener('change', function () {
-      var file = paymentProofInput.files && paymentProofInput.files[0];
-      if (!file) return;
-      if (ALLOWED_PROOF_TYPES.indexOf(file.type) === -1) {
-        paymentProofInput.value = '';
-        showFeedbackError('Format non autorisé : veuillez choisir une image JPG, PNG ou WEBP uniquement.', [paymentProofInput]);
-        return;
+  function generateReferenceCode() {
+    var now = new Date();
+    var yy = String(now.getFullYear()).slice(-2);
+    var mm = pad2(now.getMonth() + 1);
+    var dd = pad2(now.getDate());
+    var charset = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+    var suffix = '';
+    if (window.crypto && typeof window.crypto.getRandomValues === 'function') {
+      var arr = new Uint32Array(4);
+      window.crypto.getRandomValues(arr);
+      for (var i = 0; i < 4; i++) {
+        suffix += charset.charAt(arr[i] % charset.length);
       }
-      if (file.size > MAX_PROOF_BYTES) {
-        paymentProofInput.value = '';
-        showFeedbackError('Fichier trop volumineux : l’image ne doit pas dépasser 5 Mo.', [paymentProofInput]);
-        return;
-      }
-      paymentProofInput.removeAttribute('aria-invalid');
-      if (formFeedback && formFeedback.classList.contains('is-error')) {
-        formFeedback.classList.remove('is-visible', 'is-error');
-      }
-      if (selectedProofUrl) URL.revokeObjectURL(selectedProofUrl);
-      selectedProofFile = file;
-      selectedProofUrl = URL.createObjectURL(file);
-      if (proofThumbImg) proofThumbImg.src = selectedProofUrl;
-      if (proofFileName) proofFileName.textContent = file.name;
-      if (proofDropzone) proofDropzone.classList.add('is-hidden');
-      if (proofPreviewRow) proofPreviewRow.classList.remove('is-hidden');
-    });
-  }
-
-  if (removeProofBtn) {
-    removeProofBtn.addEventListener('click', clearProofFile);
-  }
-
-  function getCurrentGroup() {
-    var val = serviceSelect ? serviceSelect.value : BOOKING_PRESTATIONS[0].prestation;
-    for (var i = 0; i < BOOKING_PRESTATIONS.length; i++) {
-      if (BOOKING_PRESTATIONS[i].prestation === val) return BOOKING_PRESTATIONS[i];
-    }
-    return BOOKING_PRESTATIONS[0];
-  }
-
-  function getCurrentFormula() {
-    var group = getCurrentGroup();
-    var fid = formulaSelect ? formulaSelect.value : '';
-    for (var i = 0; i < group.formulas.length; i++) {
-      if (group.formulas[i].id === fid) return group.formulas[i];
-    }
-    return group.formulas[0];
-  }
-
-  function computePricing(formula) {
-    var isStudio = Boolean(formula.isStudio);
-    var hasFixedPrice = formula.priceAmount !== null && typeof formula.priceAmount === 'number';
-    var totalAmount = hasFixedPrice ? formula.priceAmount : 0;
-
-    if (isStudio) {
-      var studioTotalLabel = hasFixedPrice
-        ? formatTarifAmount(totalAmount, formula.currency)
-        : 'Sur devis (au studio)';
-      return {
-        isStudio: true,
-        requiresDeposit: false,
-        depositAmountNumeric: 0,
-        totalLabel: studioTotalLabel,
-        depositLabel: '',
-        remainingLabel: "Paiement intégral à l'arrivée au studio"
-      };
-    }
-
-    if (hasFixedPrice) {
-      var depositAmount = Math.round(totalAmount * 0.7);
-      var remainingAmount = totalAmount - depositAmount;
-      var totalLabel = formatTarifAmount(totalAmount, formula.currency);
-      var depositLabel = formatTarifAmount(depositAmount, formula.currency);
-      var remainingLabel = formatTarifAmount(remainingAmount, formula.currency);
-
-      return {
-        isStudio: false,
-        requiresDeposit: true,
-        depositAmountNumeric: depositAmount,
-        totalLabel: totalLabel,
-        depositLabel: depositLabel,
-        remainingLabel: remainingLabel + ' (30 % — le jour de la prestation)'
-      };
-    }
-
-    return {
-      isStudio: false,
-      requiresDeposit: false,
-      depositAmountNumeric: 0,
-      totalLabel: 'Sur devis',
-      depositLabel: '70 % après validation du devis',
-      remainingLabel: '30 % le jour de la prestation'
-    };
-  }
-
-  function updateBookingCalculationUI() {
-    var formula = getCurrentFormula();
-    var pricing = computePricing(formula);
-
-    if (calcTotalLabelTitle) {
-      calcTotalLabelTitle.textContent = formula.photoCountLabel
-        ? 'Prix total (' + formula.photoCountLabel + ')'
-        : 'Prix total';
-    }
-    if (calcTotalDisplay) calcTotalDisplay.textContent = pricing.totalLabel;
-
-    if (bookingCalcGrid) {
-      bookingCalcGrid.classList.toggle('is-studio-grid', pricing.isStudio);
-    }
-    if (calcDepositCol) calcDepositCol.classList.toggle('is-hidden', pricing.isStudio);
-    if (calcRemainingCol) calcRemainingCol.classList.toggle('is-hidden', pricing.isStudio);
-    if (calcStudioCol) calcStudioCol.classList.toggle('is-hidden', !pricing.isStudio);
-
-    if (!pricing.isStudio) {
-      if (calcDepositDisplay) calcDepositDisplay.textContent = pricing.depositLabel;
-      if (calcRemainingDisplay) calcRemainingDisplay.textContent = pricing.remainingLabel;
-    }
-
-    if (locationLabel) {
-      locationLabel.textContent = pricing.isStudio ? 'Lieu (Studio)' : 'Lieu *';
-    }
-    if (locationInput) {
-      locationInput.required = !pricing.isStudio;
-      locationInput.placeholder = pricing.isStudio
-        ? 'Studio Yeumbeul, Dakar'
-        : 'Dakar, Saly, Saint-Louis...';
-    }
-
-    if (step3Heading) {
-      step3Heading.textContent = pricing.isStudio
-        ? 'Paiement au studio'
-        : pricing.requiresDeposit
-          ? 'Acompte Wave (70 %)'
-          : 'Modalités de devis';
-    }
-
-    if (studioExceptionBox) {
-      studioExceptionBox.classList.toggle('is-hidden', !pricing.isStudio);
-      if (studioExceptionText && pricing.isStudio) {
-        studioExceptionText.textContent =
-          'Vous réglez ' + pricing.totalLabel + ' directement lors de votre séance au Studio Yeumbeul, Dakar.';
+    } else {
+      for (var j = 0; j < 4; j++) {
+        suffix += charset.charAt(Math.floor(Math.random() * charset.length));
       }
     }
-
-    if (wavePaymentBox) {
-      wavePaymentBox.classList.toggle('is-hidden', !pricing.requiresDeposit);
-    }
-    if (waveDepositTitle && !pricing.isStudio) waveDepositTitle.textContent = pricing.depositLabel;
-    if (wavePayBtn && !pricing.isStudio) wavePayBtn.textContent = 'Payer ' + pricing.depositLabel + ' sur Wave →';
-    if (surDevisBox) {
-      surDevisBox.classList.toggle('is-hidden', pricing.isStudio || pricing.requiresDeposit);
-    }
+    return 'DP-' + yy + mm + dd + '-' + suffix;
   }
 
-  function syncContractPreviewFields() {
-    var group = getCurrentGroup();
-    var formula = getCurrentFormula();
-    var pricing = computePricing(formula);
-
-    var nameVal = sanitizeInput(nameInput ? nameInput.value : '', false);
-    var phoneVal = sanitizeInput(phoneInput ? phoneInput.value : '', false);
-    var emailVal = sanitizeInput(emailInput ? emailInput.value : '', false);
-    var dateVal = sanitizeInput(dateInput ? dateInput.value : '', false);
-    var timeVal = sanitizeInput(timeInput ? timeInput.value : '', false);
-    var locVal = sanitizeInput(locationInput ? locationInput.value : '', false) ||
-      (pricing.isStudio ? 'Studio Yeumbeul, Dakar — Sénégal' : 'À préciser dans le formulaire');
-
-    if (contractClientName) contractClientName.textContent = nameVal || 'À compléter dans le formulaire';
-    if (contractClientPhone) contractClientPhone.textContent = phoneVal || 'À compléter dans le formulaire';
-    if (contractClientEmail) contractClientEmail.textContent = emailVal || 'À compléter dans le formulaire';
-
-    if (contractPrestation) {
-      contractPrestation.textContent =
-        group.prestation + ' — ' + formula.label + (formula.photoCountLabel ? ' (' + formula.photoCountLabel + ')' : '');
-    }
-    if (contractDateTime) {
-      contractDateTime.textContent = (dateVal || 'Date à préciser') + ' à ' + (timeVal || 'heure à préciser');
-    }
-    if (contractLocation) contractLocation.textContent = locVal;
-    if (contractTotalPrice) contractTotalPrice.textContent = pricing.totalLabel;
-
-    if (contractDepositRow) contractDepositRow.classList.toggle('is-hidden', pricing.isStudio);
-    if (contractRemainingRow) contractRemainingRow.classList.toggle('is-hidden', pricing.isStudio);
-    if (contractStudioPaymentRow) contractStudioPaymentRow.classList.toggle('is-hidden', !pricing.isStudio);
-
-    if (!pricing.isStudio) {
-      if (contractDepositPrice) contractDepositPrice.textContent = pricing.depositLabel;
-      if (contractRemainingPrice) contractRemainingPrice.textContent = pricing.remainingLabel;
-    }
+  function announceSr(text) {
+    if (!calendarSrStatus) return;
+    calendarSrStatus.textContent = '';
+    window.setTimeout(function () {
+      calendarSrStatus.textContent = text;
+    }, 20);
   }
 
-  function setContractAccepted(checked) {
-    contractAcceptedAtIso = checked ? new Date().toISOString() : null;
-    if (contractAcceptCheckbox) contractAcceptCheckbox.checked = checked;
-    if (modalContractAcceptCheckbox) modalContractAcceptCheckbox.checked = checked;
-
-    if (submitFormBtn) {
-      submitFormBtn.disabled = !checked;
-      submitFormBtn.setAttribute('aria-disabled', checked ? 'false' : 'true');
+  /* ------------------------------------------------------------------------
+     1. GESTION DES PRESTATIONS, FORMULES & PRIX TOTAL
+     ------------------------------------------------------------------------ */
+  function findPrestation(value) {
+    for (var i = 0; i < PRESTATIONS.length; i++) {
+      if (PRESTATIONS[i].value === value) return PRESTATIONS[i];
     }
-    if (sendEmailBtn) {
-      sendEmailBtn.disabled = !checked;
-      sendEmailBtn.setAttribute('aria-disabled', checked ? 'false' : 'true');
-    }
-
-    if (contractTraceDisplay && contractHintDisplay) {
-      if (checked && contractAcceptedAtIso) {
-        contractTraceDisplay.textContent =
-          'Acceptation enregistrée · Version ' + CONTRACT_VERSION + ' · Le ' + formatFrenchDateTime(contractAcceptedAtIso);
-        contractTraceDisplay.classList.remove('is-hidden');
-        contractHintDisplay.classList.add('is-hidden');
-      } else {
-        contractTraceDisplay.textContent = '';
-        contractTraceDisplay.classList.add('is-hidden');
-        contractHintDisplay.classList.remove('is-hidden');
-      }
-    }
-
-    if (formFeedback && formFeedback.classList.contains('is-error')) {
-      formFeedback.classList.remove('is-visible', 'is-error');
-    }
+    return PRESTATIONS[0] || null;
   }
 
-  function openContractModal() {
-    if (!contractModal) return;
-    lastFocusedBeforeModal = document.activeElement;
-    syncContractPreviewFields();
-    if (modalImagePubCheckbox && imagePubCheckbox) {
-      modalImagePubCheckbox.checked = imagePubCheckbox.checked;
+  function findFormula(prestation, formulaId) {
+    if (!prestation || !prestation.formulas) return null;
+    for (var i = 0; i < prestation.formulas.length; i++) {
+      if (prestation.formulas[i].id === formulaId) return prestation.formulas[i];
     }
-    if (modalContractAcceptCheckbox && contractAcceptCheckbox) {
-      modalContractAcceptCheckbox.checked = contractAcceptCheckbox.checked;
-    }
-    contractModal.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
-    if (closeContractBtn) closeContractBtn.focus();
+    return prestation.formulas[0] || null;
   }
 
-  function closeContractModal() {
-    if (!contractModal) return;
-    contractModal.classList.remove('is-open');
-    document.body.style.overflow = '';
-    document.documentElement.style.overflow = '';
-    if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === 'function') {
-      lastFocusedBeforeModal.focus();
-    }
-    lastFocusedBeforeModal = null;
-  }
-
-  if (openContractBtn) openContractBtn.addEventListener('click', openContractModal);
-  if (closeContractBtn) closeContractBtn.addEventListener('click', closeContractModal);
-  if (cancelContractBtn) cancelContractBtn.addEventListener('click', closeContractModal);
-  if (acceptContractBtn) {
-    acceptContractBtn.addEventListener('click', function () {
-      setContractAccepted(true);
-      closeContractModal();
-    });
-  }
-  if (contractModal) {
-    contractModal.addEventListener('click', function (e) {
-      if (e.target === contractModal) closeContractModal();
-    });
-  }
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && contractModal && contractModal.classList.contains('is-open')) {
-      e.preventDefault();
-      closeContractModal();
-    }
-  });
-
-  if (contractAcceptCheckbox) {
-    contractAcceptCheckbox.addEventListener('change', function () {
-      setContractAccepted(Boolean(contractAcceptCheckbox.checked));
-    });
-  }
-  if (modalContractAcceptCheckbox) {
-    modalContractAcceptCheckbox.addEventListener('change', function () {
-      setContractAccepted(Boolean(modalContractAcceptCheckbox.checked));
-    });
-  }
-  if (imagePubCheckbox && modalImagePubCheckbox) {
-    imagePubCheckbox.addEventListener('change', function () {
-      modalImagePubCheckbox.checked = imagePubCheckbox.checked;
-    });
-    modalImagePubCheckbox.addEventListener('change', function () {
-      imagePubCheckbox.checked = modalImagePubCheckbox.checked;
-    });
-  }
-
-  if (copyAmountBtn) {
-    copyAmountBtn.addEventListener('click', function () {
-      var pricing = computePricing(getCurrentFormula());
-      if (!pricing.depositAmountNumeric || !navigator.clipboard || !navigator.clipboard.writeText) return;
-      navigator.clipboard.writeText(String(pricing.depositAmountNumeric)).then(function () {
-        copyAmountBtn.textContent = 'Copié ✓';
-        window.setTimeout(function () {
-          copyAmountBtn.textContent = 'Copier montant';
-        }, 1800);
-      }).catch(function () {});
-    });
-  }
-
-  function populateFormulaOptions(prestationName, targetFormulaId) {
-    if (!formulaSelect) return;
-    var group = BOOKING_PRESTATIONS[0];
-    for (var i = 0; i < BOOKING_PRESTATIONS.length; i++) {
-      if (BOOKING_PRESTATIONS[i].prestation === prestationName) {
-        group = BOOKING_PRESTATIONS[i];
-        break;
-      }
-    }
-    formulaSelect.innerHTML = '';
-    group.formulas.forEach(function (f) {
+  function populateServices() {
+    if (!serviceSelect || PRESTATIONS.length === 0) return;
+    serviceSelect.innerHTML = '';
+    PRESTATIONS.forEach(function (item) {
       var opt = document.createElement('option');
-      opt.value = f.id;
-      var priceTxt = f.priceAmount !== null ? formatTarifAmount(f.priceAmount, f.currency) : 'Sur devis';
-      opt.textContent = f.label + ' — ' + priceTxt;
-      formulaSelect.appendChild(opt);
-    });
-    if (targetFormulaId) {
-      formulaSelect.value = targetFormulaId;
-    }
-    updateBookingCalculationUI();
-  }
-
-  function setPrestationFromParams(prestationName, formulaId) {
-    if (!serviceSelect) return;
-    var matched = false;
-    for (var i = 0; i < BOOKING_PRESTATIONS.length; i++) {
-      if (BOOKING_PRESTATIONS[i].prestation === prestationName) {
-        serviceSelect.value = prestationName;
-        populateFormulaOptions(prestationName, formulaId);
-        matched = true;
-        break;
-      }
-    }
-    if (!matched) {
-      serviceSelect.value = BOOKING_PRESTATIONS[0].prestation;
-      populateFormulaOptions(BOOKING_PRESTATIONS[0].prestation);
-    }
-  }
-
-  if (serviceSelect && BOOKING_PRESTATIONS.length > 0) {
-    BOOKING_PRESTATIONS.forEach(function (g) {
-      var opt = document.createElement('option');
-      opt.value = g.prestation;
-      opt.textContent = g.prestation;
+      opt.value = item.value;
+      opt.textContent = item.label;
       serviceSelect.appendChild(opt);
     });
+  }
 
+  function populateFormulas(prestation, preferredFormulaId) {
+    if (!formulaSelect || !prestation) return;
+    formulaSelect.innerHTML = '';
+    prestation.formulas.forEach(function (f) {
+      var opt = document.createElement('option');
+      opt.value = f.id;
+      opt.textContent = f.label + ' — ' + formatFcfa(f.price);
+      formulaSelect.appendChild(opt);
+    });
+    if (preferredFormulaId) {
+      var exists = prestation.formulas.some(function (f) { return f.id === preferredFormulaId; });
+      if (exists) formulaSelect.value = preferredFormulaId;
+    }
+  }
+
+  function updatePriceDisplay() {
+    var prestation = findPrestation(serviceSelect ? serviceSelect.value : '');
+    var formula = findFormula(prestation, formulaSelect ? formulaSelect.value : '');
+    var isStudio = Boolean((prestation && prestation.isStudio) || (formula && formula.isStudio));
+    var hasFixedPrice = Boolean(formula && typeof formula.price === 'number');
+
+    if (totalPriceVal) {
+      totalPriceVal.textContent = hasFixedPrice ? formatFcfa(formula.price) : 'Sur devis';
+    }
+    if (priceSummaryRow) {
+      priceSummaryRow.classList.remove('is-hidden');
+    }
+    if (studioPriceBox) {
+      studioPriceBox.classList.toggle('is-hidden', !isStudio);
+    }
+    if (surDevisBox) {
+      surDevisBox.classList.toggle('is-hidden', hasFixedPrice);
+    }
+    if (locationGroup) {
+      locationGroup.classList.toggle('is-hidden', isStudio);
+      if (isStudio && locationInput && !locationInput.value.trim()) {
+        locationInput.value = 'Studio Yeumbeul, Dakar';
+      }
+    }
+
+    updateSummaryCard();
+  }
+
+  function applyQueryParams() {
     var params = new URLSearchParams(window.location.search || '');
     var qPrestation = params.get('prestation');
     var qFormule = params.get('formule');
-    if (qPrestation) {
-      setPrestationFromParams(qPrestation, qFormule);
-    } else {
-      populateFormulaOptions(BOOKING_PRESTATIONS[0].prestation);
+
+    populateServices();
+
+    var selectedPrest = PRESTATIONS[0] || null;
+    if (qPrestation && serviceSelect) {
+      var normalized = qPrestation.trim().toLowerCase();
+      for (var i = 0; i < PRESTATIONS.length; i++) {
+        if (PRESTATIONS[i].value.toLowerCase() === normalized || PRESTATIONS[i].label.toLowerCase().indexOf(normalized) !== -1) {
+          selectedPrest = PRESTATIONS[i];
+          serviceSelect.value = PRESTATIONS[i].value;
+          break;
+        }
+      }
     }
 
+    populateFormulas(selectedPrest, qFormule || null);
+    updatePriceDisplay();
+  }
+
+  if (serviceSelect) {
     serviceSelect.addEventListener('change', function () {
-      populateFormulaOptions(serviceSelect.value);
-      if (formFeedback) formFeedback.classList.remove('is-visible', 'is-error');
+      var prest = findPrestation(serviceSelect.value);
+      populateFormulas(prest, null);
+      updatePriceDisplay();
     });
   }
 
   if (formulaSelect) {
-    formulaSelect.addEventListener('change', function () {
-      updateBookingCalculationUI();
-      if (formFeedback) formFeedback.classList.remove('is-visible', 'is-error');
+    formulaSelect.addEventListener('change', updatePriceDisplay);
+  }
+
+  /* ------------------------------------------------------------------------
+     2. CALENDRIER MENSUEL DES DISPONIBILITÉS (ACCESSIBLE WCAG 2.1 AA)
+     ------------------------------------------------------------------------ */
+  function getDateStatus(dt) {
+    var iso = toIsoDate(dt);
+    if (dt.getTime() < today.getTime()) {
+      return 'past';
+    }
+    if (dt.getTime() > maxDate.getTime()) {
+      return 'unavailable';
+    }
+    if (disponibilites.dates_indisponibles.indexOf(iso) !== -1) {
+      return 'unavailable';
+    }
+    if (disponibilites.jours_fermes_hebdo.indexOf(dt.getDay()) !== -1) {
+      return 'unavailable';
+    }
+    return 'free';
+  }
+
+  function canNavigateMonth(year, month) {
+    var candidate = new Date(year, month, 1);
+    return candidate.getTime() >= minMonthDate.getTime() && candidate.getTime() <= maxMonthDate.getTime();
+  }
+
+  function renderCalendar() {
+    if (!calendarGridBody || !calendarMonthTitle) return;
+
+    calendarMonthTitle.textContent = MONTHS_FR[viewMonth] + ' ' + viewYear;
+
+    if (calendarPrevBtn) {
+      var prevMonthDate = new Date(viewYear, viewMonth - 1, 1);
+      calendarPrevBtn.disabled = prevMonthDate.getTime() < minMonthDate.getTime();
+    }
+    if (calendarNextBtn) {
+      var nextMonthDate = new Date(viewYear, viewMonth + 1, 1);
+      calendarNextBtn.disabled = nextMonthDate.getTime() > maxMonthDate.getTime();
+    }
+
+    calendarGridBody.innerHTML = '';
+
+    var firstDayOfMonth = new Date(viewYear, viewMonth, 1);
+    var daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+    var startOffset = (firstDayOfMonth.getDay() + 6) % 7; // Lundi = 0
+
+    var focusedDt = parseIsoDate(focusedIso);
+    if (!focusedDt || focusedDt.getFullYear() !== viewYear || focusedDt.getMonth() !== viewMonth) {
+      var selDt = parseIsoDate(selectedIso);
+      if (selDt && selDt.getFullYear() === viewYear && selDt.getMonth() === viewMonth) {
+        focusedIso = selectedIso;
+      } else if (viewYear === today.getFullYear() && viewMonth === today.getMonth()) {
+        focusedIso = toIsoDate(today);
+      } else {
+        focusedIso = toIsoDate(firstDayOfMonth);
+      }
+    }
+
+    var totalCells = Math.ceil((startOffset + daysInMonth) / 7) * 7;
+    var rowEl = null;
+
+    for (var cellIndex = 0; cellIndex < totalCells; cellIndex++) {
+      if (cellIndex % 7 === 0) {
+        rowEl = document.createElement('div');
+        rowEl.className = 'calendar-week-row';
+        rowEl.setAttribute('role', 'row');
+        calendarGridBody.appendChild(rowEl);
+      }
+
+      var cellEl = document.createElement('div');
+      cellEl.className = 'calendar-cell';
+      cellEl.setAttribute('role', 'gridcell');
+
+      var dayNum = cellIndex - startOffset + 1;
+      if (dayNum < 1 || dayNum > daysInMonth) {
+        var spacer = document.createElement('span');
+        spacer.className = 'calendar-spacer';
+        spacer.setAttribute('aria-hidden', 'true');
+        cellEl.appendChild(spacer);
+        rowEl.appendChild(cellEl);
+        continue;
+      }
+
+      var dt = new Date(viewYear, viewMonth, dayNum);
+      var iso = toIsoDate(dt);
+      var status = getDateStatus(dt);
+      var isSelected = iso === selectedIso && status === 'free';
+      var isToday = iso === toIsoDate(today);
+      var isFocusable = iso === focusedIso;
+
+      cellEl.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+      if (status !== 'free') {
+        cellEl.setAttribute('aria-disabled', 'true');
+      }
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'calendar-day';
+      btn.setAttribute('data-date', iso);
+      btn.setAttribute('data-status', status);
+      btn.setAttribute('tabindex', isFocusable ? '0' : '-1');
+      btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+
+      var readableDate = formatFrenchDate(iso);
+      if (status === 'past') {
+        btn.classList.add('is-past');
+        btn.setAttribute('aria-disabled', 'true');
+        btn.setAttribute('aria-label', readableDate + ' — Date passée, non sélectionnable');
+      } else if (status === 'unavailable') {
+        btn.classList.add('is-unavailable');
+        btn.setAttribute('aria-disabled', 'true');
+        btn.setAttribute('aria-label', readableDate + ' — Date indisponible');
+      } else {
+        btn.setAttribute('aria-label', readableDate + (isSelected ? ' — Sélectionnée' : ' — Disponible'));
+      }
+
+      if (isToday) btn.classList.add('is-today');
+      if (isSelected) btn.classList.add('is-selected');
+
+      var labelSpan = document.createElement('span');
+      labelSpan.textContent = String(dayNum);
+      btn.appendChild(labelSpan);
+
+      cellEl.appendChild(btn);
+      rowEl.appendChild(cellEl);
+    }
+
+    if (calendarSelectedBadge) {
+      calendarSelectedBadge.textContent = selectedIso
+        ? 'Date retenue : ' + formatFrenchDate(selectedIso)
+        : 'Aucune date sélectionnée';
+    }
+  }
+
+  function selectDate(iso) {
+    var dt = parseIsoDate(iso);
+    if (!dt) return false;
+    var status = getDateStatus(dt);
+    if (status === 'unavailable') {
+      announceSr('Date indisponible');
+      return false;
+    }
+    if (status === 'past') {
+      announceSr('Date passée, non sélectionnable');
+      return false;
+    }
+
+    selectedIso = iso;
+    focusedIso = iso;
+    if (dateHiddenInput) dateHiddenInput.value = iso;
+    if (calendarWidget) calendarWidget.removeAttribute('aria-invalid');
+    clearFeedbackError();
+    renderCalendar();
+    announceSr('Date sélectionnée : ' + formatFrenchDate(iso));
+    updateSummaryCard();
+    return true;
+  }
+
+  function moveCalendarFocus(targetDate) {
+    var clampedMin = today;
+    var clampedMax = maxDate;
+    var next = targetDate;
+
+    if (next.getTime() < new Date(minMonthDate.getFullYear(), minMonthDate.getMonth(), 1).getTime()) {
+      next = new Date(minMonthDate.getFullYear(), minMonthDate.getMonth(), 1);
+    }
+    var lastAllowedMonthEnd = new Date(maxMonthDate.getFullYear(), maxMonthDate.getMonth() + 1, 0);
+    if (next.getTime() > lastAllowedMonthEnd.getTime()) {
+      next = clampedMax;
+    }
+
+    viewYear = next.getFullYear();
+    viewMonth = next.getMonth();
+    focusedIso = toIsoDate(next);
+    renderCalendar();
+
+    if (calendarGridBody) {
+      var targetBtn = calendarGridBody.querySelector('button[data-date="' + focusedIso + '"]');
+      if (targetBtn) {
+        targetBtn.focus();
+        var st = targetBtn.getAttribute('data-status');
+        if (st === 'unavailable') {
+          announceSr(formatFrenchDate(focusedIso) + ' : Date indisponible');
+        }
+      }
+    }
+    void clampedMin;
+  }
+
+  if (calendarGridBody) {
+    calendarGridBody.addEventListener('click', function (e) {
+      var btn = e.target.closest('button[data-date]');
+      if (!btn) return;
+      var iso = btn.getAttribute('data-date');
+      focusedIso = iso;
+      selectDate(iso);
+    });
+
+    calendarGridBody.addEventListener('keydown', function (e) {
+      var btn = e.target.closest('button[data-date]');
+      if (!btn) return;
+      var currentDt = parseIsoDate(btn.getAttribute('data-date'));
+      if (!currentDt) return;
+
+      var handled = true;
+      var nextDt = null;
+
+      if (e.key === 'ArrowLeft') {
+        nextDt = new Date(currentDt.getFullYear(), currentDt.getMonth(), currentDt.getDate() - 1);
+      } else if (e.key === 'ArrowRight') {
+        nextDt = new Date(currentDt.getFullYear(), currentDt.getMonth(), currentDt.getDate() + 1);
+      } else if (e.key === 'ArrowUp') {
+        nextDt = new Date(currentDt.getFullYear(), currentDt.getMonth(), currentDt.getDate() - 7);
+      } else if (e.key === 'ArrowDown') {
+        nextDt = new Date(currentDt.getFullYear(), currentDt.getMonth(), currentDt.getDate() + 7);
+      } else if (e.key === 'Home') {
+        var offsetMon = (currentDt.getDay() + 6) % 7;
+        nextDt = new Date(currentDt.getFullYear(), currentDt.getMonth(), currentDt.getDate() - offsetMon);
+      } else if (e.key === 'End') {
+        var offsetSun = 6 - ((currentDt.getDay() + 6) % 7);
+        nextDt = new Date(currentDt.getFullYear(), currentDt.getMonth(), currentDt.getDate() + offsetSun);
+      } else if (e.key === 'PageUp') {
+        nextDt = addMonthsClamped(currentDt, -1);
+      } else if (e.key === 'PageDown') {
+        nextDt = addMonthsClamped(currentDt, 1);
+      } else if (e.key === 'Enter' || e.key === ' ') {
+        selectDate(btn.getAttribute('data-date'));
+        e.preventDefault();
+        return;
+      } else if (e.key === 'Escape') {
+        selectedIso = '';
+        if (dateHiddenInput) dateHiddenInput.value = '';
+        renderCalendar();
+        updateSummaryCard();
+        announceSr('Sélection de date effacée');
+        e.preventDefault();
+        return;
+      } else {
+        handled = false;
+      }
+
+      if (handled && nextDt) {
+        e.preventDefault();
+        moveCalendarFocus(nextDt);
+      }
     });
   }
 
-  function showFeedbackError(msg, invalidFields) {
-    clearInvalidFields();
-    if (invalidFields && invalidFields.length) {
-      invalidFields.forEach(function (field) {
-        if (field) field.setAttribute('aria-invalid', 'true');
-      });
-      if (invalidFields[0] && typeof invalidFields[0].focus === 'function') {
-        invalidFields[0].focus();
+  if (calendarPrevBtn) {
+    calendarPrevBtn.addEventListener('click', function () {
+      var target = new Date(viewYear, viewMonth - 1, 1);
+      if (canNavigateMonth(target.getFullYear(), target.getMonth())) {
+        viewYear = target.getFullYear();
+        viewMonth = target.getMonth();
+        renderCalendar();
       }
-    }
-    if (!formFeedback) return;
-    formFeedback.setAttribute('role', 'alert');
-    formFeedback.setAttribute('aria-live', 'assertive');
-    formFeedback.className = 'form-feedback is-visible is-error';
-    formFeedback.textContent = msg;
+    });
   }
 
-  function persistLocalBookingRecord(payload) {
-    var referenceId = 'DP-' + Date.now().toString(36).toUpperCase();
-    try {
-      var raw = localStorage.getItem(BOOKING_STORAGE_KEY);
-      var parsed = raw ? JSON.parse(raw) : [];
-      var list = Array.isArray(parsed) ? parsed : [];
-      list.unshift({
-        referenceId: referenceId,
-        createdAtIso: new Date().toISOString(),
-        contractVersion: CONTRACT_VERSION,
-        contractAccepted: true,
-        contractAcceptedAtIso: payload.acceptedIso,
-        imagePublicationAuthorized: payload.imagePubAuthorized,
-        client: {
-          name: payload.name,
-          phone: payload.phone,
-          email: payload.email
-        },
-        booking: {
-          prestation: payload.service,
-          formulaId: payload.formula.id,
-          formulaLabel: payload.formula.label,
-          eventDate: payload.eventDate,
-          eventTime: payload.eventTime,
-          location: payload.resolvedLocation,
-          notes: payload.message,
-          totalLabel: payload.pricing.totalLabel,
-          paymentMode: payload.pricing.isStudio ? 'studio_full_on_arrival' : 'deposit_70_balance_30',
-          depositLabel: payload.pricing.isStudio ? null : payload.pricing.depositLabel,
-          remainingLabel: payload.pricing.isStudio ? null : payload.pricing.remainingLabel
-        },
-        summary: payload.summary
-      });
-      localStorage.setItem(BOOKING_STORAGE_KEY, JSON.stringify(list.slice(0, 20)));
-    } catch (_err) {
-      // Ignore storage quota errors
-    }
-    return referenceId;
+  if (calendarNextBtn) {
+    calendarNextBtn.addEventListener('click', function () {
+      var target = new Date(viewYear, viewMonth + 1, 1);
+      if (canNavigateMonth(target.getFullYear(), target.getMonth())) {
+        viewYear = target.getFullYear();
+        viewMonth = target.getMonth();
+        renderCalendar();
+      }
+    });
   }
 
-  function readFormValues() {
-    clearInvalidFields();
-    var name = sanitizeInput(nameInput ? nameInput.value : '', false);
-    var phone = sanitizeInput(phoneInput ? phoneInput.value : '', false);
-    var email = sanitizeInput(emailInput ? emailInput.value : '', false);
-    var service = sanitizeInput(serviceSelect ? serviceSelect.value : '', false);
-    var formula = getCurrentFormula();
-    var pricing = computePricing(formula);
-    var eventDate = dateInput ? sanitizeInput(dateInput.value, false) : '';
-    var eventTime = timeInput ? sanitizeInput(timeInput.value, false) : '';
-    var rawLocation = locationInput ? sanitizeInput(locationInput.value, false) : '';
-    var resolvedLocation = rawLocation || (pricing.isStudio ? 'Studio Yeumbeul, Dakar — Sénégal' : '');
-    var message = sanitizeInput(messageInput ? messageInput.value : '', true);
+  function enableFallbackCalendar() {
+    isFallbackMode = true;
+    if (calendarWidget) calendarWidget.classList.add('is-hidden');
+    if (calendarFallbackWrap) calendarFallbackWrap.classList.remove('is-hidden');
+    if (calendarFallbackInput) {
+      calendarFallbackInput.setAttribute('min', toIsoDate(today));
+      calendarFallbackInput.setAttribute('max', toIsoDate(maxDate));
+      if (selectedIso) calendarFallbackInput.value = selectedIso;
+      calendarFallbackInput.addEventListener('change', function () {
+        if (dateHiddenInput) dateHiddenInput.value = calendarFallbackInput.value || '';
+        selectedIso = calendarFallbackInput.value || '';
+        updateSummaryCard();
+      });
+    }
+  }
 
-    var missing = [];
-    if (!name) missing.push(nameInput);
-    if (!phone) missing.push(phoneInput);
-    if (!email) missing.push(emailInput);
-    if (!eventDate) missing.push(dateInput);
-    if (!eventTime) missing.push(timeInput);
-    if (missing.length > 0) {
-      showFeedbackError('Merci de remplir votre nom et prénom, votre numéro WhatsApp, votre email, la date et l’heure souhaitées.', missing);
-      return null;
+  function loadDisponibilites(onDone) {
+    var jsonUrl = BASE_PATH.replace(/\/+$/, '') + '/assets/data/disponibilites.json';
+    if (typeof window.fetch !== 'function') {
+      enableFallbackCalendar();
+      if (onDone) onDone(false);
+      return;
     }
 
-    if (!isValidPhone(phone)) {
-      showFeedbackError('Numéro WhatsApp invalide : saisissez 8 à 15 chiffres (chiffres, espaces et + autorisés, ex. +221 77 000 00 00).', [phoneInput]);
-      return null;
+    fetch(jsonUrl, { credentials: 'same-origin', cache: 'no-store' })
+      .then(function (resp) {
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        return resp.json();
+      })
+      .then(function (json) {
+        if (!json || !Array.isArray(json.dates_indisponibles) || !Array.isArray(json.jours_fermes_hebdo)) {
+          throw new Error('Format JSON invalide');
+        }
+        disponibilites = {
+          mis_a_jour: String(json.mis_a_jour || ''),
+          dates_indisponibles: json.dates_indisponibles.map(String),
+          jours_fermes_hebdo: json.jours_fermes_hebdo.map(Number)
+        };
+        if (calendarWrap) calendarWrap.classList.remove('is-hidden');
+        if (calendarFallbackWrap) calendarFallbackWrap.classList.add('is-hidden');
+        renderCalendar();
+        if (onDone) onDone(true);
+      })
+      .catch(function () {
+        enableFallbackCalendar();
+        if (onDone) onDone(false);
+      });
+  }
+
+  /* ------------------------------------------------------------------------
+     3. RÉCAPITULATIF EN DIRECT & VALIDATION
+     ------------------------------------------------------------------------ */
+  function collectBookingData() {
+    var prestation = findPrestation(serviceSelect ? serviceSelect.value : '');
+    var formula = findFormula(prestation, formulaSelect ? formulaSelect.value : '');
+    var rawDate = (dateHiddenInput ? dateHiddenInput.value : '') || (isFallbackMode && calendarFallbackInput ? calendarFallbackInput.value : '');
+    var isStudio = Boolean((prestation && prestation.isStudio) || (formula && formula.isStudio));
+    var locationVal = locationInput ? locationInput.value.trim() : '';
+    if (isStudio && !locationVal) {
+      locationVal = 'Studio Yeumbeul, Dakar';
     }
-
-    if (!isValidEmail(email)) {
-      showFeedbackError('Adresse email invalide : veuillez saisir un email valide (ex. nom@exemple.com).', [emailInput]);
-      return null;
-    }
-
-    var todayStr = getTodayDateString();
-    if (eventDate < todayStr) {
-      showFeedbackError('La date souhaitée ne peut pas être antérieure à aujourd’hui. Veuillez choisir une date à venir.', [dateInput]);
-      return null;
-    }
-
-    if (!pricing.isStudio && !resolvedLocation) {
-      showFeedbackError('Merci d’indiquer le lieu de la prestation.', [locationInput]);
-      return null;
-    }
-
-    if (!contractAcceptCheckbox || !contractAcceptCheckbox.checked || !contractAcceptedAtIso) {
-      showFeedbackError('Veuillez lire et accepter les conditions du contrat de prestation de DIONTADO PRODUCTION avant de continuer.', [contractAcceptCheckbox]);
-      return null;
-    }
-
-    var imagePubAuthorized = Boolean(imagePubCheckbox && imagePubCheckbox.checked);
-    var acceptedDateLabel = formatFrenchDateTime(contractAcceptedAtIso);
-
-    var lines = [
-      'Bonjour DIONTADO PRODUCTION,',
-      'Voici ma demande de réservation :',
-      '',
-      '• Nom et prénom : ' + name,
-      '• Téléphone : ' + phone,
-      '• Email : ' + email,
-      '• Prestation choisie : ' + service,
-      '• Formule choisie : ' + formula.label
-    ];
-
-    if (formula.photoCountLabel) {
-      lines.push('• Nombre de photos : ' + formula.photoCountLabel);
-    }
-
-    lines.push(
-      '• Date souhaitée : ' + eventDate,
-      '• Heure souhaitée : ' + eventTime,
-      '• Lieu : ' + resolvedLocation,
-      '• Prix total convenu : ' + pricing.totalLabel
-    );
-
-    if (pricing.isStudio) {
-      lines.push("• Modalité de paiement : Paiement intégral à l'arrivée au studio");
-    } else {
-      lines.push(
-        '• Acompte (70 %) versé ou à verser : ' + pricing.depositLabel,
-        '• Solde restant (30 %) : ' + pricing.remainingLabel
-      );
-      if (pricing.requiresDeposit) {
-        lines.push('• Lien Wave officiel : ' + WAVE_PAYMENT_URL);
-        lines.push('• Preuve de paiement : Aucun fichier envoyé automatiquement par le site — si vous avez réglé par Wave, merci de joindre manuellement votre capture dans cette discussion WhatsApp.');
-      }
-    }
-
-    lines.push(
-      '• Informations complémentaires : ' + (message || 'Aucune'),
-      '',
-      '• Contrat de prestation (' + CONTRACT_VERSION + ') : Lu et accepté par le client le ' + acceptedDateLabel,
-      '• Autorisation de publication des images (facultatif) : ' + (imagePubAuthorized ? 'Accordée par le client' : 'Non accordée (choix non coché)'),
-      '',
-      'Demande en attente de vérification de la disponibilité et du paiement par DIONTADO PRODUCTION (ne vaut pas confirmation définitive).'
-    );
 
     return {
-      name: name,
-      phone: phone,
-      email: email,
-      service: service,
-      formula: formula,
-      pricing: pricing,
-      eventDate: eventDate,
-      eventTime: eventTime,
-      resolvedLocation: resolvedLocation,
-      message: message,
-      acceptedIso: contractAcceptedAtIso,
-      acceptedDateLabel: acceptedDateLabel,
-      imagePubAuthorized: imagePubAuthorized,
-      summary: lines.join('\n')
+      reference: currentRefCode,
+      prestationLabel: prestation ? prestation.value : '',
+      formulaLabel: formula ? formula.label : '',
+      priceText: formula && typeof formula.price === 'number' ? formatFcfa(formula.price) : 'Sur devis',
+      dateIso: rawDate.trim(),
+      dateReadable: rawDate ? formatFrenchDate(rawDate.trim()) : '',
+      time: timeInput ? timeInput.value : '',
+      location: locationVal,
+      people: peopleInput ? peopleInput.value.trim() : '',
+      name: nameInput ? nameInput.value.trim() : '',
+      phone: phoneInput ? phoneInput.value.trim() : '',
+      email: emailInput ? emailInput.value.trim() : '',
+      details: detailsInput ? detailsInput.value.trim() : '',
+      acceptedConditions: Boolean(acceptConditions && acceptConditions.checked)
     };
   }
 
-  function triggerExternalWhatsApp(url) {
-    var a = document.createElement('a');
-    a.href = url;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+  function updateSummaryCard() {
+    var d = collectBookingData();
+    if (summaryRefEl) {
+      summaryRefEl.textContent = d.reference;
+    }
+    if (!summaryTextEl) return;
+
+    var parts = [
+      d.prestationLabel || 'Prestation à choisir',
+      d.formulaLabel ? d.formulaLabel + ' (' + d.priceText + ')' : d.priceText,
+      d.dateReadable ? 'le ' + d.dateReadable : 'date à sélectionner'
+    ];
+    if (d.time) parts.push('créneau ' + d.time);
+    summaryTextEl.textContent = parts.join(' · ');
   }
 
-  setContractAccepted(Boolean(contractAcceptCheckbox && contractAcceptCheckbox.checked));
+  [timeInput, locationInput, peopleInput, nameInput, phoneInput, emailInput, detailsInput].forEach(function (el) {
+    if (!el) return;
+    el.addEventListener('input', function () {
+      el.removeAttribute('aria-invalid');
+      updateSummaryCard();
+    });
+    el.addEventListener('change', function () {
+      el.removeAttribute('aria-invalid');
+      updateSummaryCard();
+    });
+  });
 
-  contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var dataValues = readFormValues();
-    if (!dataValues) return;
+  if (acceptConditions) {
+    acceptConditions.addEventListener('change', function () {
+      acceptConditions.removeAttribute('aria-invalid');
+      clearFeedbackError();
+    });
+  }
 
-    var referenceId = persistLocalBookingRecord(dataValues);
-    var waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(dataValues.summary);
-    triggerExternalWhatsApp(waUrl);
+  function clearFeedbackError() {
+    if (!feedbackBox) return;
+    if (feedbackBox.classList.contains('is-error')) {
+      feedbackBox.classList.remove('is-visible', 'is-error');
+      feedbackBox.innerHTML = '';
+    }
+  }
 
-    if (formFeedback) {
-      formFeedback.setAttribute('role', 'status');
-      formFeedback.setAttribute('aria-live', 'polite');
-      formFeedback.className = 'form-feedback is-visible';
-      var hasProofPreview = Boolean(selectedProofFile && dataValues.pricing.requiresDeposit);
+  function showError(message, focusTarget) {
+    if (feedbackBox) {
+      feedbackBox.className = 'form-feedback is-visible is-error';
+      feedbackBox.setAttribute('role', 'alert');
+      feedbackBox.innerHTML =
+        '<p class="feedback-kicker">Vérification requise</p>' +
+        '<p class="feedback-lead">' + escapeHTML(message) + '</p>';
+      feedbackBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    if (focusTarget && typeof focusTarget.focus === 'function') {
+      focusTarget.focus();
+    }
+  }
 
-      var html =
-        '<p class="feedback-kicker">Demande préparée (' + escapeHTML(referenceId) + ') · Contrat ' + CONTRACT_VERSION + '</p>' +
-        '<p class="feedback-lead">Votre demande et l’acceptation du contrat (enregistrée le ' + escapeHTML(dataValues.acceptedDateLabel) + ') ont été préparées pour WhatsApp. La réservation ne sera définitive qu’après vérification de la disponibilité et du paiement par DIONTADO PRODUCTION.</p>';
+  function buildBookingMessage(d) {
+    var lines = [
+      'Référence : ' + d.reference,
+      'Bonjour DIONTADO PRODUCTION, je souhaite réserver une prestation.',
+      '',
+      '— Prestation : ' + d.prestationLabel,
+      '— Formule : ' + d.formulaLabel,
+      '— Tarif estimé : ' + d.priceText,
+      '— Date souhaitée : ' + (d.dateReadable || d.dateIso) + ' (' + d.dateIso + ')',
+      '— Créneau : ' + (d.time || 'À préciser'),
+      '— Lieu : ' + (d.location || 'À préciser')
+    ];
+    if (d.people) lines.push('— Nombre de personnes : ' + d.people);
+    lines.push('— Nom : ' + d.name);
+    lines.push('— Téléphone / WhatsApp : ' + d.phone);
+    if (d.email) lines.push('— E-mail : ' + d.email);
+    if (d.details) lines.push('— Précisions : ' + d.details);
+    lines.push('');
+    lines.push('Conditions de réservation lues et acceptées.');
+    return lines.join('\n');
+  }
 
-      if (hasProofPreview) {
-        html +=
-          '<div class="feedback-proof-box">' +
-            '<strong>Rappel :</strong> aucun fichier n’est envoyé automatiquement par le site. Pensez à joindre manuellement votre capture d’écran (<code>' + escapeHTML(selectedProofFile.name) + '</code>) dans la conversation WhatsApp.' +
-          '</div>';
+  function validateBookingForm(callback) {
+    // Effacer les états invalides précédents
+    [nameInput, phoneInput, timeInput, acceptConditions, calendarWidget, calendarFallbackInput].forEach(function (el) {
+      if (el) el.removeAttribute('aria-invalid');
+    });
+
+    var d = collectBookingData();
+
+    if (!d.name || d.name.length < 2) {
+      if (nameInput) nameInput.setAttribute('aria-invalid', 'true');
+      showError('Veuillez indiquer votre nom complet.', nameInput);
+      return;
+    }
+
+    var phoneDigits = d.phone.replace(/\D/g, '');
+    if (phoneDigits.length < 8 || phoneDigits.length > 15) {
+      if (phoneInput) phoneInput.setAttribute('aria-invalid', 'true');
+      showError('Veuillez saisir un numéro de téléphone ou WhatsApp valide (8 à 15 chiffres).', phoneInput);
+      return;
+    }
+
+    if (!d.dateIso) {
+      if (isFallbackMode && calendarFallbackInput) {
+        calendarFallbackInput.setAttribute('aria-invalid', 'true');
+        showError('Veuillez sélectionner une date souhaitée.', calendarFallbackInput);
+      } else if (calendarWidget) {
+        calendarWidget.setAttribute('aria-invalid', 'true');
+        var firstFocusBtn = calendarGridBody ? calendarGridBody.querySelector('button[tabindex="0"]') : null;
+        showError('Veuillez sélectionner une date disponible dans le calendrier.', firstFocusBtn || calendarWidget);
       }
+      return;
+    }
 
-      html += '<div class="feedback-actions">' +
-        '<a href="' + escapeHTML(waUrl) + '" target="_blank" rel="noopener noreferrer" class="btn-whatsapp btn-feedback-wa">Ouvrir WhatsApp (+221 76 481 23 91)</a>' +
-        '<button type="button" id="copySummaryBtn" class="btn-outline btn-feedback-action">Copier le récapitulatif</button></div>';
+    var chosenDt = parseIsoDate(d.dateIso);
+    if (!chosenDt) {
+      showError('La date sélectionnée n’est pas valide.', isFallbackMode ? calendarFallbackInput : calendarWidget);
+      return;
+    }
 
-      formFeedback.innerHTML = html;
+    if (!d.acceptedConditions) {
+      if (acceptConditions) acceptConditions.setAttribute('aria-invalid', 'true');
+      showError('Veuillez cocher la case « J’ai lu les conditions de réservation » avant d’envoyer votre demande.', acceptConditions);
+      return;
+    }
 
-      var copyBtn = document.getElementById('copySummaryBtn');
-      if (copyBtn && navigator.clipboard && navigator.clipboard.writeText) {
-        copyBtn.addEventListener('click', function () {
-          navigator.clipboard.writeText(dataValues.summary).then(function () {
-            copyBtn.textContent = 'Récapitulatif copié ✓';
-          }).catch(function () {});
+    // Re-vérifier le JSON des disponibilités avant l'envoi (si non fallback)
+    if (isFallbackMode) {
+      if (chosenDt.getTime() < today.getTime() || chosenDt.getTime() > maxDate.getTime()) {
+        if (calendarFallbackInput) calendarFallbackInput.setAttribute('aria-invalid', 'true');
+        showError('Veuillez choisir une date comprise entre aujourd’hui et les 12 prochains mois.', calendarFallbackInput);
+        return;
+      }
+      callback(d);
+      return;
+    }
+
+    loadDisponibilites(function () {
+      if (isFallbackMode) {
+        callback(d);
+        return;
+      }
+      var freshStatus = getDateStatus(chosenDt);
+      if (freshStatus === 'past') {
+        selectedIso = '';
+        if (dateHiddenInput) dateHiddenInput.value = '';
+        if (calendarWidget) calendarWidget.setAttribute('aria-invalid', 'true');
+        renderCalendar();
+        showError('La date choisie est désormais passée. Merci de sélectionner une autre date.', calendarWidget);
+        return;
+      }
+      if (freshStatus === 'unavailable') {
+        selectedIso = '';
+        if (dateHiddenInput) dateHiddenInput.value = '';
+        if (calendarWidget) calendarWidget.setAttribute('aria-invalid', 'true');
+        renderCalendar();
+        announceSr('Date indisponible');
+        showError('Cette date vient de passer en indisponible. Merci de choisir une autre date libre dans le calendrier.', calendarWidget);
+        return;
+      }
+      callback(d);
+    });
+  }
+
+  function renderConfirmationBox(d, channel) {
+    if (!feedbackBox) return;
+    var message = buildBookingMessage(d);
+    var waHref = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+    var subject = 'Demande de réservation ' + d.reference + ' — ' + d.prestationLabel;
+    var mailtoHref = 'mailto:' + EMAIL_USER + '@' + EMAIL_DOMAIN + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(message);
+
+    feedbackBox.className = 'form-feedback is-visible';
+    feedbackBox.setAttribute('role', 'status');
+    feedbackBox.innerHTML =
+      '<p class="feedback-kicker">Récapitulatif prêt · Référence ' + escapeHTML(d.reference) + '</p>' +
+      '<p class="feedback-lead">Votre demande pour <strong>' + escapeHTML(d.formulaLabel) + '</strong> (' + escapeHTML(d.priceText) + ') le <strong>' + escapeHTML(d.dateReadable) + '</strong> est prête.</p>' +
+      '<div class="feedback-proof-box"><strong>Important :</strong> Votre réservation est confirmée seulement après réponse de DIONTADO PRODUCTION sur WhatsApp.</div>' +
+      '<div class="feedback-actions">' +
+      '<a href="' + escapeHTML(waHref) + '" target="_blank" rel="noopener noreferrer" class="btn-whatsapp btn-feedback-wa">Ouvrir WhatsApp avec le récapitulatif</a>' +
+      '<a href="' + escapeHTML(mailtoHref) + '" class="btn-outline btn-feedback-action">Envoyer par e-mail</a>' +
+      '<button type="button" class="btn-outline btn-feedback-action" id="copyBookingMsgBtn">Copier le récapitulatif</button>' +
+      '</div>';
+
+    var copyBtn = document.getElementById('copyBookingMsgBtn');
+    if (copyBtn && navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+      copyBtn.addEventListener('click', function () {
+        navigator.clipboard.writeText(message).then(function () {
+          copyBtn.textContent = 'Récapitulatif copié';
+        }).catch(function () {
+          copyBtn.textContent = 'Copie manuelle requise';
         });
+      });
+    }
+
+    feedbackBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    if (channel === 'whatsapp') {
+      var win = window.open(waHref, '_blank', 'noopener,noreferrer');
+      if (!win) {
+        window.location.href = waHref;
       }
+    } else if (channel === 'email') {
+      window.location.href = mailtoHref;
+    }
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (submitBtn) submitBtn.disabled = true;
+    validateBookingForm(function (d) {
+      if (submitBtn) submitBtn.disabled = false;
+      renderConfirmationBox(d, 'whatsapp');
+    });
+    if (submitBtn) {
+      window.setTimeout(function () { submitBtn.disabled = false; }, 400);
     }
   });
 
-  if (sendEmailBtn) {
-    sendEmailBtn.addEventListener('click', function () {
-      var dataValues = readFormValues();
-      if (!dataValues) return;
-      persistLocalBookingRecord(dataValues);
-      var subject = encodeURIComponent('[DIONTADO PRODUCTION] Demande de réservation : ' + dataValues.service + ' (' + dataValues.formula.label + ') — ' + dataValues.name);
-      var body = encodeURIComponent(dataValues.summary);
-      window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + body;
-      if (formFeedback) {
-        formFeedback.setAttribute('role', 'status');
-        formFeedback.setAttribute('aria-live', 'polite');
-        formFeedback.className = 'form-feedback is-visible';
-        formFeedback.textContent = '';
-        formFeedback.appendChild(document.createTextNode('Votre récapitulatif complet (avec version du contrat ' + CONTRACT_VERSION + ') a été préparé dans votre application email vers '));
-        var emailStrong = document.createElement('strong');
-        emailStrong.textContent = CONTACT_EMAIL;
-        formFeedback.appendChild(emailStrong);
-        formFeedback.appendChild(document.createTextNode('.'));
-      }
+  if (emailAltBtn) {
+    emailAltBtn.addEventListener('click', function () {
+      validateBookingForm(function (d) {
+        renderConfirmationBox(d, 'email');
+      });
     });
   }
+
+  /* Initialisation */
+  applyQueryParams();
+  renderCalendar();
+  loadDisponibilites();
 })();

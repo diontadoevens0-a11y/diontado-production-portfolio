@@ -242,7 +242,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   will-change: transform;
 }
 
-.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
 
 .brand-link { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; }
 
@@ -250,7 +250,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
 .brand-fallback { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; letter-spacing: 0.12em; color: #ffffff; white-space: nowrap; }
 
-.nav-links { display: none; align-items: center; gap: 24px; }
+.nav-links { display: none; flex: 1; align-items: center; justify-content: center; gap: clamp(22px, 2.8vw, 42px); }
 
 .nav-links a {
   display: inline-flex;
@@ -445,6 +445,125 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
    3. PORTFOLIO PHOTOGRAPHIQUE — CARTES 3D CATÉGORIES INTERACTIVES
    ========================================================================== */
 .portfolio-cats-section { background-color: var(--bg-charcoal); padding-block: 88px; border-bottom: 1px solid var(--border-hairline); }
+
+.portfolio-cats-section--showcase { padding-top: 0; }
+
+.portfolio-showcase-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: 88px;
+  border-bottom: 1px solid var(--border-hairline);
+  background-color: var(--bg-charcoal);
+}
+
+.portfolio-showcase-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.portfolio-showcase-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.45s ease;
+}
+
+.portfolio-showcase-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at center, rgba(212, 175, 106, 0.12), transparent 65%),
+    linear-gradient(180deg, rgba(9, 9, 11, 0.85) 0%, rgba(9, 9, 11, 0.7) 48%, #09090b 100%);
+}
+
+.portfolio-showcase-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.portfolio-showcase-heading {
+  margin-top: 8px;
+}
+
+.portfolio-cat-tabs {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.portfolio-cat-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(9, 9, 11, 0.65);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: rgba(245, 242, 235, 0.84);
+}
+
+.portfolio-tab-count {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.portfolio-cat-tab.is-active .portfolio-tab-count {
+  color: rgba(11, 10, 9, 0.75);
+}
+
+.portfolio-active-meta {
+  max-width: 660px;
+  margin: 44px auto 0;
+}
+
+.portfolio-active-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.2vw, 2.35rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+
+.portfolio-active-desc {
+  margin-top: 12px;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: rgba(245, 242, 235, 0.84);
+}
+
+.portfolio-active-count {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  color: var(--gold-bright);
+}
+
+.portfolio-active-actions {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.portfolio-grid-shell {
+  margin-top: 56px;
+  text-align: left;
+}
+
+.portfolio-grid-shell .categories-grid {
+  margin-top: 0;
+}
 
 .categories-grid { margin-top: 44px; display: grid; gap: 22px; grid-template-columns: 1fr; }
 
@@ -928,7 +1047,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   gap: 14px;
 }
 
-.mag-quote { font-family: var(--font-display); font-size: 1.05rem; font-style: italic; color: rgba(231, 202, 145, 0.9); }
+.mag-quote { font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; font-style: italic; color: rgba(231, 202, 145, 0.9); }
 
 .mag-signature { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); }
 
@@ -1147,7 +1266,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .service-footer { padding-top: 18px; border-top: 1px solid var(--border-hairline); }
 
 /* ==========================================================================
-   7. CONTACT & RÉSERVATION
+   7. CONTACT
    ========================================================================== */
 .contact-section { background-color: var(--bg-charcoal); padding-block: 88px; }
 
@@ -1155,10 +1274,14 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
 .contact-grid { margin-top: 38px; display: grid; gap: 28px; align-items: stretch; }
 
-.contact-grid--page { margin-top: 0; }
+.contact-grid--page { margin-top: 0; max-width: 880px; margin-inline: auto; grid-template-columns: 1fr; }
+
+.contact-grid--single { margin-top: 0; max-width: 640px; margin-inline: auto; grid-template-columns: 1fr; }
 
 @media (min-width: 960px) {
   .contact-grid { grid-template-columns: 0.85fr 1.15fr; }
+  .contact-grid--page { grid-template-columns: 1fr; }
+  .contact-grid--single { grid-template-columns: 1fr; }
 }
 
 .contact-card {
@@ -1331,132 +1454,33 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   color: #0b0a09;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 600;
   flex-shrink: 0;
 }
 
 .booking-step-block { padding-bottom: 22px; border-bottom: 1px solid var(--border-hairline); }
 
+.booking-step-block--last { padding-bottom: 0; border-bottom: none; }
+
 .booking-step3-wrap { display: grid; gap: 14px; }
 
-.booking-calc-box { margin-top: 14px; border-radius: 10px; border: 1px solid rgba(212, 175, 106, 0.35); background: var(--bg-charcoal); padding: 14px 16px; }
-
-.booking-calc-grid { display: grid; gap: 12px; }
-
-@media (min-width: 640px) {
-  .booking-calc-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .booking-calc-grid.is-studio-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .booking-calc-grid > div + div { border-left: 1px solid var(--border-hairline); padding-left: 16px; }
+.booking-calc-box {
+  margin-top: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(212, 175, 106, 0.35);
+  background: var(--bg-charcoal);
+  padding: 14px 16px;
 }
 
 .calc-label { display: block; font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); }
 
-.calc-total-val { display: block; margin-top: 2px; font-family: var(--font-display); font-size: 1.5rem; color: #ffffff; }
-
-.calc-deposit-val { display: block; margin-top: 2px; font-family: var(--font-display); font-size: 1.5rem; color: var(--gold-bright); }
-
-.calc-remaining-val { display: block; margin-top: 6px; font-size: 0.8rem; font-weight: 600; color: rgba(245, 242, 235, 0.9); }
+.calc-total-val { display: block; margin-top: 2px; font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; color: var(--gold-bright); }
 
 .booking-studio-box { border-radius: 12px; border: 1px solid rgba(212, 175, 106, 0.45); background: rgba(212, 175, 106, 0.1); padding: 16px; }
 
 .studio-box-title { font-size: 0.82rem; font-weight: 600; color: #ffffff; }
 
 .studio-box-desc { margin-top: 3px; font-size: 0.78rem; line-height: 1.5; color: rgba(245, 242, 235, 0.9); }
-
-.booking-wave-box { border-radius: 12px; border: 1px solid rgba(212, 175, 106, 0.45); background: #0d0d12; padding: 18px; display: grid; gap: 16px; }
-
-.booking-wave-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; }
-
-.wave-kicker { font-family: var(--font-mono); font-size: 0.64rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--gold); }
-
-.wave-title { margin-top: 3px; font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; color: #ffffff; }
-
-.wave-deposit-accent { color: var(--gold-bright); }
-
-.wave-actions { display: flex; flex-wrap: wrap; gap: 8px; }
-
-.wave-copy-btn { min-height: 44px; height: 44px; padding-inline: 14px; font-size: 0.72rem; }
-
-.wave-security-note {
-  font-size: 0.74rem;
-  line-height: 1.55;
-  color: rgba(245, 242, 235, 0.84);
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(212, 175, 106, 0.28);
-  background: rgba(212, 175, 106, 0.06);
-}
-
-.btn-wave {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 44px;
-  height: 44px;
-  padding-inline: 20px;
-  border-radius: 8px;
-  background-color: #0d6fa8;
-  color: #ffffff;
-  font-size: 0.76rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  white-space: nowrap;
-  transition: background-color 0.18s ease;
-}
-
-.btn-wave:hover { background-color: #0a5a8a; }
-
-.proof-section { border-top: 1px solid var(--border-hairline); padding-top: 14px; }
-
-.proof-dropzone {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  min-height: 44px;
-  padding: 12px 14px;
-  border-radius: 8px;
-  border: 1px dashed rgba(212, 175, 106, 0.5);
-  background: var(--bg-charcoal);
-  color: var(--gold-bright);
-  font-size: 0.78rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.18s ease, border-color 0.18s ease;
-}
-
-.proof-dropzone:hover { background: rgba(212, 175, 106, 0.1); border-color: var(--gold); }
-
-.proof-hint { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); }
-
-.visually-hidden-input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
-
-.proof-preview-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(212, 175, 106, 0.5);
-  background: var(--bg-charcoal);
-}
-
-.proof-preview-info { display: flex; align-items: center; gap: 10px; min-width: 0; }
-
-.proof-thumb { width: 42px; height: 42px; border-radius: 6px; object-fit: cover; border: 1px solid rgba(255, 255, 255, 0.18); }
-
-.proof-meta { min-width: 0; }
-
-.proof-name { font-size: 0.78rem; font-weight: 600; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-.proof-ready { font-family: var(--font-mono); font-size: 0.64rem; color: var(--gold-bright); }
-
-.proof-remove-btn { min-height: 44px; height: 44px; padding-inline: 14px; font-size: 0.74rem; }
-
-.proof-footer-note { margin-top: 8px; font-size: 0.7rem; color: var(--text-muted); }
 
 .sur-devis-box {
   border-radius: 10px;
@@ -1470,67 +1494,83 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
 .sur-devis-box strong { color: #ffffff; }
 
-.contract-step-header {
+.booking-summary-card {
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 106, 0.35);
+  background: var(--bg-charcoal);
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.booking-summary-head {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-}
-
-.btn-contract-read {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   gap: 8px;
-  min-height: 44px;
-  padding: 0 18px;
-  border-radius: 8px;
-  border: 1px solid rgba(212, 175, 106, 0.65);
-  background: rgba(212, 175, 106, 0.12);
-  color: var(--gold-bright);
-  font-size: 0.78rem;
-  font-weight: 600;
-  transition: background-color 0.18s ease, color 0.18s ease;
 }
 
-.btn-contract-read:hover { background: var(--gold); color: #0b0a09; }
+.booking-ref-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--gold-bright);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 175, 106, 0.38);
+  background: rgba(212, 175, 106, 0.08);
+}
 
-.contract-consent-box {
+.booking-summary-text {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--text-ivory);
+}
+
+.booking-consent-box {
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: var(--bg-charcoal);
-  padding: 16px;
-  display: grid;
-  gap: 12px;
+  padding: 14px 16px;
 }
 
-.contract-check-row {
+.booking-check-row {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 0.8rem;
-  line-height: 1.55;
-  color: rgba(245, 242, 235, 0.9);
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: #ffffff;
+  font-weight: 500;
   cursor: pointer;
 }
 
-.contract-check-row--required { color: #ffffff; font-weight: 600; }
-
-.contract-check-row input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
+.booking-check-row input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
   accent-color: var(--gold);
   flex-shrink: 0;
   cursor: pointer;
 }
 
-.contract-divider { border-top: 1px solid var(--border-hairline); padding-top: 12px; }
+.booking-check-row input[type="checkbox"][aria-invalid="true"] {
+  outline: 2px solid #f59e0b;
+  outline-offset: 2px;
+}
 
-.contract-trace-note { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold-bright); margin-top: 6px; }
+.booking-check-link {
+  color: var(--gold-bright);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
-.contract-hint-note { font-size: 0.74rem; color: var(--text-muted); margin-top: 6px; }
+.booking-confirm-note {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
 
 .btn-whatsapp:disabled,
 .btn-outline:disabled {
@@ -1539,121 +1579,306 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   transform: none;
 }
 
-.contract-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 190;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  background: rgba(5, 5, 7, 0.88);
-  backdrop-filter: blur(6px);
+.testimonials-section {
+  background-color: var(--bg-slate);
+  border-top: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+  padding-block: 80px;
 }
 
-.contract-modal-backdrop.is-open { display: flex; }
+.testimonials-grid {
+  margin-top: 32px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
 
-.contract-modal {
-  width: 100%;
-  max-width: 780px;
-  max-height: 92vh;
+.testimonial-card {
+  border-radius: 12px;
+  border: 1px solid var(--border-hairline);
+  background: var(--bg-charcoal);
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  border-radius: 14px;
-  border: 1px solid rgba(212, 175, 106, 0.45);
-  background: var(--bg-slate);
-  color: var(--text-ivory);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
-}
-
-.contract-modal-head {
-  display: flex;
-  align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  padding: 18px 22px;
-  border-bottom: 1px solid var(--border-hairline);
-  background: var(--bg-charcoal);
 }
 
-.contract-modal-title {
-  margin-top: 4px;
+.testimonial-quote {
+  font-size: 0.92rem;
+  line-height: 1.68;
+  color: var(--text-ivory);
+}
+
+.testimonial-author {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   CALENDRIER DE DISPONIBILITÉS ACCESSIBLE (RÉSERVATION)
+   ========================================================================== */
+.calendar-field-wrap { display: grid; gap: 10px; }
+
+.calendar-widget {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--bg-charcoal);
+  padding: 16px;
+}
+
+.calendar-widget[aria-invalid="true"] { border-color: #f59e0b; }
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.calendar-month-title {
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-size: 1.45rem;
   font-weight: 600;
   color: #ffffff;
+  text-transform: capitalize;
 }
 
-.contract-modal-close {
-  width: 40px;
-  height: 40px;
+.calendar-nav-group { display: flex; align-items: center; gap: 8px; }
+
+.calendar-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 8px;
-  border: 1px solid var(--border-hairline);
-  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: var(--bg-slate);
   color: #ffffff;
-  font-size: 1.15rem;
-  flex-shrink: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: border-color 0.16s ease, color 0.16s ease, background-color 0.16s ease;
 }
 
-.contract-modal-close:hover { border-color: var(--gold); color: var(--gold-bright); }
+.calendar-nav-btn:hover:not(:disabled) {
+  border-color: var(--gold);
+  color: var(--gold-bright);
+  background: rgba(212, 175, 106, 0.12);
+}
 
-.contract-modal-body {
-  flex: 1;
-  overflow-y: auto;
-  padding: 20px 22px;
+.calendar-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.calendar-grid {
+  width: 100%;
   display: grid;
-  gap: 16px;
-  font-size: 0.86rem;
-  line-height: 1.65;
+  gap: 4px;
+}
+
+.calendar-weekdays,
+.calendar-week-row {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.calendar-weekday {
+  text-align: center;
+  padding-block: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.calendar-cell { display: flex; }
+
+.calendar-day {
+  width: 100%;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #121218;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.calendar-day:hover:not(.is-past):not(.is-unavailable):not(.is-selected) {
+  border-color: var(--gold);
+  background: rgba(212, 175, 106, 0.15);
+  color: var(--gold-bright);
+}
+
+.calendar-day.is-today:not(.is-selected) {
+  border-color: rgba(212, 175, 106, 0.65);
+}
+
+.calendar-day.is-selected {
+  background: var(--gold);
+  border-color: var(--gold-bright);
+  color: #0b0a09;
+  font-weight: 600;
+}
+
+.calendar-day.is-unavailable {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.06);
+  color: #8c867d;
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  cursor: not-allowed;
+}
+
+.calendar-day.is-past {
+  background: transparent;
+  border-color: transparent;
+  color: #5c5852;
+  cursor: not-allowed;
+}
+
+.calendar-spacer {
+  width: 100%;
+  min-height: 44px;
+  display: block;
+}
+
+.calendar-meta-row {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-hairline);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.calendar-legend-item { display: inline-flex; align-items: center; gap: 6px; }
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.legend-swatch--free { background: #121218; border-color: rgba(255, 255, 255, 0.25); }
+.legend-swatch--selected { background: var(--gold); border-color: var(--gold-bright); }
+.legend-swatch--unavailable { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.16); position: relative; }
+.legend-swatch--past { background: transparent; border-color: #5c5852; }
+
+.calendar-selected-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--gold-bright);
+}
+
+.calendar-notice {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: rgba(245, 242, 235, 0.86);
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 106, 0.3);
+  background: rgba(212, 175, 106, 0.06);
+}
+
+.calendar-fallback-wrap { display: grid; gap: 8px; }
+
+.calendar-fallback-note {
+  font-size: 0.78rem;
+  color: var(--gold-bright);
+}
+
+@media (max-width: 480px) {
+  .calendar-widget { padding: 12px; }
+  .calendar-day { min-width: 0; font-size: 0.78rem; }
+}
+
+/* ==========================================================================
+   PRÉSENTATION ÉDITORIALE & TARIFS DE DÉPART (PAGES NICHES)
+   ========================================================================== */
+.niche-overview-section {
+  padding-block: 56px;
+  border-bottom: 1px solid var(--border-hairline);
+  background: linear-gradient(180deg, #0d0d12 0%, #09090b 100%);
+}
+
+.niche-overview-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 960px) {
+  .niche-overview-grid { grid-template-columns: 1.2fr 0.8fr; align-items: stretch; }
+}
+
+.niche-intro-card,
+.niche-tarifs-card {
+  border-radius: 14px;
+  border: 1px solid var(--border-hairline);
+  background: var(--bg-slate);
+  padding: 28px;
+}
+
+.niche-tarifs-card {
+  border-color: rgba(212, 175, 106, 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.niche-section-heading {
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 2.8vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+.niche-intro-prose {
+  margin-top: 16px;
+  display: grid;
+  gap: 12px;
+  font-size: 0.92rem;
+  line-height: 1.72;
   color: rgba(245, 242, 235, 0.86);
 }
 
-.contract-modal-card {
-  padding: 14px 16px;
-  border-radius: 10px;
-  border: 1px solid var(--border-hairline);
-  background: var(--bg-charcoal);
-}
-
-.contract-modal-card--gold { border-color: rgba(212, 175, 106, 0.38); }
-
-.contract-modal-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--gold-bright);
-  margin-bottom: 8px;
-}
-
-.contract-parties-grid { display: grid; gap: 12px; }
-
-@media (min-width: 600px) {
-  .contract-parties-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-.contract-summary-list { list-style: none; display: grid; gap: 6px; }
-
-.contract-summary-list strong { color: #ffffff; }
-
-.contract-clause h4 { font-size: 0.9rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
-
-.contract-modal-foot {
-  padding: 16px 22px;
-  border-top: 1px solid var(--border-hairline);
-  background: var(--bg-charcoal);
-  display: grid;
-  gap: 10px;
-}
-
-.contract-modal-actions {
+.niche-tarifs-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
   gap: 10px;
 }
-
-.contract-legal-note { font-size: 0.74rem; color: var(--text-muted); }
 
 /* ==========================================================================
    MENTIONS LÉGALES & PAGE 404

@@ -10,6 +10,7 @@
   var PHOTO_CATEGORIES = data.PHOTO_CATEGORIES || [];
   var VIDEO_ITEMS = data.VIDEO_ITEMS || [];
   var GALLERY_PHOTOS = data.GALLERY_PHOTOS || [];
+  var TEMOIGNAGES = data.TEMOIGNAGES || [];
 
   /* ------------------------------------------------------------------------
      1. REDIRECTION DES ANCIENS LIENS EN HASH (#/tarifs, #/<slug>, etc.)
@@ -42,8 +43,12 @@
       window.location.replace(BASE_PATH + '/a-propos/');
       return;
     }
-    if (routePart === 'reservation' || routePart === 'contact') {
+    if (routePart === 'reservation') {
       window.location.replace(BASE_PATH + '/reservation/');
+      return;
+    }
+    if (routePart === 'contact') {
+      window.location.replace(BASE_PATH + '/#contact');
       return;
     }
     if (routePart === 'mentions-legales') {
@@ -121,6 +126,32 @@
     el.setAttribute('href', 'mailto:' + contactEmail);
     el.textContent = contactEmail;
   });
+
+  /* ------------------------------------------------------------------------
+     4b. TÉMOIGNAGES CLIENTS (AFFICHÉS UNIQUEMENT SI TEMOIGNAGES NON VIDE)
+     ------------------------------------------------------------------------ */
+  var testimonialsSection = document.getElementById('testimonialsSection');
+  var testimonialsGrid = document.getElementById('testimonialsGrid');
+  if (testimonialsSection && testimonialsGrid && Array.isArray(TEMOIGNAGES) && TEMOIGNAGES.length > 0) {
+    testimonialsGrid.innerHTML = '';
+    TEMOIGNAGES.forEach(function (item) {
+      var card = document.createElement('article');
+      card.className = 'testimonial-card';
+
+      var quote = document.createElement('blockquote');
+      quote.className = 'testimonial-quote';
+      quote.textContent = '« ' + String(item.texte || '') + ' »';
+      card.appendChild(quote);
+
+      var meta = document.createElement('p');
+      meta.className = 'testimonial-author';
+      meta.textContent = String(item.auteur || '') + (item.prestation ? ' · ' + String(item.prestation) : '');
+      card.appendChild(meta);
+
+      testimonialsGrid.appendChild(card);
+    });
+    testimonialsSection.classList.remove('is-hidden');
+  }
 
   /* ------------------------------------------------------------------------
      5. EFFET 3D PERSPECTIVE TILT LÉGER SUR LES CARTES
@@ -475,6 +506,46 @@
         if (videoEmptyState) {
           videoEmptyState.classList.toggle('is-hidden', visibleCount > 0);
         }
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------------------
+     12. SÉLECTEUR INTERACTIF PORTFOLIO « MON TRAVAIL »
+     ------------------------------------------------------------------------ */
+  var portfolioCatTabs = document.getElementById('portfolioCatTabs');
+  var portfolioShowcaseImg = document.getElementById('portfolioShowcaseImg');
+
+  if (portfolioCatTabs && PHOTO_CATEGORIES.length > 0) {
+    var findCategoryBySlug = function (slug) {
+      for (var i = 0; i < PHOTO_CATEGORIES.length; i++) {
+        if (PHOTO_CATEGORIES[i].slug === slug) return PHOTO_CATEGORIES[i];
+      }
+      return null;
+    };
+
+    var previewPortfolioCategory = function (slug) {
+      var cat = findCategoryBySlug(slug);
+      if (!cat) return;
+
+      portfolioCatTabs.querySelectorAll('.portfolio-cat-tab[data-cat-slug]').forEach(function (tab) {
+        tab.classList.toggle('is-active', tab.getAttribute('data-cat-slug') === cat.slug);
+      });
+
+      if (portfolioShowcaseImg) {
+        var coverName = cat.coverFile || 'cover.jpg';
+        portfolioShowcaseImg.setAttribute('src', assetUrl(coverName));
+        portfolioShowcaseImg.setAttribute('alt', cat.title + ' — DIONTADO PRODUCTION');
+      }
+    };
+
+    portfolioCatTabs.querySelectorAll('.portfolio-cat-tab[data-cat-slug]').forEach(function (tab) {
+      var slug = tab.getAttribute('data-cat-slug');
+      tab.addEventListener('mouseenter', function () {
+        previewPortfolioCategory(slug);
+      });
+      tab.addEventListener('focus', function () {
+        previewPortfolioCategory(slug);
       });
     });
   }
