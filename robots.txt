@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://diontadoevens0-a11y.github.io/diontado-production-portfolio/sitemap.xml
